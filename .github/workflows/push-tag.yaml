@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "**"
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+
+      - name: Generate self-contained package
+        run: |
+          git archive --format=tar --prefix=two-factor-provider-webauthn/ HEAD | (cd /var/tmp/ && tar xf -)
+          cp composer.lock /var/tmp/two-factor-provider-webauthn/
+          (cd /var/tmp/two-factor-provider-webauthn && composer install --no-dev --no-interaction && rm -f composer.lock)
+          (cd /var/tmp && zip -r -9 two-factor-provider-webauthn.zip two-factor-provider-webauthn)
+
+      - name: Release
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          generate_release_notes: true
+          files: |
+            /var/tmp/two-factor-provider-webauthn.zip

@@ -22,6 +22,7 @@
     "@wordpress/babel-plugin-makepot": "^4.2.0",
     "@wordpress/eslint-plugin": "^9.3.0",
     "@wordpress/i18n": "^4.2.4",
+    "eslint-formatter-gha": "^1.4.1",
     "rollup": "^2.64.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.5.4"

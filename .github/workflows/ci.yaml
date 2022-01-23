@@ -1,0 +1,66 @@
+name: Build and Test
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: Build PHP part
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+        dependencies:
+          - lowest
+          - locked
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2.4.0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@2.16.0
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install Composer Dependencies
+        uses: ramsey/composer-install@2.0.5
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
+
+  js:
+    name: Build JS part
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    env:
+      NPM_CONFIG_FUND: "0"
+      NPM_CONFIG_AUDIT: "0"
+      SUPPRESS_SUPPORT: "1"
+      NO_UPDATE_NOTIFIER: "true"
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2.4.0
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build
+        run: npm run build

@@ -1,0 +1,32 @@
+name: Static Code Analysis
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    name: Analyze the code with Psalm
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+
+      - name: Install Composer Dependencies
+        uses: ramsey/composer-install@2.0.5
+
+      - name: Run psalm
+        run: composer psalm -- --output-format=github

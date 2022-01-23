@@ -2,11 +2,12 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
+use InvalidArgumentException;
 use MadWizard\WebAuthn\Json\JsonConverter;
 use MadWizard\WebAuthn\Server\Registration\RegistrationContext;
 use MadWizard\WebAuthn\Server\Registration\RegistrationOptions;
-use RuntimeException;
 use Throwable;
+use UnexpectedValueException;
 use WildWolf\Utils\Singleton;
 use WP_User;
 
@@ -80,13 +81,13 @@ final class AJAX {
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 			if ( ! ( $context instanceof RegistrationContext ) ) {
-				throw new RuntimeException( __( 'Unable to retrieve the registration context', '2fa-wa' ) );
+				throw new UnexpectedValueException( __( 'Unable to retrieve the registration context', '2fa-wa' ) );
 			}
 
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$credential = $_POST['credential'] ?? null;
 			if ( ! is_string( $credential ) ) {
-				throw new RuntimeException( __( 'Bad request', '2fa-wa' ) );
+				throw new InvalidArgumentException( __( 'Bad request', '2fa-wa' ) );
 			}
 
 			/** @var mixed */
@@ -112,7 +113,7 @@ final class AJAX {
 					'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
 				] );
 			} else {
-				throw new RuntimeException( __( 'Bad request', '2fa-wa' ) );
+				throw new InvalidArgumentException( __( 'Bad request', '2fa-wa' ) );
 			}
 		} catch ( Throwable $e ) {
 			wp_send_json_error( $e->getMessage(), 400 );

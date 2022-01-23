@@ -9,6 +9,8 @@ use WP_User;
 use wpdb;
 
 class WebAuthn_User implements UserIdentityInterface {
+	public const CACHE_GROUP_NAME = '2fa-webauthn';
+
 	private WP_User $user;
 
 	public static function get_for( WP_User $user ): self {
@@ -27,8 +29,9 @@ class WebAuthn_User implements UserIdentityInterface {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
+		$key = sprintf( 'handle:%u', $this->user->ID );
 		/** @var mixed */
-		$handle = wp_cache_get( sprintf( 'handle:%u', $this->user->ID ), '2fa-webauthn' );
+		$handle = wp_cache_get( $key, self::CACHE_GROUP_NAME );
 		if ( false === $handle || ! is_string( $handle ) ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$handle = $wpdb->get_var( $wpdb->prepare( "SELECT user_handle FROM {$wpdb->webauthn_users} WHERE user_id = %d", $this->user->ID ) );
@@ -45,7 +48,7 @@ class WebAuthn_User implements UserIdentityInterface {
 				);
 			}
 
-			wp_cache_set( sprintf( 'handle:%u', $this->user->ID ), $handle, '2fa-webauthn', 3600 );
+			wp_cache_set( $key, $handle, self::CACHE_GROUP_NAME, 3600 );
 		}
 
 		return UserHandle::fromString( $handle );
@@ -66,13 +69,14 @@ class WebAuthn_User implements UserIdentityInterface {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
+		$key = sprintf( 'user:%s', $handle->toString() );
 		/** @var mixed */
-		$user_id = wp_cache_get( sprintf( 'user:%s', $handle->toString() ), '2fa-webauthn' );
+		$user_id = wp_cache_get( $key, self::CACHE_GROUP_NAME );
 		if ( false === $user_id || ! is_int( $user_id ) ) {
 			/** @psalm-var numeric-string|null $user_id */
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM {$wpdb->webauthn_users} WHERE user_handle = %s", $handle->toString() ) );
-			wp_cache_set( sprintf( 'user:%s', $handle->toString() ), (int) $user_id, '2fa-webauthn', 3600 );
+			wp_cache_set( $key, (int) $user_id, self::CACHE_GROUP_NAME, 3600 );
 		}
 
 		return $user_id ? new WP_User( (int) $user_id ) : null;

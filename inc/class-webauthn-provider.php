@@ -7,9 +7,9 @@ use MadWizard\WebAuthn\Extension\AppId\AppIdExtensionInput;
 use MadWizard\WebAuthn\Json\JsonConverter;
 use MadWizard\WebAuthn\Server\Authentication\AuthenticationContext;
 use MadWizard\WebAuthn\Server\Authentication\AuthenticationOptions;
-use RuntimeException;
 use Throwable;
 use Two_Factor_Provider;
+use UnexpectedValueException;
 use WP_User;
 
 class WebAuthn_Provider extends Two_Factor_Provider {
@@ -100,7 +100,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 			if ( ! ( $context instanceof AuthenticationContext ) ) {
-				throw new RuntimeException( __( 'Unable to retrieve the authentication context', '2fa-wa' ) );
+				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context', '2fa-wa' ) );
 			}
 
 			/** @var mixed $credential */

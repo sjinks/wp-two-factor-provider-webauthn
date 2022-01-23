@@ -9,6 +9,7 @@ use MadWizard\WebAuthn\Server\Authentication\AuthenticationContext;
 use MadWizard\WebAuthn\Server\Authentication\AuthenticationOptions;
 use Throwable;
 use Two_Factor_Provider;
+use TwoFactor_Provider_WebAuthn;
 use UnexpectedValueException;
 use WP_User;
 
@@ -34,6 +35,8 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 		parent::__construct();
 
 		add_filter( 'load_script_translation_file', [ $this, 'load_script_translation_file' ], 10, 3 );
+		add_filter( 'two_factor_enabled_providers_for_user', [ $this, 'two_factor_enabled_providers_for_user' ] );
+		add_filter( 'two_factor_primary_provider_for_user', [ $this, 'two_factor_primary_provider_for_user' ] );
 	}
 
 	/**
@@ -172,5 +175,35 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 		}
 
 		return $credential;
+	}
+
+	/**
+	 * Filter the enabled two-factor authentication providers for this user.
+	 *
+	 * @psalm-param class-string[] $enabled_providers
+	 * @psalm-return class-string[]
+	 */
+	public function two_factor_enabled_providers_for_user( array $enabled_providers ): array {
+		if ( in_array( \Two_Factor_FIDO_U2F::class, $enabled_providers, true ) ) {
+			$enabled_providers[] = TwoFactor_Provider_WebAuthn::class;
+		}
+
+		return $enabled_providers;
+	}
+
+	/**
+	 * Filter the two-factor authentication provider used for this user.
+	 *
+	 * @param string $provider
+	 * @psalm-param class-string $provider
+	 * @return string
+	 * @psalm-return class-string
+	 */
+	public function two_factor_primary_provider_for_user( $provider ) {
+		if ( \Two_Factor_FIDO_U2F::class === $provider ) {
+			$provider = TwoFactor_Provider_WebAuthn::class;
+		}
+
+		return $provider;
 	}
 }

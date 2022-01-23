@@ -36,7 +36,7 @@ jobs:
           php-version: ${{ matrix.php }}
 
       - name: Install Composer Dependencies
-        uses: ramsey/composer-install@2.0.5
+        uses: ramsey/composer-install@2.1.0
         with:
           dependency-versions: ${{ matrix.dependencies }}
 

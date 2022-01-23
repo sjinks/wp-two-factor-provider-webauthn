@@ -1,0 +1,15 @@
+*.sh                    text eol=lf
+*.xml.dist              export-ignore
+/.*                     export-ignore
+/assets/*.ts            export-ignore
+/assets/*.map           export-ignore
+/bin/                   export-ignore
+/lang/*.po              export-ignore
+/lang/*.pot             export-ignore
+/lang/Makefile          export-ignore
+/stubs/                 export-ignore
+/docker-compose.yml     export-ignore
+/rollup.config.mjs      export-ignore
+/package-lock.json      export-ignore
+/package.json           export-ignore
+/tsconfig.json          export-ignore

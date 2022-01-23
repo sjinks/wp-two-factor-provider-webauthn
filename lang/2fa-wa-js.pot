@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: assets/lang.ts:10
+msgid "This key is already registered."
+msgstr ""
+
+#: assets/lang.ts:11
+msgid "Fetching registration information…"
+msgstr ""
+
+#: assets/lang.ts:12
+msgid "Generating credentials…"
+msgstr ""
+
+#: assets/lang.ts:13
+msgid "Registering credentials…"
+msgstr ""
+
+#: assets/lang.ts:14
+msgid "Unable to create public key credentials"
+msgstr ""
+
+#: assets/lang.ts:15
+msgid "The key has been registered."
+msgstr ""
+
+#: assets/lang.ts:16
+msgid "Sending request…"
+msgstr ""
+
+#: assets/lang.ts:17
+msgid "The key has been revoked."
+msgstr ""
+
+#: assets/lang.ts:18
+msgid "The key has been renamed."
+msgstr ""
+
+#: assets/lang.ts:2
+msgid "WebAuthn is not supported by the browser."
+msgstr ""
+
+#: assets/lang.ts:3
+msgid "Unable to get a public key credential."
+msgstr ""
+
+#: assets/lang.ts:4
+msgid "The request is not allowed."
+msgstr ""
+
+#: assets/lang.ts:5
+msgid "The operation is insecure."
+msgstr ""
+
+#: assets/lang.ts:6
+msgid "The operation is not supported."
+msgstr ""
+
+#: assets/lang.ts:7
+msgid "The operation was canceled."
+msgstr ""
+
+#: assets/lang.ts:8
+msgid "You cannot use this key to log in."
+msgstr ""

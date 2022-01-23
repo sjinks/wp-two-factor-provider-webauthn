@@ -1,0 +1,168 @@
+# Copyright (C) 2022 Volodymyr Kolesnykov
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: WebAuthn Provider for Two Factor 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-provider-webauthn\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-01-22T22:41:36+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: 2fa-wa\n"
+
+#. Plugin Name of the plugin
+msgid "WebAuthn Provider for Two Factor"
+msgstr ""
+
+#. Description of the plugin
+msgid "WebAuthn Provider for Two Factor plugin."
+msgstr ""
+
+#. Author of the plugin
+msgid "Volodymyr Kolesnykov"
+msgstr ""
+
+#: inc/class-admin.php:29
+msgid "TwoFactor WebAuthn Settings"
+msgstr ""
+
+#: inc/class-admin.php:29
+msgid "TwoFactor WebAuthn"
+msgstr ""
+
+#: inc/class-adminsettings.php:47
+msgid "Authenticator Attachment Modality"
+msgstr ""
+
+#: inc/class-adminsettings.php:54
+msgctxt "Authenticator attachment modality"
+msgid "None"
+msgstr ""
+
+#: inc/class-adminsettings.php:55
+msgctxt "Authenticator attachment modality"
+msgid "Cross-platform"
+msgstr ""
+
+#: inc/class-adminsettings.php:56
+msgctxt "Authenticator attachment modality"
+msgid "Platform"
+msgstr ""
+
+#: inc/class-adminsettings.php:58
+msgid "<em>Platform attachment</em> is for authenticators physically bound to a client device (like a fingerprint scanner on a smartphone).<br/><em>Cross-platform attachment</em> is for removable authenticators which can \"roam\" between client devices (like a security key).<br/>Consider using <em>None</em> if you do not need to restrict your users to the specific class of authenticators.<br/><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality\">Details</a>"
+msgstr ""
+
+#: inc/class-adminsettings.php:71
+msgid "User Verification Requirement"
+msgstr ""
+
+#: inc/class-adminsettings.php:78
+msgctxt "User Verification Requirement"
+msgid "Discouraged"
+msgstr ""
+
+#: inc/class-adminsettings.php:79
+msgctxt "User Verification Requirement"
+msgid "Preferred"
+msgstr ""
+
+#: inc/class-adminsettings.php:80
+msgctxt "User Verification Requirement"
+msgid "Required"
+msgstr ""
+
+#: inc/class-adminsettings.php:82
+msgid "<em>Discouraged</em>: user verificatoin is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/><em>Preferred</em>: user verification (like entering a PIN code) is preferred but not required for successful authentication.<br/><em>Required</em>: user verification is required for successful authentication. Please note that not all browsers support this setting.<br/>"
+msgstr ""
+
+#: inc/class-adminsettings.php:94
+msgid "Timeout"
+msgstr ""
+
+#: inc/class-adminsettings.php:101
+msgid "The default timeout for security key operations, in seconds. Set to 0 to use the browser default value."
+msgstr ""
+
+#: inc/class-adminsettings.php:110
+msgid "U2F compatibility hack"
+msgstr ""
+
+#: inc/class-adminsettings.php:116
+msgid "Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>When enabled, this compatibility enables the check whther the security key used was registered with U2F and if so, forces the use of the AppID extension."
+msgstr ""
+
+#: inc/class-ajax.php:30
+#: inc/class-ajax.php:122
+msgid "The nonce has expired. Please reload the page and try again"
+msgstr ""
+
+#: inc/class-ajax.php:78
+msgid "Unable to retrieve the registration context"
+msgstr ""
+
+#: inc/class-ajax.php:84
+#: inc/class-ajax.php:110
+msgid "Bad request"
+msgstr ""
+
+#: inc/class-key-table.php:33
+msgid "Counter"
+msgstr ""
+
+#: inc/class-key-table.php:56
+msgid "Revoke"
+msgstr ""
+
+#: inc/class-webauthn-credential-store.php:121
+msgid "New Key"
+msgstr ""
+
+#: inc/class-webauthn-provider.php:47
+msgctxt "Provider label"
+msgid "WebAuthn"
+msgstr ""
+
+#: inc/class-webauthn-provider.php:59
+msgid "WebAuthn requires an HTTPS connection. Please use an alternative second factor method."
+msgstr ""
+
+#: inc/class-webauthn-provider.php:107
+msgid "Unable to retrieve the authentication context"
+msgstr ""
+
+#: views/login.php:2
+msgid "Please insert (and tap) your security key."
+msgstr ""
+
+#: views/login.php:5
+msgid "Retry"
+msgstr ""
+
+#: views/settings.php:14
+msgid "Save settings"
+msgstr ""
+
+#: views/user-options.php:3
+msgid "Requires an HTTPS connection. Please configure your security keys in the \"Security Keys (WebAuthn)\" section below."
+msgstr ""
+
+#: views/user-profile.php:10
+msgid "Security Keys (WebAuthn)"
+msgstr ""
+
+#: views/user-profile.php:14
+msgid "You need to enable JavaScript to manage security keys."
+msgstr ""
+
+#: views/user-profile.php:21
+msgid "WebAuthn requires an HTTPS connection. You will be unable to add new security keys over HTTP."
+msgstr ""
+
+#: views/user-profile.php:28
+msgid "Key name:"
+msgstr ""

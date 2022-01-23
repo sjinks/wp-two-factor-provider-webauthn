@@ -1,0 +1,44 @@
+{
+	"name": "wildwolf/two-factor-provider-webauthn",
+	"type": "wordpress-plugin",
+	"description": "WebAuthn provider for Two Factor WordPress plugin",
+	"autoload": {
+		"classmap": [
+			"inc/"
+		]
+	},
+	"require": {
+		"php": "^7.3.0 || ^8.0.0",
+		"composer/installers": "^2.0",
+		"madwizard/webauthn": "^0.7.0",
+		"wildwolf/singleton-trait": "^1.0"
+	},
+	"require-dev": {
+		"automattic/vipwpcs": "^2.3",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"johnpbloch/wordpress-core": "^5.8",
+		"php-stubs/wordpress-stubs": "^5.8",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpunit/phpunit": "^7",
+		"psalm/plugin-phpunit": "^0.16.1",
+		"vimeo/psalm": "^4.7",
+		"wildwolf/wordpress-test-library-stubs": "^5.8",
+		"wp-cli/i18n-command": "^2.2",
+		"wp-coding-standards/wpcs": "^2.3",
+		"wp-phpunit/wp-phpunit": "^5.8",
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"config": {
+		"sort-packages": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"composer/package-versions-deprecated": true,
+			"composer/installers": true
+		}
+	},
+	"scripts": {
+		"phpcs": "phpcs",
+		"phpcs:fix": "phpcbf",
+		"psalm": "psalm --long-progress --no-cache"
+	}
+}

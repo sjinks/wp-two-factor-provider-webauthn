@@ -19,14 +19,11 @@
 		"johnpbloch/wordpress-core": "^5.8",
 		"php-stubs/wordpress-stubs": "^5.8",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"phpunit/phpunit": "^7",
-		"psalm/plugin-phpunit": "^0.16.1",
 		"vimeo/psalm": "^4.7",
 		"wildwolf/wordpress-test-library-stubs": "^5.8",
 		"wp-cli/i18n-command": "^2.2",
 		"wp-coding-standards/wpcs": "^2.3",
-		"wp-phpunit/wp-phpunit": "^5.8",
-		"yoast/phpunit-polyfills": "^1.0"
+		"wp-phpunit/wp-phpunit": "^5.8"
 	},
 	"config": {
 		"sort-packages": true,

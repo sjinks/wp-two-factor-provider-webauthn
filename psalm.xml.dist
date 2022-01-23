@@ -20,7 +20,4 @@
         <file name="stubs/two-factor.stubs.php"/>
         <file name="stubs/wordpress.stubs.php"/>
     </stubs>
-    <plugins>
-        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
-    </plugins>
 </psalm>

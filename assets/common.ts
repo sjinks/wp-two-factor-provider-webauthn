@@ -6,31 +6,25 @@ import {
 	L_UNKNOWN_KEY,
 	L_KEY_ALREADY_REGISTERED,
 } from './lang';
-interface PublicKeyCredentialUserEntityPlain extends PublicKeyCredentialEntity {
-	displayName: string;
-	id: string;
-}
 
-interface PublicKeyCredentialDescriptorPlain {
-	id: string;
-	transports?: AuthenticatorTransport[];
-	type: PublicKeyCredentialType;
-}
+type Convert<O extends object> = {
+	[K in keyof O]: O[K] extends BufferSource | null ? string : O[K] extends object ? Convert<O[K]> : O[K];
+};
 
 export interface PublicKeyCredentialCreationOptionsPlain {
 	attestation?: AttestationConveyancePreference;
 	authenticatorSelection?: AuthenticatorSelectionCriteria;
 	challenge: string;
-	excludeCredentials?: PublicKeyCredentialDescriptorPlain[];
+	excludeCredentials?: Convert<PublicKeyCredentialDescriptor>[];
 	extensions?: AuthenticationExtensionsClientInputs;
 	pubKeyCredParams: PublicKeyCredentialParameters[];
 	rp: PublicKeyCredentialRpEntity;
 	timeout?: number;
-	user: PublicKeyCredentialUserEntityPlain;
+	user: Convert<PublicKeyCredentialUserEntity>;
 }
 
 export interface PublicKeyCredentialRequestOptionsPlain {
-	allowCredentials?: PublicKeyCredentialDescriptorPlain[];
+	allowCredentials?: Convert<PublicKeyCredentialDescriptor>[];
 	challenge: string;
 	extensions?: AuthenticationExtensionsClientInputs;
 	rpId?: string;
@@ -38,36 +32,26 @@ export interface PublicKeyCredentialRequestOptionsPlain {
 	userVerification?: UserVerificationRequirement;
 }
 
-interface AuthenticatorResponsePlain {
-	clientDataJSON: string;
-}
-
-interface AuthenticatorAttestationResponsePlain extends AuthenticatorResponsePlain {
-	attestationObject: string;
-}
-
-interface AuthenticatorAssertionResponsePlain extends AuthenticatorResponsePlain {
-	authenticatorData: string;
-	signature: string;
-	userHandle: string | null | undefined;
-}
-
 export interface PublicKeyCredentialPlain extends Credential {
 	rawId: string;
-	response: Partial<AuthenticatorAttestationResponsePlain & AuthenticatorAssertionResponsePlain>;
+	response: Partial<Convert<AuthenticatorAttestationResponse & AuthenticatorAssertionResponse>>;
 	clientExtensionResults: AuthenticationExtensionsClientOutputs;
 }
 
-export function arrayToBase64String(a: Uint8Array): string {
+function arrayToBase64String(a: Uint8Array): string {
 	return window.btoa(String.fromCharCode(...a));
 }
 
-export function base64UrlDecode(input: string): string {
+function base64UrlDecode(input: string): string {
 	return window.atob(input.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat(3 - ((3 + input.length) % 4)));
 }
 
-export function stringToBufferMapper(c: string): number {
-	return c.charCodeAt(0);
+function stringToBuffer(s: string): ArrayBuffer {
+	if ('TextEncoder' in window) {
+		return new TextEncoder().encode(s);
+	}
+
+	return Uint8Array.from(s, (c) => c.charCodeAt(0));
 }
 
 export function preparePublicKeyCreationOptions(
@@ -77,13 +61,13 @@ export function preparePublicKeyCreationOptions(
 		...publicKey,
 		user: {
 			...publicKey.user,
-			id: Uint8Array.from(base64UrlDecode(publicKey.user.id), stringToBufferMapper),
+			id: stringToBuffer(base64UrlDecode(publicKey.user.id)),
 		},
-		challenge: Uint8Array.from(base64UrlDecode(publicKey.challenge), stringToBufferMapper),
+		challenge: stringToBuffer(base64UrlDecode(publicKey.challenge)),
 		excludeCredentials: publicKey.excludeCredentials?.map(
-			(data: PublicKeyCredentialDescriptorPlain): PublicKeyCredentialDescriptor => ({
+			(data: Convert<PublicKeyCredentialDescriptor>): PublicKeyCredentialDescriptor => ({
 				...data,
-				id: Uint8Array.from(base64UrlDecode(data.id), stringToBufferMapper),
+				id: stringToBuffer(base64UrlDecode(data.id)),
 			}),
 		),
 	};
@@ -94,11 +78,11 @@ export function preparePublicKeyCredentialRequestOptions(
 ): PublicKeyCredentialRequestOptions {
 	return {
 		...publicKey,
-		challenge: Uint8Array.from(base64UrlDecode(publicKey.challenge), stringToBufferMapper).buffer,
+		challenge: stringToBuffer(base64UrlDecode(publicKey.challenge)),
 		allowCredentials: publicKey.allowCredentials?.map(
-			(data: PublicKeyCredentialDescriptorPlain): PublicKeyCredentialDescriptor => ({
+			(data: Convert<PublicKeyCredentialDescriptor>): PublicKeyCredentialDescriptor => ({
 				...data,
-				id: Uint8Array.from(base64UrlDecode(data.id), stringToBufferMapper).buffer,
+				id: stringToBuffer(base64UrlDecode(data.id)),
 			}),
 		),
 	};

@@ -129,8 +129,6 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 
 			return true;
 		} catch ( Throwable $e ) {
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( $e->getMessage() );
 			return false;
 		} finally {
 			delete_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META );

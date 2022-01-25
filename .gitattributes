@@ -3,6 +3,7 @@
 /.*                     export-ignore
 /assets/*.ts            export-ignore
 /assets/*.map           export-ignore
+/assets/screenshot*     export-ignore
 /bin/                   export-ignore
 /lang/*.po              export-ignore
 /lang/*.pot             export-ignore

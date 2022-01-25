@@ -8,7 +8,7 @@
 		]
 	},
 	"require": {
-		"php": "^7.3.0 || ^8.0.0",
+		"php": "^7.4.0 || ^8.0.0",
 		"composer/installers": "^2.0",
 		"madwizard/webauthn": "^0.7.0",
 		"wildwolf/singleton-trait": "^1.0"
@@ -31,6 +31,9 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/package-versions-deprecated": true,
 			"composer/installers": true
+		},
+		"platform": {
+			"php": "7.4"
 		}
 	},
 	"scripts": {

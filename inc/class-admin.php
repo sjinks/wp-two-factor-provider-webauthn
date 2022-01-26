@@ -52,7 +52,7 @@ final class Admin {
 				'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
 			] );
 
-			wp_set_script_translations( 'webauthn-register-key', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . '/lang' );
+			wp_set_script_translations( 'webauthn-register-key', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . 'lang' );
 		}
 	}
 

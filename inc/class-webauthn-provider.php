@@ -88,7 +88,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			'options' => $options,
 		] );
 
-		wp_set_script_translations( 'webauthn-login', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . '/lang' );
+		wp_set_script_translations( 'webauthn-login', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . 'lang' );
 
 		Utils::render( 'login' );
 	}
@@ -168,7 +168,11 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	 */
 	public function load_script_translation_file( $file, $handle, $domain ) {
 		if ( is_string( $file ) && 'two-factor-provider-webauthn' === $domain ) {
-			$file = str_replace( "-{$handle}", '-js', $file );
+			$fname = basename( $file );
+			$dname = dirname( $file );
+			$fname = str_replace( "-{$handle}", '', $fname );
+			$fname = str_replace( $domain, "{$domain}-js", $fname );
+			$file  = $dname . DIRECTORY_SEPARATOR . $fname;
 		}
 
 		return $file;

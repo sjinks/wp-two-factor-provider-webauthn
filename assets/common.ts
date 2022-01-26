@@ -47,10 +47,6 @@ function base64UrlDecode(input: string): string {
 }
 
 function stringToBuffer(s: string): ArrayBuffer {
-	if ('TextEncoder' in window) {
-		return new TextEncoder().encode(s);
-	}
-
 	return Uint8Array.from(s, (c) => c.charCodeAt(0));
 }
 

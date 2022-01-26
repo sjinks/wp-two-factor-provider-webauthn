@@ -5,7 +5,7 @@
  * Version: 1.0.0
  * Author: Volodymyr Kolesnykov
  * License: MIT
- * Text Domain: 2fa-wa
+ * Text Domain: two-factor-provider-webauthn
  * Domain Path: /lang
  */
 

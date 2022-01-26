@@ -14,7 +14,7 @@ const plugins = [
             ['@babel/env', { loose: true, bugfixes: true, modules: false }],
         ],
         plugins: [
-            ["@wordpress/babel-plugin-makepot", { "output": "lang/2fa-wa-js.pot" }],
+            ["@wordpress/babel-plugin-makepot", { "output": "lang/two-factor-provider-webauthn-js.pot" }],
         ],
         babelrc: false,
     }),

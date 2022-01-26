@@ -2,6 +2,7 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
+use InvalidArgumentException;
 use MadWizard\WebAuthn\Credential\CredentialId;
 use MadWizard\WebAuthn\Extension\AppId\AppIdExtensionInput;
 use MadWizard\WebAuthn\Json\JsonConverter;
@@ -43,7 +44,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	 * @return string
 	 */
 	public function get_label() {
-		return _x( 'WebAuthn', 'Provider label', '2fa-wa' );
+		return _x( 'WebAuthn', 'Provider label', 'two-factor-provider-webauthn' );
 	}
 
 	/**
@@ -55,7 +56,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 		require_once ABSPATH . '/wp-admin/includes/template.php';
 
 		if ( ! is_ssl() ) {
-			printf( '<p>%s</p>', esc_html__( 'WebAuthn requires an HTTPS connection. Please use an alternative second factor method.', '2fa-wa' ) );
+			printf( '<p>%s</p>', esc_html__( 'WebAuthn requires an HTTPS connection. Please use an alternative second factor method.', 'two-factor-provider-webauthn' ) );
 			return;
 		}
 
@@ -87,7 +88,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			'options' => $options,
 		] );
 
-		wp_set_script_translations( 'webauthn-login', '2fa-wa-js', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . '/lang' );
+		wp_set_script_translations( 'webauthn-login', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . '/lang' );
 
 		Utils::render( 'login' );
 	}
@@ -103,12 +104,22 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 			if ( ! ( $context instanceof AuthenticationContext ) ) {
-				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context', '2fa-wa' ) );
+				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context', 'two-factor-provider-webauthn' ) );
+			}
+
+			// We cannot use WordPress sanitization functions here: the response from webauthn must not be altered.
+			// We validate that `webauthn_response` is a string, valid JSON, and decodes to an object (associative array in terms of PHP).
+			// If any of the conditions does not hold, we fail the request.
+			// The webauthn-server library performs further validation in accordance with the specification.
+			// Nonce is validated by the Two Factor plugin.
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing
+			$response = $_POST['webauthn_response'] ?? null;
+			if ( ! is_string( $response ) ) {
+				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
 			}
 
 			/** @var mixed $credential */
-			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing
-			$credential = json_decode( wp_unslash( (string) ( $_POST['webauthn_response'] ?? ' ' ) ), true, 512, JSON_THROW_ON_ERROR );
+			$credential = json_decode( wp_unslash( $response ), true, 512, JSON_THROW_ON_ERROR );
 
 			if ( is_array( $credential ) ) {
 				$settings = Settings::instance();
@@ -156,8 +167,8 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	 * @return string|false
 	 */
 	public function load_script_translation_file( $file, $handle, $domain ) {
-		if ( is_string( $file ) && '2fa-wa-js' === $domain ) {
-			$file = str_replace( "-{$handle}", '', $file );
+		if ( is_string( $file ) && 'two-factor-provider-webauthn' === $domain ) {
+			$file = str_replace( "-{$handle}", '-js', $file );
 		}
 
 		return $file;

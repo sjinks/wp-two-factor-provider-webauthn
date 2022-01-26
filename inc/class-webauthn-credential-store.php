@@ -12,7 +12,7 @@ use WP_User;
 use wpdb;
 
 // phpcs:disable WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase
-// phpcs:disable WordPress.DB.DirectDatabaseQuery
+// phpcs:disable WordPress.DB.DirectDatabaseQuery -- we intentionally do not use cache; otherwise, with a shared memcached server + object cache credentails may leak.
 
 /**
  * @psalm-type CredentialRow = object{id: positive-int, user_handle: string, credential_id: string, public_key: string, counter: numeric-string, name: string, added: numeric-string, last_used: numeric-string, u2f: numeric-string}
@@ -118,13 +118,12 @@ class WebAuthn_Credential_Store implements CredentialStoreInterface {
 			'credential_id' => $result->getCredentialId()->toString(),
 			'public_key'    => $result->getPublicKey()->toString(),
 			'counter'       => $result->getSignatureCounter(),
-			'name'          => $key_name ?: __( 'New Key', '2fa-wa' ),
+			'name'          => $key_name ?: __( 'New Key', 'two-factor-provider-webauthn' ),
 			'added'         => time(),
 			'last_used'     => time(),
 			'u2f'           => 0,
 		];
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 		$wpdb->insert( $wpdb->webauthn_credentials, $credential, [ '%s', '%s', '%s', '%d', '%s', '%d', '%d', '%d' ] );
 		return $credential;
 	}

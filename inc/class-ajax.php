@@ -29,7 +29,7 @@ final class AJAX {
 
 	private function verify_nonce( string $nonce ): void {
 		if ( false === check_ajax_referer( $nonce, false, false ) ) {
-			wp_send_json_error( __( 'The nonce has expired. Please reload the page and try again', '2fa-wa' ), 400 );
+			wp_send_json_error( __( 'The nonce has expired. Please reload the page and try again', 'two-factor-provider-webauthn' ), 400 );
 		}
 	}
 
@@ -81,13 +81,17 @@ final class AJAX {
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 			if ( ! ( $context instanceof RegistrationContext ) ) {
-				throw new UnexpectedValueException( __( 'Unable to retrieve the registration context', '2fa-wa' ) );
+				throw new UnexpectedValueException( __( 'Unable to retrieve the registration context', 'two-factor-provider-webauthn' ) );
 			}
 
+			// We cannot use WordPress sanitization functions here: the credential must not be altered.
+			// We validate that `credential` is a string, valid JSON, and decodes to an object (associative array in terms of PHP).
+			// If any of the conditions does not hold, we fail the request.
+			// The webauthn-server library performs further validation in accordance with the specification.
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$credential = $_POST['credential'] ?? null;
 			if ( ! is_string( $credential ) ) {
-				throw new InvalidArgumentException( __( 'Bad request', '2fa-wa' ) );
+				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
 			}
 
 			/** @var mixed */
@@ -98,7 +102,7 @@ final class AJAX {
 					$context
 				);
 
-				// phpcs:ignore WordPress.Security.NonceVerification.Missing
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- false positive, check_registration_nonce() does that
 				$name  = sanitize_text_field( (string) ( $_POST['name'] ?? '' ) );
 				$store = new WebAuthn_Credential_Store();
 				$key   = $store->save_user_key( $name, $result );
@@ -113,7 +117,7 @@ final class AJAX {
 					'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
 				] );
 			} else {
-				throw new InvalidArgumentException( __( 'Bad request', '2fa-wa' ) );
+				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
 			}
 		} catch ( Throwable $e ) {
 			wp_send_json_error( $e->getMessage(), 400 );
@@ -140,7 +144,7 @@ final class AJAX {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verify_nonce() checks the nonce
 		$name = wp_unslash( sanitize_text_field( (string) ( $_POST['name'] ?? '' ) ) );
 		if ( empty( $name ) ) {
-			wp_send_json_error( __( 'Key name cannot be empty.', '2fa-wa' ), 400 );
+			wp_send_json_error( __( 'Key name cannot be empty.', 'two-factor-provider-webauthn' ), 400 );
 		}
 
 		$store   = new WebAuthn_Credential_Store();
@@ -149,6 +153,6 @@ final class AJAX {
 			wp_send_json_success( [ 'name' => $name ] );
 		}
 
-		wp_send_json_error( __( 'Failed to rename the key.', '2fa-wa' ), 400 );
+		wp_send_json_error( __( 'Failed to rename the key.', 'two-factor-provider-webauthn' ), 400 );
 	}
 }

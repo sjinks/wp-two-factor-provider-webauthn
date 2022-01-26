@@ -41,7 +41,7 @@ final class InputFactory {
 			esc_attr( $id ),
 			esc_attr( $id ),
 			esc_attr( (string) $value ),
-			self::get_attributes( $args ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			self::get_attributes( $args ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_attributes() escapes its return value properly
 		);
 
 		self::render_help( $args );
@@ -91,7 +91,7 @@ final class InputFactory {
 			esc_attr( $id ),
 			esc_attr( $id ),
 			checked( $value, true, false ),
-			self::get_attributes( $args ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			self::get_attributes( $args ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_attributes() escapes its return value properly
 		);
 
 		self::render_help( $args );

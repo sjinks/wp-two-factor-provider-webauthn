@@ -1,5 +1,5 @@
-DOMAIN_PHP   := 2fa-wa
-DOMAIN_JS    := 2fa-wa-js
+DOMAIN_PHP   := two-factor-provider-webauthn
+DOMAIN_JS    := two-factor-provider-webauthn
 PO_FILES_PHP := $(wildcard $(DOMAIN_PHP)-*.po)
 PO_FILES_JS  := $(wildcard $(DOMAIN_JS)-*.po)
 MO_FILES_PHP := $(patsubst %.po,%.mo,$(PO_FILES_PHP))

@@ -44,16 +44,16 @@ final class AdminSettings {
 
 		add_settings_field(
 			'authenticator_attachment',
-			__( 'Authenticator Attachment Modality', '2fa-wa' ),
+			__( 'Authenticator Attachment Modality', 'two-factor-provider-webauthn' ),
 			[ $this->input_factory, 'select' ],
 			Admin::OPTIONS_MENU_SLUG,
 			$settings_section,
 			[
 				'label_for' => 'authenticator_attachment',
 				'options'   => [
-					''                                => _x( 'None', 'Authenticator attachment modality', '2fa-wa' ),
-					AuthenticatorAttachment::CROSS_PLATFORM => _x( 'Cross-platform', 'Authenticator attachment modality', '2fa-wa' ),
-					AuthenticatorAttachment::PLATFORM => _x( 'Platform', 'Authenticator attachment modality', '2fa-wa' ),
+					''                                => _x( 'None', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
+					AuthenticatorAttachment::CROSS_PLATFORM => _x( 'Cross-platform', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
+					AuthenticatorAttachment::PLATFORM => _x( 'Platform', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
 				],
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
@@ -61,37 +61,37 @@ final class AdminSettings {
 					. '<em>Cross-platform attachment</em> is for removable authenticators which can "roam" between client devices (like a security key).<br/>'
 					. 'Consider using <em>None</em> if you do not need to restrict your users to the specific class of authenticators.<br/>'
 					. '<a href="https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality">Details</a>',
-					'2fa-wa'
+					'two-factor-provider-webauthn'
 				),
 			]
 		);
 
 		add_settings_field(
 			'user_verification_requirement',
-			__( 'User Verification Requirement', '2fa-wa' ),
+			__( 'User Verification Requirement', 'two-factor-provider-webauthn' ),
 			[ $this->input_factory, 'select' ],
 			Admin::OPTIONS_MENU_SLUG,
 			$settings_section,
 			[
 				'label_for' => 'user_verification_requirement',
 				'options'   => [
-					UserVerificationRequirement::DISCOURAGED => _x( 'Discouraged', 'User Verification Requirement', '2fa-wa' ),
-					UserVerificationRequirement::PREFERRED => _x( 'Preferred', 'User Verification Requirement', '2fa-wa' ),
-					UserVerificationRequirement::REQUIRED  => _x( 'Required', 'User Verification Requirement', '2fa-wa' ),
+					UserVerificationRequirement::DISCOURAGED => _x( 'Discouraged', 'User Verification Requirement', 'two-factor-provider-webauthn' ),
+					UserVerificationRequirement::PREFERRED => _x( 'Preferred', 'User Verification Requirement', 'two-factor-provider-webauthn' ),
+					UserVerificationRequirement::REQUIRED  => _x( 'Required', 'User Verification Requirement', 'two-factor-provider-webauthn' ),
 				],
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 					'<em>Discouraged</em>: user verificatoin is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/>'
 					. '<em>Preferred</em>: user verification (like entering a PIN code) is preferred but not required for successful authentication.<br/>'
 					. '<em>Required</em>: user verification is required for successful authentication. Please note that not all browsers support this setting.<br/>',
-					'2fa-wa'
+					'two-factor-provider-webauthn'
 				),
 			]
 		);
 
 		add_settings_field(
 			'timeout',
-			__( 'Timeout', '2fa-wa' ),
+			__( 'Timeout', 'two-factor-provider-webauthn' ),
 			[ $this->input_factory, 'input' ],
 			Admin::OPTIONS_MENU_SLUG,
 			$settings_section,
@@ -100,14 +100,14 @@ final class AdminSettings {
 				'type'      => 'number',
 				'help'      => __(
 					'The default timeout for security key operations, in seconds. Set to 0 to use the browser default value.',
-					'2fa-wa'
+					'two-factor-provider-webauthn'
 				),
 			]
 		);
 
 		add_settings_field(
 			'u2f_hack',
-			__( 'U2F compatibility hack', '2fa-wa' ),
+			__( 'U2F compatibility hack', 'two-factor-provider-webauthn' ),
 			[ $this->input_factory, 'checkbox' ],
 			Admin::OPTIONS_MENU_SLUG,
 			$settings_section,
@@ -117,7 +117,7 @@ final class AdminSettings {
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 					'Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>'
 					. 'When enabled, this compatibility enables the check whther the security key used was registered with U2F and if so, forces the use of the AppID extension.',
-					'2fa-wa'
+					'two-factor-provider-webauthn'
 				),
 			]
 		);

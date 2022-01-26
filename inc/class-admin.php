@@ -26,7 +26,7 @@ final class Admin {
 	}
 
 	public function admin_menu(): void {
-		add_options_page( __( 'TwoFactor WebAuthn Settings', '2fa-wa' ), __( 'TwoFactor WebAuthn', '2fa-wa' ), 'manage_options', self::OPTIONS_MENU_SLUG, [ __CLASS__, 'options_page' ] );
+		add_options_page( __( 'TwoFactor WebAuthn Settings', 'two-factor-provider-webauthn' ), __( 'TwoFactor WebAuthn', 'two-factor-provider-webauthn' ), 'manage_options', self::OPTIONS_MENU_SLUG, [ __CLASS__, 'options_page' ] );
 	}
 
 	public static function options_page(): void {
@@ -52,7 +52,7 @@ final class Admin {
 				'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
 			] );
 
-			wp_set_script_translations( 'webauthn-register-key', '2fa-wa-js', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . '/lang' );
+			wp_set_script_translations( 'webauthn-register-key', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . '/lang' );
 		}
 	}
 

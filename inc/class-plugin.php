@@ -20,7 +20,7 @@ final class Plugin {
 	}
 
 	public function init(): void {
-		load_plugin_textdomain( '2fa-wa', false, plugin_basename( dirname( __DIR__ ) ) . '/lang/' );
+		load_plugin_textdomain( 'two-factor-provider-webauthn', false, plugin_basename( dirname( __DIR__ ) ) . '/lang/' );
 		add_filter( 'two_factor_providers', [ $this, 'two_factor_providers' ] );
 
 		if ( is_admin() ) {

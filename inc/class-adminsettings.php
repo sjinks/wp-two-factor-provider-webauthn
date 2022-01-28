@@ -81,7 +81,7 @@ final class AdminSettings {
 				],
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
-					'<em>Discouraged</em>: user verificatoin is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/>'
+					'<em>Discouraged</em>: user verification is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/>'
 					. '<em>Preferred</em>: user verification (like entering a PIN code) is preferred but not required for successful authentication.<br/>'
 					. '<em>Required</em>: user verification is required for successful authentication. Please note that not all browsers support this setting.<br/>',
 					'two-factor-provider-webauthn'
@@ -116,7 +116,7 @@ final class AdminSettings {
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 					'Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>'
-					. 'When enabled, this compatibility enables the check whther the security key used was registered with U2F and if so, forces the use of the AppID extension.',
+					. 'When enabled, this hack enables the check whether the security key used was registered with U2F and if so, forces the use of the AppID extension.',
 					'two-factor-provider-webauthn'
 				),
 			]

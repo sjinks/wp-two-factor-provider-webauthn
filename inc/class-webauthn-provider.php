@@ -104,7 +104,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- the value was stored serialize()'d
 			if ( ! ( $context instanceof AuthenticationContext ) ) {
-				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context', 'two-factor-provider-webauthn' ) );
+				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context.', 'two-factor-provider-webauthn' ) );
 			}
 
 			// We cannot use WordPress sanitization functions here: the response from webauthn must not be altered.
@@ -115,7 +115,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing
 			$response = $_POST['webauthn_response'] ?? null;    // Dangerous to sanitize; the code will validate the value
 			if ( ! is_string( $response ) ) {
-				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
+				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 			}
 
 			/** @var mixed $credential */

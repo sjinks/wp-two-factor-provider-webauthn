@@ -29,7 +29,7 @@ final class AJAX {
 
 	private function verify_nonce( string $nonce ): void {
 		if ( false === check_ajax_referer( $nonce, false, false ) ) {
-			wp_send_json_error( __( 'The nonce has expired. Please reload the page and try again', 'two-factor-provider-webauthn' ), 400 );
+			wp_send_json_error( __( 'The nonce has expired. Please reload the page and try again.', 'two-factor-provider-webauthn' ), 400 );
 		}
 	}
 
@@ -81,7 +81,7 @@ final class AJAX {
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 			if ( ! ( $context instanceof RegistrationContext ) ) {
-				throw new UnexpectedValueException( __( 'Unable to retrieve the registration context', 'two-factor-provider-webauthn' ) );
+				throw new UnexpectedValueException( __( 'Unable to retrieve the registration context.', 'two-factor-provider-webauthn' ) );
 			}
 
 			// We cannot use WordPress sanitization functions here: the credential must not be altered.
@@ -91,7 +91,7 @@ final class AJAX {
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$credential = $_POST['credential'] ?? null; // Dangerous to sanitize; the code will validate the value
 			if ( ! is_string( $credential ) ) {
-				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
+				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 			}
 
 			/** @var mixed */
@@ -117,7 +117,7 @@ final class AJAX {
 					'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
 				] );
 			} else {
-				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
+				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 			}
 		} catch ( Throwable $e ) {
 			wp_send_json_error( $e->getMessage(), 400 );

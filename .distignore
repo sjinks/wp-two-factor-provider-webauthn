@@ -1,0 +1,14 @@
+*.xml.dist
+/.*
+/assets/*.ts
+/assets/*.map
+/bin/
+/lang/*.po
+/lang/*.pot
+/lang/Makefile
+/stubs/
+/docker-compose.yml
+/rollup.config.mjs
+/package-lock.json
+/package.json
+/tsconfig.json

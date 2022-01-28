@@ -30,10 +30,10 @@ class Key_Table extends WP_List_Table {
 
 	public function get_columns(): array {
 		return [
-			'name'      => esc_html__( 'Name', 'two-factor' ),
+			'name'      => esc_html__( 'Name', 'two-factor-provider-webauthn' ),
 			'counter'   => esc_html__( 'Counter', 'two-factor-provider-webauthn' ),
-			'added'     => esc_html__( 'Added', 'two-factor' ),
-			'last_used' => esc_html__( 'Last Used', 'two-factor' ),
+			'added'     => esc_html__( 'Added', 'two-factor-provider-webauthn' ),
+			'last_used' => esc_html__( 'Last Used', 'two-factor-provider-webauthn' ),
 		];
 	}
 
@@ -54,7 +54,7 @@ class Key_Table extends WP_List_Table {
 				'<a href="#" data-handle="%1$s" data-nonce="%2$s">%3$s</a>',
 				$item->credential_id,
 				wp_create_nonce( 'rename-key_' . $item->credential_id ),
-				__( 'Rename', 'two-factor' )
+				__( 'Rename', 'two-factor-provider-webauthn' )
 			),
 			'delete hide-if-no-js' => sprintf(
 				'<a href="#" data-handle="%1$s" data-nonce="%2$s">%3$s</a>',

@@ -89,7 +89,7 @@ final class AJAX {
 			// If any of the conditions does not hold, we fail the request.
 			// The webauthn-server library performs further validation in accordance with the specification.
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$credential = $_POST['credential'] ?? null;
+			$credential = $_POST['credential'] ?? null; // Dangerous to sanitize; the code will validate the value
 			if ( ! is_string( $credential ) ) {
 				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
 			}

@@ -8,6 +8,8 @@ use MadWizard\WebAuthn\Server\UserIdentityInterface;
 use WP_User;
 use wpdb;
 
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery -- there is no other way to access our own tables
+
 class WebAuthn_User implements UserIdentityInterface {
 	public const CACHE_GROUP_NAME = '2fa-webauthn';
 
@@ -33,11 +35,9 @@ class WebAuthn_User implements UserIdentityInterface {
 		/** @var mixed */
 		$handle = wp_cache_get( $key, self::CACHE_GROUP_NAME );
 		if ( false === $handle || ! is_string( $handle ) ) {
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$handle = $wpdb->get_var( $wpdb->prepare( "SELECT user_handle FROM {$wpdb->webauthn_users} WHERE user_id = %d", $this->user->ID ) );
 			if ( ! $handle ) {
 				$handle = UserHandle::random()->toString();
-				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 				$wpdb->insert(
 					$wpdb->webauthn_users,
 					[
@@ -74,7 +74,6 @@ class WebAuthn_User implements UserIdentityInterface {
 		$user_id = wp_cache_get( $key, self::CACHE_GROUP_NAME );
 		if ( false === $user_id || ! is_int( $user_id ) ) {
 			/** @psalm-var numeric-string|null $user_id */
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM {$wpdb->webauthn_users} WHERE user_handle = %s", $handle->toString() ) );
 			wp_cache_set( $key, (int) $user_id, self::CACHE_GROUP_NAME, 3600 );
 		}

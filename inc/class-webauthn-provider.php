@@ -81,7 +81,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 		$context = $request->getContext();
 		$options = $request->getClientOptionsJson();
 
-		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize -- webauthn-server insists on serialize() :-(
 		update_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
 
 		wp_localize_script( 'webauthn-login', 'tfa_webauthn', [
@@ -102,7 +102,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			$server  = Utils::create_webauthn_server();
 			$context = (string) get_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META, true );
 			/** @var mixed */
-			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- the value was stored serialize()'d
 			if ( ! ( $context instanceof AuthenticationContext ) ) {
 				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context', 'two-factor-provider-webauthn' ) );
 			}
@@ -113,7 +113,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			// The webauthn-server library performs further validation in accordance with the specification.
 			// Nonce is validated by the Two Factor plugin.
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing
-			$response = $_POST['webauthn_response'] ?? null;
+			$response = $_POST['webauthn_response'] ?? null;    // Dangerous to sanitize; the code will validate the value
 			if ( ! is_string( $response ) ) {
 				throw new InvalidArgumentException( __( 'Bad request', 'two-factor-provider-webauthn' ) );
 			}

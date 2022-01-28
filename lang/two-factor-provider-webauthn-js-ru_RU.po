@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
 #: assets/lang.ts:10
@@ -34,6 +34,10 @@ msgstr "Отправка запроса…"
 #: assets/lang.ts:17
 msgid "The key has been revoked."
 msgstr "Ключ отозван."
+
+#: assets/lang.ts:18
+msgid "The key has been renamed."
+msgstr "Ключ переименован."
 
 #: assets/lang.ts:2
 msgid "WebAuthn is not supported by the browser."

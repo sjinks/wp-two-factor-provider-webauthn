@@ -1,12 +1,12 @@
 DOMAIN_PHP   := two-factor-provider-webauthn
 DOMAIN_JS    := two-factor-provider-webauthn
 PO_FILES_PHP := $(wildcard $(DOMAIN_PHP)-*.po)
-PO_FILES_JS  := $(wildcard $(DOMAIN_JS)-*.po)
+PO_FILES_JS  := $(wildcard $(DOMAIN_JS)-js-*.po)
 MO_FILES_PHP := $(patsubst %.po,%.mo,$(PO_FILES_PHP))
 JSON_FILES   := $(patsubst %.po,%.json,$(PO_FILES_JS))
 
 POT_PHP      := $(DOMAIN_PHP).pot
-POT_JS       := $(DOMAIN_JS).pot
+POT_JS       := $(DOMAIN_JS)-js.pot
 
 MSGFMT       := msgfmt
 MSGMERGE     := msgmerge

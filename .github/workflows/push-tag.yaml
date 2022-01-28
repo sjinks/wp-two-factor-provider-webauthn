@@ -39,6 +39,12 @@ jobs:
       - name: Check out
         uses: actions/checkout@v2.4.0
 
+      - name: Install dependencies to bundle
+        run: |
+          composer install --no-dev --no-interaction
+          composer remove --update-no-dev --no-interaction composer/installers
+          rm -f composer.lock composer.json
+
       - name: Deploy to wordpress.org
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:

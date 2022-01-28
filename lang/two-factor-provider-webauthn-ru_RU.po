@@ -1,0 +1,233 @@
+# Copyright (C) 2022 Volodymyr Kolesnykov
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: WebAuthn Provider for Two Factor 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-"
+"provider-webauthn\n"
+"POT-Creation-Date: 2022-01-28T06:26:54+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: two-factor-provider-webauthn\n"
+
+#. Plugin Name of the plugin
+msgid "WebAuthn Provider for Two Factor"
+msgstr "WebAuthn Provider for Two Factor"
+
+#. Description of the plugin
+msgid "WebAuthn Provider for Two Factor plugin."
+msgstr "WebAuthn Provider для плагина Two Factor."
+
+#. Author of the plugin
+msgid "Volodymyr Kolesnykov"
+msgstr "Владимир Колесников"
+
+#: inc/class-admin.php:29
+msgid "TwoFactor WebAuthn Settings"
+msgstr "Настройки TwoFactor WebAuthn"
+
+#: inc/class-admin.php:29
+msgid "TwoFactor WebAuthn"
+msgstr "TwoFactor WebAuthn"
+
+#: inc/class-adminsettings.php:47
+msgid "Authenticator Attachment Modality"
+msgstr ""
+
+#: inc/class-adminsettings.php:54
+msgctxt "Authenticator attachment modality"
+msgid "None"
+msgstr "Нет"
+
+#: inc/class-adminsettings.php:55
+msgctxt "Authenticator attachment modality"
+msgid "Cross-platform"
+msgstr "Кросс-платформенная"
+
+#: inc/class-adminsettings.php:56
+msgctxt "Authenticator attachment modality"
+msgid "Platform"
+msgstr "Платформозависимая"
+
+#: inc/class-adminsettings.php:58
+msgid ""
+"<em>Platform attachment</em> is for authenticators physically bound to a "
+"client device (like a fingerprint scanner on a smartphone).<br/><em>Cross-"
+"platform attachment</em> is for removable authenticators which can \"roam\" "
+"between client devices (like a security key).<br/>Consider using <em>None</"
+"em> if you do not need to restrict your users to the specific class of "
+"authenticators.<br/><a href=\"https://www.w3.org/TR/webauthn-2/"
+"#authenticator-attachment-modality\">Details</a>"
+msgstr ""
+
+#: inc/class-adminsettings.php:71
+msgid "User Verification Requirement"
+msgstr "Требование проверки пользователя"
+
+#: inc/class-adminsettings.php:78
+msgctxt "User Verification Requirement"
+msgid "Discouraged"
+msgstr "Не проверять"
+
+#: inc/class-adminsettings.php:79
+msgctxt "User Verification Requirement"
+msgid "Preferred"
+msgstr "По возможности"
+
+#: inc/class-adminsettings.php:80
+msgctxt "User Verification Requirement"
+msgid "Required"
+msgstr "Обязательно проверять"
+
+#: inc/class-adminsettings.php:82
+msgid ""
+"<em>Discouraged</em>: user verification is not required (e.g., in the "
+"interest of minimizing disruption to the user interaction flow).<br/"
+"><em>Preferred</em>: user verification (like entering a PIN code) is "
+"preferred but not required for successful authentication.<br/><em>Required</"
+"em>: user verification is required for successful authentication. Please "
+"note that not all browsers support this setting.<br/>"
+msgstr ""
+
+#: inc/class-adminsettings.php:94
+msgid "Timeout"
+msgstr "Таймаут"
+
+#: inc/class-adminsettings.php:101
+msgid ""
+"The default timeout for security key operations, in seconds. Set to 0 to use "
+"the browser default value."
+msgstr "Значение таймаута для операций с ключами безопасности по умолчанию (в секундах). Установите в 0 для использования значения браузера по умолчанию."
+
+#: inc/class-adminsettings.php:110
+msgid "U2F compatibility hack"
+msgstr "Хак для совместивости с U2F"
+
+#: inc/class-adminsettings.php:116
+msgid ""
+"Chrome for Android sometimes ignores the AppID extension required for "
+"interoperability between the old U2F and the modern WebAuthn protocol.<br/"
+">When enabled, this hack enables the check whether the security key used was "
+"registered with U2F and if so, forces the use of the AppID extension."
+msgstr ""
+"Chrome для Android иногда иенорирует расширение AppID, необходимое для "
+"функциональной соместимости между старым протоколом U2F и новым протоколом "
+"WebAuthn.<br/>Разрешение данного хака включает проверку, был ли ключ "
+"зарегистрирован при помощи U2F; если да, то поддержка AppID включается "
+"принудительно."
+
+#: inc/class-ajax.php:32
+msgid "The nonce has expired. Please reload the page and try again."
+msgstr ""
+"Срок действия одноразового номера истёк. Пожалуйста, обновите страницу и "
+"попытайтесь выполнить действие снова."
+
+#: inc/class-ajax.php:84
+msgid "Unable to retrieve the registration context."
+msgstr "Не удалось получить контекст регистрации."
+
+#: inc/class-ajax.php:94 inc/class-ajax.php:120
+#: inc/class-webauthn-provider.php:118
+msgid "Bad request."
+msgstr "Неверный запрос."
+
+#: inc/class-ajax.php:147
+msgid "Key name cannot be empty."
+msgstr "Имя ключа не может быть пустым."
+
+#: inc/class-ajax.php:156
+msgid "Failed to rename the key."
+msgstr "Не удалось переименовать ключ."
+
+#: inc/class-key-table.php:33
+msgid "Name"
+msgstr "Имя"
+
+#: inc/class-key-table.php:34
+msgid "Counter"
+msgstr "Счётчик"
+
+#: inc/class-key-table.php:35
+msgid "Added"
+msgstr "Добавлен"
+
+#: inc/class-key-table.php:36
+msgid "Last Used"
+msgstr "Последнее использование"
+
+#: inc/class-key-table.php:57
+msgid "Rename"
+msgstr "Переименовать"
+
+#: inc/class-key-table.php:63
+msgid "Revoke"
+msgstr "Отозвать"
+
+#: inc/class-webauthn-credential-store.php:121
+msgid "New Key"
+msgstr "Новый ключ"
+
+#: inc/class-webauthn-provider.php:47
+msgctxt "Provider label"
+msgid "WebAuthn"
+msgstr "WebAuthn"
+
+#: inc/class-webauthn-provider.php:59
+msgid ""
+"WebAuthn requires an HTTPS connection. Please use an alternative second "
+"factor method."
+msgstr ""
+"Для использования WebAuthn требуется соединение HTTPS. Пожалуйста, "
+"воспользуйтесь альтернативным методом двухфакторной аутентификации."
+
+#: inc/class-webauthn-provider.php:107
+msgid "Unable to retrieve the authentication context."
+msgstr "Не удалось получить контекст аутентификации."
+
+#: views/login.php:2
+msgid "Please insert (and tap) your security key."
+msgstr "Пожалуйста, вставьте и коснитесь ключа безопасности."
+
+#: views/user-options.php:3
+msgid ""
+"Requires an HTTPS connection. Please configure your security keys in the <a "
+"href=\"#webauthn-security-keys-section\">Security Keys (WebAuthn)</a> "
+"section below."
+msgstr "Требуется безопасное соединение (HTTPS). Для управления ключами воспользуйтесь секцией <a href=\"#webauthn-security-keys-section\">Ключи безопасности (WebAuthn)</a>"
+
+#: views/user-profile.php:10
+msgid "Security Keys (WebAuthn)"
+msgstr "Ключи безопасности (WebAuthn)"
+
+#: views/user-profile.php:14
+msgid "You need to enable JavaScript to manage security keys."
+msgstr "Для управления ключами безопасности необходимо включить JavaScript."
+
+#: views/user-profile.php:21
+msgid ""
+"WebAuthn requires an HTTPS connection. You will be unable to add new "
+"security keys over HTTP."
+msgstr "Для WebAuthn требуется соединение HTTPS. Добавление новых ключей по HTTP невозможно."
+
+#: views/user-profile.php:28
+msgid "Key name:"
+msgstr "Имя ключа:"
+
+#: views/user-profile.php:30
+msgctxt "security key"
+msgid "Register New Key"
+msgstr "Зарегистрировать новый ключ"
+
+#: views/user-profile.php:53
+msgid "Are you sure to revoke this key?"
+msgstr "Вы уверены, что хотите отозвать данный ключ?"
+
+#: views/user-profile.php:62
+msgid "New name:"
+msgstr "Новое имя:"

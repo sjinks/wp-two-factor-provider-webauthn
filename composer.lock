@@ -4253,16 +4253,16 @@
         },
         {
             "name": "wildwolf/wordpress-test-library-stubs",
-            "version": "5.8.3",
+            "version": "5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sjinks/wordpress-test-library-stubs.git",
-                "reference": "14baabe5ae1cda8d47fa3413684703ca6281e044"
+                "reference": "a9747c3e98244d711e40bbc1538c688bdbfb03e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sjinks/wordpress-test-library-stubs/zipball/14baabe5ae1cda8d47fa3413684703ca6281e044",
-                "reference": "14baabe5ae1cda8d47fa3413684703ca6281e044",
+                "url": "https://api.github.com/repos/sjinks/wordpress-test-library-stubs/zipball/a9747c3e98244d711e40bbc1538c688bdbfb03e4",
+                "reference": "a9747c3e98244d711e40bbc1538c688bdbfb03e4",
                 "shasum": ""
             },
             "require-dev": {
@@ -4283,9 +4283,9 @@
             "description": "Stubs for WordPress test library",
             "support": {
                 "issues": "https://github.com/sjinks/wordpress-test-library-stubs/issues",
-                "source": "https://github.com/sjinks/wordpress-test-library-stubs/tree/5.8.3"
+                "source": "https://github.com/sjinks/wordpress-test-library-stubs/tree/5.9.0"
             },
-            "time": "2022-01-11T04:36:56+00:00"
+            "time": "2022-01-26T13:47:29+00:00"
         },
         {
             "name": "wp-cli/i18n-command",

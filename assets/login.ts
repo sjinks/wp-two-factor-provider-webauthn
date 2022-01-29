@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
 	PublicKeyCredentialRequestOptionsPlain,
 	preparePublicKeyCredentialRequestOptions,
@@ -6,7 +7,6 @@ import {
 } from './common';
 import { L_WEBAUTHN_NOT_SUPPORTED, L_UNABLE_TO_GET_PK_CREDENTIAL } from './lang';
 
-// eslint-disable-next-line camelcase
 declare let tfa_webauthn: {
 	options: PublicKeyCredentialRequestOptionsPlain;
 };

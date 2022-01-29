@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // eslint-disable-next-line import/no-unresolved -- we use jQuery from WordPress
 import jQuery from 'jquery';
 import {
@@ -20,7 +21,6 @@ import {
 
 declare let ajaxurl: string;
 
-// eslint-disable-next-line camelcase
 declare let tfa_webauthn: {
 	nonce: string;
 };

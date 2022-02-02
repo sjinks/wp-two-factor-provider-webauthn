@@ -12,4 +12,4 @@ done
 mkdir -p -m 0777 coverage-report
 "$(dirname "$0")/reset-database.sh"
 
-docker-compose exec wordpress cp -aR /var/www/mu-plugins /var/www/html/wp-content/
+docker-compose exec -T wordpress cp -aR /var/www/mu-plugins /var/www/html/wp-content/

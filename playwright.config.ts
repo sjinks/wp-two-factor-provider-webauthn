@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = {
 
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 1 : undefined,
+	workers: process.env.CI ? 2 : undefined,
 	reporter: process.env.CI ? 'github' : 'line',
 
 	globalSetup: require.resolve('./tests/e2e/global-setup'),
@@ -20,9 +20,10 @@ const config: PlaywrightTestConfig = {
 	use: {
 		actionTimeout: 0,
 		baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://localhost:8443',
-		trace: 'on-first-retry',
 		ignoreHTTPSErrors: true,
 		headless: process.env.CI ? true : undefined,
+		video: 'retain-on-failure',
+		trace: 'retain-on-failure',
 	},
 
 	projects: [

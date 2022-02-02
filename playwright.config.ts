@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
 		baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://localhost:8443',
 		trace: 'on-first-retry',
 		ignoreHTTPSErrors: true,
-		headless: false,
+		headless: process.env.CI ? true : undefined,
 	},
 
 	projects: [

@@ -67,12 +67,12 @@ export class ProfilePage {
 
 	public async enableWebAuthnProvider(): Promise<unknown> {
 		await this.twoFactorOptionsLocator.scrollIntoViewIfNeeded();
-		return this.twoFactorOptionsLocator.locator(tfoSelectors.webAuthnEnabledCheckbox).click();
+		return this.twoFactorOptionsLocator.locator(tfoSelectors.webAuthnEnabledCheckbox).check();
 	}
 
 	public async makeWebAuthnProviderPrimary(): Promise<unknown> {
 		await this.twoFactorOptionsLocator.scrollIntoViewIfNeeded();
-		return this.twoFactorOptionsLocator.locator(tfoSelectors.webAuthnPrimaryProvider).click();
+		return this.twoFactorOptionsLocator.locator(tfoSelectors.webAuthnPrimaryProvider).check();
 	}
 
 	public saveProfile(): Promise<unknown> {

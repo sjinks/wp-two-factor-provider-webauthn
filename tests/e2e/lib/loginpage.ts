@@ -33,7 +33,7 @@ export class LoginPage {
 	}
 
 	public visit(): Promise<unknown> {
-		return this.page.goto('/wp-login.php', { waitUntil: 'domcontentloaded' });
+		return this.page.goto('/wp-login.php');
 	}
 
 	public async login(username: string, password: string): Promise<unknown> {

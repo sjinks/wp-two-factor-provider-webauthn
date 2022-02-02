@@ -81,6 +81,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@2.16.0
+
+      - name: Install Composer Dependencies
+        uses: ramsey/composer-install@2.1.0
+
       - name: Install Playwright
         run: npx playwright install --with-deps
 

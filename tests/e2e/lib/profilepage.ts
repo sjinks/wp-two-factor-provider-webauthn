@@ -16,6 +16,7 @@ const waSelectors = {
 	registerNewKeyButton: 'div.add-webauthn-key > p > button',
 	keyActions: (credentialId: string) => `table.webauthn-keys > tbody td.name:has(a[data-handle="${credentialId}"])`,
 	noItemsRow: 'table.webauthn-keys > tbody > tr.no-items',
+	operationStatus: (text: string) => `div[role="alert"] > p:has-text("${text}")`,
 };
 
 const waKeyActionsSelectors = {
@@ -62,7 +63,7 @@ export class ProfilePage {
 			this.webAuthnSectionLocator.locator(waSelectors.registerNewKeyButton).click(),
 		]);
 
-		return true;
+		return this.page.waitForSelector(waSelectors.operationStatus('The key has been registered'));
 	}
 
 	public async enableWebAuthnProvider(): Promise<unknown> {

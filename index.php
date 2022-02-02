@@ -14,7 +14,7 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Plugin;
 
 if ( defined( 'ABSPATH' ) ) {
 	/** @var ClassLoader */
-	$loader = require_once __DIR__ . '/vendor/autoload.php';
+	$loader = require __DIR__ . '/vendor/autoload.php';
 	$loader->addClassMap( [
 		WP_List_Table::class => ABSPATH . 'wp-admin/includes/class-wp-list-table.php',
 	] );

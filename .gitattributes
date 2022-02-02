@@ -8,8 +8,10 @@
 /lang/*.pot             export-ignore
 /lang/Makefile          export-ignore
 /stubs/                 export-ignore
+/tests/                 export-ignore
 /docker-compose.yml     export-ignore
 /rollup.config.mjs      export-ignore
 /package-lock.json      export-ignore
 /package.json           export-ignore
+/playwright.config.ts   export-ignore
 /tsconfig.json          export-ignore

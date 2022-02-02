@@ -7,8 +7,10 @@
 /lang/*.pot
 /lang/Makefile
 /stubs/
+/tests/
 /docker-compose.yml
 /rollup.config.mjs
 /package-lock.json
 /package.json
+/playwright.config.ts
 /tsconfig.json

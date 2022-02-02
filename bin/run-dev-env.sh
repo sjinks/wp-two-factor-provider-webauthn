@@ -3,10 +3,13 @@
 set -x
 set -e
 
-cd ..
+cd "$(dirname "$0")/.."
 docker-compose up -d --build
 while ! docker-compose run --rm cli wp db check; do
     sleep 1;
 done
-docker-compose run --rm cli wp core install --url="https://127.0.0.1:8443" --title="Some Site" --admin_user=admin --admin_password=password --admin_email=wordpress@example.com --skip-email
-docker-compose run --rm cli wp plugin install --activate two-factor
+
+mkdir -p -m 0777 coverage-report
+"$(dirname "$0")/reset-database.sh"
+
+docker-compose exec wordpress cp -aR /var/www/mu-plugins /var/www/html/wp-content/

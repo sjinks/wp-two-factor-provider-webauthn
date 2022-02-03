@@ -5,7 +5,6 @@ import { login, registerKey } from '../lib/test-helpers';
 import { ProfilePage } from '../lib/profilepage';
 
 let client: CDPSession;
-let authenticator1Id: string;
 let authenticatorId: string;
 let credential1Id: string;
 let credential2Id: string;
@@ -21,7 +20,7 @@ test.afterEach(() => removeVirtualAuthenticator(client, authenticatorId));
 
 test('Rename Key Workflow', async ({ page }) => {
 	await test.step('Log in', async () => {
-		await login(page, settings.user1Username, settings.user1Password);
+		await login(page, settings.user3Username, settings.user3Password);
 		return expect(page.url()).toMatch('/wp-admin/');
 	});
 

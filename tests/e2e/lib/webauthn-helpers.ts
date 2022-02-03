@@ -45,3 +45,9 @@ export async function getCredential(
 
 	return response.credential;
 }
+
+export function clearCredentials(client: CDPSession, authenticatorId: string): Promise<unknown> {
+	return client.send('WebAuthn.clearCredentials', {
+		authenticatorId,
+	});
+}

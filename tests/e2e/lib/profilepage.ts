@@ -20,8 +20,14 @@ const waSelectors = {
 };
 
 const waKeyActionsSelectors = {
-	revokeKey: (credentialId: string) => `span.delete > a[data-handle="${credentialId}"]`,
-	revokeKeyConfirmationButton: (credentialId: string) => `div.confirm-revoke button.button-link-delete`,
+	keyName: 'span.key-name',
+	revokeKey: 'span.delete > a[data-handle]',
+	revokeKeyConfirmButton: 'div.confirm-revoke button.button-link-delete',
+	revokeKeyDismissButton: 'div.confirm-revoke button.button-secondary',
+	renameKey: 'span.rename > a[data-handle]',
+	renameKeyInput: '.rename-key label > input[type="text"]',
+	renameKeyConfirmButton: '.rename-key button.button-primary',
+	renameKeyDismissButton: '.rename-key button.button-secondary',
 };
 
 const ajaxRequestChecker =
@@ -87,21 +93,58 @@ export class ProfilePage {
 		const keyActionsLocator = this.webAuthnSectionLocator.locator(waSelectors.keyActions(credentialId));
 		const noItemsRowLocator = this.webAuthnSectionLocator.locator(waSelectors.noItemsRow);
 
-		const revokeLinkLocator = keyActionsLocator.locator(waKeyActionsSelectors.revokeKey(credentialId));
-		const revokeConfirmLocator = keyActionsLocator.locator(
-			waKeyActionsSelectors.revokeKeyConfirmationButton(credentialId),
-		);
+		const revokeLinkLocator = keyActionsLocator.locator(waKeyActionsSelectors.revokeKey);
+		const revokeConfirmLocator = keyActionsLocator.locator(waKeyActionsSelectors.revokeKeyConfirmButton);
 
 		await keyActionsLocator.scrollIntoViewIfNeeded();
 		await keyActionsLocator.hover();
-		await revokeLinkLocator.waitFor({ state: 'visible' });
 		await revokeLinkLocator.click();
-		await revokeConfirmLocator.waitFor({ state: 'visible' });
 		await Promise.all([
 			this.page.waitForResponse(ajaxRequestChecker('webauthn_delete_key')),
 			revokeConfirmLocator.click(),
 		]);
 
 		return noItemsRowLocator.waitFor({ state: 'visible' });
+	}
+
+	public async renameKey(credentialId: string, newName: string, doRename: boolean): Promise<void> {
+		const keyActionsLocator = this.webAuthnSectionLocator.locator(waSelectors.keyActions(credentialId));
+		const renameLinkLocator = keyActionsLocator.locator(waKeyActionsSelectors.renameKey);
+		const newNameInputLocator = keyActionsLocator.locator(waKeyActionsSelectors.renameKeyInput);
+		const confirmRenameLocator = keyActionsLocator.locator(waKeyActionsSelectors.renameKeyConfirmButton);
+
+		await keyActionsLocator.scrollIntoViewIfNeeded();
+		await keyActionsLocator.hover();
+		await renameLinkLocator.click();
+
+		if (doRename) {
+			await newNameInputLocator.fill(newName);
+			await Promise.all([
+				this.page.waitForResponse(ajaxRequestChecker('webauthn_rename_key')),
+				confirmRenameLocator.click(),
+			]);
+
+			await this.page.waitForSelector(
+				waSelectors.operationStatus(newName ? 'The key has been renamed' : 'Key name cannot be empty'),
+			);
+		}
+	}
+
+	public getKeyNameByCID(credentialId: string): Promise<string> {
+		const keyActionsLocator = this.webAuthnSectionLocator.locator(waSelectors.keyActions(credentialId));
+		const keyNameLocator = keyActionsLocator.locator(waKeyActionsSelectors.keyName);
+		return keyNameLocator.innerText();
+	}
+
+	public dismissRevokeConfirmation(credentialId: string): Promise<unknown> {
+		const keyActionsLocator = this.webAuthnSectionLocator.locator(waSelectors.keyActions(credentialId));
+		const dismissButtonLocator = keyActionsLocator.locator(waKeyActionsSelectors.revokeKeyDismissButton);
+		return Promise.all([dismissButtonLocator.waitFor({ state: 'detached' }), dismissButtonLocator.click()]);
+	}
+
+	public dismissRenameConfirmation(credentialId: string): Promise<unknown> {
+		const keyActionsLocator = this.webAuthnSectionLocator.locator(waSelectors.keyActions(credentialId));
+		const dismissButtonLocator = keyActionsLocator.locator(waKeyActionsSelectors.renameKeyDismissButton);
+		return Promise.all([dismissButtonLocator.waitFor({ state: 'detached' }), dismissButtonLocator.click()]);
 	}
 }

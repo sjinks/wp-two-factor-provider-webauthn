@@ -15,8 +15,6 @@ const config: PlaywrightTestConfig = {
 	workers: process.env.CI ? 2 : undefined,
 	reporter: process.env.CI ? 'github' : 'line',
 
-	globalSetup: require.resolve('./tests/e2e/global-setup'),
-
 	use: {
 		actionTimeout: 0,
 		baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://localhost:8443',

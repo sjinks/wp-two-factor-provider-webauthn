@@ -143,7 +143,7 @@ jQuery(($) => {
 		e.preventDefault();
 		const a = $(e.target);
 		const actions = a.closest('.row-actions');
-		if (actions.next('.confirm-revoke').length) {
+		if (actions.siblings('.confirm-revoke').length) {
 			return;
 		}
 
@@ -154,12 +154,12 @@ jQuery(($) => {
 		const tpl = $($('#webauthn-revoke-confirm').text());
 		actions.after(tpl);
 		actions
-			.next('.confirm-revoke')
+			.siblings('.confirm-revoke')
 			.on('click', '.button-secondary', () => {
-				actions.next('.confirm-revoke').remove();
+				actions.siblings('.confirm-revoke').remove();
 			})
 			.on('click', '.button-link-delete', () => {
-				actions.next('.confirm-revoke').hide();
+				actions.siblings('.confirm-revoke').hide();
 				updateStatus(L_SENDING_REQUEST);
 				return ajaxRequest<unknown>({
 					action: 'webauthn_delete_key',
@@ -178,7 +178,7 @@ jQuery(($) => {
 					.catch(errorHandler)
 					.finally(() => {
 						updateStatus('');
-						actions.next('.confirm-revoke').remove();
+						actions.siblings('.confirm-revoke').remove();
 					});
 			});
 	});
@@ -188,7 +188,7 @@ jQuery(($) => {
 		e.preventDefault();
 		const a = $(e.target);
 		const actions = a.closest('.row-actions');
-		if (actions.next('.rename-key').length) {
+		if (actions.siblings('.rename-key').length) {
 			return;
 		}
 
@@ -200,13 +200,13 @@ jQuery(($) => {
 		const tpl = $($('#webauthn-rename-key').text());
 		actions.after(tpl);
 		actions
-			.next('.rename-key')
+			.siblings('.rename-key')
 			.on('click', '.button-secondary', () => {
-				actions.next('.rename-key').remove();
+				actions.siblings('.rename-key').remove();
 			})
 			.on('click', '.button-primary', () => {
-				const keyname = actions.next('.rename-key').find('input[type="text"]').val() as string;
-				actions.next('.rename-key').hide();
+				const keyname = actions.siblings('.rename-key').find('input[type="text"]').val() as string;
+				actions.siblings('.rename-key').hide();
 				updateStatus(L_SENDING_REQUEST);
 				return ajaxRequest<RenameResponse>({
 					action: 'webauthn_rename_key',
@@ -224,7 +224,7 @@ jQuery(($) => {
 					.catch(errorHandler)
 					.finally(() => {
 						updateStatus('');
-						actions.next('.rename-key').remove();
+						actions.siblings('.rename-key').remove();
 					});
 			})
 			.find('input[type="text"]')

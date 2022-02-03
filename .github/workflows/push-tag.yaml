@@ -13,7 +13,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
 
       - name: Generate self-contained package
         run: |
@@ -23,7 +23,7 @@ jobs:
           (cd /var/tmp && zip -r -9 two-factor-provider-webauthn.zip two-factor-provider-webauthn)
 
       - name: Release
-        uses: softprops/action-gh-release@v0.1.14
+        uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5 # renovate: tag=v0.1.14
         with:
           generate_release_notes: true
           files: |
@@ -37,7 +37,7 @@ jobs:
     environment: deploy
     steps:
       - name: Check out
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
 
       - name: Install dependencies to bundle
         run: |

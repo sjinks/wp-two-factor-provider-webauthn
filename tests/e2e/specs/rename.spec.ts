@@ -64,4 +64,16 @@ test('Rename Key Workflow', async ({ page }) => {
 		const recodedCID1 = credential1Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 		return profilePage.dismissRenameConfirmation(recodedCID1);
 	});
+
+	await test.step('Rename should not accept an empty name', async () => {
+		expect(page.url()).toMatch('/wp-admin/profile.php');
+		const profilePage = new ProfilePage(page);
+		const recodedCID1 = credential1Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+		await profilePage.renameKey(recodedCID1, '', true);
+
+		const actualKeyName1 = await profilePage.getKeyNameByCID(recodedCID1);
+		const expectedKey1Name = key1Name;
+
+		expect(actualKeyName1).toBe(expectedKey1Name);
+	});
 });

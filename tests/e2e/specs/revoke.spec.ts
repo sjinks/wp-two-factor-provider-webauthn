@@ -17,7 +17,7 @@ test.afterEach(() => removeVirtualAuthenticator(client, authenticatorId));
 
 test('Revoke Key Workflow', async ({ page }) => {
 	await test.step('Log in', async () => {
-		await login(page, settings.user1Username, settings.user1Password);
+		await login(page, settings.user2Username, settings.user2Password);
 		return expect(page.url()).toMatch('/wp-admin/');
 	});
 

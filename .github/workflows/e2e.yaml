@@ -37,7 +37,7 @@ jobs:
         uses: ramsey/composer-install@2.1.0
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium
 
       - name: Run PlaywrightE2E tests
         run: npm run test:e2e
@@ -48,3 +48,4 @@ jobs:
         with:
           name: playwright-test-results
           path: test-results/
+          retention-days: 3

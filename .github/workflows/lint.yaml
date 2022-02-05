@@ -2,6 +2,8 @@ name: Code Standards Compliance Checks
 
 on:
   push:
+    branches:
+      - "**"
   workflow_dispatch:
 
 concurrency:

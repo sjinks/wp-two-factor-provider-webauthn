@@ -33,6 +33,10 @@ Be the first to ask.
 
 == Changelog ==
 
+= 1.0.2 =
+* Added E2E tests
+* UI fixes
+
 = 1.0.1 =
 * First public release.
 

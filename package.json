@@ -6,8 +6,10 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c --watch",
-    "lint": "eslint assets",
-    "lint:fix": "eslint assets --fix"
+    "lint": "eslint assets tests/e2e",
+    "lint:fix": "eslint assets tests/e2e --fix",
+    "devenv:start": "./bin/run-dev-env.sh",
+    "test:e2e": "npm run devenv:start && playwright test"
   },
   "keywords": [],
   "author": "Volodymyr Kolesnykov <volodymyr@wildwolf.name> (https://wildwolf.name/)",
@@ -15,6 +17,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@myrotvorets/po2json": "^1.0.2",
+    "@playwright/test": "^1.18.1",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/jquery": "^3.5.13",
@@ -23,6 +26,8 @@
     "@wordpress/eslint-plugin": "^10.0.0",
     "@wordpress/i18n": "^4.2.4",
     "eslint-formatter-gha": "^1.4.1",
+    "eslint-plugin-playwright": "^0.8.0",
+    "playwright-core": "^1.18.1",
     "rollup": "^2.64.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.5.4"

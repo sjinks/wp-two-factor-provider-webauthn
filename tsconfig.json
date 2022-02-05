@@ -11,6 +11,6 @@
     "skipDefaultLibCheck": true,
     "moduleResolution": "Node"
   },
-  "include": ["assets/*.ts"],
+  "include": ["assets/*.ts", "tests/e2e/*.ts", "playwright.config.ts"],
   "compileOnSave": true
 }

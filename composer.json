@@ -19,6 +19,7 @@
 		"johnpbloch/wordpress-core": "^5.8",
 		"php-stubs/wordpress-stubs": "^5.8",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpunit/php-code-coverage": "^9.2",
 		"vimeo/psalm": "^4.7",
 		"wildwolf/wordpress-test-library-stubs": "^5.8",
 		"wp-cli/i18n-command": "^2.2",

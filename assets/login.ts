@@ -56,7 +56,11 @@ const callback = (): void => {
 	});
 
 	if ('credentials' in navigator) {
-		startAuthentication();
+		if (!navigator.webdriver) {
+			startAuthentication();
+		} else {
+			(document.getElementById('webauthn-retry') as HTMLDivElement).removeAttribute('hidden');
+		}
 	} else {
 		showError(L_WEBAUTHN_NOT_SUPPORTED);
 	}

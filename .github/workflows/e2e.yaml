@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
 
       - name: Set up Node.js environment
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561 # renovate: tag=v2.5.1
         with:
           node-version: lts/*
           cache: npm
@@ -31,10 +31,10 @@ jobs:
         run: npm ci
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@2.16.0
+        uses: shivammathur/setup-php@da0e8547371daac1784abb79f9bb2af76dcdfaf0 # renovate: tag=2.16.0
 
       - name: Install Composer Dependencies
-        uses: ramsey/composer-install@2.1.0
+        uses: ramsey/composer-install@f680dac46551dffb2234a240d65ae806c2999dd6 # renovate: tag=2.1.0
 
       - name: Install Playwright
         run: npx playwright install chromium
@@ -43,7 +43,7 @@ jobs:
         run: npm run test:e2e
 
       - name: Upload test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2 # renovate: tag=v2
         if: failure()
         with:
           name: playwright-test-results

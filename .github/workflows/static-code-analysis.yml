@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@da0e8547371daac1784abb79f9bb2af76dcdfaf0 # renovate: tag=v2
+        uses: shivammathur/setup-php@7854a0cae7fa7a5f3feac66d27bae2dc42d1067a # tag=v2
         with:
           coverage: none
 

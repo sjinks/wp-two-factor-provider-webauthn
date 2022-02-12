@@ -1325,16 +1325,16 @@
         },
         {
             "name": "wildwolf/singleton-trait",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sjinks/php-singleton-trait.git",
-                "reference": "85bd69b27383a7ccce25202e0f8a9f69889dbcb9"
+                "reference": "3bd00c4a2a0fe83e291246b7909e14c657bbfdab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sjinks/php-singleton-trait/zipball/85bd69b27383a7ccce25202e0f8a9f69889dbcb9",
-                "reference": "85bd69b27383a7ccce25202e0f8a9f69889dbcb9",
+                "url": "https://api.github.com/repos/sjinks/php-singleton-trait/zipball/3bd00c4a2a0fe83e291246b7909e14c657bbfdab",
+                "reference": "3bd00c4a2a0fe83e291246b7909e14c657bbfdab",
                 "shasum": ""
             },
             "require-dev": {
@@ -1365,9 +1365,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sjinks/php-singleton-trait/issues",
-                "source": "https://github.com/sjinks/php-singleton-trait/tree/1.0.4"
+                "source": "https://github.com/sjinks/php-singleton-trait/tree/1.0.5"
             },
-            "time": "2021-09-06T08:56:03+00:00"
+            "time": "2022-02-12T18:11:27+00:00"
         }
     ],
     "packages-dev": [

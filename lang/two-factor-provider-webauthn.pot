@@ -2,16 +2,16 @@
 # This file is distributed under the MIT.
 msgid ""
 msgstr ""
-"Project-Id-Version: WebAuthn Provider for Two Factor 1.0.0\n"
+"Project-Id-Version: WebAuthn Provider for Two Factor 1.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-provider-webauthn\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-28T06:32:00+02:00\n"
+"POT-Creation-Date: 2022-02-21T21:24:41+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: two-factor-provider-webauthn\n"
 
 #. Plugin Name of the plugin
@@ -96,25 +96,29 @@ msgstr ""
 msgid "Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>When enabled, this hack enables the check whether the security key used was registered with U2F and if so, forces the use of the AppID extension."
 msgstr ""
 
-#: inc/class-ajax.php:32
+#: inc/class-ajax.php:33
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr ""
 
-#: inc/class-ajax.php:84
+#: inc/class-ajax.php:85
 msgid "Unable to retrieve the registration context."
 msgstr ""
 
-#: inc/class-ajax.php:94
-#: inc/class-ajax.php:120
+#: inc/class-ajax.php:95
+#: inc/class-ajax.php:124
 #: inc/class-webauthn-provider.php:118
 msgid "Bad request."
 msgstr ""
 
-#: inc/class-ajax.php:147
+#: inc/class-ajax.php:111
+msgid "Unable to save the key to the database."
+msgstr ""
+
+#: inc/class-ajax.php:151
 msgid "Key name cannot be empty."
 msgstr ""
 
-#: inc/class-ajax.php:156
+#: inc/class-ajax.php:160
 msgid "Failed to rename the key."
 msgstr ""
 
@@ -157,6 +161,10 @@ msgstr ""
 
 #: inc/class-webauthn-provider.php:107
 msgid "Unable to retrieve the authentication context."
+msgstr ""
+
+#: inc/class-webauthn-user.php:52
+msgid "Unable to save the user handle to the database."
 msgstr ""
 
 #: views/login.php:2

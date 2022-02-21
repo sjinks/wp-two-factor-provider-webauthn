@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2022-01-28T06:26:54+02:00\n"
+"POT-Creation-Date: 2022-02-21T21:24:41+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,7 +103,9 @@ msgstr "Таймаут"
 msgid ""
 "The default timeout for security key operations, in seconds. Set to 0 to use "
 "the browser default value."
-msgstr "Значение таймаута для операций с ключами безопасности по умолчанию (в секундах). Установите в 0 для использования значения браузера по умолчанию."
+msgstr ""
+"Значение таймаута для операций с ключами безопасности по умолчанию (в "
+"секундах). Установите в 0 для использования значения браузера по умолчанию."
 
 #: inc/class-adminsettings.php:110
 msgid "U2F compatibility hack"
@@ -122,26 +124,31 @@ msgstr ""
 "зарегистрирован при помощи U2F; если да, то поддержка AppID включается "
 "принудительно."
 
-#: inc/class-ajax.php:32
+#: inc/class-ajax.php:33
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr ""
 "Срок действия одноразового номера истёк. Пожалуйста, обновите страницу и "
 "попытайтесь выполнить действие снова."
 
-#: inc/class-ajax.php:84
+#: inc/class-ajax.php:85
 msgid "Unable to retrieve the registration context."
 msgstr "Не удалось получить контекст регистрации."
 
-#: inc/class-ajax.php:94 inc/class-ajax.php:120
+#: inc/class-ajax.php:95 inc/class-ajax.php:124
 #: inc/class-webauthn-provider.php:118
 msgid "Bad request."
 msgstr "Неверный запрос."
 
-#: inc/class-ajax.php:147
+#: inc/class-ajax.php:111
+#, fuzzy
+msgid "Unable to save the key to the database."
+msgstr "Не удалось получить контекст регистрации."
+
+#: inc/class-ajax.php:151
 msgid "Key name cannot be empty."
 msgstr "Имя ключа не может быть пустым."
 
-#: inc/class-ajax.php:156
+#: inc/class-ajax.php:160
 msgid "Failed to rename the key."
 msgstr "Не удалось переименовать ключ."
 
@@ -190,6 +197,10 @@ msgstr ""
 msgid "Unable to retrieve the authentication context."
 msgstr "Не удалось получить контекст аутентификации."
 
+#: inc/class-webauthn-user.php:52
+msgid "Unable to save the user handle to the database."
+msgstr ""
+
 #: views/login.php:2
 msgid "Please insert (and tap) your security key."
 msgstr "Пожалуйста, вставьте и коснитесь ключа безопасности."
@@ -199,7 +210,10 @@ msgid ""
 "Requires an HTTPS connection. Please configure your security keys in the <a "
 "href=\"#webauthn-security-keys-section\">Security Keys (WebAuthn)</a> "
 "section below."
-msgstr "Требуется безопасное соединение (HTTPS). Для управления ключами воспользуйтесь секцией <a href=\"#webauthn-security-keys-section\">Ключи безопасности (WebAuthn)</a>"
+msgstr ""
+"Требуется безопасное соединение (HTTPS). Для управления ключами "
+"воспользуйтесь секцией <a href=\"#webauthn-security-keys-section\">Ключи "
+"безопасности (WebAuthn)</a>"
 
 #: views/user-profile.php:10
 msgid "Security Keys (WebAuthn)"
@@ -213,7 +227,9 @@ msgstr "Для управления ключами безопасности не
 msgid ""
 "WebAuthn requires an HTTPS connection. You will be unable to add new "
 "security keys over HTTP."
-msgstr "Для WebAuthn требуется соединение HTTPS. Добавление новых ключей по HTTP невозможно."
+msgstr ""
+"Для WebAuthn требуется соединение HTTPS. Добавление новых ключей по HTTP "
+"невозможно."
 
 #: views/user-profile.php:28
 msgid "Key name:"

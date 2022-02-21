@@ -5,6 +5,7 @@ namespace WildWolf\WordPress\TwoFactorWebAuthn;
 use MadWizard\WebAuthn\Credential\UserHandle;
 use MadWizard\WebAuthn\Exception\NotAvailableException;
 use MadWizard\WebAuthn\Server\UserIdentityInterface;
+use UnexpectedValueException;
 use WP_User;
 use wpdb;
 
@@ -38,7 +39,7 @@ class WebAuthn_User implements UserIdentityInterface {
 			$handle = $wpdb->get_var( $wpdb->prepare( "SELECT user_handle FROM {$wpdb->webauthn_users} WHERE user_id = %d", $this->user->ID ) );
 			if ( ! $handle ) {
 				$handle = UserHandle::random()->toString();
-				$wpdb->insert(
+				$result = $wpdb->insert(
 					$wpdb->webauthn_users,
 					[
 						'user_id'     => $this->user->ID,
@@ -46,6 +47,10 @@ class WebAuthn_User implements UserIdentityInterface {
 					],
 					[ '%d', '%s' ]
 				);
+
+				if ( false === $result ) {
+					throw new UnexpectedValueException( __( 'Unable to save the user handle to the database.', 'two-factor-provider-webauthn' ) );
+				}
 			}
 
 			wp_cache_set( $key, $handle, self::CACHE_GROUP_NAME, 3600 );

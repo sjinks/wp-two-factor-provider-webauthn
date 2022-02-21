@@ -15,7 +15,7 @@ use UnexpectedValueException;
 use WP_User;
 
 class WebAuthn_Provider extends Two_Factor_Provider {
-	public const AUTHENTICATION_CONTEXT_USER_META = '_webauthn_auth_context';
+	public const AUTHENTICATION_CONTEXT_USER_META = Constants::AUTHENTICATION_CONTEXT_USER_META_KEY;
 
 	/** @var static|null */
 	private static $instance = null;

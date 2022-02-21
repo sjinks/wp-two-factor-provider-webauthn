@@ -8,7 +8,7 @@ use wpdb;
 final class Schema {
 	use Singleton;
 
-	public const VERSION_KEY    = '2fa-wa-schema-version';
+	public const VERSION_KEY    = Constants::SCHEMA_VERSION_KEY;
 	public const LATEST_VERSION = 1;
 
 	/**
@@ -18,8 +18,8 @@ final class Schema {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
-		$wpdb->webauthn_credentials = $wpdb->prefix . '2fa_webauthn_credentials';
-		$wpdb->webauthn_users       = $wpdb->prefix . '2fa_webauthn_users';
+		$wpdb->webauthn_credentials = $wpdb->prefix . Constants::WA_CREDENTIALS_TABLE_NAME;
+		$wpdb->webauthn_users       = $wpdb->prefix . Constants::WA_USERS_TABLE_NAME;
 	}
 
 	public function is_installed(): bool {

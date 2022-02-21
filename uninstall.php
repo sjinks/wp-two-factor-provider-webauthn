@@ -8,12 +8,15 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Settings;
 use WildWolf\WordPress\TwoFactorWebAuthn\WebAuthn_Provider;
 
 /**
+ * @global wpdb $wpdb
  * @var wpdb $wpdb
  * @psalm-suppress InvalidGlobal
  */
 global $wpdb;
 
 if ( defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	require __DIR__ . '/vendor/autoload.php';
+	Schema::instance();
 	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->webauthn_credentials}" );
 	$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->webauthn_users}" );
 	delete_option( Schema::VERSION_KEY );

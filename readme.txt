@@ -1,6 +1,5 @@
 === WebAuthn Provider for Two Factor ===
 Contributors: volodymyrkolesnykov
-Donate link: https://example.com/
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 5.9

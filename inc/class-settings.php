@@ -67,6 +67,7 @@ final class Settings implements ArrayAccess {
 	 * @param mixed $offset
 	 * @return int|string|null|bool
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetGet( $offset ) {
 		return $this->options[ (string) $offset ] ?? null;
 	}

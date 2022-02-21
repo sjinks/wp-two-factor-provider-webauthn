@@ -5,7 +5,7 @@ namespace WildWolf\WordPress\TwoFactorWebAuthn;
 use MadWizard\WebAuthn\Credential\UserHandle;
 use MadWizard\WebAuthn\Exception\NotAvailableException;
 use MadWizard\WebAuthn\Server\UserIdentityInterface;
-use RuntimeException;
+use UnexpectedValueException;
 use WP_User;
 use wpdb;
 
@@ -49,7 +49,7 @@ class WebAuthn_User implements UserIdentityInterface {
 				);
 
 				if ( false === $result ) {
-					throw new RuntimeException( __( 'Unable to save the user handle to the database.', 'two-factor-provider-webauthn' ) );
+					throw new UnexpectedValueException( __( 'Unable to save the user handle to the database.', 'two-factor-provider-webauthn' ) );
 				}
 			}
 

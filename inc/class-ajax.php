@@ -14,7 +14,7 @@ use WP_User;
 final class AJAX {
 	use Singleton;
 
-	const REGISTRATION_CONTEXT_USER_META = '_webauthn_registration_context';
+	public const REGISTRATION_CONTEXT_USER_META = Constants::REGISTRATION_CONTEXT_USER_META_KEY;
 
 	private function __construct() {
 		$this->admin_init();

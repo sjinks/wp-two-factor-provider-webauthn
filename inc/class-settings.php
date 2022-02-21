@@ -20,7 +20,7 @@ final class Settings implements ArrayAccess {
 	use Singleton;
 
 	/** @var string  */
-	public const OPTIONS_KEY = '2fa_webauthn_settings';
+	public const OPTIONS_KEY = Constants::OPTIONS_KEY;
 
 	/**
 	 * @psalm-readonly

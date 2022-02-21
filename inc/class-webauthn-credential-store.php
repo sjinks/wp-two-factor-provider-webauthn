@@ -105,10 +105,10 @@ class WebAuthn_Credential_Store implements CredentialStoreInterface {
 	}
 
 	/**
-	 * @psalm-return CredentialRowArray
+	 * @psalm-return CredentialRowArray|null
 	 * @global wpdb $wpdb
 	 */
-	public function save_user_key( string $key_name, RegistrationResultInterface $result ): array {
+	public function save_user_key( string $key_name, RegistrationResultInterface $result ): ?array {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
@@ -124,8 +124,8 @@ class WebAuthn_Credential_Store implements CredentialStoreInterface {
 			'u2f'           => 0,
 		];
 
-		$wpdb->insert( $wpdb->webauthn_credentials, $credential, [ '%s', '%s', '%s', '%d', '%s', '%d', '%d', '%d' ] );
-		return $credential;
+		$result = $wpdb->insert( $wpdb->webauthn_credentials, $credential, [ '%s', '%s', '%s', '%d', '%s', '%d', '%d', '%d' ] );
+		return false !== $result ? $credential : null;
 	}
 
 	/**

@@ -6,6 +6,7 @@ use InvalidArgumentException;
 use MadWizard\WebAuthn\Json\JsonConverter;
 use MadWizard\WebAuthn\Server\Registration\RegistrationContext;
 use MadWizard\WebAuthn\Server\Registration\RegistrationOptions;
+use RuntimeException;
 use Throwable;
 use UnexpectedValueException;
 use WildWolf\Utils\Singleton;
@@ -106,6 +107,9 @@ final class AJAX {
 				$name  = sanitize_text_field( (string) ( $_POST['name'] ?? '' ) );
 				$store = new WebAuthn_Credential_Store();
 				$key   = $store->save_user_key( $name, $result );
+				if ( null === $key ) {
+					throw new RuntimeException( __( 'Unable to save the key to the database.', 'two-factor-provider-webauthn' ) );
+				}
 
 				$table = new Key_Table( $user );
 				ob_start();

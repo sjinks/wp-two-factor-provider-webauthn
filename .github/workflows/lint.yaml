@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@7854a0cae7fa7a5f3feac66d27bae2dc42d1067a # tag=2.17.0
+        uses: shivammathur/setup-php@d37cc3048580de06099c81ded417530716a0d7ab # tag=2.18.0
         with:
           coverage: none
           tools: automattic/vipwpcs, phpcompatibility/phpcompatibility-wp

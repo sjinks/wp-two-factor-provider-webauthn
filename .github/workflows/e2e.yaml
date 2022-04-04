@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
+        uses: actions/checkout@a12a3943b4bdde767164f792f33f40b04645d846 # tag=v3.0.0
 
       - name: Set up Node.js environment
         uses: actions/setup-node@5b52f097d36d4b0b2f94ed6de710023fbb8b2236 # tag=v3.1.0
@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@7854a0cae7fa7a5f3feac66d27bae2dc42d1067a # tag=2.17.0
+        uses: shivammathur/setup-php@d37cc3048580de06099c81ded417530716a0d7ab # tag=2.18.0
 
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@f680dac46551dffb2234a240d65ae806c2999dd6 # renovate: tag=2.1.0

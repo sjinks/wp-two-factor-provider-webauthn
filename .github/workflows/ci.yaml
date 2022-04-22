@@ -30,7 +30,7 @@ jobs:
           - locked
     steps:
       - name: Checkout source code
-        uses: actions/checkout@dcd71f646680f2efd8db4afa5ad64fdcba30e748 # tag=v3.0.1
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
       - name: Set up PHP
         uses: shivammathur/setup-php@448bd61c6fe9db2113173467e4c22b87ddc2971a # tag=2.18.1
@@ -53,7 +53,7 @@ jobs:
       NO_UPDATE_NOTIFIER: "true"
     steps:
       - name: Checkout source code
-        uses: actions/checkout@dcd71f646680f2efd8db4afa5ad64fdcba30e748 # tag=v3.0.1
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
       - name: Set up Node.js environment
         uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # tag=v3.1.1

@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   e2e:
-    name: Run E2E tests
+    name: "Run E2E tests (use wordpress:${{ matrix.wordpress }} image)"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -49,7 +49,7 @@ jobs:
       - name: Install Playwright
         run: npx playwright install chromium
 
-      - name: Run PlaywrightE2E tests
+      - name: Run Playwright E2E tests
         run: npm run test:e2e
         env:
           WP_VERSION: ${{ matrix.wordpress }}

@@ -14,6 +14,8 @@ services:
     build:
       context: .docker/wordpress
       dockerfile: Dockerfile
+      args:
+        VERSION: ${WP_VERSION:-php7.4}
     depends_on:
       - mariadb
     ports:

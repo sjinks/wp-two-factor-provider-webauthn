@@ -1,4 +1,5 @@
-FROM wordpress:php7.4
+ARG VERSION=php7.4
+FROM wordpress:${VERSION}
 RUN \
     a2enmod ssl && \
     a2ensite default-ssl.conf && \

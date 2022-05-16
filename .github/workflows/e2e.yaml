@@ -15,8 +15,18 @@ permissions:
 
 jobs:
   e2e:
-    name: Run E2E tests
+    name: "Run E2E tests (use wordpress:${{ matrix.wordpress }} image)"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        wordpress:
+          - php7.4
+          - php8.0
+          - php8.1
+          - beta-php7.4
+          - beta-php8.0
+          - beta-php8.1
     steps:
       - name: Checkout source code
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
@@ -39,8 +49,10 @@ jobs:
       - name: Install Playwright
         run: npx playwright install chromium
 
-      - name: Run PlaywrightE2E tests
+      - name: Run Playwright E2E tests
         run: npm run test:e2e
+        env:
+          WP_VERSION: ${{ matrix.wordpress }}
 
       - name: Upload test results
         uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535 # tag=v3

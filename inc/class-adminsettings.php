@@ -121,5 +121,17 @@ final class AdminSettings {
 				),
 			]
 		);
+
+		add_settings_field(
+			'disable_u2f',
+			__( 'Disable old U2F provider', 'two-factor-provider-webauthn' ),
+			[ $this->input_factory, 'checkbox' ],
+			Admin::OPTIONS_MENU_SLUG,
+			$settings_section,
+			[
+				'label_for' => 'disable_u2f',
+				'help'      => __( 'This option allows you to turn off the old U2F provider in the Two Factor plugin.', 'two-factor-provider-webauthn' ),
+			]
+		);
 	}
 }

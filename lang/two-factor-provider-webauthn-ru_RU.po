@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2022-02-21T21:24:41+02:00\n"
+"POT-Creation-Date: 2022-05-17T07:26:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,6 +94,11 @@ msgid ""
 "em>: user verification is required for successful authentication. Please "
 "note that not all browsers support this setting.<br/>"
 msgstr ""
+"<em>Не проверять</em>: проверка пользователя не требуется (например, по соображениям "
+"сведения к минимуму вмешательств в процесс взаимодействия с пользователем).<br/"
+"><em>По возможности</em>: проверка пользователя (например, ввод PIN-кода) "
+"может выполняться, но не является необходимой для успешной аутентификации.<br/><em>Проверять</"
+"em>: проверка пользователя необходима для успешной аутентификации. Обратите внимение, что не все браузеры поддерживают данную опцию.<br/>"
 
 #: inc/class-adminsettings.php:94
 msgid "Timeout"
@@ -124,31 +129,41 @@ msgstr ""
 "зарегистрирован при помощи U2F; если да, то поддержка AppID включается "
 "принудительно."
 
-#: inc/class-ajax.php:33
+#: inc/class-adminsettings.php:127
+msgid "Disable old U2F provider"
+msgstr ""
+
+#: inc/class-adminsettings.php:133
+msgid ""
+"This option allows you to turn off the old U2F provider in the Two Factor "
+"plugin."
+msgstr "Данная опция позволяет отключить старый провайдер U2F в плагине Two Factor."
+
+#: inc/class-ajax.php:32
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr ""
 "Срок действия одноразового номера истёк. Пожалуйста, обновите страницу и "
 "попытайтесь выполнить действие снова."
 
-#: inc/class-ajax.php:85
+#: inc/class-ajax.php:84
 msgid "Unable to retrieve the registration context."
 msgstr "Не удалось получить контекст регистрации."
 
-#: inc/class-ajax.php:95 inc/class-ajax.php:124
+#: inc/class-ajax.php:94 inc/class-ajax.php:123
 #: inc/class-webauthn-provider.php:118
 msgid "Bad request."
 msgstr "Неверный запрос."
 
-#: inc/class-ajax.php:111
+#: inc/class-ajax.php:110
 #, fuzzy
 msgid "Unable to save the key to the database."
 msgstr "Не удалось получить контекст регистрации."
 
-#: inc/class-ajax.php:151
+#: inc/class-ajax.php:150
 msgid "Key name cannot be empty."
 msgstr "Имя ключа не может быть пустым."
 
-#: inc/class-ajax.php:160
+#: inc/class-ajax.php:159
 msgid "Failed to rename the key."
 msgstr "Не удалось переименовать ключ."
 
@@ -199,7 +214,7 @@ msgstr "Не удалось получить контекст аутентифи
 
 #: inc/class-webauthn-user.php:52
 msgid "Unable to save the user handle to the database."
-msgstr ""
+msgstr "Не удалось сохранить дескриптор пользователя в базу данных."
 
 #: views/login.php:2
 msgid "Please insert (and tap) your security key."

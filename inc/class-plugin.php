@@ -2,6 +2,7 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
+use Two_Factor_FIDO_U2F;
 use TwoFactor_Provider_WebAuthn;
 use WildWolf\Utils\Singleton;
 
@@ -34,6 +35,12 @@ final class Plugin {
 	 */
 	public function two_factor_providers( array $providers ): array {
 		$providers[ TwoFactor_Provider_WebAuthn::class ] = __DIR__ . '/class-twofactor-provider-webauthn.php';
+
+		$disable_u2f = Settings::instance()->get_disable_u2f();
+		if ( $disable_u2f ) {
+			unset( $providers[ Two_Factor_FIDO_U2F::class ] );
+		}
+
 		return $providers;
 	}
 

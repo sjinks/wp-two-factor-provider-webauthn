@@ -33,6 +33,12 @@ Be the first to ask.
 
 == Changelog ==
 
+= 1.0.4 =
+* Update translations
+* GH-93: add an option to turn off the old U2F provider
+* Update dependencies
+* Add more E2E tests
+
 = 1.0.3 =
 * GH-33: increase length of credential_id column to solve issues with Chrome on Mac
 * GH-38: fix bugs preventing plugin uninstallation

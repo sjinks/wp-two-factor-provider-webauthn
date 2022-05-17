@@ -11,7 +11,8 @@ use WildWolf\Utils\Singleton;
  *  authenticator_attachment: string,
  *  user_verification_requirement: string,
  *  timeout: int,
- *  u2f_hack: bool
+ *  u2f_hack: bool,
+ *  disable_u2f: bool,
  * }
  *
  * @template-implements ArrayAccess<string, scalar>
@@ -31,6 +32,7 @@ final class Settings implements ArrayAccess {
 		'user_verification_requirement' => 'preferred',
 		'timeout'                       => 0,
 		'u2f_hack'                      => true,
+		'disable_u2f'                   => false,
 	];
 
 	/**
@@ -115,5 +117,9 @@ final class Settings implements ArrayAccess {
 
 	public function get_u2f_hack(): bool {
 		return $this->options['u2f_hack'];
+	}
+
+	public function get_disable_u2f(): bool {
+		return $this->options['disable_u2f'];
 	}
 }

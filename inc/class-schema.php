@@ -18,8 +18,14 @@ final class Schema {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
-		$wpdb->webauthn_credentials = $wpdb->prefix . Constants::WA_CREDENTIALS_TABLE_NAME;
-		$wpdb->webauthn_users       = $wpdb->prefix . Constants::WA_USERS_TABLE_NAME;
+		$prefix = $wpdb->prefix;
+
+		if ( is_multisite() ) {
+			$prefix = sprintf( '%s%d_', $wpdb->base_prefix, get_main_site_id() );
+		}
+
+		$wpdb->webauthn_credentials = $prefix . Constants::WA_CREDENTIALS_TABLE_NAME;
+		$wpdb->webauthn_users       = $prefix . Constants::WA_USERS_TABLE_NAME;
 	}
 
 	public function is_installed(): bool {

@@ -24,7 +24,7 @@
 		"wildwolf/wordpress-test-library-stubs": "^5.8",
 		"wp-cli/i18n-command": "^2.2",
 		"wp-coding-standards/wpcs": "^2.3",
-		"wp-phpunit/wp-phpunit": "^5.8"
+		"wp-phpunit/wp-phpunit": "^6.0"
 	},
 	"config": {
 		"sort-packages": true,

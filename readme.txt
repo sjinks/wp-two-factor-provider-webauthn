@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 6.0
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,11 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 1.0.6 =
+* GH-93: remove unnecessary `required` attribute from `webauthn_key_name`
+* Security: Update guzzlehttp/guzzle to 7.4.4 (fix CVE-2022-31042 and CVE-2022-31043)
+* Update development dependencies
 
 = 1.0.5 =
 * Synchronize plugin version across all files

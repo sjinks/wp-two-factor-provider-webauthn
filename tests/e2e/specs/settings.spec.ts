@@ -26,8 +26,7 @@ test('Modify Settings Workflow', async ({ page }) => {
 	await test.step('Go to Settings page', () => settingsPage.visit());
 
 	await test.step('Check default settings', () =>
-		expect(settingsPage.getSettings()).resolves.toEqual(defaultSettings),
-	);
+		expect(settingsPage.getSettings()).resolves.toEqual(defaultSettings));
 
 	await test.step('Apply new settings', async () => {
 		await settingsPage.setSettings(newSettings);
@@ -35,6 +34,5 @@ test('Modify Settings Workflow', async ({ page }) => {
 	});
 
 	await test.step('Check new settings', () =>
-		expect(settingsPage.getSettings()).resolves.toEqual({ ...defaultSettings, ...newSettings }),
-	);
+		expect(settingsPage.getSettings()).resolves.toEqual({ ...defaultSettings, ...newSettings }));
 });

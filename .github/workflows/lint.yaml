@@ -35,7 +35,7 @@ jobs:
         run: phpcs --report=checkstyle
 
   js:
-    name: Lint PHP files
+    name: Lint JS files
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     steps:

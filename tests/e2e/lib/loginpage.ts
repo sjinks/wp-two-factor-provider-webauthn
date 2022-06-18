@@ -37,8 +37,13 @@ export class LoginPage {
 	}
 
 	public async login(username: string, password: string): Promise<unknown> {
+		await this.userFieldLocator.click();
+		await this.page.waitForTimeout(60);
 		await this.userFieldLocator.fill(username);
+		await this.passwordFieldLocator.click();
+		await this.page.waitForTimeout(60);
 		await this.passwordFieldLocator.fill(password);
+		await this.page.waitForTimeout(60);
 		return Promise.all([
 			this.page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
 			this.submitButtonLocator.click(),

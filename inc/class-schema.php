@@ -18,8 +18,8 @@ final class Schema {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
-		$wpdb->webauthn_credentials = $wpdb->prefix . Constants::WA_CREDENTIALS_TABLE_NAME;
-		$wpdb->webauthn_users       = $wpdb->prefix . Constants::WA_USERS_TABLE_NAME;
+		$wpdb->webauthn_credentials = $wpdb->base_prefix . Constants::WA_CREDENTIALS_TABLE_NAME;
+		$wpdb->webauthn_users       = $wpdb->base_prefix . Constants::WA_USERS_TABLE_NAME;
 	}
 
 	public function is_installed(): bool {

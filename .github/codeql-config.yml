@@ -1,0 +1,12 @@
+name: CodeQL Config
+
+paths:
+  - assets
+
+paths-ignore:
+  - node_modules
+  - assets/*.js
+  - tests
+
+queries:
+  - uses: security-and-quality

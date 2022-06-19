@@ -33,6 +33,12 @@ Be the first to ask.
 
 == Changelog ==
 
+= 1.0.7 =
+* GH-130: fix Network Installation issue
+* Update development dependencies
+* Add security-related workflows to CI
+* Improve tests
+
 = 1.0.6.1 ==
 * Fix deployment issue
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15dad18e84a60b7bf646de8a51537986",
+    "content-hash": "a86676693cc409972fd79cfaddf4e9a3",
     "packages": [
         {
             "name": "composer/installers",
@@ -4849,21 +4849,21 @@
         },
         {
             "name": "wildwolf/wordpress-test-library-stubs",
-            "version": "5.9.1",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sjinks/wordpress-test-library-stubs.git",
-                "reference": "39caae643109bd617a1300c197fb88e2e0105e72"
+                "reference": "190372521ed2631bf1e316df679deb795cbd2562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sjinks/wordpress-test-library-stubs/zipball/39caae643109bd617a1300c197fb88e2e0105e72",
-                "reference": "39caae643109bd617a1300c197fb88e2e0105e72",
+                "url": "https://api.github.com/repos/sjinks/wordpress-test-library-stubs/zipball/190372521ed2631bf1e316df679deb795cbd2562",
+                "reference": "190372521ed2631bf1e316df679deb795cbd2562",
                 "shasum": ""
             },
             "require-dev": {
                 "giacocorsiglia/stubs-generator": "^0.5.0",
-                "wp-phpunit/wp-phpunit": "^5.8"
+                "wp-phpunit/wp-phpunit": "^6.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -4879,9 +4879,15 @@
             "description": "Stubs for WordPress test library",
             "support": {
                 "issues": "https://github.com/sjinks/wordpress-test-library-stubs/issues",
-                "source": "https://github.com/sjinks/wordpress-test-library-stubs/tree/5.9.1"
+                "source": "https://github.com/sjinks/wordpress-test-library-stubs/tree/6.0.0"
             },
-            "time": "2022-02-24T07:01:44+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-06-19T01:18:26+00:00"
         },
         {
             "name": "wp-cli/i18n-command",

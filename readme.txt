@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 6.0
-Stable tag: 1.0.6.1
+Stable tag: 1.0.7.1
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,9 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 1.0.7.1 ==
+* Fix deployment issue. It's time to automate the process
 
 = 1.0.7 =
 * GH-130: fix Network Installation issue

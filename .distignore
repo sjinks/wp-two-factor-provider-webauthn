@@ -14,3 +14,4 @@
 /package.json
 /playwright.config.ts
 /tsconfig.json
+/vendor/madwizard/webauthn/tests/

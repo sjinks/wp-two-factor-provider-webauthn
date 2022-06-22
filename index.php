@@ -2,7 +2,7 @@
 /*
  * Plugin Name: WebAuthn Provider for Two Factor
  * Description: WebAuthn Provider for Two Factor plugin.
- * Version: 1.0.7.1
+ * Version: 1.0.8
  * Author: Volodymyr Kolesnykov
  * License: MIT
  * Text Domain: two-factor-provider-webauthn

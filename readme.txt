@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 6.0
-Stable tag: 1.0.7.1
+Stable tag: 1.0.8
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,10 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 1.0.8 =
+* Security: Update guzzlehttp/guzzle to 7.4.5 (fix [CVE-2022-31090](https://github.com/advisories/GHSA-25mq-v84q-4j7r) and [CVE-2022-31091](https://github.com/advisories/GHSA-q559-8m2m-g699))
+* Do not load the plugin while WordPress is being installed
 
 = 1.0.7.1 ==
 * Fix deployment issue. It's time to automate the process

@@ -19,5 +19,7 @@ if ( defined( 'ABSPATH' ) ) {
 		WP_List_Table::class => ABSPATH . 'wp-admin/includes/class-wp-list-table.php',
 	] );
 
-	Plugin::instance();
+	if ( ! defined( 'WP_INSTALLING' ) || ! WP_INSTALLING ) {
+		Plugin::instance();
+	}
 }

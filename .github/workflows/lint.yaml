@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@cdb037c2a47e89a90eb317c7376c32a4cf92ddcc # tag=2.20.0
+        uses: shivammathur/setup-php@3312ea6101295aeda1e702b5d3b641e9717de6d6 # tag=2.20.1
         with:
           php-version: "7.4"
           coverage: none

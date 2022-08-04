@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   mariadb:
-    image: mariadb@sha256:b5a7be78e2e4d2ea379ae02dccea34c5870295a251fa16f739ce28219a07d8d5
+    image: mariadb@sha256:0abf60f81588662e716c27c7f1b54a72b3bf879e0ca88fc393e1741970ec7f3f
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress

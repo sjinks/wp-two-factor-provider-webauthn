@@ -41,7 +41,7 @@ jobs:
         run: npm ci
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@16011a795d747d5f45038f96371c3b98aec5669d # tag=2.21.1
+        uses: shivammathur/setup-php@e04e1d97f0c0481c6e1ba40f8a538454fe5d7709 # tag=2.21.2
 
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@f680dac46551dffb2234a240d65ae806c2999dd6 # renovate: tag=2.1.0

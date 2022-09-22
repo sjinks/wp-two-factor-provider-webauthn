@@ -10,6 +10,7 @@
 	"require": {
 		"php": "^7.4.0 || ^8.0.0",
 		"composer/installers": "^2.0",
+		"cweagans/composer-patches": "^1.7",
 		"madwizard/webauthn": "^0.8.0",
 		"typisttech/imposter-plugin": "^0.6.2",
 		"wildwolf/singleton-trait": "^1.0"
@@ -33,7 +34,8 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/package-versions-deprecated": true,
 			"composer/installers": true,
-			"typisttech/imposter-plugin": true
+			"typisttech/imposter-plugin": true,
+			"cweagans/composer-patches": true
 		},
 		"platform": {
 			"php": "7.4"
@@ -45,6 +47,11 @@
 			"excludes": [
 				"wildwolf/singleton-trait"
 			]
+		},
+		"patches": {
+			"madwizard/webauthn": {
+				"Fix interoperability with imposter": "patches/webauthn.patch"
+			}
 		}
 	},
 	"scripts": {

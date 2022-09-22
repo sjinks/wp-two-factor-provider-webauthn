@@ -43,7 +43,7 @@ jobs:
         run: |
           composer install --no-dev --no-interaction
           composer remove --update-no-dev --no-interaction composer/installers cweagans/composer-patches
-          rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/{.github,conformance,tests} vendor/psr/log/Psr/Log/Test
+          rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/{.github,conformance,tests} vendor/psr/log/Psr/Log/Test vendor/typisttech
 
       - name: Deploy to wordpress.org
         uses: 10up/action-wordpress-plugin-deploy@stable

@@ -45,6 +45,7 @@
 		"imposter": {
 			"namespace": "WildWolf\\WordPress\\TwoFactorWebAuthn\\Vendor",
 			"excludes": [
+				"cweagans/composer-patches",
 				"wildwolf/singleton-trait"
 			]
 		},

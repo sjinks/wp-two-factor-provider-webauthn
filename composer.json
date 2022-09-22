@@ -39,7 +39,9 @@
 		},
 		"platform": {
 			"php": "7.4"
-		}
+		},
+		"optimize-autoloader": true,
+		"classmap-authoritative": true
 	},
 	"extra": {
 		"imposter": {

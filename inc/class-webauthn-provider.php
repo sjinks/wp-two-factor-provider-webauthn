@@ -3,16 +3,18 @@
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
 use InvalidArgumentException;
-use MadWizard\WebAuthn\Credential\CredentialId;
-use MadWizard\WebAuthn\Extension\AppId\AppIdExtensionInput;
-use MadWizard\WebAuthn\Json\JsonConverter;
-use MadWizard\WebAuthn\Server\Authentication\AuthenticationContext;
-use MadWizard\WebAuthn\Server\Authentication\AuthenticationOptions;
 use Throwable;
 use Two_Factor_Provider;
 use TwoFactor_Provider_WebAuthn;
 use UnexpectedValueException;
 use WP_User;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Credential\CredentialId,
+	MadWizard\WebAuthn\Extension\AppId\AppIdExtensionInput,
+	MadWizard\WebAuthn\Json\JsonConverter,
+	MadWizard\WebAuthn\Server\Authentication\AuthenticationContext,
+	MadWizard\WebAuthn\Server\Authentication\AuthenticationOptions,
+};
 
 class WebAuthn_Provider extends Two_Factor_Provider {
 	public const AUTHENTICATION_CONTEXT_USER_META = Constants::AUTHENTICATION_CONTEXT_USER_META_KEY;

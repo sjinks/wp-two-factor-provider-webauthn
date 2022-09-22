@@ -11,6 +11,7 @@
 		"php": "^7.4.0 || ^8.0.0",
 		"composer/installers": "^2.0",
 		"madwizard/webauthn": "^0.8.0",
+		"typisttech/imposter-plugin": "^0.6.2",
 		"wildwolf/singleton-trait": "^1.0"
 	},
 	"require-dev": {
@@ -31,10 +32,19 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/package-versions-deprecated": true,
-			"composer/installers": true
+			"composer/installers": true,
+			"typisttech/imposter-plugin": true
 		},
 		"platform": {
 			"php": "7.4"
+		}
+	},
+	"extra": {
+		"imposter": {
+			"namespace": "WildWolf\\WordPress\\TwoFactorWebAuthn\\Vendor",
+			"excludes": [
+				"wildwolf/singleton-trait"
+			]
 		}
 	},
 	"scripts": {

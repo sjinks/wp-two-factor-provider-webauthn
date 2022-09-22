@@ -10,6 +10,7 @@ use Throwable;
 use UnexpectedValueException;
 use WildWolf\Utils\Singleton;
 use WP_User;
+use wpdb;
 
 final class AJAX {
 	use Singleton;
@@ -71,6 +72,9 @@ final class AJAX {
 		}
 	}
 
+	/**
+	 * @global wpdb $wpdb
+	 */
 	public function wp_ajax_webauthn_register(): void {
 		$user = wp_get_current_user();
 		$this->check_registration_nonce( $user );
@@ -107,6 +111,35 @@ final class AJAX {
 				$store = new WebAuthn_Credential_Store();
 				$key   = $store->save_user_key( $name, $result );
 				if ( null === $key ) {
+					if ( defined( 'DEBUG_TFPWA' ) && true === constant( 'DEBUG_TFPWA' ) ) {
+						/** @var wpdb $wpdb */
+						/** @psalm-suppress InvalidGlobal */
+						global $wpdb;
+						$last_query = $wpdb->last_query;
+						$last_error = $wpdb->last_error;
+
+						/** @var string */
+						$credential = wp_json_encode( [
+							'user_handle'   => $result->getUserHandle()->toString(),
+							'credential_id' => $result->getCredentialId()->toString(),
+							'public_key'    => $result->getPublicKey()->toString(),
+							'counter'       => $result->getSignatureCounter(),
+							'name'          => $name ?: __( 'New Key', 'two-factor-provider-webauthn' ),
+							'added'         => time(),
+							'last_used'     => time(),
+							'u2f'           => 0,
+						] );
+
+						// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+						error_log( sprintf( 'Unable to save the key to the database. Last query: %s, last error: %s, credential: %s', $last_query, $last_error, $credential ) );
+						throw new UnexpectedValueException(
+							"Unable to save the key to the database.\n"
+							. "Last query: {$last_query}\n"
+							. "Last error: {$last_error}\n"
+							. "Credential: {$credential}"
+						);
+					}
+
 					throw new UnexpectedValueException( __( 'Unable to save the key to the database.', 'two-factor-provider-webauthn' ) );
 				}
 

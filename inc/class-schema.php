@@ -9,7 +9,7 @@ final class Schema {
 	use Singleton;
 
 	public const VERSION_KEY    = Constants::SCHEMA_VERSION_KEY;
-	public const LATEST_VERSION = 2;
+	public const LATEST_VERSION = 3;
 
 	/**
 	 * @global wpdb $wpdb
@@ -72,7 +72,7 @@ final class Schema {
 				id bigint(20) unsigned NOT NULL auto_increment,
 				user_handle varchar(128) NOT NULL,
 				credential_id varchar(767) CHARSET ascii COLLATE ascii_bin NOT NULL,
-				public_key varchar(255) NOT NULL,
+				public_key varchar(1024) NOT NULL,
 				counter int(11) NOT NULL,
 				name varchar(255) NOT NULL,
 				added int(11) NOT NULL,

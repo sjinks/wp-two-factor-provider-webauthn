@@ -1,229 +1,350 @@
-# Translation of Plugins - WebAuthn Provider for Two Factor - Development (trunk) in Chinese (Taiwan)
-# This file is distributed under the same license as the Plugins - WebAuthn Provider for Two Factor - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-09-26 19:28:22+0000\n"
+"Project-Id-Version: WebAuthn Provider for Two Factor\n"
+"POT-Creation-Date: 2022-09-25 23:56-0700\n"
+"PO-Revision-Date: 2022-09-30 23:45-0700\n"
+"Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
+"Language-Team: Alex Lion <learnwithalex@gmail.com>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/4.0.0-alpha.3\n"
-"Language: zh_TW\n"
-"Project-Id-Version: Plugins - WebAuthn Provider for Two Factor - Development (trunk)\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: index.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: inc/class-adminsettings.php:133
-msgid "This option allows you to turn off the old U2F provider in the Two Factor plugin."
-msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F 提供者。"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "WebAuthn is not supported by the browser."
+msgstr "目前使用的瀏覽器不支援 WebAuthn。"
 
-#: inc/class-adminsettings.php:127
-msgid "Disable old U2F provider"
-msgstr "停用舊式 U2F 提供者"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "Unable to get a public key credential."
+msgstr "無法取得公開金鑰認證。"
 
-#: inc/class-webauthn-user.php:52
-msgid "Unable to save the user handle to the database."
-msgstr "無法將使用者控制代碼儲存至資料庫。"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The request is not allowed."
+msgstr "不允許這個要求。"
 
-#: inc/class-ajax.php:143
-msgid "Unable to save the key to the database."
-msgstr "無法將金鑰儲存至資料庫。"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The operation is insecure."
+msgstr "這項操作不安全。"
 
-#: views/user-profile.php:67
-msgid "Cancel"
-msgstr "取消"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The operation is not supported."
+msgstr "這項操作不支援。"
 
-#: views/user-profile.php:66
-msgid "OK"
-msgstr "確定"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The operation was canceled."
+msgstr "這項操作已取消。"
 
-#: views/user-profile.php:62
-msgid "New name:"
-msgstr "新名稱:"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "You cannot use this key to log in."
+msgstr "不能使用這個金鑰進行登入。"
 
-#: views/user-profile.php:55
-msgid "No"
-msgstr "否"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "This key is already registered."
+msgstr "這個金鑰已註冊。"
 
-#: views/user-profile.php:54
-msgid "Yes"
-msgstr "是"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "Fetching registration information…"
+msgstr "正在擷取註冊資訊..."
 
-#: views/user-profile.php:53
-msgid "Are you sure to revoke this key?"
-msgstr "確定要撤銷這個金鑰？"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "Generating credentials…"
+msgstr "正在產生認證..."
 
-#: views/user-profile.php:30
-msgctxt "security key"
-msgid "Register New Key"
-msgstr "註冊新的安全金鑰"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "Registering credentials…"
+msgstr "正在註冊認證..."
 
-#: views/user-profile.php:28
-msgid "Key name:"
-msgstr "金鑰名稱:"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "Unable to create public key credentials"
+msgstr "無法建立公開金鑰認證。"
 
-#: views/user-profile.php:21
-msgid "WebAuthn requires an HTTPS connection. You will be unable to add new security keys over HTTP."
-msgstr "WebAuthn 安全金鑰需要這個網站具備 HTTPS 連線。在透過 HTTP 連線的狀況下，使用者無法新增安全金鑰。"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The key has been registered."
+msgstr "金鑰已註冊。"
 
-#: views/user-profile.php:14
-msgid "You need to enable JavaScript to manage security keys."
-msgstr "使用者必須啟用 JavaScript 以管理安全金鑰。"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "Sending request…"
+msgstr "正在傳送要求..."
 
-#: views/user-profile.php:10
-msgid "Security Keys (WebAuthn)"
-msgstr "安全金鑰 (WebAuthn)"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The key has been revoked."
+msgstr "金鑰已撤銷。"
 
-#: views/user-options.php:3
-msgid "Requires an HTTPS connection. Please configure your security keys in the <a href=\"#webauthn-security-keys-section\">Security Keys (WebAuthn)</a> section below."
-msgstr "WebAuthn 安全金鑰需要這個網站具備 HTTPS 連線。請在下方 [<a href=\"#webauthn-security-keys-section\">安全金鑰 (WebAuthn)</a>] 區段設定個人的安全金鑰。"
+#: assets/login.min.js:1 assets/profile.min.js:1
+msgid "The key has been renamed."
+msgstr "金鑰已重新命名。"
 
-#: views/login.php:5
-msgid "Retry"
-msgstr "重試"
+#: inc/class-admin.php:29
+msgid "TwoFactor WebAuthn Settings"
+msgstr "TwoFactor WebAuthn 設定"
 
-#: views/login.php:2
-msgid "Please insert (and tap) your security key."
-msgstr "請插入 (並輕觸) 安全金鑰。"
+#: inc/class-admin.php:29
+msgid "TwoFactor WebAuthn"
+msgstr "TwoFactor WebAuthn"
 
-#: inc/class-webauthn-provider.php:107
-msgid "Unable to retrieve the authentication context."
-msgstr "無法擷取驗證內容。"
-
-#: inc/class-webauthn-provider.php:59
-msgid "WebAuthn requires an HTTPS connection. Please use an alternative second factor method."
-msgstr "WebAuthn 需要這個網站具備 HTTPS 連線。請使用其他第二因素驗證方式。"
-
-#: inc/class-webauthn-provider.php:47
-msgctxt "Provider label"
-msgid "WebAuthn"
-msgstr "WebAuthn"
-
-#: inc/class-ajax.php:127 inc/class-webauthn-credential-store.php:121
-msgid "New Key"
-msgstr "新的金鑰"
-
-#: inc/class-key-table.php:63
-msgid "Revoke"
-msgstr "撤銷"
-
-#: inc/class-key-table.php:57
-msgid "Rename"
-msgstr "重新命名"
-
-#: inc/class-key-table.php:36
-msgid "Last Used"
-msgstr "最後使用時間"
-
-#: inc/class-key-table.php:35
-msgid "Added"
-msgstr "新增時間"
-
-#: inc/class-key-table.php:34
-msgid "Counter"
-msgstr "使用次數"
-
-#: inc/class-key-table.php:33
-msgid "Name"
-msgstr "名稱"
-
-#: inc/class-ajax.php:192
-msgid "Failed to rename the key."
-msgstr "無法重新命名金鑰。"
-
-#: inc/class-ajax.php:183
-msgid "Key name cannot be empty."
-msgstr "金鑰名稱不能留空。"
-
-#: inc/class-ajax.php:98 inc/class-ajax.php:156
-#: inc/class-webauthn-provider.php:118
-msgid "Bad request."
-msgstr "錯誤的要求。"
-
-#: inc/class-ajax.php:88
-msgid "Unable to retrieve the registration context."
-msgstr "無法擷取註冊內容。"
-
-#: inc/class-ajax.php:33
-msgid "The nonce has expired. Please reload the page and try again."
-msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
-
-#: inc/class-adminsettings.php:116
-msgid "Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>When enabled, this hack enables the check whether the security key used was registered with U2F and if so, forces the use of the AppID extension."
-msgstr "Android 版 Chrome 有時候會忽略舊式 U2F 及新式 WebAuthn 通訊協定間互通性所需的 AppID 擴充功能。<br/>啟用這項設定後，這項功能便會檢查使用的安全金鑰是否以 U2F 方式註冊；如果安全金鑰以 U2F 方式註冊，便會強制使用 AppID 擴充功能。"
-
-#: inc/class-adminsettings.php:110
-msgid "U2F compatibility hack"
-msgstr "U2F 相容性處理方式"
-
-#: inc/class-adminsettings.php:101
-msgid "The default timeout for security key operations, in seconds. Set to 0 to use the browser default value."
-msgstr "安全金鑰作業的預設逾時設定，以秒為單位。設定為 0 代表使用瀏覽器預設值。"
-
-#: inc/class-adminsettings.php:94
-msgid "Timeout"
-msgstr "逾時時間"
-
-#: inc/class-adminsettings.php:82
-msgid "<em>Discouraged</em>: user verification is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/><em>Preferred</em>: user verification (like entering a PIN code) is preferred but not required for successful authentication.<br/><em>Required</em>: user verification is required for successful authentication. Please note that not all browsers support this setting.<br/>"
-msgstr "<strong>不使用:</strong> 不需要使用者驗證 (例如為了盡量減少對使用者互動流程的中斷)。<br/><strong>使用:</strong> 會驗證使用者 (例如需要輸入 PIN 碼)，但對於完成身分驗證不是必要條件。<br/><strong>Required</strong>: 驗證使用者是完成身分驗證的必要條件。請注意，並不是全部瀏覽器都支援這項設定。<br/>"
-
-#: inc/class-adminsettings.php:80
-msgctxt "User Verification Requirement"
-msgid "Required"
-msgstr "必須使用"
-
-#: inc/class-adminsettings.php:79
-msgctxt "User Verification Requirement"
-msgid "Preferred"
-msgstr "使用"
-
-#: inc/class-adminsettings.php:78
-msgctxt "User Verification Requirement"
-msgid "Discouraged"
-msgstr "不使用"
-
-#: inc/class-adminsettings.php:71
-msgid "User Verification Requirement"
-msgstr "使用者驗證需求"
-
-#: inc/class-adminsettings.php:58
-msgid "<em>Platform attachment</em> is for authenticators physically bound to a client device (like a fingerprint scanner on a smartphone).<br/><em>Cross-platform attachment</em> is for removable authenticators which can \"roam\" between client devices (like a security key).<br/>Consider using <em>None</em> if you do not need to restrict your users to the specific class of authenticators.<br/><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality\">Details</a>"
-msgstr "<strong>平台附件</strong>是實際繫結至用戶端裝置的驗證器 (例如智慧型手機上的指紋掃描器)。<br/><strong>跨平台附件</strong>是可以跨用戶端裝置使用的卸除式驗證器 (例如安全金鑰)。<br/>如果這個網站不需要將使用者限制為驗證器的特定類別，請設定為 <strong>[無]</strong>。<br/><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality\" target=\"_blank\">詳細資料</a>"
-
-#: inc/class-adminsettings.php:56
-msgctxt "Authenticator attachment modality"
-msgid "Platform"
-msgstr "單一平台"
-
-#: inc/class-adminsettings.php:55
-msgctxt "Authenticator attachment modality"
-msgid "Cross-platform"
-msgstr "跨平台"
+#: inc/class-adminsettings.php:47
+msgid "Authenticator Attachment Modality"
+msgstr "驗證器附件形式"
 
 #: inc/class-adminsettings.php:54
 msgctxt "Authenticator attachment modality"
 msgid "None"
 msgstr "無"
 
-#: inc/class-adminsettings.php:47
-msgid "Authenticator Attachment Modality"
-msgstr "驗證器附件形式"
+#: inc/class-adminsettings.php:55
+msgctxt "Authenticator attachment modality"
+msgid "Cross-platform"
+msgstr "跨平台"
 
-#: inc/class-admin.php:29
-msgid "TwoFactor WebAuthn"
-msgstr "TwoFactor WebAuthn"
+#: inc/class-adminsettings.php:56
+msgctxt "Authenticator attachment modality"
+msgid "Platform"
+msgstr "單一平台"
 
-#: inc/class-admin.php:29
-msgid "TwoFactor WebAuthn Settings"
-msgstr "TwoFactor WebAuthn 設定"
+#: inc/class-adminsettings.php:60
+msgid ""
+"<em>Platform attachment</em> is for authenticators physically bound to a "
+"client device (like a fingerprint scanner on a smartphone).<br/><em>Cross-"
+"platform attachment</em> is for removable authenticators which can \"roam\" "
+"between client devices (like a security key).<br/>Consider using <em>None</"
+"em> if you do not need to restrict your users to the specific class of "
+"authenticators.<br/><a href=\"https://www.w3.org/TR/webauthn-2/"
+"#authenticator-attachment-modality\">Details</a>"
+msgstr ""
+"<strong>平台附件</strong>是實際繫結至用戶端裝置的驗證器 (例如智慧型手機上的指"
+"紋掃描器)。<br/><strong>跨平台附件</strong>是可以跨用戶端裝置使用的卸除式驗證"
+"器 (例如安全金鑰)。<br/>如果這個網站不需要將使用者限制為驗證器的特定類別，請"
+"設定為 <strong>[無]</strong>。<br/><a href=\"https://www.w3.org/TR/"
+"webauthn-2/#authenticator-attachment-modality\" target=\"_blank\">詳細資料</"
+"a>"
 
-#. Author of the plugin
-msgid "Volodymyr Kolesnykov"
-msgstr "Volodymyr Kolesnykov"
+#: inc/class-adminsettings.php:71
+msgid "User Verification Requirement"
+msgstr "使用者驗證需求"
 
-#. Description of the plugin
+#: inc/class-adminsettings.php:78
+msgctxt "User Verification Requirement"
+msgid "Discouraged"
+msgstr "不使用"
+
+#: inc/class-adminsettings.php:79
+msgctxt "User Verification Requirement"
+msgid "Preferred"
+msgstr "使用"
+
+#: inc/class-adminsettings.php:80
+msgctxt "User Verification Requirement"
+msgid "Required"
+msgstr "必須使用"
+
+#: inc/class-adminsettings.php:84
+msgid ""
+"<em>Discouraged</em>: user verification is not required (e.g., in the "
+"interest of minimizing disruption to the user interaction flow).<br/"
+"><em>Preferred</em>: user verification (like entering a PIN code) is "
+"preferred but not required for successful authentication.<br/><em>Required</"
+"em>: user verification is required for successful authentication. Please "
+"note that not all browsers support this setting.<br/>"
+msgstr ""
+"<strong>不使用:</strong> 不需要使用者驗證 (例如為了盡量減少對使用者互動流程的"
+"中斷)。<br/><strong>使用:</strong> 會驗證使用者 (例如需要輸入 PIN 碼)，但對於"
+"完成身分驗證不是必要條件。<br/><strong>Required</strong>: 驗證使用者是完成身"
+"分驗證的必要條件。請注意，並不是全部瀏覽器都支援這項設定。<br/>"
+
+#: inc/class-adminsettings.php:94
+msgid "Timeout"
+msgstr "逾時時間"
+
+#: inc/class-adminsettings.php:102
+msgid ""
+"The default timeout for security key operations, in seconds. Set to 0 to use "
+"the browser default value."
+msgstr ""
+"安全金鑰作業的預設逾時設定，以秒為單位。設定為 0 代表使用瀏覽器預設值。"
+
+#: inc/class-adminsettings.php:110
+msgid "U2F compatibility hack"
+msgstr "U2F 相容性處理方式"
+
+#: inc/class-adminsettings.php:118
+msgid ""
+"Chrome for Android sometimes ignores the AppID extension required for "
+"interoperability between the old U2F and the modern WebAuthn protocol.<br/"
+">When enabled, this hack enables the check whether the security key used was "
+"registered with U2F and if so, forces the use of the AppID extension."
+msgstr ""
+"Android 版 Chrome 有時候會忽略舊式 U2F 及新式 WebAuthn 通訊協定間互通性所需"
+"的 AppID 擴充功能。<br/>啟用這項設定後，這項功能便會檢查使用的安全金鑰是否以 "
+"U2F 方式註冊；如果安全金鑰以 U2F 方式註冊，便會強制使用 AppID 擴充功能。"
+
+#: inc/class-adminsettings.php:127
+msgid "Disable old U2F provider"
+msgstr "停用舊式 U2F 提供者"
+
+#: inc/class-adminsettings.php:133
+msgid ""
+"This option allows you to turn off the old U2F provider in the Two Factor "
+"plugin."
+msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F 提供者。"
+
+#: inc/class-ajax.php:33
+msgid "The nonce has expired. Please reload the page and try again."
+msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
+
+#: inc/class-ajax.php:88
+msgid "Unable to retrieve the registration context."
+msgstr "無法擷取註冊內容。"
+
+#: inc/class-ajax.php:98 inc/class-ajax.php:156
+#: inc/class-webauthn-provider.php:118
+msgid "Bad request."
+msgstr "錯誤的要求。"
+
+#: inc/class-ajax.php:127 inc/class-webauthn-credential-store.php:121
+msgid "New Key"
+msgstr "新的金鑰"
+
+#: inc/class-ajax.php:143
+msgid "Unable to save the key to the database."
+msgstr "無法將金鑰儲存至資料庫。"
+
+#: inc/class-ajax.php:183
+msgid "Key name cannot be empty."
+msgstr "金鑰名稱不能留空。"
+
+#: inc/class-ajax.php:192
+msgid "Failed to rename the key."
+msgstr "無法重新命名金鑰。"
+
+#: inc/class-key-table.php:33
+msgid "Name"
+msgstr "名稱"
+
+#: inc/class-key-table.php:34
+msgid "Counter"
+msgstr "使用次數"
+
+#: inc/class-key-table.php:35
+msgid "Added"
+msgstr "新增時間"
+
+#: inc/class-key-table.php:36
+msgid "Last Used"
+msgstr "最後使用時間"
+
+#: inc/class-key-table.php:57
+msgid "Rename"
+msgstr "重新命名"
+
+#: inc/class-key-table.php:63
+msgid "Revoke"
+msgstr "撤銷"
+
+#: inc/class-webauthn-provider.php:47
+msgctxt "Provider label"
+msgid "WebAuthn"
+msgstr "WebAuthn"
+
+#: inc/class-webauthn-provider.php:59
+msgid ""
+"WebAuthn requires an HTTPS connection. Please use an alternative second "
+"factor method."
+msgstr "WebAuthn 需要這個網站具備 HTTPS 連線。請使用其他第二因素驗證方式。"
+
+#: inc/class-webauthn-provider.php:107
+msgid "Unable to retrieve the authentication context."
+msgstr "無法擷取驗證內容。"
+
+#: inc/class-webauthn-user.php:52
+msgid "Unable to save the user handle to the database."
+msgstr "無法將使用者控制代碼儲存至資料庫。"
+
+#: views/login.php:2
+msgid "Please insert (and tap) your security key."
+msgstr "請插入 (並輕觸) 安全金鑰。"
+
+#: views/login.php:5
+msgid "Retry"
+msgstr "重試"
+
+#: views/user-options.php:3
+msgid ""
+"Requires an HTTPS connection. Please configure your security keys in the <a "
+"href=\"#webauthn-security-keys-section\">Security Keys (WebAuthn)</a> "
+"section below."
+msgstr ""
+"WebAuthn 安全金鑰需要這個網站具備 HTTPS 連線。請在下方 [<a href=\"#webauthn-"
+"security-keys-section\">安全金鑰 (WebAuthn)</a>] 區段設定個人的安全金鑰。"
+
+#: views/user-profile.php:10
+msgid "Security Keys (WebAuthn)"
+msgstr "安全金鑰 (WebAuthn)"
+
+#: views/user-profile.php:14
+msgid "You need to enable JavaScript to manage security keys."
+msgstr "使用者必須啟用 JavaScript 以管理安全金鑰。"
+
+#: views/user-profile.php:21
+msgid ""
+"WebAuthn requires an HTTPS connection. You will be unable to add new "
+"security keys over HTTP."
+msgstr ""
+"WebAuthn 安全金鑰需要這個網站具備 HTTPS 連線。在透過 HTTP 連線的狀況下，使用"
+"者無法新增安全金鑰。"
+
+#: views/user-profile.php:28
+msgid "Key name:"
+msgstr "金鑰名稱:"
+
+#: views/user-profile.php:30
+msgctxt "security key"
+msgid "Register New Key"
+msgstr "註冊新的安全金鑰"
+
+#: views/user-profile.php:53
+msgid "Are you sure to revoke this key?"
+msgstr "確定要撤銷這個金鑰？"
+
+#: views/user-profile.php:54
+msgid "Yes"
+msgstr "是"
+
+#: views/user-profile.php:55
+msgid "No"
+msgstr "否"
+
+#: views/user-profile.php:62
+msgid "New name:"
+msgstr "新名稱:"
+
+#: views/user-profile.php:66
+msgid "OK"
+msgstr "確定"
+
+#: views/user-profile.php:67
+msgid "Cancel"
+msgstr "取消"
+
+#. Plugin Name of the plugin/theme
+msgid "WebAuthn Provider for Two Factor"
+msgstr "WebAuthn Provider for Two Factor"
+
+#. Description of the plugin/theme
 msgid "WebAuthn Provider for Two Factor plugin."
 msgstr "這是一款能為 Two Factor 擴充 WebAuthn 驗證提供者功能的外掛。"
 
-#. Plugin Name of the plugin
-msgid "WebAuthn Provider for Two Factor"
-msgstr "WebAuthn Provider for Two Factor"
+#. Author of the plugin/theme
+msgid "Volodymyr Kolesnykov"
+msgstr "Volodymyr Kolesnykov"

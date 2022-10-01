@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: assets/lang.ts:10
+msgid "This key is already registered."
+msgstr "這個金鑰已註冊。"
+
+#: assets/lang.ts:11
+msgid "Fetching registration information…"
+msgstr "正在擷取註冊資訊..."
+
+#: assets/lang.ts:12
+msgid "Generating credentials…"
+msgstr "正在產生認證..."
+
+#: assets/lang.ts:13
+msgid "Registering credentials…"
+msgstr "正在註冊認證..."
+
+#: assets/lang.ts:14
+msgid "Unable to create public key credentials"
+msgstr "無法建立公開金鑰認證。"
+
+#: assets/lang.ts:15
+msgid "The key has been registered."
+msgstr "金鑰已註冊。"
+
+#: assets/lang.ts:16
+msgid "Sending request…"
+msgstr "正在傳送要求..."
+
+#: assets/lang.ts:17
+msgid "The key has been revoked."
+msgstr "金鑰已撤銷。"
+
+#: assets/lang.ts:18
+msgid "The key has been renamed."
+msgstr "金鑰已重新命名。"
+
+#: assets/lang.ts:2
+msgid "WebAuthn is not supported by the browser."
+msgstr "目前使用的瀏覽器不支援 WebAuthn。"
+
+#: assets/lang.ts:3
+msgid "Unable to get a public key credential."
+msgstr "無法取得公開金鑰認證。"
+
+#: assets/lang.ts:4
+msgid "The request is not allowed."
+msgstr "不允許這個要求。"
+
+#: assets/lang.ts:5
+msgid "The operation is insecure."
+msgstr "這項操作不安全。"
+
+#: assets/lang.ts:6
+msgid "The operation is not supported."
+msgstr "這項操作不支援。"
+
+#: assets/lang.ts:7
+msgid "The operation was canceled."
+msgstr "這項操作已取消。"
+
+#: assets/lang.ts:8
+msgid "You cannot use this key to log in."
+msgstr "不能使用這個金鑰進行登入。"

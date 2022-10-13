@@ -106,8 +106,7 @@ final class AJAX {
 					$context
 				);
 
-				// phpcs:ignore WordPress.Security.NonceVerification.Missing -- false positive, check_registration_nonce() does that
-				$name  = sanitize_text_field( (string) ( $_POST['name'] ?? '' ) );
+				$name  = Utils::get_post_field_as_string( 'name' );
 				$store = new WebAuthn_Credential_Store();
 				$key   = $store->save_user_key( $name, $result );
 				if ( null === $key ) {
@@ -163,8 +162,7 @@ final class AJAX {
 	}
 
 	public function wp_ajax_webauthn_delete_key(): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verify_nonce() checks the nonce
-		$handle = sanitize_text_field( (string) ( $_POST['handle'] ?? '' ) );
+		$handle = Utils::get_post_field_as_string( 'handle' );
 		$this->verify_nonce( "delete-key_{$handle}" );
 
 		$store = new WebAuthn_Credential_Store();
@@ -173,12 +171,10 @@ final class AJAX {
 	}
 
 	public function wp_ajax_webauthn_rename_key(): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verify_nonce() checks the nonce
-		$handle = sanitize_text_field( (string) ( $_POST['handle'] ?? '' ) );
+		$handle = Utils::get_post_field_as_string( 'handle' );
 		$this->verify_nonce( "rename-key_{$handle}" );
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- verify_nonce() checks the nonce
-		$name = wp_unslash( sanitize_text_field( (string) ( $_POST['name'] ?? '' ) ) );
+		$name = Utils::get_post_field_as_string( 'name' );
 		if ( empty( $name ) ) {
 			wp_send_json_error( __( 'Key name cannot be empty.', 'two-factor-provider-webauthn' ), 400 );
 		}

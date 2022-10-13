@@ -2,9 +2,11 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
-use MadWizard\WebAuthn\Builder\ServerBuilder;
-use MadWizard\WebAuthn\Config\RelyingParty;
-use MadWizard\WebAuthn\Server\ServerInterface;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Builder\ServerBuilder,
+	MadWizard\WebAuthn\Config\RelyingParty,
+	MadWizard\WebAuthn\Server\ServerInterface,
+};
 
 abstract class Utils {
 	public static function get_u2f_app_id(): string {

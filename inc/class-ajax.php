@@ -3,12 +3,14 @@
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
 use InvalidArgumentException;
-use MadWizard\WebAuthn\Json\JsonConverter;
-use MadWizard\WebAuthn\Server\Registration\RegistrationContext;
-use MadWizard\WebAuthn\Server\Registration\RegistrationOptions;
 use Throwable;
 use UnexpectedValueException;
 use WildWolf\Utils\Singleton;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Json\JsonConverter,
+	MadWizard\WebAuthn\Server\Registration\RegistrationContext,
+	MadWizard\WebAuthn\Server\Registration\RegistrationOptions,
+};
 use WP_User;
 use wpdb;
 

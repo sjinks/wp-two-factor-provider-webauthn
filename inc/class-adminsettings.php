@@ -2,9 +2,11 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
-use MadWizard\WebAuthn\Dom\AuthenticatorAttachment;
-use MadWizard\WebAuthn\Dom\UserVerificationRequirement;
 use WildWolf\Utils\Singleton;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Dom\AuthenticatorAttachment,
+	MadWizard\WebAuthn\Dom\UserVerificationRequirement,
+};
 
 final class AdminSettings {
 	use Singleton;

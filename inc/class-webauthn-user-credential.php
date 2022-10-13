@@ -2,10 +2,12 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
-use MadWizard\WebAuthn\Credential\CredentialId;
-use MadWizard\WebAuthn\Credential\UserCredentialInterface;
-use MadWizard\WebAuthn\Credential\UserHandle;
-use MadWizard\WebAuthn\Crypto\CoseKeyInterface;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Credential\CredentialId,
+	MadWizard\WebAuthn\Credential\UserCredentialInterface,
+	MadWizard\WebAuthn\Credential\UserHandle,
+	MadWizard\WebAuthn\Crypto\CoseKeyInterface,
+};
 
 class WebAuthn_User_Credential implements UserCredentialInterface {
 	private CredentialId $credential_id;

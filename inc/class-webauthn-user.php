@@ -2,11 +2,13 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
-use MadWizard\WebAuthn\Credential\UserHandle;
-use MadWizard\WebAuthn\Exception\NotAvailableException;
-use MadWizard\WebAuthn\Server\UserIdentityInterface;
 use UnexpectedValueException;
 use WP_User;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Credential\UserHandle,
+	MadWizard\WebAuthn\Exception\NotAvailableException,
+	MadWizard\WebAuthn\Server\UserIdentityInterface,
+};
 use wpdb;
 
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery -- there is no other way to access our own tables

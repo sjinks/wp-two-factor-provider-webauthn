@@ -1,0 +1,11 @@
+--- src/Metadata/MetadataResolverInterface.orig.php	2022-09-22 09:55:34.152470592 +0300
++++ src/Metadata/MetadataResolverInterface.php	2022-09-22 09:55:48.708300739 +0300
+@@ -5,7 +5,7 @@
+ use MadWizard\WebAuthn\Attestation\TrustAnchor\MetadataInterface;
+ use MadWizard\WebAuthn\Server\Registration\RegistrationResultInterface;
+ 
+-interface MetadataResolverInterface // TODO move namespace
++interface MetadataResolverInterface
+ {
+     public function getMetadata(RegistrationResultInterface $registrationResult): ?MetadataInterface;
+ }

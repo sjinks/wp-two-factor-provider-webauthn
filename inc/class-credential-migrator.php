@@ -2,12 +2,14 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
-use MadWizard\WebAuthn\Credential\UserHandle;
-use MadWizard\WebAuthn\Crypto\CoseAlgorithm;
-use MadWizard\WebAuthn\Crypto\CoseKeyInterface;
-use MadWizard\WebAuthn\Crypto\Ec2Key;
-use MadWizard\WebAuthn\Exception\ParseException;
-use MadWizard\WebAuthn\Format\ByteBuffer;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Credential\UserHandle,
+	MadWizard\WebAuthn\Crypto\CoseAlgorithm,
+	MadWizard\WebAuthn\Crypto\CoseKeyInterface,
+	MadWizard\WebAuthn\Crypto\Ec2Key,
+	MadWizard\WebAuthn\Exception\ParseException,
+	MadWizard\WebAuthn\Format\ByteBuffer,
+};
 use WP_User;
 use wpdb;
 

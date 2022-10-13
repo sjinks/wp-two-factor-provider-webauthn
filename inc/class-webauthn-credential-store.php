@@ -2,12 +2,14 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
-use MadWizard\WebAuthn\Credential\CredentialId;
-use MadWizard\WebAuthn\Credential\CredentialStoreInterface;
-use MadWizard\WebAuthn\Credential\UserCredentialInterface;
-use MadWizard\WebAuthn\Credential\UserHandle;
-use MadWizard\WebAuthn\Crypto\CoseKey;
-use MadWizard\WebAuthn\Server\Registration\RegistrationResultInterface;
+use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Credential\CredentialId,
+	MadWizard\WebAuthn\Credential\CredentialStoreInterface,
+	MadWizard\WebAuthn\Credential\UserCredentialInterface,
+	MadWizard\WebAuthn\Credential\UserHandle,
+	MadWizard\WebAuthn\Crypto\CoseKey,
+	MadWizard\WebAuthn\Server\Registration\RegistrationResultInterface,
+};
 use WP_User;
 use wpdb;
 

@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   mariadb:
-    image: mariadb@sha256:05b53c3f7ebf1884f37fe9efd02da0b7faa0d03e86d724863f3591f963de632c
+    image: mariadb@sha256:59ef1139afa1ec26f98e316a8dbef657daf9f64f84e9378b190d1d7557ad2feb
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
@@ -31,7 +31,7 @@ services:
     networks:
       - tfpwa
   cli:
-    image: 'wordpress:cli-php7.4@sha256:0e08a4f6619bfc10f06651258a86345e4e3311bc53d198a66ab05905d30f9120'
+    image: 'wordpress:cli-php7.4@sha256:c253f3b5043a6414e2d93a2ee5ddb1021d82e67c84c7d050d11c08accd627859'
     volumes: *ref_0
     user: '33:33'
     environment:

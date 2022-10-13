@@ -29,7 +29,7 @@
     "eslint-formatter-gha": "^1.4.1",
     "eslint-plugin-playwright": "^0.11.0",
     "playwright-core": "^1.18.1",
-    "rollup": "^2.64.0",
+    "rollup": "^3.0.0",
     "terser": "^5.15.1",
     "typescript": "^4.5.4"
   }

@@ -61,3 +61,45 @@ jobs:
           name: playwright-test-results
           path: test-results/
           retention-days: 3
+
+  e2e-bundle:
+    name: Run E2E tests on the generated plugin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
+
+      - name: Generate self-contained package
+        run: |
+          git archive --format=tar --prefix=two-factor-provider-webauthn/ HEAD | (cd /var/tmp/ && tar xf -)
+          (cd /var/tmp/two-factor-provider-webauthn && composer install --no-dev --no-interaction && composer remove --update-no-dev --no-interaction composer/installers cweagans/composer-patches && rm -rf composer.lock patches vendor/madwizard/webauthn/.github vendor/madwizard/webauthn/conformance vendor/madwizard/webauthn/tests vendor/psr/log/Psr/Log/Test vendor/typisttech) && \
+          (cd /var/tmp && zip -r -9 two-factor-provider-webauthn.zip two-factor-provider-webauthn)
+
+      - name: Patch docker-compose.yml
+        run: |
+          sed -i 's!- .:!- /var/tmp/two-factor-provider-webauthn:!' docker-compose.yml
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # tag=v3.5.0
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install chromium
+
+      - name: Run Playwright E2E tests
+        run: npm run test:e2e
+        env:
+          WP_VERSION: php8.0
+
+      - name: Upload test results
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3
+        if: failure()
+        with:
+          name: playwright-test-results
+          path: test-results/
+          retention-days: 3

@@ -23,7 +23,7 @@ abstract class Utils {
 	 */
 	public static function render( string $view, array $params = [] ): void {
 		/** @psalm-suppress UnresolvableInclude */
-		require __DIR__ . '/../views/' . $view . '.php';
+		require __DIR__ . '/../views/' . $view . '.php'; // NOSONAR
 	}
 
 	public static function create_webauthn_server(): ServerInterface {

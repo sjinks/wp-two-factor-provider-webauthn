@@ -33,6 +33,11 @@ Be the first to ask.
 
 == Changelog ==
 
+= 2.0.0 =
+* Put external dependencies into a unique namespace (GH-36, GH-53, GH-236)
+* Update madwizard/webauthn to 0.8.0
+* Update development dependencies
+
 = 1.0.10 =
 * Add zh-tw translations (props [Chun-Chih Cheng](https://profiles.wordpress.org/alex1114/), [Alex Lion](https://profiles.wordpress.org/alexclassroom/))
 * GH-215, GH-33: Fix "Unable to save the key to the database" error for long public keys

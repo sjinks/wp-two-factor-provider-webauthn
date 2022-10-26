@@ -33,6 +33,10 @@ Be the first to ask.
 
 == Changelog ==
 
+= 2.0.1 =
+* GH-295: fix client extensions validation
+* Update development dependencies
+
 = 2.0.0 =
 * Put external dependencies into a unique namespace (GH-36, GH-53, GH-236)
 * Update madwizard/webauthn to 0.8.0
@@ -52,7 +56,7 @@ Be the first to ask.
 * Security: Update guzzlehttp/guzzle to 7.4.5 (fix [CVE-2022-31090](https://github.com/advisories/GHSA-25mq-v84q-4j7r) and [CVE-2022-31091](https://github.com/advisories/GHSA-q559-8m2m-g699))
 * Do not load the plugin while WordPress is being installed
 
-= 1.0.7.1 ==
+= 1.0.7.1 =
 * Fix deployment issue. It's time to automate the process
 
 = 1.0.7 =
@@ -61,7 +65,7 @@ Be the first to ask.
 * Add security-related workflows to CI
 * Improve tests
 
-= 1.0.6.1 ==
+= 1.0.6.1 =
 * Fix deployment issue
 
 = 1.0.6 =

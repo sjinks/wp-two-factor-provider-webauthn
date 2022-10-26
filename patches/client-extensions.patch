@@ -1,0 +1,11 @@
+--- src/Server/AbstractVerifier.orig.php	2022-10-26 07:04:02.916968205 +0300
++++ src/Server/AbstractVerifier.php	2022-10-26 07:10:31.212763949 +0300
+@@ -91,7 +91,7 @@
+         foreach ($results as $id => $result) {
+             $input = $inputs[$id] ?? null;
+             if ($input === null) {
+-                throw new VerificationException(sprintf('Extension "%s" is present in clientExtensionResults but was not used in the input.', $id));
++                continue;
+             }
+             $extension = $this->extensionRegistry->getExtension($id);
+ 

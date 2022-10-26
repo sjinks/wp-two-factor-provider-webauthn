@@ -53,7 +53,8 @@
 		},
 		"patches": {
 			"madwizard/webauthn": {
-				"Fix interoperability with imposter": "patches/webauthn.patch"
+				"Fix interoperability with imposter": "patches/webauthn.patch",
+				"Fix client extension verification (GH-295)": "patches/client-extensions.patch"
 			}
 		}
 	},

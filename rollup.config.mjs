@@ -1,9 +1,8 @@
-/* eslint-disable jsdoc/valid-types, no-console */
+/* eslint-disable jsdoc/valid-types */
 import { defineConfig } from 'rollup';
 import typescript from '@rollup/plugin-typescript';
 import { babel } from '@rollup/plugin-babel';
-import { minify } from 'terser';
-import codeFrameColumns from '@babel/code-frame';
+import { terser } from '@wwa/rollup-plugin-terser';
 
 /** @type {import('rollup').Plugin[]} */
 const plugins = [
@@ -16,25 +15,7 @@ const plugins = [
 		plugins: [['@wordpress/babel-plugin-makepot', { output: 'lang/two-factor-provider-webauthn-js.pot' }]],
 		babelrc: false,
 	}),
-	{
-		name: 'terser',
-		async renderChunk(code, _chunk, outputOptions) {
-			try {
-				const result = await minify(code, {
-					sourceMap: outputOptions.sourcemap === true || typeof outputOptions.sourcemap === 'string',
-				});
-
-				return {
-					code: result.code,
-					map: result.map,
-				};
-			} catch (error) {
-				const { message, line, col: column } = error;
-				console.error(codeFrameColumns(code, { start: { line, column } }, { message }));
-				throw error;
-			}
-		},
-	},
+	terser(),
 ];
 
 export default defineConfig([

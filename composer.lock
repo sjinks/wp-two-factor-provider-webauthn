@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79ed21c6ffaf477ae7e42cdf7a88df4e",
+    "content-hash": "0f2b1f54f9422f5a04023e39621777d1",
     "packages": [
         {
             "name": "composer/installers",
@@ -615,16 +615,16 @@
         },
         {
             "name": "madwizard/webauthn",
-            "version": "v0.8.1",
+            "version": "v0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/madwizard-org/webauthn-server.git",
-                "reference": "7e7d6cd8957463b4000125d2b5b7f480f9c23fc3"
+                "reference": "3266fb803409d72defdb03af384ece02f820c825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/madwizard-org/webauthn-server/zipball/7e7d6cd8957463b4000125d2b5b7f480f9c23fc3",
-                "reference": "7e7d6cd8957463b4000125d2b5b7f480f9c23fc3",
+                "url": "https://api.github.com/repos/madwizard-org/webauthn-server/zipball/3266fb803409d72defdb03af384ece02f820c825",
+                "reference": "3266fb803409d72defdb03af384ece02f820c825",
                 "shasum": ""
             },
             "require": {
@@ -633,7 +633,7 @@
                 "ext-sodium": "*",
                 "guzzlehttp/guzzle": "^6.5|^7.0",
                 "kevinrob/guzzle-cache-middleware": "^3.3",
-                "php": ">=7.2.0",
+                "php": "^7.2.0|^8.0",
                 "psr/cache": "^1.0|^2.0|^3.0",
                 "psr/log": "^1.1|^2.0|^3.0",
                 "sop/asn1": "^4.1",
@@ -672,9 +672,9 @@
             "description": "Web Authentication API server for PHP",
             "support": {
                 "issues": "https://github.com/madwizard-org/webauthn-server/issues",
-                "source": "https://github.com/madwizard-org/webauthn-server/tree/v0.8.1"
+                "source": "https://github.com/madwizard-org/webauthn-server/tree/v0.9.0"
             },
-            "time": "2022-10-05T08:06:52+00:00"
+            "time": "2022-11-16T10:56:26+00:00"
         },
         {
             "name": "psr/cache",

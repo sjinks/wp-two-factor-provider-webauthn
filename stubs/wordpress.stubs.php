@@ -77,4 +77,15 @@ namespace {
 	 * @psalm-return never-return
 	 */
 	function wp_send_json( $response, $status_code = null, $options = 0 ) {}
+
+	/**
+	 * @param string   $id
+	 * @param string   $title
+	 * @param callable $callback
+	 * @param string   $page
+	 * @param string   $section
+	 * @psalm-param array{class?: string, label_for?: string, ...} $args
+	 * @return void
+	 */
+	function add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() ) {}
 }

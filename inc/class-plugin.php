@@ -32,6 +32,7 @@ final class Plugin {
 	/**
 	 * @psalm-param array<class-string,string> $providers
 	 * @psalm-return array<class-string,string>
+	 * @psalm-suppress MoreSpecificReturnType, LessSpecificReturnStatement
 	 */
 	public function two_factor_providers( array $providers ): array {
 		$providers[ TwoFactor_Provider_WebAuthn::class ] = __DIR__ . '/class-twofactor-provider-webauthn.php';

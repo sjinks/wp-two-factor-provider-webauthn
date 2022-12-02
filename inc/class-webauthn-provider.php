@@ -54,7 +54,6 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	 * @return void
 	 */
 	public function authentication_page( $user ) {
-		/** @psalm-suppress UnresolvableInclude */
 		require_once ABSPATH . '/wp-admin/includes/template.php';
 
 		if ( ! is_ssl() ) {

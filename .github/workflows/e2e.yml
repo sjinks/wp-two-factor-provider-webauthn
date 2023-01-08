@@ -55,7 +55,7 @@ jobs:
           WP_VERSION: ${{ matrix.wordpress }}
 
       - name: Upload test results
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         if: failure()
         with:
           name: playwright-test-results
@@ -96,7 +96,7 @@ jobs:
           WP_VERSION: php8.0
 
       - name: Upload test results
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         if: failure()
         with:
           name: playwright-test-results

@@ -17,7 +17,6 @@
 	},
 	"require-dev": {
 		"automattic/vipwpcs": "^2.3",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
 		"johnpbloch/wordpress-core": "^6.0",
 		"php-stubs/wordpress-stubs": "^6.0",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
@@ -31,11 +30,11 @@
 	"config": {
 		"sort-packages": true,
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/package-versions-deprecated": true,
 			"composer/installers": true,
 			"typisttech/imposter-plugin": true,
-			"cweagans/composer-patches": true
+			"cweagans/composer-patches": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		},
 		"platform": {
 			"php": "7.4"

@@ -23,7 +23,7 @@
     "@types/jquery": "^3.5.13",
     "@types/jqueryui": "^1.12.16",
     "@wordpress/babel-plugin-makepot": "~5.6.0",
-    "@wordpress/eslint-plugin": "^13.0.0",
+    "@wordpress/eslint-plugin": "^14.0.0",
     "@wordpress/i18n": "^4.2.4",
     "@wwa/rollup-plugin-terser": "^1.0.1",
     "eslint-formatter-gha": "^1.4.1",

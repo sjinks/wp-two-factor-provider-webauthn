@@ -22,6 +22,7 @@ abstract class Utils {
 
 	/**
 	 * @psalm-param array<string,mixed> $params
+	 * @psalm-suppress PossiblyUnusedParam
 	 */
 	public static function render( string $view, array $params = [] ): void {
 		/** @psalm-suppress UnresolvableInclude */
@@ -39,7 +40,6 @@ abstract class Utils {
 	public static function get_post_field_as_string( string $field ): string {
 		// phpcs:disable WordPress.Security.NonceVerification.Missing
 		if ( isset( $_POST[ $field ] ) && is_scalar( $_POST[ $field ] ) ) {
-			/** @psalm-suppress RedundantCast -- $_POST is controlled by the user, it can have non-string values */
 			return wp_unslash( sanitize_text_field( (string) $_POST[ $field ] ) );
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Missing

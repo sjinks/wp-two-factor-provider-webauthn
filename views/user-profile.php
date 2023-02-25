@@ -43,7 +43,7 @@ $table->display();
 </div>
 <script type="text/x-template" id="webauthn-no-keys">
 	<tr class="no-items">
-		<td class="colspanchange" colspan="<?php /** @psalm-suppress RedundantCastGivenDocblockType */ echo (int) $table->get_column_count(); ?>">
+		<td class="colspanchange" colspan="<?php echo (int) $table->get_column_count(); ?>">
 			<?php $table->no_items(); ?>
 		</td>
 	</tr>

@@ -4,6 +4,8 @@
     resolveFromConfigFile="true"
     phpVersion="7.4"
     findUnusedPsalmSuppress="true"
+    findUnusedCode="true"
+    findUnusedBaselineEntry="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
@@ -14,6 +16,13 @@
         <directory name="inc"/>
         <directory name="views"/>
     </projectFiles>
+    <issueHandlers>
+        <PossiblyUnusedReturnValue errorLevel="suppress"/>
+        <PossiblyUnusedMethod errorLevel="suppress"/>
+        <RedundantCast errorLevel="suppress"/>
+        <RedundantCastGivenDocblockType errorLevel="suppress"/>
+        <UnusedClass errorLevel="suppress"/>
+    </issueHandlers>
     <stubs>
         <file name="vendor/php-stubs/wordpress-stubs/wordpress-stubs.php"/>
         <file name="vendor/wildwolf/wordpress-test-library-stubs/wordpress-test-library-stubs.php"/>

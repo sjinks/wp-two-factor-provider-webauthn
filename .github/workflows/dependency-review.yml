@@ -10,6 +10,9 @@ jobs:
   dependency-review:
     runs-on: ubuntu-latest
     name: Review Dependencies
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
@@ -24,3 +27,5 @@ jobs:
 
       - name: Review dependencies
         uses: actions/dependency-review-action@f46c48ed6d4f1227fb2d9ea62bf6bcbed315589e # v3.0.4
+        with:
+          comment-summary-in-pr: true

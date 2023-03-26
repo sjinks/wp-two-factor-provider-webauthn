@@ -21,7 +21,7 @@ test.afterEach(() => removeVirtualAuthenticator(client, authenticatorId));
 test('Rename Key Workflow', async ({ page }) => {
 	await test.step('Log in', async () => {
 		await login(page, settings.user3Username, settings.user3Password);
-		return expect(page.url()).toMatch('/wp-admin/');
+		return expect(page.url()).toContain('/wp-admin/');
 	});
 
 	await test.step('Register key', async () => {
@@ -40,7 +40,7 @@ test('Rename Key Workflow', async ({ page }) => {
 		const newKey1Name = `${key1Name}!`;
 		const newKey2Name = `${key2Name}!`;
 
-		expect(page.url()).toMatch('/wp-admin/profile.php');
+		expect(page.url()).toContain('/wp-admin/profile.php');
 		const profilePage = new ProfilePage(page);
 		const recodedCID1 = credential1Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 		const recodedCID2 = credential2Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -66,7 +66,7 @@ test('Rename Key Workflow', async ({ page }) => {
 	});
 
 	await test.step('Rename should not accept an empty name', async () => {
-		expect(page.url()).toMatch('/wp-admin/profile.php');
+		expect(page.url()).toContain('/wp-admin/profile.php');
 		const profilePage = new ProfilePage(page);
 		const recodedCID1 = credential1Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 		await profilePage.renameKey(recodedCID1, '', true);

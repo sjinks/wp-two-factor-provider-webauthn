@@ -18,7 +18,7 @@ test.afterEach(() => removeVirtualAuthenticator(client, authenticatorId));
 test('Revoke Key Workflow', async ({ page }) => {
 	await test.step('Log in', async () => {
 		await login(page, settings.user2Username, settings.user2Password);
-		return expect(page.url()).toMatch('/wp-admin/');
+		return expect(page.url()).toContain('/wp-admin/');
 	});
 
 	await test.step('Register key', async () => {
@@ -27,7 +27,7 @@ test('Revoke Key Workflow', async ({ page }) => {
 	});
 
 	await test.step('Revoke key', () => {
-		expect(page.url()).toMatch('/wp-admin/profile.php');
+		expect(page.url()).toContain('/wp-admin/profile.php');
 		const profilePage = new ProfilePage(page);
 		const recodedCID = credentialId.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 		return profilePage.revokeKey(recodedCID);

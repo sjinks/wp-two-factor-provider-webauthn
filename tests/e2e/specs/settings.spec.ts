@@ -6,7 +6,7 @@ import { Settings, WebAuthnSettingsPage } from '../lib/webauthsettingspage';
 test('Modify Settings Workflow', async ({ page }) => {
 	await test.step('Log in', async () => {
 		await login(page, settings.adminUsername, settings.adminPassword);
-		return expect(page.url()).toMatch('/wp-admin/');
+		return expect(page.url()).toContain('/wp-admin/');
 	});
 
 	const settingsPage = new WebAuthnSettingsPage(page);

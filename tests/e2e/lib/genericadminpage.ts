@@ -18,9 +18,10 @@ export class GenericAdminPage {
 		this.logoutLinkLocator = page.locator(selectors.logoutLink);
 	}
 
-	public async logOut(): Promise<unknown> {
+	public async logOut(): Promise<void> {
 		await this.menuBarMyAccountLocator.hover();
 		await this.logoutLinkLocator.waitFor({ state: 'visible' });
-		return Promise.all([this.page.waitForNavigation(), this.logoutLinkLocator.click()]);
+		await this.logoutLinkLocator.click();
+		await this.page.waitForLoadState('domcontentloaded');
 	}
 }

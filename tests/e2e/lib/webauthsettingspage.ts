@@ -80,11 +80,8 @@ export class WebAuthnSettingsPage {
 	}
 
 	public async saveSettings(): Promise<string> {
-		await Promise.all([
-			this.page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
-			this.submitButtonLocator.click(),
-		]);
-
-		return this.noticeLocator.textContent();
+		await this.submitButtonLocator.click();
+		await this.page.waitForLoadState('domcontentloaded');
+		return `${this.noticeLocator.textContent()}`;
 	}
 }

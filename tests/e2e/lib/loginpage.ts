@@ -36,28 +36,27 @@ export class LoginPage {
 		return this.page.goto('/wp-login.php');
 	}
 
-	public async login(username: string, password: string): Promise<unknown> {
+	public async login(username: string, password: string): Promise<void> {
 		await this.userFieldLocator.click();
+		// eslint-disable-next-line playwright/no-wait-for-timeout
 		await this.page.waitForTimeout(60);
 		await this.userFieldLocator.fill(username);
 		await this.passwordFieldLocator.click();
+		// eslint-disable-next-line playwright/no-wait-for-timeout
 		await this.page.waitForTimeout(60);
 		await this.passwordFieldLocator.fill(password);
+		// eslint-disable-next-line playwright/no-wait-for-timeout
 		await this.page.waitForTimeout(60);
-		return Promise.all([
-			this.page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
-			this.submitButtonLocator.click(),
-		]);
+		await this.submitButtonLocator.click();
+		await this.page.waitForLoadState('domcontentloaded');
 	}
 
 	public getSecondFactorProvider(): Promise<string> {
 		return this.providerInputLocator.inputValue();
 	}
 
-	public loginWithKey(): Promise<unknown> {
-		return Promise.all([
-			this.page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
-			this.webAuttnRetryButtonLocator.click(),
-		]);
+	public async loginWithKey(): Promise<void> {
+		await this.webAuttnRetryButtonLocator.click();
+		await this.page.waitForLoadState('domcontentloaded');
 	}
 }

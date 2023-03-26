@@ -21,7 +21,7 @@ test.afterEach(() => removeVirtualAuthenticator(client, authenticatorId));
 test('Login Workflow', async ({ page }) => {
 	await test.step('Log in', async () => {
 		await login(page, settings.user1Username, settings.user1Password);
-		return expect(page.url()).toMatch('/wp-admin/');
+		return expect(page.url()).toContain('/wp-admin/');
 	});
 
 	await test.step('Register key', async () => {
@@ -31,7 +31,7 @@ test('Login Workflow', async ({ page }) => {
 	});
 
 	await test.step('Configure WebAuthn provider', async () => {
-		expect(page.url()).toMatch('/wp-admin/profile.php');
+		expect(page.url()).toContain('/wp-admin/profile.php');
 		const profilePage = new ProfilePage(page);
 		await profilePage.enableWebAuthnProvider();
 		await profilePage.makeWebAuthnProviderPrimary();
@@ -41,11 +41,11 @@ test('Login Workflow', async ({ page }) => {
 	await test.step('Log out', async () => {
 		const adminPage = new GenericAdminPage(page);
 		await adminPage.logOut();
-		return expect(page.url()).toMatch('/wp-login.php');
+		return expect(page.url()).toContain('/wp-login.php');
 	});
 
 	await test.step('Log in with key', async () => {
-		expect(page.url()).toMatch('/wp-login.php');
+		expect(page.url()).toContain('/wp-login.php');
 		const loginPage = new LoginPage(page);
 		await loginPage.login(settings.user1Username, settings.user1Password);
 

@@ -35,10 +35,7 @@ const ajaxRequestChecker =
 	(response: Response): boolean =>
 		response.url().endsWith('/wp-admin/admin-ajax.php') &&
 		response.request().method() === 'POST' &&
-		response
-			.request()
-			.postData()
-			.includes(`action=${encodeURIComponent(action)}`);
+		(response.request().postData() ?? '').includes(`action=${encodeURIComponent(action)}`);
 
 export class ProfilePage {
 	private readonly page: Page;
@@ -82,11 +79,9 @@ export class ProfilePage {
 		return this.twoFactorOptionsLocator.locator(tfoSelectors.webAuthnPrimaryProvider).check();
 	}
 
-	public saveProfile(): Promise<unknown> {
-		return Promise.all([
-			this.page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
-			this.updateProfileButtonLocator.click(),
-		]);
+	public async saveProfile(): Promise<void> {
+		await this.updateProfileButtonLocator.click();
+		await this.page.waitForLoadState('domcontentloaded');
 	}
 
 	public async revokeKey(credentialId: string): Promise<unknown> {

@@ -1,0 +1,13 @@
+diff --git a/node_modules/@wordpress/babel-plugin-makepot/index.js b/node_modules/@wordpress/babel-plugin-makepot/index.js
+index 846a29a..5443a03 100644
+--- a/node_modules/@wordpress/babel-plugin-makepot/index.js
++++ b/node_modules/@wordpress/babel-plugin-makepot/index.js
+@@ -183,7 +183,7 @@ function isValidTranslationKey( key ) {
+  * @return {boolean} Whether valid translation keys match.
+  */
+ function isSameTranslation( a, b ) {
+-	return VALID_TRANSLATION_KEYS.every( ( key ) => a[ key ] === b[ key ] );
++	return a && b && VALID_TRANSLATION_KEYS.every( ( key ) => a[ key ] === b[ key ] );
+ }
+ 
+ /**

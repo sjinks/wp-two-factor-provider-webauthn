@@ -44,6 +44,7 @@ final class InputFactory {
 			self::get_attributes( $args ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_attributes() escapes its return value properly
 		);
 
+		/** @psalm-var HelpArgs $args */
 		self::render_help( $args );
 	}
 

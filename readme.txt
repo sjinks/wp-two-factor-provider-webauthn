@@ -3,8 +3,8 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
-Tested up to: 6.0.2
-Stable tag: 1.0.10
+Tested up to: 6.2.0
+Stable tag: 2.0.2
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,11 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.0.2 =
+* Update madwizard/webauthn to 0.9.0
+* Update development dependencies
+* Update E2E tests
 
 = 2.0.1 =
 * GH-295: fix client extensions validation

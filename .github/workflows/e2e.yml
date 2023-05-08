@@ -72,7 +72,7 @@ jobs:
       - name: Generate self-contained package
         run: |
           git archive --format=tar --prefix=two-factor-provider-webauthn/ HEAD | (cd /var/tmp/ && tar xf -)
-          (cd /var/tmp/two-factor-provider-webauthn && composer install --no-dev --no-interaction && composer remove --update-no-dev --no-interaction composer/installers cweagans/composer-patches && rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/.github vendor/madwizard/webauthn/conformance vendor/madwizard/webauthn/tests vendor/psr/log/Psr/Log/Test vendor/typisttech)
+          (cd /var/tmp/two-factor-provider-webauthn && composer install --no-dev --no-interaction && composer remove --update-no-dev --no-interaction composer/installers cweagans/composer-patches && rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/.github vendor/madwizard/webauthn/conformance vendor/madwizard/webauthn/tests vendor/psr/log/Psr/Log/Test vendor/psr/http-message/docs vendor/typisttech)
 
       - name: Patch docker-compose.yml
         run: |

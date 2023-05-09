@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 6.2.0
-Stable tag: 2.0.3
+Stable tag: 2.1.0
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,11 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.1.0 =
+* GH-462: Use correct user ID when editing a user
+* GH-456: Set relying party ID to COOKIE_DOMAIN if it is available (props dd32)
+* Allow only for network-wide plugin activation (to match Two Factor)
 
 = 2.0.3 =
 * Update translations (thank you, Copilot)

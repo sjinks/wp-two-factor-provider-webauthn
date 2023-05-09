@@ -7,6 +7,7 @@
  * License: MIT
  * Text Domain: two-factor-provider-webauthn
  * Domain Path: /lang
+ * Network: true
  */
 
 use Composer\Autoload\ClassLoader;

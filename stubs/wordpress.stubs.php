@@ -3,6 +3,8 @@
 namespace {
 	define( 'ABSPATH', 'vendor/johnpbloch/wordpress-core' );
 
+	define( 'COOKIE_DOMAIN', /** @var string|bool $x */ $x = false );
+
 	/**
 	 * Adds slashes to a string or recursively adds slashes to strings within an array.
 	 *

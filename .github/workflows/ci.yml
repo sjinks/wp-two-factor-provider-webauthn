@@ -3,7 +3,8 @@ name: Build and Test
 on:
   push:
     branches:
-      - "**"
+      - master
+  pull_request:
   workflow_dispatch:
 
 concurrency:
@@ -17,7 +18,6 @@ jobs:
   php:
     name: Build PHP part
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     strategy:
       fail-fast: false
       matrix:
@@ -45,7 +45,6 @@ jobs:
   js:
     name: Build JS part
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') }}
     env:
       NPM_CONFIG_FUND: "0"
       NPM_CONFIG_AUDIT: "0"

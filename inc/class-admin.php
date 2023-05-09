@@ -36,8 +36,11 @@ final class Admin {
 	/**
 	 * @param string $hook
 	 * @return void
+	 * @global int $user_id
 	 */
 	public function admin_enqueue_scripts( $hook ): void {
+		/** @var int $user_id */
+		global $user_id;
 		if ( in_array( $hook, array( 'user-edit.php', 'profile.php' ), true ) ) {
 			wp_enqueue_script(
 				'webauthn-register-key',
@@ -47,9 +50,8 @@ final class Admin {
 				true
 			);
 
-			$user = wp_get_current_user();
 			wp_localize_script( 'webauthn-register-key', 'tfa_webauthn', [
-				'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
+				'nonce' => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
 			] );
 
 			wp_set_script_translations( 'webauthn-register-key', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . 'lang' );

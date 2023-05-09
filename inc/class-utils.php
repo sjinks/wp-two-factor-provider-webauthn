@@ -34,7 +34,7 @@ abstract class Utils {
 		$party   = new RelyingParty( get_bloginfo( 'name' ), self::get_u2f_app_id() );
 
 		if ( COOKIE_DOMAIN ) {
-			$id = ltrim( (string) \COOKIE_DOMAIN, '.' );
+			$id = ltrim( (string) COOKIE_DOMAIN, '.' );
 			$party->setId( $id );
 		}
 

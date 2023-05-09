@@ -32,8 +32,8 @@ abstract class Utils {
 	public static function create_webauthn_server(): ServerInterface {
 		$builder = new ServerBuilder();
 		$relay   = new RelyingParty( get_bloginfo( 'name' ), self::get_u2f_app_id() );
-		if ( COOKIE_DOMAIN ) {
-			$relay->setId( ltrim( COOKIE_DOMAIN, '.' ) );
+		if ( \COOKIE_DOMAIN ) {
+			$relay->setId( ltrim( \COOKIE_DOMAIN, '.' ) );
 		}
 		$builder->setRelyingParty( $relay );
 		$builder->setCredentialStore( new WebAuthn_Credential_Store() );

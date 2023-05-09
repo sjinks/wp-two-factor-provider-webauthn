@@ -34,8 +34,8 @@ Be the first to ask.
 == Changelog ==
 
 = 2.0.3 =
-* Update translations (thank you, ChatGPT)
-* Add Ukrainian translation (thank you, ChatGPT)
+* Update translations (thank you, Copilot)
+* Add Ukrainian translation (thank you, Copilot)
 
 = 2.0.2 =
 * Update madwizard/webauthn to 0.9.0

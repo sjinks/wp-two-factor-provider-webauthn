@@ -31,9 +31,14 @@ abstract class Utils {
 
 	public static function create_webauthn_server(): ServerInterface {
 		$builder = new ServerBuilder();
-		$origin  = COOKIE_DOMAIN ? sprintf( 'https://%s', ltrim( (string) \COOKIE_DOMAIN, '.' ) ) : self::get_u2f_app_id();
-		// $origin  = self::get_u2f_app_id();
-		$builder->setRelyingParty( new RelyingParty( get_bloginfo( 'name' ), $origin ) );
+		$party   = new RelyingParty( get_bloginfo( 'name' ), self::get_u2f_app_id() );
+
+		if ( COOKIE_DOMAIN ) {
+			$id = ltrim( (string) \COOKIE_DOMAIN, '.' );
+			$party->setId( $id );
+		}
+
+		$builder->setRelyingParty( $party );
 		$builder->setCredentialStore( new WebAuthn_Credential_Store() );
 		$builder->enableExtensions( 'appid' );
 		return $builder->build();

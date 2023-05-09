@@ -97,6 +97,7 @@ jQuery(($) => {
 		ajaxRequest<PreregisterResponse>({
 			action: 'webauthn_preregister',
 			_ajax_nonce: tfa_webauthn.nonce,
+			user_id: $('#user_id').val(),
 		})
 			.then((response) => {
 				updateStatus(L_GENERATING_CREDENTIALS);
@@ -114,6 +115,7 @@ jQuery(($) => {
 						action: 'webauthn_register',
 						_ajax_nonce: tfa_webauthn.nonce,
 						credential: JSON.stringify(preparePublicKeyCredential(c)),
+						user_id: $('#user_id').val(),
 						name,
 					});
 				}
@@ -164,6 +166,7 @@ jQuery(($) => {
 				return ajaxRequest<unknown>({
 					action: 'webauthn_delete_key',
 					_ajax_nonce: nonce,
+					user_id: $('#user_id').val(),
 					handle,
 				})
 					.then(() => {
@@ -211,6 +214,7 @@ jQuery(($) => {
 				return ajaxRequest<RenameResponse>({
 					action: 'webauthn_rename_key',
 					_ajax_nonce: nonce,
+					user_id: $('#user_id').val(),
 					handle,
 					name: keyname,
 				})

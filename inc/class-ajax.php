@@ -36,15 +36,20 @@ final class AJAX {
 		}
 	}
 
-	private function check_registration_nonce( WP_User $user ): void {
-		$this->verify_nonce( "webauthn-register_key_{$user->ID}" );
+	private function check_registration_nonce( int $user_id ): void {
+		$this->verify_nonce( "webauthn-register_key_{$user_id}" );
 	}
 
 	public function wp_ajax_webauthn_preregister(): void {
-		$user = wp_get_current_user();
-		$this->check_registration_nonce( $user );
+		$user_id = (int) Utils::get_post_field_as_string( 'user_id' );
+		$this->check_registration_nonce( $user_id );
 
 		try {
+			$user = get_user_by( 'id', $user_id );
+			if ( false === $user ) {
+				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
+			}
+
 			$server   = Utils::create_webauthn_server();
 			$settings = Settings::instance();
 
@@ -64,10 +69,10 @@ final class AJAX {
 
 			$context = $options->getContext();
 			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
-			update_user_meta( $user->ID, self::REGISTRATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
+			update_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
 			wp_send_json_success( [
 				'options' => $options->getClientOptionsJson(),
-				'nonce'   => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
+				'nonce'   => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
 			] );
 		} catch ( Throwable $e ) {
 			wp_send_json_error( $e->getMessage() );
@@ -78,12 +83,17 @@ final class AJAX {
 	 * @global wpdb $wpdb
 	 */
 	public function wp_ajax_webauthn_register(): void {
-		$user = wp_get_current_user();
-		$this->check_registration_nonce( $user );
+		$user_id = (int) Utils::get_post_field_as_string( 'user_id' );
+		$this->check_registration_nonce( $user_id );
 
 		try {
+			$user = get_user_by( 'id', $user_id );
+			if ( false === $user ) {
+				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
+			}
+
 			$server  = Utils::create_webauthn_server();
-			$context = (string) get_user_meta( $user->ID, self::REGISTRATION_CONTEXT_USER_META, true );
+			$context = (string) get_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META, true );
 			/** @var mixed */
 			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 			if ( ! ( $context instanceof RegistrationContext ) ) {
@@ -151,7 +161,7 @@ final class AJAX {
 
 				wp_send_json_success( [
 					'row'   => $row,
-					'nonce' => wp_create_nonce( "webauthn-register_key_{$user->ID}" ),
+					'nonce' => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
 				] );
 			} else {
 				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
@@ -159,21 +169,28 @@ final class AJAX {
 		} catch ( Throwable $e ) {
 			wp_send_json_error( $e->getMessage(), 400 );
 		} finally {
-			delete_user_meta( $user->ID, self::REGISTRATION_CONTEXT_USER_META );
+			delete_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META );
 		}
 	}
 
 	public function wp_ajax_webauthn_delete_key(): void {
-		$handle = Utils::get_post_field_as_string( 'handle' );
+		$user_id = Utils::get_post_field_as_string( 'user_id' );
+		$handle  = Utils::get_post_field_as_string( 'handle' );
 		$this->verify_nonce( "delete-key_{$handle}" );
 
+		$user = get_user_by( 'id', $user_id );
+		if ( false === $user ) {
+			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+		}
+
 		$store = new WebAuthn_Credential_Store();
-		$store->delete_user_key( wp_get_current_user(), $handle );
+		$store->delete_user_key( $user, $handle );
 		wp_send_json_success();
 	}
 
 	public function wp_ajax_webauthn_rename_key(): void {
-		$handle = Utils::get_post_field_as_string( 'handle' );
+		$user_id = Utils::get_post_field_as_string( 'user_id' );
+		$handle  = Utils::get_post_field_as_string( 'handle' );
 		$this->verify_nonce( "rename-key_{$handle}" );
 
 		$name = Utils::get_post_field_as_string( 'name' );
@@ -181,8 +198,13 @@ final class AJAX {
 			wp_send_json_error( __( 'Key name cannot be empty.', 'two-factor-provider-webauthn' ), 400 );
 		}
 
+		$user = get_user_by( 'id', $user_id );
+		if ( false === $user ) {
+			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+		}
+
 		$store   = new WebAuthn_Credential_Store();
-		$success = $store->rename_key( wp_get_current_user(), $handle, $name );
+		$success = $store->rename_key( $user, $handle, $name );
 		if ( $success ) {
 			wp_send_json_success( [ 'name' => $name ] );
 		}

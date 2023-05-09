@@ -63,7 +63,7 @@ namespace {
 		public function prepare( $query, ...$args ) {}
 	}
 
-	/*
+	/**
 	 * @param mixed $data        Optional. Data to encode as JSON, then print and die. Default null.
 	 * @param int   $status_code Optional. The HTTP status code to output. Default null.
 	 * @param int   $options     Optional. Options to be passed to json_encode(). Default 0.

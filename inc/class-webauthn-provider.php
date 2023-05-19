@@ -50,6 +50,13 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function get_alternative_provider_label() {
+		return _x( 'Use your security key', 'Provider label', 'two-factor-provider-webauthn' );
+	}
+
+	/**
 	 * @param WP_User $user
 	 * @return void
 	 */

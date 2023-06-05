@@ -6,7 +6,6 @@ use UnexpectedValueException;
 use WP_User;
 use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 	MadWizard\WebAuthn\Credential\UserHandle,
-	MadWizard\WebAuthn\Exception\NotAvailableException,
 	MadWizard\WebAuthn\Server\UserIdentityInterface,
 };
 use wpdb;
@@ -26,11 +25,45 @@ class WebAuthn_User implements UserIdentityInterface {
 		$this->user = $user;
 	}
 
+	public function getUserHandle(): UserHandle {
+		$handle = $this->get_user_handle_if_exists();
+		if ( null === $handle ) {
+			$handle = $this->generate_and_save_handle();
+		}
+
+		return $handle;
+	}
+
 	/**
-	 * @throws NotAvailableException
 	 * @global wpdb $wpdb
 	 */
-	public function getUserHandle(): UserHandle {
+	public function generate_and_save_handle(): UserHandle {
+		/** @var wpdb $wpdb */
+		global $wpdb;
+
+		$handle = UserHandle::random()->toString();
+		$result = $wpdb->insert(
+			$wpdb->webauthn_users,
+			[
+				'user_id'     => $this->user->ID,
+				'user_handle' => $handle,
+			],
+			[ '%d', '%s' ]
+		);
+
+		if ( false === $result ) {
+			throw new UnexpectedValueException( __( 'Unable to save the user handle to the database.', 'two-factor-provider-webauthn' ) );
+		}
+
+		$key = sprintf( 'handle:%u', $this->user->ID );
+		wp_cache_set( $key, $handle, self::CACHE_GROUP_NAME, 3600 );
+		return UserHandle::fromString( $handle );
+	}
+
+	/**
+	 * @global wpdb $wpdb
+	 */
+	public function get_user_handle_if_exists(): ?UserHandle {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
@@ -39,26 +72,10 @@ class WebAuthn_User implements UserIdentityInterface {
 		$handle = wp_cache_get( $key, self::CACHE_GROUP_NAME );
 		if ( false === $handle || ! is_string( $handle ) ) {
 			$handle = $wpdb->get_var( $wpdb->prepare( "SELECT user_handle FROM {$wpdb->webauthn_users} WHERE user_id = %d", $this->user->ID ) );
-			if ( ! $handle ) {
-				$handle = UserHandle::random()->toString();
-				$result = $wpdb->insert(
-					$wpdb->webauthn_users,
-					[
-						'user_id'     => $this->user->ID,
-						'user_handle' => $handle,
-					],
-					[ '%d', '%s' ]
-				);
-
-				if ( false === $result ) {
-					throw new UnexpectedValueException( __( 'Unable to save the user handle to the database.', 'two-factor-provider-webauthn' ) );
-				}
-			}
-
 			wp_cache_set( $key, $handle, self::CACHE_GROUP_NAME, 3600 );
 		}
 
-		return UserHandle::fromString( $handle );
+		return $handle ? UserHandle::fromString( $handle ) : null;
 	}
 
 	public function getUsername(): string {

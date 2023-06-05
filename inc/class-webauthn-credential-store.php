@@ -90,13 +90,18 @@ class WebAuthn_Credential_Store implements CredentialStoreInterface {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
-		$handle = WebAuthn_User::get_for( $user )->getUserHandle();
+		$wauser = WebAuthn_User::get_for( $user );
+		$handle = $wauser->get_user_handle_if_exists();
 		/** @psalm-var CredentialRow[] $modern */
-		$modern = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->webauthn_credentials} WHERE user_handle = %s", $handle->toString() ) );
+		$modern = $handle ? $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->webauthn_credentials} WHERE user_handle = %s", $handle->toString() ) ) : [];
 		if ( empty( $modern ) ) {
 			/** @var array */
 			$legacy = get_user_meta( $user->ID, self::REGISTERED_KEY_LEGACY_META );
 			if ( ! empty( $legacy ) ) {
+				if ( ! $handle ) {
+					$handle = $wauser->generate_and_save_handle();
+				}
+
 				Credential_Migrator::migrate( $user, $handle );
 				/** @psalm-var CredentialRow[] $modern */
 				$modern = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->webauthn_credentials} WHERE user_handle = %s", $handle->toString() ) );

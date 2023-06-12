@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@8cac79fdb158907c5fbc74b91c90342b86f9bdf5 # 2.25.3
+        uses: shivammathur/setup-php@4bd44f22a98a19e0950cbad5f31095157cc9621b # 2.25.4
         with:
           coverage: none
         env:

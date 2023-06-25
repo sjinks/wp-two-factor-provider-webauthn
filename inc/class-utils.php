@@ -41,6 +41,9 @@ abstract class Utils {
 		$builder->setRelyingParty( $party );
 		$builder->setCredentialStore( new WebAuthn_Credential_Store() );
 		$builder->enableExtensions( 'appid' );
+
+		do_action( 'tfa_webauthn_init_server', $builder );
+
 		return $builder->build();
 	}
 

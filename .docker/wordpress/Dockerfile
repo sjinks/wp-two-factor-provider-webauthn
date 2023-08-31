@@ -1,4 +1,4 @@
-ARG VERSION=php8.0@sha256:3556949350924148437d1c40a2bfd74335fcd045da8b298e4ec4b6d5c53b4dc8
+ARG VERSION=php8.0@sha256:32d2fee2b6beef0cf151572b6cef5f3a4801639cb13c435a3aa907e7ffe4a4dd
 FROM wordpress:${VERSION}
 RUN \
     a2enmod ssl && \

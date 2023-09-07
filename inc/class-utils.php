@@ -24,7 +24,7 @@ abstract class Utils {
 	 * @psalm-param array<string,mixed> $params
 	 * @psalm-suppress PossiblyUnusedParam
 	 */
-	public static function render( string $view, array $params = [] ): void {
+	public static function render( string $view, array $params = [] ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		/** @psalm-suppress UnresolvableInclude */
 		require __DIR__ . '/../views/' . $view . '.php'; // NOSONAR
 	}

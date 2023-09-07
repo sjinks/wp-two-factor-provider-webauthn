@@ -2,9 +2,10 @@
 
 use WildWolf\WordPress\TwoFactorWebAuthn\Key_Table;
 
-/** @psalm-var array{user: WP_User} $params */
+defined( 'ABSPATH' ) || die(); 
 
-defined( 'ABSPATH' ) || die(); ?>
+/** @psalm-var array{user: WP_User} $params */
+?>
 
 <div id="webauthn-security-keys-section">
 	<h3><?php esc_html_e( 'Security Keys (WebAuthn)', 'two-factor-provider-webauthn' ); ?></h3>

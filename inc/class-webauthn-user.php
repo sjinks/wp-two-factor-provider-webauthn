@@ -52,7 +52,7 @@ class WebAuthn_User implements UserIdentityInterface {
 		);
 
 		if ( false === $result ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escape when printing
+			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- escape when printing
 			throw new UnexpectedValueException( __( 'Unable to save the user handle to the database.', 'two-factor-provider-webauthn' ) );
 		}
 

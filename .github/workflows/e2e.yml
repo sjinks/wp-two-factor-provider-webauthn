@@ -25,9 +25,11 @@ jobs:
           - php7.4
           - php8.0
           - php8.1
+          - php8.2
           - beta-php7.4
           - beta-php8.0
           - beta-php8.1
+          - beta-php8.2
     steps:
       - name: Checkout source code
         uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0

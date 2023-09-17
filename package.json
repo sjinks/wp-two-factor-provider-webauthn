@@ -33,6 +33,6 @@
     "typescript": "^5.0.0"
   },
   "overrides": {
-    "prettier": "^2.8.0"
+    "eslint-plugin-prettier": "^5.0.0"
   }
 }

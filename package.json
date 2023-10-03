@@ -22,6 +22,7 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/jquery": "^3.5.13",
     "@types/jqueryui": "^1.12.16",
+    "@types/node": "^20.8.2",
     "@wordpress/babel-plugin-makepot": "^5.16.0",
     "@wordpress/eslint-plugin": "^16.0.0",
     "@wordpress/i18n": "^4.2.4",
@@ -31,8 +32,5 @@
     "playwright-core": "^1.18.1",
     "rollup": "^3.0.0",
     "typescript": "^5.0.0"
-  },
-  "overrides": {
-    "eslint-plugin-prettier": "^5.0.0"
   }
 }

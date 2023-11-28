@@ -75,21 +75,21 @@ final class Settings implements ArrayAccess {
 	}
 
 	/**
-	 * @param mixed $_offset
-	 * @param mixed $_value
+	 * @param mixed $offset
+	 * @param mixed $value
 	 * @psalm-return never
 	 * @throws LogicException
 	 */
-	public function offsetSet( $_offset, $_value ): void {
+	public function offsetSet( $offset, $value ): void {
 		throw new LogicException();
 	}
 
 	/**
-	 * @param mixed $_offset
+	 * @param mixed $offset
 	 * @psalm-return never
 	 * @throws LogicException
 	 */
-	public function offsetUnset( $_offset ): void {
+	public function offsetUnset( $offset ): void {
 		throw new LogicException();
 	}
 

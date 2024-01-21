@@ -76,6 +76,7 @@ class WebAuthn_User implements UserIdentityInterface {
 			wp_cache_set( $key, $handle, self::CACHE_GROUP_NAME, 3600 );
 		}
 
+		/** @psalm-suppress RiskyTruthyFalsyComparison */
 		return $handle ? UserHandle::fromString( $handle ) : null;
 	}
 
@@ -103,6 +104,7 @@ class WebAuthn_User implements UserIdentityInterface {
 			wp_cache_set( $key, (int) $user_id, self::CACHE_GROUP_NAME, 3600 );
 		}
 
+		/** @psalm-suppress RiskyTruthyFalsyComparison */
 		return $user_id ? new WP_User( (int) $user_id ) : null;
 	}
 }

@@ -126,6 +126,7 @@ final class InputFactory {
 	 * @psalm-param HelpArgs&mixed[] $args
 	 */
 	private static function render_help( array $args ): void {
+		/** @psalm-suppress RiskyTruthyFalsyComparison */
 		if ( ! empty( $args['help'] ) ) {
 			printf(
 				'<p class="help">%s</p>',

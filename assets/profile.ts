@@ -87,7 +87,9 @@ jQuery(($) => {
 		const message = e instanceof DOMException ? decodeDOMException(e, false) : e.message;
 		const table = parent.find('.registered-keys');
 		table.siblings('.notice').remove();
-		table.before('<div class="notice notice-error inline" role="alert"><p>' + message + '</p></div>');
+		table.before(
+			'<div class="tfa-webauthn-alert notice notice-error inline" role="alert"><p>' + message + '</p></div>',
+		);
 	}
 
 	function startRegistration() {
@@ -128,7 +130,9 @@ jQuery(($) => {
 				table.find('tbody > tr:last-child').after(response.data.row);
 				table.find('tbody > tr.no-items').remove();
 				table.before(
-					'<div class="notice notice-success inline" role="alert"><p>' + L_KEY_REGISTERED + '</p></div>',
+					'<div class="tfa-webauthn-alert notice notice-success inline" role="alert"><p>' +
+						L_KEY_REGISTERED +
+						'</p></div>',
 				);
 			})
 			.catch(errorHandler)
@@ -163,7 +167,7 @@ jQuery(($) => {
 			.on('click', '.button-link-delete', () => {
 				actions.siblings('.confirm-revoke').hide();
 				updateStatus(L_SENDING_REQUEST);
-				return ajaxRequest<unknown>({
+				ajaxRequest<unknown>({
 					action: 'webauthn_delete_key',
 					_ajax_nonce: nonce,
 					user_id: $('#user_id').val(),
@@ -171,7 +175,9 @@ jQuery(($) => {
 				})
 					.then(() => {
 						table.before(
-							'<div class="notice notice-success inline" role="alert"><p>' + L_KEY_REVOKED + '</p></div>',
+							'<div class="tfa-webauthn-alert notice notice-success inline" role="alert"><p>' +
+								L_KEY_REVOKED +
+								'</p></div>',
 						);
 						a.closest('tr').remove();
 						if (!table.find('tbody > tr').length) {
@@ -211,7 +217,7 @@ jQuery(($) => {
 				const keyname = actions.siblings('.rename-key').find('input[type="text"]').val() as string;
 				actions.siblings('.rename-key').hide();
 				updateStatus(L_SENDING_REQUEST);
-				return ajaxRequest<RenameResponse>({
+				ajaxRequest<RenameResponse>({
 					action: 'webauthn_rename_key',
 					_ajax_nonce: nonce,
 					user_id: $('#user_id').val(),
@@ -220,7 +226,9 @@ jQuery(($) => {
 				})
 					.then((r) => {
 						table.before(
-							'<div class="notice notice-success inline" role="alert"><p>' + L_KEY_RENAMED + '</p></div>',
+							'<div class="tfa-webauthn-alert notice notice-success inline" role="alert"><p>' +
+								L_KEY_RENAMED +
+								'</p></div>',
 						);
 
 						a.closest('td').find('span.key-name').text(r.data.name);

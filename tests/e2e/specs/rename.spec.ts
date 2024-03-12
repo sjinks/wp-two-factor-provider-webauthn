@@ -45,7 +45,8 @@ test('Rename Key Workflow', async ({ page }) => {
 		const recodedCID1 = credential1Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 		const recodedCID2 = credential2Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 		await profilePage.renameKey(recodedCID1, newKey1Name, false);
-		await profilePage.renameKey(recodedCID2, newKey2Name, true);
+		const locator = await profilePage.renameKey(recodedCID2, newKey2Name, true);
+		await expect(locator).toContainText('The key has been renamed');
 
 		const [actualKeyName1, actualKeyName2] = await Promise.all([
 			profilePage.getKeyNameByCID(recodedCID1),
@@ -69,7 +70,8 @@ test('Rename Key Workflow', async ({ page }) => {
 		expect(page.url()).toContain('/wp-admin/profile.php');
 		const profilePage = new ProfilePage(page);
 		const recodedCID1 = credential1Id.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-		await profilePage.renameKey(recodedCID1, '', true);
+		const locator = await profilePage.renameKey(recodedCID1, '', true);
+		await expect(locator).toContainText('Key name cannot be empty');
 
 		const actualKeyName1 = await profilePage.getKeyNameByCID(recodedCID1);
 		const expectedKey1Name = key1Name;

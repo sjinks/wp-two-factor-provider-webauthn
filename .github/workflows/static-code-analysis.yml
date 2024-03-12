@@ -28,7 +28,7 @@ jobs:
           coverage: none
 
       - name: Install Composer Dependencies
-        uses: ramsey/composer-install@83af392bf5f031813d25e6fe4cd626cdba9a2df6 # 2.2.0
+        uses: ramsey/composer-install@1919f6c305aea6ab10e6181a8ddf72317ad77e0e # 2.3.1
 
       - name: Run psalm
         run: composer psalm -- --output-format=github

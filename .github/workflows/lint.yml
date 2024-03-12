@@ -30,7 +30,7 @@ jobs:
           fail-fast: 'true'
 
       - name: Install dependencies
-        uses: ramsey/composer-install@83af392bf5f031813d25e6fe4cd626cdba9a2df6 # 2.2.0
+        uses: ramsey/composer-install@57532f8be5bda426838819c5ee9afb8af389d51a # 3.0.0
 
       - name: Add error matcher
         run: echo "::add-matcher::$(pwd)/.github/checkstyle-problem-matcher.json"

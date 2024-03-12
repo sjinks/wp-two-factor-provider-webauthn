@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 
 const selectors = {
-	menuBarMyAccount: '#wp-admin-bar-my-account a[aria-haspopup="true"]',
+	menuBarMyAccount: '#wp-admin-bar-my-account',
 	logoutLink: '#wp-admin-bar-logout > a',
 };
 
@@ -20,7 +20,6 @@ export class GenericAdminPage {
 
 	public async logOut(): Promise<void> {
 		await this.menuBarMyAccountLocator.hover();
-		await this.logoutLinkLocator.waitFor({ state: 'visible' });
 		await this.logoutLinkLocator.click();
 		await this.page.waitForLoadState('domcontentloaded');
 	}

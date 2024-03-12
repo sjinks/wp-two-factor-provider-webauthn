@@ -57,6 +57,6 @@ export class LoginPage {
 
 	public async loginWithKey(): Promise<void> {
 		await this.webAuttnRetryButtonLocator.click();
-		await this.page.waitForLoadState('domcontentloaded');
+		return this.page.waitForLoadState('domcontentloaded');
 	}
 }

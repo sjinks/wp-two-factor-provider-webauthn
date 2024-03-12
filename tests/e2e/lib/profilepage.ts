@@ -66,7 +66,9 @@ export class ProfilePage {
 			this.webAuthnSectionLocator.locator(waSelectors.registerNewKeyButton).click(),
 		]);
 
-		return this.page.waitForSelector(waSelectors.operationStatus('The key has been registered'));
+		return this.page
+			.locator(waSelectors.operationStatus('The key has been registered'))
+			.waitFor({ state: 'visible' });
 	}
 
 	public async enableWebAuthnProvider(): Promise<unknown> {
@@ -119,9 +121,9 @@ export class ProfilePage {
 				confirmRenameLocator.click(),
 			]);
 
-			await this.page.waitForSelector(
-				waSelectors.operationStatus(newName ? 'The key has been renamed' : 'Key name cannot be empty'),
-			);
+			await this.page
+				.locator(waSelectors.operationStatus(newName ? 'The key has been renamed' : 'Key name cannot be empty'))
+				.waitFor({ state: 'visible' });
 		}
 	}
 

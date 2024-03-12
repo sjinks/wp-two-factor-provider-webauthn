@@ -1,4 +1,4 @@
-import { Page, CDPSession } from '@playwright/test';
+import { Page, CDPSession, expect } from '@playwright/test';
 import { LoginPage } from './loginpage';
 import type { Protocol } from 'playwright-core/types/protocol';
 import { ProfilePage } from './profilepage';
@@ -18,7 +18,8 @@ export async function registerKey(
 ): Promise<Protocol.WebAuthn.Credential> {
 	const profilePage = new ProfilePage(page);
 	await profilePage.visit();
-	await profilePage.registerKey(keyName);
+	const locator = await profilePage.registerKey(keyName);
+	await expect(locator).toContainText('The key has been registered');
 
 	const credentials = await getCredentials(client, authenticatorId);
 	return credentials[0];

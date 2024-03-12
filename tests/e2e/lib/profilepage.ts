@@ -16,7 +16,7 @@ const waSelectors = {
 	registerNewKeyButton: 'div.add-webauthn-key > p > button',
 	keyActions: (credentialId: string) => `table.webauthn-keys > tbody td.name:has(a[data-handle="${credentialId}"])`,
 	noItemsRow: 'table.webauthn-keys > tbody > tr.no-items',
-	operationStatus: (text: string) => `div[role="alert"] > p:has-text("${text}")`,
+	operationStatus: 'div.tfa-webauthn-alert',
 };
 
 const waKeyActionsSelectors = {
@@ -40,6 +40,7 @@ const ajaxRequestChecker =
 export class ProfilePage {
 	private readonly page: Page;
 
+	private readonly operationStatusLocator: Locator;
 	private readonly twoFactorOptionsLocator: Locator;
 	private readonly webAuthnSectionLocator: Locator;
 	private readonly updateProfileButtonLocator: Locator;
@@ -47,6 +48,7 @@ export class ProfilePage {
 	public constructor(page: Page) {
 		this.page = page;
 
+		this.operationStatusLocator = page.locator(waSelectors.operationStatus);
 		this.twoFactorOptionsLocator = page.locator(selectors.twoFactorOptions);
 		this.webAuthnSectionLocator = page.locator(selectors.webAuthnSection);
 		this.updateProfileButtonLocator = page.locator(selectors.updateProfileButton);
@@ -56,7 +58,7 @@ export class ProfilePage {
 		return this.page.goto('/wp-admin/profile.php', { waitUntil: 'domcontentloaded' });
 	}
 
-	public async registerKey(keyName: string): Promise<unknown> {
+	public async registerKey(keyName: string): Promise<Locator> {
 		await this.webAuthnSectionLocator.scrollIntoViewIfNeeded();
 
 		await this.webAuthnSectionLocator.locator(waSelectors.keyNameInput).fill(keyName);
@@ -66,9 +68,7 @@ export class ProfilePage {
 			this.webAuthnSectionLocator.locator(waSelectors.registerNewKeyButton).click(),
 		]);
 
-		return this.page
-			.locator(waSelectors.operationStatus('The key has been registered'))
-			.waitFor({ state: 'visible' });
+		return this.operationStatusLocator;
 	}
 
 	public async enableWebAuthnProvider(): Promise<unknown> {
@@ -104,7 +104,7 @@ export class ProfilePage {
 		return noItemsRowLocator.waitFor({ state: 'visible' });
 	}
 
-	public async renameKey(credentialId: string, newName: string, doRename: boolean): Promise<void> {
+	public async renameKey(credentialId: string, newName: string, doRename: boolean): Promise<Locator> {
 		const keyActionsLocator = this.webAuthnSectionLocator.locator(waSelectors.keyActions(credentialId));
 		const renameLinkLocator = keyActionsLocator.locator(waKeyActionsSelectors.renameKey);
 		const newNameInputLocator = keyActionsLocator.locator(waKeyActionsSelectors.renameKeyInput);
@@ -120,11 +120,9 @@ export class ProfilePage {
 				this.page.waitForResponse(ajaxRequestChecker('webauthn_rename_key')),
 				confirmRenameLocator.click(),
 			]);
-
-			await this.page
-				.locator(waSelectors.operationStatus(newName ? 'The key has been renamed' : 'Key name cannot be empty'))
-				.waitFor({ state: 'visible' });
 		}
+
+		return this.operationStatusLocator;
 	}
 
 	public getKeyNameByCID(credentialId: string): Promise<string> {

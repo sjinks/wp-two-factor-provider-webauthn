@@ -5,12 +5,17 @@ on:
     tags:
       - "**"
 
+permissions:
+  contents: none
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
     steps:
       - name: Checkout
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
@@ -21,12 +26,23 @@ jobs:
           (cd /var/tmp/two-factor-provider-webauthn && composer install --no-dev --no-interaction && composer remove --update-no-dev --no-interaction composer/installers cweagans/composer-patches && rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/.github vendor/madwizard/webauthn/conformance vendor/madwizard/webauthn/tests vendor/psr/http-message/docs vendor/psr/log/Psr/Log/Test vendor/typisttech) && \
           (cd /var/tmp && zip -r -9 two-factor-provider-webauthn.zip two-factor-provider-webauthn)
 
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@897ed5eab6ed058a474202017ada7f40bfa52940 # v1.0.0
+        id: attest
+        with:
+          subject-path: /var/tmp/two-factor-provider-webauthn.zip
+
+      - name: Generate provenance file
+        run: |
+          jq .dsseEnvelope "${{ steps.attest.outputs.bundle-path }}" > /var/tmp/two-factor-provider-webauthn.intoto.jsonl
+
       - name: Release
         uses: softprops/action-gh-release@9d7c94cfd0a1f3ed45544c887983e9fa900f0564 # v2.0.4
         with:
           generate_release_notes: true
           files: |
             /var/tmp/two-factor-provider-webauthn.zip
+            /var/tmp/two-factor-provider-webauthn.intoto.jsonl
 
   deploy:
     name: Deploy to wordpress.org
@@ -45,7 +61,7 @@ jobs:
           rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/{.github,conformance,tests} vendor/psr/log/Psr/Log/Test vendor/psr/http-message/docs vendor/typisttech
 
       - name: Deploy to wordpress.org
-        uses: 10up/action-wordpress-plugin-deploy@stable
+        uses: 10up/action-wordpress-plugin-deploy@abb939a0d0bfd01063e8d1933833209201557381 # 2.2.2
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

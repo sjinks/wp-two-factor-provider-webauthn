@@ -12,11 +12,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   e2e:
     name: "Run E2E tests (use wordpress:${{ matrix.wordpress }} image)"
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -67,6 +69,8 @@ jobs:
 
   e2e-bundle:
     name: Run E2E tests on the generated plugin
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code

@@ -12,11 +12,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   php:
     name: Lint PHP files
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Check out source code
@@ -40,6 +42,8 @@ jobs:
 
   js:
     name: Lint JS files
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code

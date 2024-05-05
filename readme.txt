@@ -3,8 +3,8 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
-Tested up to: 6.2.0
-Stable tag: 2.1.0
+Tested up to: 6.5
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,12 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.2.0 =
+* Do not create user handles if they are not needed
+* Add a hook to customize WebAuthN server
+* Update dependencies
+* Refactor tests
 
 = 2.1.0 =
 * GH-462: Use correct user ID when editing a user

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfffa41109bbc9f0b73d0366388105c5",
+    "content-hash": "4503b37baf6792f4b9d2c8afccbc4db8",
     "packages": [
         {
             "name": "composer/installers",
@@ -609,16 +609,16 @@
         },
         {
             "name": "madwizard/webauthn",
-            "version": "v0.9.1",
+            "version": "v0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/madwizard-org/webauthn-server.git",
-                "reference": "0e6ee14ee4bbe5ec97f0f868c9972c163b0c95f7"
+                "reference": "64c3d3945a83ddabde8ee2fbdcd0ee5d3b1b15a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/madwizard-org/webauthn-server/zipball/0e6ee14ee4bbe5ec97f0f868c9972c163b0c95f7",
-                "reference": "0e6ee14ee4bbe5ec97f0f868c9972c163b0c95f7",
+                "url": "https://api.github.com/repos/madwizard-org/webauthn-server/zipball/64c3d3945a83ddabde8ee2fbdcd0ee5d3b1b15a5",
+                "reference": "64c3d3945a83ddabde8ee2fbdcd0ee5d3b1b15a5",
                 "shasum": ""
             },
             "require": {
@@ -636,16 +636,16 @@
                 "sop/crypto-types": "^0.3.0",
                 "sop/x501": "^0.6.1",
                 "sop/x509": "^0.7.0",
-                "symfony/cache": "^4.4|^5.2|^6.0"
+                "symfony/cache": "^4.4|^5.2|^6.0|^7.0"
             },
             "require-dev": {
                 "phpseclib/phpseclib": "^3.0.1",
                 "phpstan/phpstan": "^0.12.64",
                 "phpunit/phpunit": "^8.5.29",
                 "sebastian/comparator": "^3.0.5",
-                "symfony/console": "^5.2",
+                "symfony/console": "^5.4",
                 "symfony/dotenv": "^5.2",
-                "symfony/var-dumper": "^5.2"
+                "symfony/var-dumper": "^5.4"
             },
             "type": "library",
             "autoload": {
@@ -666,9 +666,9 @@
             "description": "Web Authentication API server for PHP",
             "support": {
                 "issues": "https://github.com/madwizard-org/webauthn-server/issues",
-                "source": "https://github.com/madwizard-org/webauthn-server/tree/v0.9.1"
+                "source": "https://github.com/madwizard-org/webauthn-server/tree/v0.10.0"
             },
-            "time": "2023-01-03T14:00:10+00:00"
+            "time": "2024-05-28T08:49:29+00:00"
         },
         {
             "name": "psr/cache",
@@ -821,20 +821,20 @@
         },
         {
             "name": "psr/http-factory",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0",
+                "php": ">=7.1",
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
@@ -858,7 +858,7 @@
                     "homepage": "https://www.php-fig.org/"
                 }
             ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
             "keywords": [
                 "factory",
                 "http",
@@ -870,9 +870,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2023-04-10T20:10:41+00:00"
+            "time": "2024-04-15T12:06:14+00:00"
         },
         {
             "name": "psr/http-message",
@@ -1359,16 +1359,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v5.4.39",
+            "version": "v5.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "982237e35079fdcc31ab724f06b6131992c4fd24"
+                "reference": "89005bc368ca02ed0433c592e4d27670d0844a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/982237e35079fdcc31ab724f06b6131992c4fd24",
-                "reference": "982237e35079fdcc31ab724f06b6131992c4fd24",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/89005bc368ca02ed0433c592e4d27670d0844a66",
+                "reference": "89005bc368ca02ed0433c592e4d27670d0844a66",
                 "shasum": ""
             },
             "require": {
@@ -1397,7 +1397,7 @@
                 "cache/integration-tests": "dev-master",
                 "doctrine/cache": "^1.6|^2.0",
                 "doctrine/dbal": "^2.13.1|^3|^4",
-                "predis/predis": "^1.1",
+                "predis/predis": "^1.1|^2.0",
                 "psr/simple-cache": "^1.0|^2.0",
                 "symfony/config": "^4.4|^5.0|^6.0",
                 "symfony/dependency-injection": "^4.4|^5.0|^6.0",
@@ -1436,7 +1436,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v5.4.39"
+                "source": "https://github.com/symfony/cache/tree/v5.4.40"
             },
             "funding": [
                 {
@@ -1452,7 +1452,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T08:26:06+00:00"
+            "time": "2024-05-31T14:33:22+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -1841,16 +1841,16 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v5.4.39",
+            "version": "v5.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "e85a27cfdbb48e5e9a2d4a5f04efa359857771fd"
+                "reference": "6a13d37336d512927986e09f19a4bed24178baa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/e85a27cfdbb48e5e9a2d4a5f04efa359857771fd",
-                "reference": "e85a27cfdbb48e5e9a2d4a5f04efa359857771fd",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/6a13d37336d512927986e09f19a4bed24178baa6",
+                "reference": "6a13d37336d512927986e09f19a4bed24178baa6",
                 "shasum": ""
             },
             "require": {
@@ -1894,7 +1894,7 @@
                 "serialize"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-exporter/tree/v5.4.39"
+                "source": "https://github.com/symfony/var-exporter/tree/v5.4.40"
             },
             "funding": [
                 {
@@ -1910,7 +1910,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T08:26:06+00:00"
+            "time": "2024-05-31T14:33:22+00:00"
         },
         {
             "name": "typisttech/imposter",

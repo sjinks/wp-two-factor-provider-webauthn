@@ -3105,16 +3105,16 @@
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.5.4",
+            "version": "6.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "3ca1d2c88cc4b4d06e860424b38ff9ac9a6e200c"
+                "reference": "be6edfa018053533267a16e73f6623b0fa27b2df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/3ca1d2c88cc4b4d06e860424b38ff9ac9a6e200c",
-                "reference": "3ca1d2c88cc4b4d06e860424b38ff9ac9a6e200c",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/be6edfa018053533267a16e73f6623b0fa27b2df",
+                "reference": "be6edfa018053533267a16e73f6623b0fa27b2df",
                 "shasum": ""
             },
             "require": {
@@ -3122,7 +3122,7 @@
                 "php": ">=7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "6.5.4"
+                "wordpress/core-implementation": "6.5.5"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -3149,7 +3149,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2024-06-05T15:31:06+00:00"
+            "time": "2024-06-24T17:24:47+00:00"
         },
         {
             "name": "mck89/peast",

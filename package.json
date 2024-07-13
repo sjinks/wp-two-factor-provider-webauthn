@@ -24,7 +24,7 @@
     "@types/jqueryui": "^1.12.16",
     "@types/node": "^20.8.2",
     "@wordpress/babel-plugin-makepot": "^6.0.0",
-    "@wordpress/eslint-plugin": "^19.0.0",
+    "@wordpress/eslint-plugin": "^20.0.0",
     "@wordpress/i18n": "^5.0.0",
     "@wwa/rollup-plugin-terser": "^1.0.1",
     "eslint-formatter-gha": "^1.4.1",

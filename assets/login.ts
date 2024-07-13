@@ -50,7 +50,7 @@ function startAuthentication(): void {
 
 const callback = (): void => {
 	const retryButton = document.querySelector('#webauthn-retry .button') as HTMLButtonElement;
-	retryButton.addEventListener('click', (e) => {
+	retryButton.addEventListener('click', () => {
 		(document.getElementById('webauthn-retry') as HTMLDivElement).setAttribute('hidden', 'hidden');
 		startAuthentication();
 	});

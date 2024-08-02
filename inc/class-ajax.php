@@ -11,7 +11,6 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 	MadWizard\WebAuthn\Server\Registration\RegistrationContext,
 	MadWizard\WebAuthn\Server\Registration\RegistrationOptions,
 };
-use WP_User;
 use wpdb;
 
 final class AJAX {
@@ -154,10 +153,15 @@ final class AJAX {
 					throw new UnexpectedValueException( __( 'Unable to save the key to the database.', 'two-factor-provider-webauthn' ) );
 				}
 
-				$table = new Key_Table( $user );
-				ob_start();
-				$table->single_row( (object) $key );
-				$row = ob_get_clean();
+				$suppress_output = (bool) apply_filters( 'webauthn_register_key_suppress_output', false, $user, $key );
+				if ( ! $suppress_output ) {
+					$table = new Key_Table( $user );
+					ob_start();
+					$table->single_row( (object) $key );
+					$row = ob_get_clean();
+				} else {
+					$row = '';
+				}
 
 				wp_send_json_success( [
 					'row'   => $row,

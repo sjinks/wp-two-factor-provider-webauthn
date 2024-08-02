@@ -14,10 +14,12 @@ abstract class Utils {
 		$url_parts = wp_parse_url( home_url() );
 
 		if ( ! empty( $url_parts['port'] ) ) {
-			return sprintf( 'https://%s:%d', $url_parts['host'], $url_parts['port'] );
+			$url = sprintf( 'https://%s:%d', $url_parts['host'], $url_parts['port'] );
+		} else {
+			$url = sprintf( 'https://%s', $url_parts['host'] );
 		}
 
-		return sprintf( 'https://%s', $url_parts['host'] );
+		return (string) apply_filters( 'webauthn_app_id', $url );
 	}
 
 	/**

@@ -10,6 +10,8 @@ final class Plugin {
 	use Singleton;
 
 	private function __construct() {
+		Schema::instance();  // Initialize wpdb properties
+
 		$this->set_up_hooks();
 	}
 

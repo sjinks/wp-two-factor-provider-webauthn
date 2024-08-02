@@ -27,7 +27,7 @@ jobs:
           (cd /var/tmp && zip -r -9 two-factor-provider-webauthn.zip two-factor-provider-webauthn)
 
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@5e9cb68e95676991667494a6a4e59b8a2f13e1d0 # v1.3.3
+        uses: actions/attest-build-provenance@210c1913531870065f03ce1f9440dd87bc0938cd # v1.4.0
         id: attest
         with:
           subject-path: /var/tmp/two-factor-provider-webauthn.zip
@@ -37,7 +37,7 @@ jobs:
           jq .dsseEnvelope "${{ steps.attest.outputs.bundle-path }}" > /var/tmp/two-factor-provider-webauthn.intoto.jsonl
 
       - name: Release
-        uses: softprops/action-gh-release@a74c6b72af54cfa997e81df42d94703d6313a2d0 # v2.0.6
+        uses: softprops/action-gh-release@c062e08bd532815e2082a85e87e3ef29c3e6d191 # v2.0.8
         with:
           generate_release_notes: true
           files: |

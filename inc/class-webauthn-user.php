@@ -81,7 +81,15 @@ class WebAuthn_User implements UserIdentityInterface {
 	}
 
 	public function getUsername(): string {
+		$use_nicename = (bool) apply_filters( 'webauthn_register_key_use_nicename', false );
+		if ( $use_nicename ) {
+			return $this->user->user_nicename;
+		}
 		return $this->user->user_login;
+	}
+
+	public function getNickname(): string {
+		return $this->user->user_nicename;
 	}
 
 	public function getDisplayName(): string {

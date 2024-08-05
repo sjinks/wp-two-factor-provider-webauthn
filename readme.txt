@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 6.6
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,9 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.4.0 =
+* GH-830: introduce `webauthn_register_key_use_nicename` filter (props kat3samsin)
 
 = 2.3.0 =
 * GH-827: Add `webauthn_register_key_suppress_output` filter

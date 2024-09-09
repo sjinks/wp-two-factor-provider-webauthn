@@ -71,6 +71,7 @@ jobs:
         with:
           disable-sudo: true
           egress-policy: block
+          disable-file-monitoring: true
           allowed-endpoints: >
             api.github.com:443
             github.com:443

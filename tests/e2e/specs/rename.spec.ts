@@ -1,4 +1,4 @@
-import { test, expect, CDPSession } from '@playwright/test';
+import { test, expect, type CDPSession } from '@playwright/test';
 import settings from '../e2e-settings';
 import { addVirtualAuthenticator, clearCredentials, removeVirtualAuthenticator } from '../lib/webauthn-helpers';
 import { login, registerKey } from '../lib/test-helpers';

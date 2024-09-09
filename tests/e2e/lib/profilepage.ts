@@ -1,4 +1,4 @@
-import { Locator, Page, Response } from '@playwright/test';
+import type { Locator, Page, Response } from '@playwright/test';
 
 const selectors = {
 	twoFactorOptions: '#two-factor-options',

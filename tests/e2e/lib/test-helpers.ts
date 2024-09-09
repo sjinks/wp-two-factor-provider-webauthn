@@ -1,4 +1,4 @@
-import { Page, CDPSession, expect } from '@playwright/test';
+import { type Page, type CDPSession, expect } from '@playwright/test';
 import { LoginPage } from './loginpage';
 import type { Protocol } from 'playwright-core/types/protocol';
 import { ProfilePage } from './profilepage';

@@ -1,0 +1,57 @@
+--- src/Crypto/CoseKey.php
++++ src/Crypto/CoseKey.php
+@@ -74,12 +74,23 @@ public function toString(): string
+ 
+     public static function parseCbor(ByteBuffer $buffer, int $offset = 0, int &$endOffset = null): CoseKey
+     {
++        // Fix incorrect EdDSA keys
++        $isIncorrectKey = $buffer->getBytes($offset, 17) == "\xa3\x01\x63\x4f\x4b\x50\x03\x27\x20\x67\x45\x64\x32\x35\x35\x31\x39";
++        if ($isIncorrectKey) {
++            $buffer = new ByteBuffer($buffer->getBytes(0, $offset) . "\xa4" . $buffer->getBytes($offset + 1, $buffer->getLength() - $offset - 1));
++        }
+         $data = CborDecoder::decodeInPlace($buffer, $offset, $endOffset);
+ 
+         if (!$data instanceof CborMap) {
+             throw new DataValidationException('Failed to decode CBOR encoded COSE key'); // TODO: change exceptions
+         }
+ 
++        // Replace textual kty's with their numeric counterparts
++        if ($data->get(self::COSE_KEY_PARAM_KTY) === 'OKP')
++            $data->set(self::COSE_KEY_PARAM_KTY, 1);
++        elseif ($data->get(self::COSE_KEY_PARAM_KTY) === 'EC2')
++            $data->set(self::COSE_KEY_PARAM_KTY, 2);
++
+         DataValidator::checkMap(
+             $data,
+             [
+@@ -88,6 +99,11 @@ public static function parseCbor(ByteBuffer $buffer, int $offset = 0, int &$endO
+             false
+         );
+ 
++        // Fix incorrect EdDSA keys, part 2: x coordinate should be bstr, not array
++        if ($isIncorrectKey && $data->has(-2) && is_array($data->get(-2))) {
++            $data->set(-2, new ByteBuffer(implode(array_map('chr', $data->get(-2)))));
++        }
++
+         $keyType = $data->get(self::COSE_KEY_PARAM_KTY);
+         return self::createKey($keyType, $data);
+     }
+--- src/Crypto/OkpKey.php
++++ src/Crypto/OkpKey.php
+@@ -113,6 +113,16 @@ public function asDer(): string
+ 
+     public static function fromCborData(CborMap $data): OkpKey
+     {
++        // Translate literal curves to their numeric constant
++        if ($data->get(self::KTP_CRV) === 'X25519')
++            $data->set(self::KTP_CRV, 4);
++        elseif ($data->get(self::KTP_CRV) === 'X448')
++            $data->set(self::KTP_CRV, 5);
++        elseif ($data->get(self::KTP_CRV) === 'Ed25519')
++            $data->set(self::KTP_CRV, 6);
++        elseif ($data->get(self::KTP_CRV) === 'Ed448')
++            $data->set(self::KTP_CRV, 7);
++
+         // Note: leading zeroes in X and Y coordinates are preserved in CBOR
+         // See RFC8152 13.1.1. Double Coordinate Curves
+         DataValidator::checkMap(

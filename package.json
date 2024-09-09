@@ -1,6 +1,6 @@
 {
   "name": "two-factor-provider-webauthn",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "private": true,
   "description": "",
   "scripts": {
@@ -15,22 +15,22 @@
   "author": "Volodymyr Kolesnykov <volodymyr@wildwolf.name> (https://wildwolf.name/)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "@myrotvorets/po2json": "^1.0.2",
-    "@playwright/test": "^1.18.1",
-    "@rollup/plugin-babel": "^6.0.0",
-    "@rollup/plugin-typescript": "^11.0.0",
-    "@types/jquery": "^3.5.13",
-    "@types/jqueryui": "^1.12.16",
-    "@types/node": "^22.0.0",
-    "@wordpress/babel-plugin-makepot": "^6.0.0",
+    "@babel/preset-env": "^7.25.4",
+    "@myrotvorets/po2json": "^1.0.3",
+    "@playwright/test": "^1.47.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jquery": "^3.5.30",
+    "@types/jqueryui": "^1.12.23",
+    "@types/node": "^22.5.4",
+    "@wordpress/babel-plugin-makepot": "^6.7.0",
     "@wordpress/eslint-plugin": "^21.0.0",
-    "@wordpress/i18n": "^5.0.0",
-    "@wwa/rollup-plugin-terser": "^1.0.1",
-    "eslint-formatter-gha": "^1.4.1",
-    "eslint-plugin-playwright": "^1.0.0",
-    "playwright-core": "^1.18.1",
-    "rollup": "^4.0.0",
-    "typescript": "^5.0.0"
+    "@wordpress/i18n": "^5.7.0",
+    "@wwa/rollup-plugin-terser": "^1.1.2",
+    "eslint-formatter-gha": "^1.5.1",
+    "eslint-plugin-playwright": "^1.6.2",
+    "playwright-core": "^1.47.0",
+    "rollup": "^4.21.2",
+    "typescript": "^5.5.4"
   }
 }

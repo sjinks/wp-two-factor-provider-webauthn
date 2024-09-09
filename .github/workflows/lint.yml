@@ -27,6 +27,7 @@ jobs:
           disable-sudo: false
           egress-policy: audit
           allowed-endpoints: >
+            api.github.com:443
             azure.archive.ubuntu.com:80
             github.com:443
             objects.githubusercontent.com:443

@@ -1,4 +1,4 @@
-import { test, expect, CDPSession } from '@playwright/test';
+import { test, expect, type CDPSession } from '@playwright/test';
 import { LoginPage } from '../lib/loginpage';
 import { ProfilePage } from '../lib/profilepage';
 import { GenericAdminPage } from '../lib/genericadminpage';

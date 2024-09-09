@@ -21,6 +21,18 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@5c7944e73c4c2a096b17a9cb74d65b6c2bbafbde # v2.9.1
+        with:
+          disable-sudo: false
+          egress-policy: audit
+          allowed-endpoints: >
+            azure.archive.ubuntu.com:80
+            github.com:443
+            objects.githubusercontent.com:443
+            packagist.org:443
+            repo.packagist.org:443
+
       - name: Check out source code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
@@ -33,6 +45,8 @@ jobs:
 
       - name: Install dependencies
         uses: ramsey/composer-install@57532f8be5bda426838819c5ee9afb8af389d51a # 3.0.0
+        with:
+          composer-options: --no-scripts
 
       - name: Add error matcher
         run: echo "::add-matcher::$(pwd)/.github/checkstyle-problem-matcher.json"
@@ -46,6 +60,18 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@5c7944e73c4c2a096b17a9cb74d65b6c2bbafbde # v2.9.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            nodejs.org:443
+            registry.npmjs.org:443
+
       - name: Checkout source code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 

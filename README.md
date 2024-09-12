@@ -14,3 +14,5 @@ Google Chrome is going to [deprecate the U2F API](https://groups.google.com/a/ch
 The integration is seamless: if the user has U2F credentials registered, the plugin will import them. If the user has the U2F provider enabled, the plugin will automatically enable the WebAuthn provider as well. If the U2F provider is set as the primary authentication method, it will be replaced with WebAuthn, keeping U2F as a backup method.
 
 https://user-images.githubusercontent.com/7810770/150708968-3c331612-54ad-4373-9d36-6ec064301755.mp4
+
+See [readme.txt](readme.txt) for the changelog.

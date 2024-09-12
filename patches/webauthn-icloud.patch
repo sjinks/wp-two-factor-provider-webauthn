@@ -1,0 +1,42 @@
+--- src/Dom/AuthenticatorTransport.php
++++ src/Dom/AuthenticatorTransport.php
+@@ -24,6 +24,11 @@ final class AuthenticatorTransport
+      */
+     public const INTERNAL = 'internal';
+ 
++    /**
++     * See https://bugzilla.mozilla.org/show_bug.cgi?id=1867847
++     */
++    public const HYBRID = 'hybrid';
++
+     /**
+      * @codeCoverageIgnore
+      */
+@@ -38,6 +43,6 @@ final class AuthenticatorTransport
+ 
+     public static function allKnownTransports(): array
+     {
+-        return [self::USB, self::NFC, self::BLE, self::INTERNAL];
++        return [self::USB, self::NFC, self::BLE, self::INTERNAL, self::HYBRID];
+     }
+ }
+--- src/Server/WebAuthnServer.php
++++ src/Server/WebAuthnServer.php
+@@ -9,6 +9,7 @@ use MadWizard\WebAuthn\Credential\CredentialStoreInterface;
+ use MadWizard\WebAuthn\Credential\UserHandle;
+ use MadWizard\WebAuthn\Dom\AuthenticationExtensionsClientInputs;
+ use MadWizard\WebAuthn\Dom\AuthenticatorSelectionCriteria;
++use MadWizard\WebAuthn\Dom\AuthenticatorTransport;
+ use MadWizard\WebAuthn\Dom\PublicKeyCredentialCreationOptions;
+ use MadWizard\WebAuthn\Dom\PublicKeyCredentialDescriptor;
+ use MadWizard\WebAuthn\Dom\PublicKeyCredentialInterface;
+@@ -321,6 +322,9 @@ final class WebAuthnServer implements ServerInterface, LoggerAwareInterface
+             }
+             foreach ($credentialIds as $credentialId) {
+                 $descriptor = new PublicKeyCredentialDescriptor($credentialId->toBuffer());
++                foreach (AuthenticatorTransport::allKnownTransports() as $transport) {
++                    $descriptor->addTransport($transport);
++                }
+                 $requestOptions->addAllowedCredential($descriptor);
+             }
+         }

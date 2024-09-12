@@ -54,7 +54,8 @@
 			"madwizard/webauthn": {
 				"Fix interoperability with imposter": "patches/webauthn.patch",
 				"Fix client extension verification (GH-295)": "patches/client-extensions.patch",
-				"Fix EdDSA keys/improve YubiKey support": "patches/gh-541.patch"
+				"Fix EdDSA keys/improve YubiKey support": "patches/gh-541.patch",
+				"Fix Firefox iCloud support": "patches/webauthn-icloud.patch"
 			}
 		}
 	},

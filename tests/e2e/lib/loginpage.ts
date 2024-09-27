@@ -37,8 +37,18 @@ export class LoginPage {
 	}
 
 	public async login(username: string, password: string): Promise<void> {
+		await this.userFieldLocator.click();
+		// eslint-disable-next-line playwright/no-wait-for-timeout
+		await this.page.waitForTimeout(60);
 		await this.userFieldLocator.fill(username);
+
+		await this.passwordFieldLocator.click();
+		// eslint-disable-next-line playwright/no-wait-for-timeout
+		await this.page.waitForTimeout(60);
 		await this.passwordFieldLocator.fill(password);
+
+		// eslint-disable-next-line playwright/no-wait-for-timeout
+		await this.page.waitForTimeout(60);
 		await this.submitButtonLocator.click();
 		await this.page.waitForLoadState('domcontentloaded');
 	}

@@ -28,7 +28,7 @@
     "@wordpress/i18n": "^5.7.0",
     "@wwa/rollup-plugin-terser": "^1.1.2",
     "eslint-formatter-gha": "^1.5.1",
-    "eslint-plugin-playwright": "^1.6.2",
+    "eslint-plugin-playwright": "^2.0.0",
     "playwright-core": "^1.47.0",
     "rollup": "^4.21.2",
     "typescript": "^5.5.4"

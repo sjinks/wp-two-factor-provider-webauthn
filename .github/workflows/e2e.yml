@@ -24,11 +24,9 @@ jobs:
       fail-fast: false
       matrix:
         wordpress:
-          - php7.4
           - php8.0
           - php8.1
           - php8.2
-          - beta-php7.4
           - beta-php8.0
           - beta-php8.1
           - beta-php8.2

@@ -24,12 +24,9 @@ jobs:
       fail-fast: false
       matrix:
         wordpress:
-          - php8.0
           - php8.1
           - php8.2
-          - beta-php8.0
-          - beta-php8.1
-          - beta-php8.2
+          - php8.3
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@c95a14d0e5bab51a9f56296a4eb0e416910cd350 # v2.10.3

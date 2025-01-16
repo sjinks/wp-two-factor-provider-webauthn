@@ -33,6 +33,10 @@ Be the first to ask.
 
 == Changelog ==
 
+= 2.5.1 =
+* GH-898: do not show the UI if the plugin has failed to install its tables
+* drop official PHP 7.4 support
+
 = 2.5.0 =
 * iCloud support for Firefox (props dd32)
 

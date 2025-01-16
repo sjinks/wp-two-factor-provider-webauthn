@@ -2,6 +2,7 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
+use TwoFactor_Provider_WebAuthn;
 use WildWolf\Utils\Singleton;
 use WP_User;
 
@@ -17,11 +18,14 @@ final class Admin {
 	public function init(): void {
 		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 		add_action( 'admin_init', [ AdminSettings::class, 'instance' ] );
-		add_action( 'show_user_security_settings', [ $this, 'show_user_security_settings' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 
-		if ( defined( 'DOING_AJAX' ) && constant( 'DOING_AJAX' ) ) {
-			add_action( 'admin_init', [ AJAX::class, 'instance' ] );
+		if ( self::is_webauthn_enabled() ) {
+			add_action( 'show_user_security_settings', [ $this, 'show_user_security_settings' ] );
+			add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+
+			if ( defined( 'DOING_AJAX' ) && constant( 'DOING_AJAX' ) ) {
+				add_action( 'admin_init', [ AJAX::class, 'instance' ] );
+			}
 		}
 	}
 
@@ -62,5 +66,14 @@ final class Admin {
 		Utils::render( 'user-profile', [
 			'user' => $user,
 		] );
+	}
+
+	private static function is_webauthn_enabled(): bool {
+		if ( class_exists( \Two_Factor_Core::class ) ) {
+			$providers = \Two_Factor_Core::get_providers();
+			return isset( $providers[ TwoFactor_Provider_WebAuthn::class ] );
+		}
+
+		return false;
 	}
 }

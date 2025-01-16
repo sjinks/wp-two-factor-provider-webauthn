@@ -23,11 +23,16 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
+            azure.archive.ubuntu.com
+            archive.ubuntu.com
+            esm.ubuntu.com:443
             fulcio.sigstore.dev:443
             github.com:443
             packagist.org:443
+            packages.microsoft.com:443
             rekor.sigstore.dev:443
             repo.packagist.org:443
+            security.ubuntu.com
             uploads.github.com:443
 
       - name: Checkout

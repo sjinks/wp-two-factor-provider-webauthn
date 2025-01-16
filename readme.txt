@@ -35,6 +35,7 @@ Be the first to ask.
 
 = 2.5.1 =
 * GH-898: do not show the UI if the plugin has failed to install its tables
+* GH-972: do not show the profile UI if the provider is disabled
 * drop official PHP 7.4 support
 
 = 2.5.0 =

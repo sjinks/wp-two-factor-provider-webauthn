@@ -3,9 +3,9 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 2.5.0
-Requires PHP: 7.4
+Requires PHP: 8.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 

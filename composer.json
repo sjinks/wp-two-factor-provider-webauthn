@@ -40,7 +40,8 @@
 			"php": "8.0"
 		},
 		"optimize-autoloader": true,
-		"classmap-authoritative": true
+		"classmap-authoritative": true,
+		"autoloader-suffix": "WWTFWA"
 	},
 	"extra": {
 		"imposter": {
@@ -56,6 +57,9 @@
 				"Fix client extension verification (GH-295)": "patches/client-extensions.patch",
 				"Fix EdDSA keys/improve YubiKey support": "patches/gh-541.patch",
 				"Fix Firefox iCloud support": "patches/webauthn-icloud.patch"
+			},
+			"guzzlehttp/guzzle": {
+				"Fix namespace in check": "patches/guzzle.patch"
 			}
 		}
 	},

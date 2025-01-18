@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 5.5
 Tested up to: 6.7
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 Requires PHP: 8.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -32,6 +32,9 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.5.3 =
+* Restore `WebAuthn_Provider::get_instance()` because WPVIP has an ancient version of Two Factor
 
 = 2.5.2 =
 * Fix the conflict when another package loads a library that has `autoload.files` key (see https://github.com/sjinks/wp-two-factor-provider-webauthn/pull/980)

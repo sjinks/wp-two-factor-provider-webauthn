@@ -19,6 +19,20 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 class WebAuthn_Provider extends Two_Factor_Provider {
 	public const AUTHENTICATION_CONTEXT_USER_META = Constants::AUTHENTICATION_CONTEXT_USER_META_KEY;
 
+	/** @var static|null */
+	private static $instance = null;
+
+	/**
+	 * @return static
+	 */
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new static();
+		}
+
+		return self::$instance;
+	}
+
 	final protected function __construct() {
 		add_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'user_options' ] );
 		parent::__construct();

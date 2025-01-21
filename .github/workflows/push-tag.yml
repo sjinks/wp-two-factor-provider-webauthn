@@ -94,7 +94,7 @@ jobs:
           rm -rf composer.lock composer.json patches vendor/madwizard/webauthn/{.github,conformance,tests} vendor/psr/log/Psr/Log/Test vendor/psr/http-message/docs vendor/typisttech
 
       - name: Deploy to wordpress.org
-        uses: 10up/action-wordpress-plugin-deploy@abb939a0d0bfd01063e8d1933833209201557381 # 2.2.2
+        uses: 10up/action-wordpress-plugin-deploy@54bd289b8525fd23a5c365ec369185f2966529c2 # 2.3.0
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

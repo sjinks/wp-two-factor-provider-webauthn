@@ -1,6 +1,6 @@
 services:
   mariadb:
-    image: mariadb@sha256:a9547599cd87d7242435aea6fda22a9d83e2c06d16c658ef70d2868b3d3f6a80
+    image: mariadb@sha256:ca4d712793661643b6a2251f677c9483eaab78a605c05b31a5f0eba30caa0819
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress

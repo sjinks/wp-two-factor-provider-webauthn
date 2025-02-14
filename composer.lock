@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9153e50baec40cb6f61611af875400b0",
+    "content-hash": "2877567c66e194fc01bbd1c3cf311659",
     "packages": [
         {
             "name": "composer/installers",
@@ -610,16 +610,16 @@
         },
         {
             "name": "madwizard/webauthn",
-            "version": "v0.10.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/madwizard-org/webauthn-server.git",
-                "reference": "64c3d3945a83ddabde8ee2fbdcd0ee5d3b1b15a5"
+                "reference": "476d0a3eeb01c83b090568c6c803dd8d3ea75e52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/madwizard-org/webauthn-server/zipball/64c3d3945a83ddabde8ee2fbdcd0ee5d3b1b15a5",
-                "reference": "64c3d3945a83ddabde8ee2fbdcd0ee5d3b1b15a5",
+                "url": "https://api.github.com/repos/madwizard-org/webauthn-server/zipball/476d0a3eeb01c83b090568c6c803dd8d3ea75e52",
+                "reference": "476d0a3eeb01c83b090568c6c803dd8d3ea75e52",
                 "shasum": ""
             },
             "require": {
@@ -667,9 +667,9 @@
             "description": "Web Authentication API server for PHP",
             "support": {
                 "issues": "https://github.com/madwizard-org/webauthn-server/issues",
-                "source": "https://github.com/madwizard-org/webauthn-server/tree/v0.10.0"
+                "source": "https://github.com/madwizard-org/webauthn-server/tree/v1.0.0"
             },
-            "time": "2024-05-28T08:49:29+00:00"
+            "time": "2025-02-14T10:38:10+00:00"
         },
         {
             "name": "psr/cache",

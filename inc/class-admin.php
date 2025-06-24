@@ -71,7 +71,16 @@ final class Admin {
 	private static function is_webauthn_enabled(): bool {
 		if ( class_exists( \Two_Factor_Core::class ) ) {
 			$providers = \Two_Factor_Core::get_providers();
-			return isset( $providers[ TwoFactor_Provider_WebAuthn::class ] );
+			if ( ! isset( $providers[ TwoFactor_Provider_WebAuthn::class ] ) ) {
+				return false;
+			}
+
+			if ( method_exists( TwoFactor_Provider_WebAuthn::class, 'is_supported_for_user' ) ) {
+				/** @var bool */
+				return TwoFactor_Provider_WebAuthn::is_supported_for_user( get_current_user_id() );
+			}
+
+			return true;
 		}
 
 		return false;

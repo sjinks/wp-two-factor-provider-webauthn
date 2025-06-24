@@ -40,7 +40,7 @@ jobs:
           (cd /var/tmp && zip -r -9 two-factor-provider-webauthn.zip two-factor-provider-webauthn)
 
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@520d128f165991a6c774bcb264f323e3d70747f4 # v2.2.0
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2.4.0
         id: attest
         with:
           subject-path: /var/tmp/two-factor-provider-webauthn.zip

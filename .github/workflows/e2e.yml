@@ -149,7 +149,7 @@ jobs:
       - name: Run Playwright E2E tests
         run: npm run test:e2e
         env:
-          WP_VERSION: php8.1
+          WP_VERSION: php8.3
 
       - name: Upload test results
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

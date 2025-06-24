@@ -2,10 +2,10 @@
 Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
-Requires at least: 5.5
-Tested up to: 6.7
+Requires at least: 6.0
+Tested up to: 6.8
 Stable tag: 2.5.3
-Requires PHP: 8.0
+Requires PHP: 8.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -32,6 +32,9 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.5.4 =
+* Platform requirements updated to PHP 8.1 and WordPress 6.0 (although the plugin still should work with older versions of PHP and WordPress)
 
 = 2.5.3 =
 * Restore `WebAuthn_Provider::get_instance()` because WPVIP has an ancient version of Two Factor

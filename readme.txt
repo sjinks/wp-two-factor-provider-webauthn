@@ -35,6 +35,7 @@ Be the first to ask.
 
 = 2.5.4 =
 * Platform requirements updated to PHP 8.1 and WordPress 6.0 (although the plugin still should work with older versions of PHP and WordPress)
+* GH-1008: better integration with Two Factor 0.13.0
 
 = 2.5.3 =
 * Restore `WebAuthn_Provider::get_instance()` because WPVIP has an ancient version of Two Factor

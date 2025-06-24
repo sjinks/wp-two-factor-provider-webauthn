@@ -22,7 +22,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/jquery": "^3.5.32",
     "@types/jqueryui": "^1.12.23",
-    "@types/node": "^22.13.1",
+    "@types/node": "^24.0.0",
     "@wordpress/babel-plugin-makepot": "^6.17.0",
     "@wordpress/eslint-plugin": "^22.3.0",
     "@wordpress/i18n": "^5.17.0",

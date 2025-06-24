@@ -8,7 +8,7 @@ const selectors = {
 
 const tfoSelectors = {
 	webAuthnEnabledCheckbox: 'input[name="_two_factor_enabled_providers[]"][value="TwoFactor_Provider_WebAuthn"]',
-	webAuthnPrimaryProvider: 'input[name="_two_factor_provider"][value="TwoFactor_Provider_WebAuthn"]',
+	primaryProvider: 'select[name="_two_factor_provider"]',
 };
 
 const waSelectors = {
@@ -78,7 +78,9 @@ export class ProfilePage {
 
 	public async makeWebAuthnProviderPrimary(): Promise<unknown> {
 		await this.twoFactorOptionsLocator.scrollIntoViewIfNeeded();
-		return this.twoFactorOptionsLocator.locator(tfoSelectors.webAuthnPrimaryProvider).check();
+		return this.twoFactorOptionsLocator
+			.locator(tfoSelectors.primaryProvider)
+			.selectOption('TwoFactor_Provider_WebAuthn');
 	}
 
 	public async saveProfile(): Promise<void> {

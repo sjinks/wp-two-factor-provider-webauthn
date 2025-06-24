@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2023-05-08T19:22:41+03:00\n"
+"POT-Creation-Date: 2025-06-24T07:19:45+00:00\n"
 "PO-Revision-Date: 2022-09-30 23:45-0700\n"
 "Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
 "Language-Team: Alex Lion <learnwithalex@gmail.com>\n"
@@ -25,22 +25,25 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
 #. Plugin Name of the plugin
+#: index.php
 msgid "WebAuthn Provider for Two Factor"
 msgstr "WebAuthn Provider for Two Factor"
 
 #. Description of the plugin
+#: index.php
 msgid "WebAuthn Provider for Two Factor plugin."
 msgstr "這是一款能為 Two Factor 擴充 WebAuthn 驗證提供者功能的外掛。"
 
 #. Author of the plugin
+#: index.php
 msgid "Volodymyr Kolesnykov"
 msgstr "Volodymyr Kolesnykov"
 
-#: inc/class-admin.php:29
+#: inc/class-admin.php:33
 msgid "TwoFactor WebAuthn Settings"
 msgstr "TwoFactor WebAuthn 設定"
 
-#: inc/class-admin.php:29
+#: inc/class-admin.php:33
 msgid "TwoFactor WebAuthn"
 msgstr "TwoFactor WebAuthn"
 
@@ -149,32 +152,33 @@ msgid ""
 "plugin."
 msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F 提供者。"
 
-#: inc/class-ajax.php:35
+#: inc/class-ajax.php:34
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
 
-#: inc/class-ajax.php:90
-msgid "Unable to retrieve the registration context."
-msgstr "無法擷取註冊內容。"
-
-#: inc/class-ajax.php:100 inc/class-ajax.php:157
-#: inc/class-webauthn-provider.php:119
+#: inc/class-ajax.php:49 inc/class-ajax.php:91 inc/class-ajax.php:109
+#: inc/class-ajax.php:171 inc/class-ajax.php:187 inc/class-ajax.php:207
+#: inc/class-webauthn-provider.php:126
 msgid "Bad request."
 msgstr "錯誤的要求。"
 
-#: inc/class-ajax.php:128 inc/class-webauthn-credential-store.php:123
+#: inc/class-ajax.php:99
+msgid "Unable to retrieve the registration context."
+msgstr "無法擷取註冊內容。"
+
+#: inc/class-ajax.php:137 inc/class-webauthn-credential-store.php:128
 msgid "New Key"
 msgstr "新的金鑰"
 
-#: inc/class-ajax.php:144
+#: inc/class-ajax.php:153
 msgid "Unable to save the key to the database."
 msgstr "無法將金鑰儲存至資料庫。"
 
-#: inc/class-ajax.php:181
+#: inc/class-ajax.php:202
 msgid "Key name cannot be empty."
 msgstr "金鑰名稱不能留空。"
 
-#: inc/class-ajax.php:190
+#: inc/class-ajax.php:216
 msgid "Failed to rename the key."
 msgstr "無法重新命名金鑰。"
 
@@ -207,17 +211,23 @@ msgctxt "Provider label"
 msgid "WebAuthn"
 msgstr "WebAuthn"
 
-#: inc/class-webauthn-provider.php:60
+#: inc/class-webauthn-provider.php:56
+#, fuzzy
+msgctxt "Provider label"
+msgid "Use your security key"
+msgstr "請插入 (並輕觸) 安全金鑰。"
+
+#: inc/class-webauthn-provider.php:67
 msgid ""
 "WebAuthn requires an HTTPS connection. Please use an alternative second "
 "factor method."
 msgstr "WebAuthn 需要這個網站具備 HTTPS 連線。請使用其他第二因素驗證方式。"
 
-#: inc/class-webauthn-provider.php:108
+#: inc/class-webauthn-provider.php:115
 msgid "Unable to retrieve the authentication context."
 msgstr "無法擷取驗證內容。"
 
-#: inc/class-webauthn-user.php:54
+#: inc/class-webauthn-user.php:56
 msgid "Unable to save the user handle to the database."
 msgstr "無法將使用者控制代碼儲存至資料庫。"
 
@@ -234,15 +244,15 @@ msgstr ""
 "WebAuthn 安全金鑰需要這個網站具備 HTTPS 連線。請在下方 [<a href=\"#webauthn-"
 "security-keys-section\">安全金鑰 (WebAuthn)</a>] 區段設定個人的安全金鑰。"
 
-#: views/user-profile.php:10
+#: views/user-profile.php:11
 msgid "Security Keys (WebAuthn)"
 msgstr "安全金鑰 (WebAuthn)"
 
-#: views/user-profile.php:14
+#: views/user-profile.php:15
 msgid "You need to enable JavaScript to manage security keys."
 msgstr "使用者必須啟用 JavaScript 以管理安全金鑰。"
 
-#: views/user-profile.php:21
+#: views/user-profile.php:22
 msgid ""
 "WebAuthn requires an HTTPS connection. You will be unable to add new "
 "security keys over HTTP."
@@ -250,19 +260,19 @@ msgstr ""
 "WebAuthn 安全金鑰需要這個網站具備 HTTPS 連線。在透過 HTTP 連線的狀況下，使用"
 "者無法新增安全金鑰。"
 
-#: views/user-profile.php:28
+#: views/user-profile.php:29
 msgid "Key name:"
 msgstr "金鑰名稱:"
 
-#: views/user-profile.php:30
+#: views/user-profile.php:31
 msgctxt "security key"
 msgid "Register New Key"
 msgstr "註冊新的安全金鑰"
 
-#: views/user-profile.php:53
+#: views/user-profile.php:54
 msgid "Are you sure to revoke this key?"
 msgstr "確定要撤銷這個金鑰？"
 
-#: views/user-profile.php:62
+#: views/user-profile.php:63
 msgid "New name:"
 msgstr "新名稱:"

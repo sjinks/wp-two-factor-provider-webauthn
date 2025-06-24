@@ -6435,23 +6435,23 @@
         },
         {
             "name": "wildwolf/wordpress-test-library-stubs",
-            "version": "6.2.0",
+            "version": "6.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sjinks/wordpress-test-library-stubs.git",
-                "reference": "a441db65d080d6047ea732d47758400738228eb4"
+                "reference": "a105837a36d46784daefd24b26a9da9f7b5fbfc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sjinks/wordpress-test-library-stubs/zipball/a441db65d080d6047ea732d47758400738228eb4",
-                "reference": "a441db65d080d6047ea732d47758400738228eb4",
+                "url": "https://api.github.com/repos/sjinks/wordpress-test-library-stubs/zipball/a105837a36d46784daefd24b26a9da9f7b5fbfc0",
+                "reference": "a105837a36d46784daefd24b26a9da9f7b5fbfc0",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "giacocorsiglia/stubs-generator": "^0.5.0",
+                "php-stubs/generator": "^0.8.5",
                 "wp-phpunit/wp-phpunit": "^6.0"
             },
             "type": "library",
@@ -6468,15 +6468,19 @@
             "description": "Stubs for WordPress test library",
             "support": {
                 "issues": "https://github.com/sjinks/wordpress-test-library-stubs/issues",
-                "source": "https://github.com/sjinks/wordpress-test-library-stubs/tree/6.2.0"
+                "source": "https://github.com/sjinks/wordpress-test-library-stubs/tree/6.8.1"
             },
             "funding": [
+                {
+                    "url": "https://send.monobank.ua/jar/7rosVfiwKM",
+                    "type": "custom"
+                },
                 {
                     "url": "https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU",
                     "type": "custom"
                 }
             ],
-            "time": "2023-03-31T19:52:42+00:00"
+            "time": "2025-06-24T06:31:17+00:00"
         },
         {
             "name": "wp-cli/i18n-command",

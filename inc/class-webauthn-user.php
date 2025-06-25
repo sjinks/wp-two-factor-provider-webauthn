@@ -12,7 +12,7 @@ use wpdb;
 
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery -- there is no other way to access our own tables
 
-class WebAuthn_User implements UserIdentityInterface {
+final class WebAuthn_User implements UserIdentityInterface {
 	public const CACHE_GROUP_NAME = '2fa-webauthn';
 
 	private WP_User $user;

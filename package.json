@@ -9,7 +9,8 @@
     "lint": "eslint assets tests/e2e",
     "lint:fix": "eslint assets tests/e2e --fix",
     "devenv:start": "./bin/run-dev-env.sh",
-    "test:e2e": "npm run devenv:start && playwright test"
+    "test:e2e": "npm run devenv:start && playwright test",
+    "psalm:install": "wget -q https://github.com/vimeo/psalm/releases/latest/download/psalm.phar -O vendor/bin/psalm && chmod +x vendor/bin/psalm"
   },
   "keywords": [],
   "author": "Volodymyr Kolesnykov <volodymyr@wildwolf.name> (https://wildwolf.name/)",

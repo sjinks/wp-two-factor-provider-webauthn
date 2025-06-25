@@ -41,6 +41,7 @@ jobs:
         uses: shivammathur/setup-php@0f7f1d08e3e32076e51cae65eb0b0c871405b16e # 2.34.1
         with:
           coverage: none
+          php-version: '8.3'
 
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520 # 3.1.1

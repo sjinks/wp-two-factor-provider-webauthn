@@ -17,6 +17,7 @@
         <directory name="views"/>
     </projectFiles>
     <issueHandlers>
+        <MissingOverrideAttribute errorLevel="suppress"/>
         <PossiblyUnusedReturnValue errorLevel="suppress"/>
         <PossiblyUnusedMethod errorLevel="suppress"/>
         <RedundantCast errorLevel="suppress"/>

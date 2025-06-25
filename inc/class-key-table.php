@@ -10,7 +10,7 @@ use WP_User;
  * @psalm-property CredentialRow[] $items
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class Key_Table extends WP_List_Table {
+final class Key_Table extends WP_List_Table {
 	private WP_User $user;
 
 	public function __construct( WP_User $user ) {

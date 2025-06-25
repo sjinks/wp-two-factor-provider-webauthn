@@ -9,7 +9,7 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 	MadWizard\WebAuthn\Crypto\CoseKeyInterface,
 };
 
-class WebAuthn_User_Credential implements UserCredentialInterface {
+final class WebAuthn_User_Credential implements UserCredentialInterface {
 	private CredentialId $credential_id;
 	private CoseKeyInterface $public_key;
 	private UserHandle $user_handle;

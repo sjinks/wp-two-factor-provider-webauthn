@@ -40,10 +40,14 @@ jobs:
           allowed-endpoints: >
             api.github.com:443
             azure.archive.ubuntu.com:80
+            dl.cloudsmith.io:443
+            getcomposer.org:443
             github.com:443
             objects.githubusercontent.com:443
             packagist.org:443
+            release-assets.githubusercontent.com:443
             repo.packagist.org:443
+            setup-php.com:443
 
       - name: Checkout source code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2

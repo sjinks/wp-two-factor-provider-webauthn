@@ -36,10 +36,14 @@ jobs:
           allowed-endpoints: >
             api.github.com:443
             api.wordpress.org:443
+            api.wordpress.org:80
             auth.docker.io:443
             azure.archive.ubuntu.com:80
+            cdn.jsdelivr.net:443
             cdn.playwright.dev:443
+            dl.cloudsmith.io:443
             downloads.wordpress.org:443
+            getcomposer.org:443
             github.com:443
             objects.githubusercontent.com:443
             packagist.org:443
@@ -48,11 +52,14 @@ jobs:
             phar.phpunit.de:443
             planet.wordpress.org:443
             playwright.azureedge.net:443
+            playwright.download.prss.microsoft.com:443
             production.cloudflare.docker.com:443
             registry-1.docker.io:443
             registry.npmjs.org:443
+            release-assets.githubusercontent.com:443
             repo.packagist.org:443
             secure.gravatar.com:443
+            setup-php.com:443
             wordpress.org:443
 
       - name: Checkout source code
@@ -109,15 +116,16 @@ jobs:
             github.com:443
             objects.githubusercontent.com:443
             packagist.org:443
-            repo.packagist.org:443
             pecl.php.net:443
             pecl.php.net:80
             phar.phpunit.de:443
             planet.wordpress.org:443
             playwright.azureedge.net:443
+            playwright.download.prss.microsoft.com:443
             production.cloudflare.docker.com:443
             registry-1.docker.io:443
             registry.npmjs.org:443
+            release-assets.githubusercontent.com:443
             repo.packagist.org:443
             secure.gravatar.com:443
             wordpress.org:443

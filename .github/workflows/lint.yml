@@ -33,6 +33,7 @@ jobs:
             objects.githubusercontent.com:443
             packagist.org:443
             repo.packagist.org:443
+            setup-php.com:443
 
       - name: Check out source code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2

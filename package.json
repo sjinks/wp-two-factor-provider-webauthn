@@ -26,7 +26,7 @@
     "@types/node": "^24.0.3",
     "@wordpress/babel-plugin-makepot": "^6.25.0",
     "@wordpress/eslint-plugin": "^22.11.0",
-    "@wordpress/i18n": "^5.25.0",
+    "@wordpress/i18n": "^6.0.0",
     "@wwa/rollup-plugin-terser": "^1.1.2",
     "eslint-formatter-gha": "^1.5.2",
     "eslint-plugin-playwright": "^2.2.0",

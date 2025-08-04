@@ -34,6 +34,7 @@ test('Login Workflow', async ({ page }) => {
 		expect(page.url()).toContain('/wp-admin/profile.php');
 		const profilePage = new ProfilePage(page);
 		await profilePage.enableWebAuthnProvider();
+		await profilePage.saveProfile();
 		await profilePage.makeWebAuthnProviderPrimary();
 		return profilePage.saveProfile();
 	});

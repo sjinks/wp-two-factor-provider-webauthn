@@ -27,7 +27,7 @@ abstract class Credential_Migrator {
 		global $wpdb;
 
 		/** @var mixed[] */
-		$legacy = get_user_meta( $user->ID, WebAuthn_Credential_Store::REGISTERED_KEY_LEGACY_META );
+		$legacy = get_user_meta( $user->ID, WebAuthn_Credential_Store::REGISTERED_KEY_LEGACY_META, false );
 
 		/** @var mixed $data */
 		foreach ( $legacy as $data ) {

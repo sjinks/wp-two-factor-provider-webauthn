@@ -33,5 +33,9 @@
     "playwright-core": "^1.53.1",
     "rollup": "^4.44.0",
     "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjinks/wp-two-factor-provider-webauthn.git"
   }
 }

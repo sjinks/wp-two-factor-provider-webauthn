@@ -13,7 +13,7 @@ services:
       context: .docker/wordpress
       dockerfile: Dockerfile
       args:
-        VERSION: ${WP_VERSION:-php8.0}
+        VERSION: ${WP_VERSION:-php8.3}
     depends_on:
       - mariadb
     ports:

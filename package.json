@@ -37,5 +37,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sjinks/wp-two-factor-provider-webauthn.git"
+  },
+  "homepage": "https://github.com/sjinks/wp-two-factor-provider-webauthn#readme",
+  "bugs": {
+    "url": "https://github.com/sjinks/wp-two-factor-provider-webauthn/issues"
+  },
+  "sponsor": {
+    "url": "https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU"
   }
 }

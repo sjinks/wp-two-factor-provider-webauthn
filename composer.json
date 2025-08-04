@@ -20,7 +20,7 @@
 		"johnpbloch/wordpress-core": "^6.0",
 		"php-stubs/wordpress-stubs": "^6.0",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"phpunit/php-code-coverage": "^12.0",
+		"phpunit/php-code-coverage": "^9.2",
 		"wildwolf/wordpress-test-library-stubs": "^6.0",
 		"wp-cli/i18n-command": "^2.2",
 		"wp-phpunit/wp-phpunit": "^6.0"

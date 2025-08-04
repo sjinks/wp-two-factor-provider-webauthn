@@ -96,7 +96,7 @@ final class WebAuthn_Credential_Store implements CredentialStoreInterface {
 		$modern = $handle ? $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->webauthn_credentials} WHERE user_handle = %s", $handle->toString() ) ) : [];
 		if ( empty( $modern ) ) {
 			/** @var array */
-			$legacy = get_user_meta( $user->ID, self::REGISTERED_KEY_LEGACY_META );
+			$legacy = get_user_meta( $user->ID, self::REGISTERED_KEY_LEGACY_META, false );
 			if ( ! empty( $legacy ) ) {
 				if ( ! $handle ) {
 					$handle = $wauser->generate_and_save_handle();

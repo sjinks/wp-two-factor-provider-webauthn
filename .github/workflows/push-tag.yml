@@ -31,7 +31,7 @@ jobs:
             uploads.github.com:443
 
       - name: Checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Generate self-contained package
         run: |
@@ -82,7 +82,7 @@ jobs:
             security.ubuntu.com:80
 
       - name: Check out
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
       - name: Install subversion
         run: sudo apt-get update && sudo apt-get -y install subversion

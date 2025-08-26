@@ -29,40 +29,6 @@ jobs:
           - php8.3
           - php8.4
     steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
-        with:
-          disable-file-monitoring: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            api.wordpress.org:443
-            api.wordpress.org:80
-            auth.docker.io:443
-            azure.archive.ubuntu.com:80
-            cdn.jsdelivr.net:443
-            cdn.playwright.dev:443
-            dl.cloudsmith.io:443
-            downloads.wordpress.org:443
-            getcomposer.org:443
-            github.com:443
-            objects.githubusercontent.com:443
-            packagist.org:443
-            pecl.php.net:443
-            pecl.php.net:80
-            phar.phpunit.de:443
-            planet.wordpress.org:443
-            playwright.azureedge.net:443
-            playwright.download.prss.microsoft.com:443
-            production.cloudflare.docker.com:443
-            registry-1.docker.io:443
-            registry.npmjs.org:443
-            release-assets.githubusercontent.com:443
-            repo.packagist.org:443
-            secure.gravatar.com:443
-            setup-php.com:443
-            wordpress.org:443
-
       - name: Checkout source code
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 
@@ -103,34 +69,6 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
-        with:
-          disable-file-monitoring: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            api.wordpress.org:443
-            auth.docker.io:443
-            cdn.playwright.dev:443
-            downloads.wordpress.org:443
-            github.com:443
-            objects.githubusercontent.com:443
-            packagist.org:443
-            pecl.php.net:443
-            pecl.php.net:80
-            phar.phpunit.de:443
-            planet.wordpress.org:443
-            playwright.azureedge.net:443
-            playwright.download.prss.microsoft.com:443
-            production.cloudflare.docker.com:443
-            registry-1.docker.io:443
-            registry.npmjs.org:443
-            release-assets.githubusercontent.com:443
-            repo.packagist.org:443
-            secure.gravatar.com:443
-            wordpress.org:443
-
       - name: Checkout source code
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
 

@@ -50,15 +50,35 @@
 			]
 		},
 		"patches": {
-			"madwizard/webauthn": {
-				"Fix interoperability with imposter": "patches/webauthn.patch",
-				"Fix client extension verification (GH-295)": "patches/client-extensions.patch",
-				"Fix EdDSA keys/improve YubiKey support": "patches/gh-541.patch",
-				"Fix Firefox iCloud support": "patches/webauthn-icloud.patch"
-			},
-			"guzzlehttp/guzzle": {
-				"Fix namespace in check": "patches/guzzle.patch"
-			}
+			"madwizard/webauthn": [
+				{
+					"description": "Fix interoperability with imposter",
+					"url": "patches/webauthn.patch",
+					"depth": 0
+				},
+				{
+					"description": "Fix client extension verification (GH-295)",
+					"url": "patches/client-extensions.patch",
+					"depth": 0
+				},
+				{
+					"description": "Fix EdDSA keys/improve YubiKey support",
+					"url": "patches/gh-541.patch",
+					"depth": 0
+				},
+				{
+					"description": "Fix Firefox iCloud support",
+					"url": "patches/webauthn-icloud.patch",
+					"depth": 0
+				}
+			],
+			"guzzlehttp/guzzle": [
+				{
+					"description": "Fix namespace in check",
+					"url": "patches/guzzle.patch",
+					"depth": 0
+				}
+			]
 		}
 	},
 	"scripts": {

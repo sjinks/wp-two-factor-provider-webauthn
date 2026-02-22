@@ -24,7 +24,7 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/jquery": "^3.5.33",
     "@types/jqueryui": "^1.12.24",
-    "@types/node": "^24.0.3",
+    "@types/node": "^25.0.0",
     "@wordpress/babel-plugin-makepot": "^6.40.0",
     "@wordpress/i18n": "^6.13.0",
     "@wwa/rollup-plugin-terser": "^1.1.2",

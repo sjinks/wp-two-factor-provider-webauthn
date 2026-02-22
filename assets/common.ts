@@ -46,7 +46,7 @@ function base64UrlDecode( input: string ): string {
 	return window.atob( input.replace( /-/g, '+' ).replace( /_/g, '/' ) + '='.repeat( 3 - ( ( 3 + input.length ) % 4 ) ) );
 }
 
-function stringToBuffer( s: string ): ArrayBuffer {
+function stringToBuffer( s: string ): BufferSource {
 	return Uint8Array.from( s, ( c ) => c.charCodeAt( 0 ) );
 }
 

@@ -1,0 +1,59 @@
+{
+    "_hash": "4ce83543156360983d7d5a9a5d016af125daa7c80739ca70eeef272bf0af2252",
+    "patches": {
+        "madwizard/webauthn": [
+            {
+                "package": "madwizard/webauthn",
+                "description": "Fix interoperability with imposter",
+                "url": "patches/webauthn.patch",
+                "sha256": "ca2f11f68970515742f464497169cb142f1dcfff21591d106b1202671266504d",
+                "depth": 0,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
+            {
+                "package": "madwizard/webauthn",
+                "description": "Fix client extension verification (GH-295)",
+                "url": "patches/client-extensions.patch",
+                "sha256": "f84dbcf7673526fa649934de331384b129ffa5bab26b76b15b808557e070b107",
+                "depth": 0,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
+            {
+                "package": "madwizard/webauthn",
+                "description": "Fix EdDSA keys/improve YubiKey support",
+                "url": "patches/gh-541.patch",
+                "sha256": "5f0ac6e753c0edf276f7daf0b8a866058d6f08e21d1ed59da8f7b75498694950",
+                "depth": 0,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
+            {
+                "package": "madwizard/webauthn",
+                "description": "Fix Firefox iCloud support",
+                "url": "patches/webauthn-icloud.patch",
+                "sha256": "c94484c58cdff53535dca7a5b6beeda7de6d96c5952fa5f00fed90f5179acafe",
+                "depth": 0,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "guzzlehttp/guzzle": [
+            {
+                "package": "guzzlehttp/guzzle",
+                "description": "Fix namespace in check",
+                "url": "patches/guzzle.patch",
+                "sha256": "982654ae877c706179e40edd360d35ab28ab348d6c03a84bf48f996422dfee2c",
+                "depth": 0,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

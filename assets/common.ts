@@ -38,16 +38,16 @@ export interface PublicKeyCredentialPlain extends Credential {
 	clientExtensionResults: AuthenticationExtensionsClientOutputs;
 }
 
-function arrayToBase64String(a: Uint8Array): string {
-	return window.btoa(String.fromCharCode(...a));
+function arrayToBase64String( a: Uint8Array ): string {
+	return window.btoa( String.fromCharCode( ...a ) );
 }
 
-function base64UrlDecode(input: string): string {
-	return window.atob(input.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat(3 - ((3 + input.length) % 4)));
+function base64UrlDecode( input: string ): string {
+	return window.atob( input.replace( /-/g, '+' ).replace( /_/g, '/' ) + '='.repeat( 3 - ( ( 3 + input.length ) % 4 ) ) );
 }
 
-function stringToBuffer(s: string): ArrayBuffer {
-	return Uint8Array.from(s, (c) => c.charCodeAt(0));
+function stringToBuffer( s: string ): ArrayBuffer {
+	return Uint8Array.from( s, ( c ) => c.charCodeAt( 0 ) );
 }
 
 export function preparePublicKeyCreationOptions(
@@ -57,14 +57,14 @@ export function preparePublicKeyCreationOptions(
 		...publicKey,
 		user: {
 			...publicKey.user,
-			id: stringToBuffer(base64UrlDecode(publicKey.user.id)),
+			id: stringToBuffer( base64UrlDecode( publicKey.user.id ) ),
 		},
-		challenge: stringToBuffer(base64UrlDecode(publicKey.challenge)),
+		challenge: stringToBuffer( base64UrlDecode( publicKey.challenge ) ),
 		excludeCredentials: publicKey.excludeCredentials?.map(
-			(data: Convert<PublicKeyCredentialDescriptor>): PublicKeyCredentialDescriptor => ({
+			( data: Convert<PublicKeyCredentialDescriptor> ): PublicKeyCredentialDescriptor => ( {
 				...data,
-				id: stringToBuffer(base64UrlDecode(data.id)),
-			}),
+				id: stringToBuffer( base64UrlDecode( data.id ) ),
+			} ),
 		),
 	};
 }
@@ -74,44 +74,44 @@ export function preparePublicKeyCredentialRequestOptions(
 ): PublicKeyCredentialRequestOptions {
 	return {
 		...publicKey,
-		challenge: stringToBuffer(base64UrlDecode(publicKey.challenge)),
+		challenge: stringToBuffer( base64UrlDecode( publicKey.challenge ) ),
 		allowCredentials: publicKey.allowCredentials?.map(
-			(data: Convert<PublicKeyCredentialDescriptor>): PublicKeyCredentialDescriptor => ({
+			( data: Convert<PublicKeyCredentialDescriptor> ): PublicKeyCredentialDescriptor => ( {
 				...data,
-				id: stringToBuffer(base64UrlDecode(data.id)),
-			}),
+				id: stringToBuffer( base64UrlDecode( data.id ) ),
+			} ),
 		),
 	};
 }
 
-export function preparePublicKeyCredential(data: PublicKeyCredential): PublicKeyCredentialPlain {
+export function preparePublicKeyCredential( data: PublicKeyCredential ): PublicKeyCredentialPlain {
 	const response = data.response as AuthenticatorAssertionResponse | AuthenticatorAttestationResponse;
 	return {
 		id: data.id,
 		type: data.type,
-		rawId: arrayToBase64String(new Uint8Array(data.rawId)),
+		rawId: arrayToBase64String( new Uint8Array( data.rawId ) ),
 		clientExtensionResults: data.getClientExtensionResults(),
 		response: {
 			attestationObject:
 				'attestationObject' in response
-					? arrayToBase64String(new Uint8Array(response.attestationObject))
+					? arrayToBase64String( new Uint8Array( response.attestationObject ) )
 					: undefined,
 			authenticatorData:
 				'authenticatorData' in response
-					? arrayToBase64String(new Uint8Array(response.authenticatorData))
+					? arrayToBase64String( new Uint8Array( response.authenticatorData ) )
 					: undefined,
-			signature: 'signature' in response ? arrayToBase64String(new Uint8Array(response.signature)) : undefined,
+			signature: 'signature' in response ? arrayToBase64String( new Uint8Array( response.signature ) ) : undefined,
 			userHandle:
 				'userHandle' in response && response.userHandle
-					? arrayToBase64String(new Uint8Array(response.userHandle))
+					? arrayToBase64String( new Uint8Array( response.userHandle ) )
 					: undefined,
-			clientDataJSON: arrayToBase64String(new Uint8Array(data.response.clientDataJSON)),
+			clientDataJSON: arrayToBase64String( new Uint8Array( data.response.clientDataJSON ) ),
 		},
 	};
 }
 
-export function decodeDOMException(e: DOMException, isAuth: boolean): string {
-	switch (e.name) {
+export function decodeDOMException( e: DOMException, isAuth: boolean ): string {
+	switch ( e.name ) {
 		case 'NotAllowedError':
 			return L_NOT_ALLOWED_ERROR;
 

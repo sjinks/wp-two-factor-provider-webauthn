@@ -11,16 +11,16 @@ export class GenericAdminPage {
 	private readonly menuBarMyAccountLocator: Locator;
 	private readonly logoutLinkLocator: Locator;
 
-	public constructor(page: Page) {
+	public constructor( page: Page ) {
 		this.page = page;
 
-		this.menuBarMyAccountLocator = page.locator(selectors.menuBarMyAccount);
-		this.logoutLinkLocator = page.locator(selectors.logoutLink);
+		this.menuBarMyAccountLocator = page.locator( selectors.menuBarMyAccount );
+		this.logoutLinkLocator = page.locator( selectors.logoutLink );
 	}
 
 	public async logOut(): Promise<void> {
 		await this.menuBarMyAccountLocator.hover();
 		await this.logoutLinkLocator.click();
-		await this.page.waitForLoadState('domcontentloaded');
+		await this.page.waitForLoadState( 'domcontentloaded' );
 	}
 }

@@ -26,62 +26,62 @@ export class WebAuthnSettingsPage {
 	private submitButtonLocator: Locator;
 	private noticeLocator: Locator;
 
-	public constructor(page: Page) {
+	public constructor( page: Page ) {
 		this.page = page;
 
-		this.authenticatorAttachmentLocator = this.page.locator(selectors.authenticatorAttachment);
-		this.uvRequirementLocator = this.page.locator(selectors.uvRequirement);
-		this.timeoutLocator = this.page.locator(selectors.timeout);
-		this.u2fHackLocator = this.page.locator(selectors.u2fHack);
-		this.submitButtonLocator = this.page.locator(selectors.submitButton);
-		this.noticeLocator = this.page.locator(selectors.notice);
+		this.authenticatorAttachmentLocator = this.page.locator( selectors.authenticatorAttachment );
+		this.uvRequirementLocator = this.page.locator( selectors.uvRequirement );
+		this.timeoutLocator = this.page.locator( selectors.timeout );
+		this.u2fHackLocator = this.page.locator( selectors.u2fHack );
+		this.submitButtonLocator = this.page.locator( selectors.submitButton );
+		this.noticeLocator = this.page.locator( selectors.notice );
 	}
 
 	public visit(): Promise<unknown> {
-		return Promise.all([
-			this.page.waitForURL((url) => url.pathname === '/wp-admin/options-general.php', {
+		return Promise.all( [
+			this.page.waitForURL( ( url ) => url.pathname === '/wp-admin/options-general.php', {
 				waitUntil: 'domcontentloaded',
-			}),
-			this.page.goto('/wp-admin/options-general.php?page=2fa-webauthn'),
-		]);
+			} ),
+			this.page.goto( '/wp-admin/options-general.php?page=2fa-webauthn' ),
+		] );
 	}
 
 	public async getSettings(): Promise<Settings> {
 		const waitTimeout = 1000;
-		const [authenticatorAttachment, uvRequirement, timeout, u2fHack] = await Promise.all([
-			this.authenticatorAttachmentLocator.inputValue({ timeout: waitTimeout }),
-			this.uvRequirementLocator.inputValue({ timeout: waitTimeout }),
-			this.timeoutLocator.inputValue({ timeout: waitTimeout }),
-			this.u2fHackLocator.isChecked({ timeout: waitTimeout }),
-		]);
+		const [ authenticatorAttachment, uvRequirement, timeout, u2fHack ] = await Promise.all( [
+			this.authenticatorAttachmentLocator.inputValue( { timeout: waitTimeout } ),
+			this.uvRequirementLocator.inputValue( { timeout: waitTimeout } ),
+			this.timeoutLocator.inputValue( { timeout: waitTimeout } ),
+			this.u2fHackLocator.isChecked( { timeout: waitTimeout } ),
+		] );
 
-		return { authenticatorAttachment, uvRequirement, timeout: +timeout, u2fHack };
+		return { authenticatorAttachment, uvRequirement, timeout: Number( timeout ), u2fHack };
 	}
 
-	public setSettings(settings: Partial<Settings>): Promise<unknown> {
+	public setSettings( settings: Partial<Settings> ): Promise<unknown> {
 		const promises: Promise<unknown>[] = [];
-		if (settings.authenticatorAttachment !== undefined) {
-			promises.push(this.authenticatorAttachmentLocator.selectOption(settings.authenticatorAttachment));
+		if ( settings.authenticatorAttachment !== undefined ) {
+			promises.push( this.authenticatorAttachmentLocator.selectOption( settings.authenticatorAttachment ) );
 		}
 
-		if (settings.uvRequirement !== undefined) {
-			promises.push(this.uvRequirementLocator.selectOption(settings.uvRequirement));
+		if ( settings.uvRequirement !== undefined ) {
+			promises.push( this.uvRequirementLocator.selectOption( settings.uvRequirement ) );
 		}
 
-		if (settings.timeout !== undefined) {
-			promises.push(this.timeoutLocator.fill(settings.timeout.toString()));
+		if ( settings.timeout !== undefined ) {
+			promises.push( this.timeoutLocator.fill( settings.timeout.toString() ) );
 		}
 
-		if (settings.u2fHack !== undefined) {
-			promises.push(this.u2fHackLocator.setChecked(settings.u2fHack));
+		if ( settings.u2fHack !== undefined ) {
+			promises.push( this.u2fHackLocator.setChecked( settings.u2fHack ) );
 		}
 
-		return Promise.all(promises);
+		return Promise.all( promises );
 	}
 
 	public async saveSettings(): Promise<string> {
 		await this.submitButtonLocator.click();
-		await this.page.waitForLoadState('domcontentloaded');
-		return `${this.noticeLocator.textContent()}`;
+		await this.page.waitForLoadState( 'domcontentloaded' );
+		return ( await this.noticeLocator.textContent() ) || '';
 	}
 }

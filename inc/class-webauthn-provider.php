@@ -144,9 +144,10 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 				);
 
 				$repo->update_last_used_date( $result->getUserCredential()->getCredentialId(), time() );
+				return true;
 			}
 
-			return true;
+			return false;
 		} catch ( Throwable $e ) {
 			return false;
 		} finally {

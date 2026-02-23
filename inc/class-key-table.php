@@ -54,14 +54,14 @@ final class Key_Table extends WP_List_Table {
 			'rename hide-if-no-js' => sprintf(
 				'<a href="#" data-handle="%1$s" data-nonce="%2$s">%3$s</a>',
 				$cid,
-				(string) wp_create_nonce( 'rename-key_' . $item->credential_id ),
-				__( 'Rename', 'two-factor-provider-webauthn' )
+				esc_attr( (string) wp_create_nonce( 'rename-key_' . $item->credential_id ) ),
+				esc_html__( 'Rename', 'two-factor-provider-webauthn' )
 			),
 			'delete hide-if-no-js' => sprintf(
 				'<a href="#" data-handle="%1$s" data-nonce="%2$s">%3$s</a>',
 				$cid,
-				(string) wp_create_nonce( 'delete-key_' . $item->credential_id ),
-				__( 'Revoke', 'two-factor-provider-webauthn' )
+				esc_attr( (string) wp_create_nonce( 'delete-key_' . $item->credential_id ) ),
+				esc_html__( 'Revoke', 'two-factor-provider-webauthn' )
 			),
 		];
 

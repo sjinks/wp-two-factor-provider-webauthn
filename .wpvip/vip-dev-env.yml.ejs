@@ -1,0 +1,25 @@
+configuration-version: 1
+slug: tfa-webauthn
+title: Just another WordPress site
+php: 8.3
+wordpress: 6.9
+app-code: image
+mu-plugins: image
+multisite: false
+phpmyadmin: false
+elasticsearch: false
+xdebug: false
+mailpit: false
+photon: false
+cron: false
+overrides: |
+  services:
+    php:
+      services:
+        volumes:
+          - <%= configDir %>/..:/wp/wp-content/plugins/two-factor-provider-webauthn
+          - <%= configDir %>/plugin-loader.php:/wp/wp-content/client-mu-plugins/plugin-loader.php
+    nginx:
+      services:
+        volumes:
+          - <%= configDir %>/..:/wp/wp-content/plugins/two-factor-provider-webauthn

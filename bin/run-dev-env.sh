@@ -5,7 +5,7 @@ set -ex
 cd "$(dirname "$0")/.."
 docker compose up -d --build
 while ! docker compose run --rm cli wp db check; do
-    sleep 1;
+    sleep 1
 done
 
 mkdir -p -m 0777 coverage-report

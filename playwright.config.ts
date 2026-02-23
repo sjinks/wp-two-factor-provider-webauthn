@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
 		timeout: 5000,
 	},
 
-	forbidOnly: !!process.env.CI,
+	forbidOnly: Boolean( process.env.CI ),
 	retries: 0,
 	workers: process.env.CI ? 2 : undefined,
 	reporter: process.env.CI ? 'github' : 'line',
@@ -28,7 +28,7 @@ const config: PlaywrightTestConfig = {
 		{
 			name: 'chromium',
 			use: {
-				...devices['Desktop Chrome'],
+				...devices[ 'Desktop Chrome' ],
 			},
 		},
 	],

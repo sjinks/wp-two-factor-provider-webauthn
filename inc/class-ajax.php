@@ -41,6 +41,10 @@ final class AJAX {
 
 	public function wp_ajax_webauthn_preregister(): void {
 		$user_id = (int) Utils::get_post_field_as_string( 'user_id' );
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+		}
+
 		$this->check_registration_nonce( $user_id );
 
 		try {
@@ -83,6 +87,10 @@ final class AJAX {
 	 */
 	public function wp_ajax_webauthn_register(): void {
 		$user_id = (int) Utils::get_post_field_as_string( 'user_id' );
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+		}
+
 		$this->check_registration_nonce( $user_id );
 
 		try {
@@ -179,7 +187,11 @@ final class AJAX {
 
 	public function wp_ajax_webauthn_delete_key(): void {
 		$user_id = Utils::get_post_field_as_string( 'user_id' );
-		$handle  = Utils::get_post_field_as_string( 'handle' );
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+		}
+
+		$handle = Utils::get_post_field_as_string( 'handle' );
 		$this->verify_nonce( "delete-key_{$handle}" );
 
 		$user = get_user_by( 'id', $user_id );
@@ -194,7 +206,11 @@ final class AJAX {
 
 	public function wp_ajax_webauthn_rename_key(): void {
 		$user_id = Utils::get_post_field_as_string( 'user_id' );
-		$handle  = Utils::get_post_field_as_string( 'handle' );
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+		}
+
+		$handle = Utils::get_post_field_as_string( 'handle' );
 		$this->verify_nonce( "rename-key_{$handle}" );
 
 		$name = Utils::get_post_field_as_string( 'name' );

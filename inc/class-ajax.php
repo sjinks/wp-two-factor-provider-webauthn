@@ -82,7 +82,7 @@ final class AJAX {
 				'nonce'   => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
 			] );
 		} catch ( Throwable $e ) {
-			wp_send_json_error( $e->getMessage() );
+			wp_send_json_error( $e->getMessage(), 400 );
 		}
 	}
 

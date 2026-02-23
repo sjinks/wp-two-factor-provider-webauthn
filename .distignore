@@ -9,9 +9,11 @@
 /stubs/
 /tests/
 /docker-compose.yml
+/eslint.config.js
 /rollup.config.mjs
 /package-lock.json
 /package.json
+/patches.lock.json
 /playwright.config.ts
 /tsconfig.json
 /vendor/madwizard/webauthn/tests/

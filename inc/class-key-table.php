@@ -49,16 +49,17 @@ final class Key_Table extends WP_List_Table {
 	 * @psalm-param CredentialRow $item
 	 */
 	protected function column_name( $item ): string {
+		$cid     = esc_attr( $item->credential_id );
 		$actions = [
 			'rename hide-if-no-js' => sprintf(
 				'<a href="#" data-handle="%1$s" data-nonce="%2$s">%3$s</a>',
-				$item->credential_id,
+				$cid,
 				(string) wp_create_nonce( 'rename-key_' . $item->credential_id ),
 				__( 'Rename', 'two-factor-provider-webauthn' )
 			),
 			'delete hide-if-no-js' => sprintf(
 				'<a href="#" data-handle="%1$s" data-nonce="%2$s">%3$s</a>',
-				$item->credential_id,
+				$cid,
 				(string) wp_create_nonce( 'delete-key_' . $item->credential_id ),
 				__( 'Revoke', 'two-factor-provider-webauthn' )
 			),

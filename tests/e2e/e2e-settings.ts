@@ -1,5 +1,5 @@
 export default {
-	adminUsername: process.env.ADMIN_USERNAME ?? 'admin',
+	adminUsername: process.env.ADMIN_USERNAME || 'admin',
 	adminPassword: 'password',
 	user1Username: 'user1',
 	user1Password: 'password',

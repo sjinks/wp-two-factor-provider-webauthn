@@ -57,4 +57,28 @@ test( 'Login Workflow', async ( { page } ) => {
 		const credential = await getCredential( client, authenticatorId, credentialId );
 		return expect( credential.signCount ).toBeGreaterThan( signCount );
 	} );
+
+	await test.step( 'Authentication bypass is mitigated', async () => {
+		const adminPage = new GenericAdminPage( page );
+		await adminPage.logOut();
+
+		const loginPage = new LoginPage( page );
+		await loginPage.login( settings.user1Username, settings.user1Password );
+
+		await expect( loginPage.getSecondFactorProvider() ).resolves.toBe( 'TwoFactor_Provider_WebAuthn' );
+
+		await page.locator( 'input[name="webauthn_response"]' ).evaluate( ( el: HTMLInputElement ) => {
+			el.value = 'null';
+		} );
+
+		const [ resp ] = await Promise.all( [
+			page.waitForResponse( ( response ) => response.status() === 200 && response.request().isNavigationRequest() ),
+			page.locator( '#loginform' ).evaluate( ( form: HTMLFormElement ) => form.submit() ),
+		] );
+
+		await resp.finished();
+
+		expect( page.url() ).toContain( '/wp-login.php' );
+		return expect( page.locator( '#login_error' ) ).toHaveText( /Invalid verification code/u );
+	} );
 } );

@@ -105,3 +105,44 @@ jobs:
           name: playwright-test-results-bundle
           path: test-results/
           retention-days: 3
+
+  e2e-vip:
+    name: Run E2E tests on VIP Dev Environment
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1 # 2.36.0
+
+      - name: Install Composer Dependencies
+        uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520 # 3.1.1
+
+      - name: Install Playwright
+        run: npx playwright install chromium
+
+      - name: Install VIP CLI
+        run: npm i -g @automattic/vip
+
+      - name: Run Playwright E2E tests
+        run: npm run test:e2e:vip
+
+      - name: Upload test results
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        if: failure()
+        with:
+          name: playwright-test-results-vip
+          path: test-results/
+          retention-days: 3

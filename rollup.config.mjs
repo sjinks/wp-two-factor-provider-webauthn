@@ -1,24 +1,23 @@
-/* eslint-disable jsdoc/valid-types */
-import { defineConfig } from 'rollup';
-import typescript from '@rollup/plugin-typescript';
 import { babel } from '@rollup/plugin-babel';
+import typescript from '@rollup/plugin-typescript';
 import { terser } from '@wwa/rollup-plugin-terser';
+import { defineConfig } from 'rollup';
 
 /** @type {import('rollup').Plugin[]} */
 const plugins = [
 	typescript(),
-	babel({
+	babel( {
 		babelHelpers: 'bundled',
 		exclude: 'node_modules/**',
-		extensions: ['.js', '.ts'],
-		presets: [['@babel/env', { loose: true, bugfixes: true, modules: false }]],
-		plugins: [['@wordpress/babel-plugin-makepot', { output: 'lang/two-factor-provider-webauthn-js.pot' }]],
+		extensions: [ '.js', '.ts' ],
+		presets: [ [ '@babel/env', { targets: 'baseline 2022', modules: false } ] ],
+		plugins: [ [ '@wordpress/babel-plugin-makepot', { output: 'lang/two-factor-provider-webauthn-js.pot' } ] ],
 		babelrc: false,
-	}),
+	} ),
 	terser(),
 ];
 
-export default defineConfig([
+export default defineConfig( [
 	{
 		input: 'assets/profile.ts',
 		output: {
@@ -31,7 +30,7 @@ export default defineConfig([
 				'@wordpress/i18n': 'wp.i18n',
 			},
 		},
-		external: ['jquery', '@wordpress/i18n'],
+		external: [ 'jquery', '@wordpress/i18n' ],
 		plugins,
 	},
 	{
@@ -45,7 +44,7 @@ export default defineConfig([
 				'@wordpress/i18n': 'wp.i18n',
 			},
 		},
-		external: ['@wordpress/i18n'],
+		external: [ '@wordpress/i18n' ],
 		plugins,
 	},
-]);
+] );

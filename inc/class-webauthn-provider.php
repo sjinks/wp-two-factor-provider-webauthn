@@ -160,8 +160,20 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 				return true;
 			}
 
-			return false;
+			throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 		} catch ( Throwable $e ) {
+			/**
+			 * Fires if WebAuthn authentication fails.
+			 * If $e is an instance of WebAuthnException, its message is safe to display to the user.
+			 * For other exception types, the message may not be safe, and a generic error message should be shown instead.
+			 * When $e is an instance of UnexpectedValueException, it indicates an issue with the plugin's internal state (user meta contains an unexpected value).
+			 * When $e is an instance of InvalidArgumentException, it indicates a problem with the request (e.g. missing or malformed parameters).
+			 *
+			 * @param WP_User $user The user attempting to authenticate.
+			 * @param Throwable $e The exception that caused the failure.
+			 * @since 2.5.7
+			 */
+			do_action( 'two_factor_webauthn_authentication_failed', $user, $e );
 			return false;
 		} finally {
 			delete_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META );

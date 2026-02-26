@@ -10,7 +10,7 @@ const plugins = [
 		babelHelpers: 'bundled',
 		exclude: 'node_modules/**',
 		extensions: [ '.js', '.ts' ],
-		presets: [ [ '@babel/env', { targets: 'baseline 2022', modules: false } ] ],
+		presets: [ [ '@babel/env', { targets: 'baseline 2020', modules: false } ] ],
 		plugins: [ [ '@wordpress/babel-plugin-makepot', { output: 'lang/two-factor-provider-webauthn-js.pot' } ] ],
 		babelrc: false,
 	} ),

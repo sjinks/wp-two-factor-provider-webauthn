@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2025-06-24T07:19:45+00:00\n"
+"POT-Creation-Date: 2026-02-26T14:30:36+00:00\n"
 "PO-Revision-Date: 2022-09-30 23:45-0700\n"
 "Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
 "Language-Team: Alex Lion <learnwithalex@gmail.com>\n"
@@ -152,33 +152,34 @@ msgid ""
 "plugin."
 msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F 提供者。"
 
-#: inc/class-ajax.php:34
+#: inc/class-ajax.php:35
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
 
-#: inc/class-ajax.php:49 inc/class-ajax.php:91 inc/class-ajax.php:109
-#: inc/class-ajax.php:171 inc/class-ajax.php:187 inc/class-ajax.php:207
-#: inc/class-webauthn-provider.php:126
+#: inc/class-ajax.php:45 inc/class-ajax.php:58 inc/class-ajax.php:116
+#: inc/class-ajax.php:134 inc/class-ajax.php:167 inc/class-ajax.php:197
+#: inc/class-ajax.php:219 inc/class-webauthn-provider.php:139
+#: inc/class-webauthn-provider.php:163
 msgid "Bad request."
 msgstr "錯誤的要求。"
 
-#: inc/class-ajax.php:99
+#: inc/class-ajax.php:97 inc/class-ajax.php:182
+msgid "An unexpected error occurred. Please try again later."
+msgstr "發生了意外錯誤。請稍後再試一次。"
+
+#: inc/class-ajax.php:124
 msgid "Unable to retrieve the registration context."
 msgstr "無法擷取註冊內容。"
 
-#: inc/class-ajax.php:137 inc/class-webauthn-credential-store.php:128
-msgid "New Key"
-msgstr "新的金鑰"
-
-#: inc/class-ajax.php:153
+#: inc/class-ajax.php:149
 msgid "Unable to save the key to the database."
 msgstr "無法將金鑰儲存至資料庫。"
 
-#: inc/class-ajax.php:202
+#: inc/class-ajax.php:214
 msgid "Key name cannot be empty."
 msgstr "金鑰名稱不能留空。"
 
-#: inc/class-ajax.php:216
+#: inc/class-ajax.php:228
 msgid "Failed to rename the key."
 msgstr "無法重新命名金鑰。"
 
@@ -198,32 +199,36 @@ msgstr "新增時間"
 msgid "Last Used"
 msgstr "最後使用時間"
 
-#: inc/class-key-table.php:57
+#: inc/class-key-table.php:58
 msgid "Rename"
 msgstr "重新命名"
 
-#: inc/class-key-table.php:63
+#: inc/class-key-table.php:64
 msgid "Revoke"
 msgstr "撤銷"
 
-#: inc/class-webauthn-provider.php:49
+#: inc/class-webauthn-credential-store.php:128
+msgid "New Key"
+msgstr "新的金鑰"
+
+#: inc/class-webauthn-provider.php:62
 msgctxt "Provider label"
 msgid "WebAuthn"
 msgstr "WebAuthn"
 
-#: inc/class-webauthn-provider.php:56
+#: inc/class-webauthn-provider.php:69
 #, fuzzy
 msgctxt "Provider label"
 msgid "Use your security key"
 msgstr "請插入 (並輕觸) 安全金鑰。"
 
-#: inc/class-webauthn-provider.php:67
+#: inc/class-webauthn-provider.php:80
 msgid ""
 "WebAuthn requires an HTTPS connection. Please use an alternative second "
 "factor method."
 msgstr "WebAuthn 需要這個網站具備 HTTPS 連線。請使用其他第二因素驗證方式。"
 
-#: inc/class-webauthn-provider.php:115
+#: inc/class-webauthn-provider.php:128
 msgid "Unable to retrieve the authentication context."
 msgstr "無法擷取驗證內容。"
 
@@ -234,6 +239,10 @@ msgstr "無法將使用者控制代碼儲存至資料庫。"
 #: views/login.php:2
 msgid "Please insert (and tap) your security key."
 msgstr "請插入 (並輕觸) 安全金鑰。"
+
+#: views/login.php:5
+msgid "Retry"
+msgstr "重試"
 
 #: views/user-options.php:3
 msgid ""

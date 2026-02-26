@@ -169,7 +169,7 @@ final class AJAX {
 		} catch ( WebAuthnException | InvalidArgumentException | UnexpectedValueException $e ) {
 			/**
 			 * Fires when an error occurs during the registration process, which includes validating the credential and saving it to the database.
-			 * 
+			 *
 			 * @param Throwable $e The exception that caused the failure.
 			 * @param int $user_id The ID of the user attempting to register a key.
 			 * @param RegistrationResultInterface|null $result The result of the registration attempt, if available. This may be null if the error occurred before the registration result could be obtained.

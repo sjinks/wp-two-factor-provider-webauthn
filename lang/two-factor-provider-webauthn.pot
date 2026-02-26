@@ -1,15 +1,15 @@
-# Copyright (C) 2025 Volodymyr Kolesnykov
+# Copyright (C) 2026 Volodymyr Kolesnykov
 # This file is distributed under the MIT.
 msgid ""
 msgstr ""
-"Project-Id-Version: WebAuthn Provider for Two Factor 2.5.3\n"
+"Project-Id-Version: WebAuthn Provider for Two Factor 2.5.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-provider-webauthn\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-24T07:19:45+00:00\n"
+"POT-Creation-Date: 2026-02-26T14:31:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: two-factor-provider-webauthn\n"
@@ -107,38 +107,40 @@ msgstr ""
 msgid "This option allows you to turn off the old U2F provider in the Two Factor plugin."
 msgstr ""
 
-#: inc/class-ajax.php:34
+#: inc/class-ajax.php:35
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr ""
 
-#: inc/class-ajax.php:49
-#: inc/class-ajax.php:91
-#: inc/class-ajax.php:109
-#: inc/class-ajax.php:171
-#: inc/class-ajax.php:187
-#: inc/class-ajax.php:207
-#: inc/class-webauthn-provider.php:126
+#: inc/class-ajax.php:45
+#: inc/class-ajax.php:58
+#: inc/class-ajax.php:116
+#: inc/class-ajax.php:134
+#: inc/class-ajax.php:167
+#: inc/class-ajax.php:197
+#: inc/class-ajax.php:219
+#: inc/class-webauthn-provider.php:139
+#: inc/class-webauthn-provider.php:163
 msgid "Bad request."
 msgstr ""
 
-#: inc/class-ajax.php:99
+#: inc/class-ajax.php:97
+#: inc/class-ajax.php:182
+msgid "An unexpected error occurred. Please try again later."
+msgstr ""
+
+#: inc/class-ajax.php:124
 msgid "Unable to retrieve the registration context."
 msgstr ""
 
-#: inc/class-ajax.php:137
-#: inc/class-webauthn-credential-store.php:128
-msgid "New Key"
-msgstr ""
-
-#: inc/class-ajax.php:153
+#: inc/class-ajax.php:149
 msgid "Unable to save the key to the database."
 msgstr ""
 
-#: inc/class-ajax.php:202
+#: inc/class-ajax.php:214
 msgid "Key name cannot be empty."
 msgstr ""
 
-#: inc/class-ajax.php:216
+#: inc/class-ajax.php:228
 msgid "Failed to rename the key."
 msgstr ""
 
@@ -158,29 +160,33 @@ msgstr ""
 msgid "Last Used"
 msgstr ""
 
-#: inc/class-key-table.php:57
+#: inc/class-key-table.php:58
 msgid "Rename"
 msgstr ""
 
-#: inc/class-key-table.php:63
+#: inc/class-key-table.php:64
 msgid "Revoke"
 msgstr ""
 
-#: inc/class-webauthn-provider.php:49
+#: inc/class-webauthn-credential-store.php:128
+msgid "New Key"
+msgstr ""
+
+#: inc/class-webauthn-provider.php:62
 msgctxt "Provider label"
 msgid "WebAuthn"
 msgstr ""
 
-#: inc/class-webauthn-provider.php:56
+#: inc/class-webauthn-provider.php:69
 msgctxt "Provider label"
 msgid "Use your security key"
 msgstr ""
 
-#: inc/class-webauthn-provider.php:67
+#: inc/class-webauthn-provider.php:80
 msgid "WebAuthn requires an HTTPS connection. Please use an alternative second factor method."
 msgstr ""
 
-#: inc/class-webauthn-provider.php:115
+#: inc/class-webauthn-provider.php:128
 msgid "Unable to retrieve the authentication context."
 msgstr ""
 
@@ -190,6 +196,10 @@ msgstr ""
 
 #: views/login.php:2
 msgid "Please insert (and tap) your security key."
+msgstr ""
+
+#: views/login.php:5
+msgid "Retry"
 msgstr ""
 
 #: views/user-options.php:3

@@ -13,6 +13,8 @@
 use Composer\Autoload\ClassLoader;
 use WildWolf\WordPress\TwoFactorWebAuthn\Plugin;
 
+define( 'TFA_WEBAUTHN_VERSION', '2.5.6' );
+
 if ( defined( 'ABSPATH' ) ) {
 	/** @var mixed */
 	$save = $GLOBALS['__composer_autoload_files'] ?? null;

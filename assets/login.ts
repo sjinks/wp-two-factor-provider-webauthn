@@ -13,53 +13,50 @@ declare let tfa_webauthn: {
 
 function showError( error: string ): void {
 	const el = document.getElementById( 'login_error' );
-	if ( el && el.parentNode ) {
-		el.parentNode.removeChild( el );
-	}
+	el?.parentNode?.removeChild( el );
 
 	const form = document.getElementById( 'loginform' );
-	if ( form ) {
-		form.insertAdjacentHTML( 'beforebegin', '<div id="login_error" role="alert"><p>' + error + '</p></div>' );
-	}
+	form?.insertAdjacentHTML( 'beforebegin', '<div id="login_error" role="alert"><p>' + error + '</p></div>' );
 }
 
-function startAuthentication(): void {
-	const loginForm = document.getElementById( 'loginform' ) as HTMLFormElement;
+async function startAuthentication(): Promise<void> {
+	const loginForm = document.getElementById( 'loginform' ) as HTMLFormElement | null;
 	const publicKey = preparePublicKeyCredentialRequestOptions( tfa_webauthn.options );
-	(
-		navigator.credentials.get( {
-			publicKey,
-		} ) as Promise<PublicKeyCredential | null>
-	)
-		.then( ( credential ) => {
-			if ( credential ) {
-				( document.getElementById( 'webauthn_response' ) as HTMLInputElement ).value = JSON.stringify(
-					preparePublicKeyCredential( credential ),
-				);
+	try {
+		const credential = await navigator.credentials.get( { publicKey } ) as PublicKeyCredential | null;
+		if ( credential ) {
+			const input = document.getElementById( 'webauthn_response' ) as HTMLInputElement | null;
+			if ( input && loginForm ) {
+				input.value = JSON.stringify( preparePublicKeyCredential( credential ) );
 				loginForm.submit();
 			} else {
-				throw new Error( L_UNABLE_TO_GET_PK_CREDENTIAL );
+				// Must not happen
+				self.location.reload();
 			}
-		} )
-		.catch( ( e: Error ) => {
-			const message = e instanceof DOMException ? decodeDOMException( e, true ) : e.message;
-			showError( message );
-			( document.getElementById( 'webauthn-retry' ) as HTMLDivElement ).removeAttribute( 'hidden' );
-		} );
+		} else {
+			throw new Error( L_UNABLE_TO_GET_PK_CREDENTIAL );
+		}
+	} catch ( e ) {
+		let message: string;
+		if ( e instanceof DOMException ) {
+			message = decodeDOMException( e, true );
+		} else if ( e instanceof Error ) {
+			message = e.message;
+		} else {
+			message = String( e );
+		}
+
+		showError( message );
+	}
 }
 
 const callback = (): void => {
-	const retryButton = document.querySelector( '#webauthn-retry .button' ) as HTMLButtonElement;
-	retryButton.addEventListener( 'click', () => {
-		( document.getElementById( 'webauthn-retry' ) as HTMLDivElement ).setAttribute( 'hidden', 'hidden' );
-		startAuthentication();
-	} );
+	const retryButton = document.querySelector( '#webauthn-retry .button' );
+	retryButton?.addEventListener( 'click', () => void startAuthentication() );
 
 	if ( 'credentials' in navigator ) {
 		if ( ! navigator.webdriver ) {
-			startAuthentication();
-		} else {
-			( document.getElementById( 'webauthn-retry' ) as HTMLDivElement ).removeAttribute( 'hidden' );
+			void startAuthentication();
 		}
 	} else {
 		showError( L_WEBAUTHN_NOT_SUPPORTED );

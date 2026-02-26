@@ -19,27 +19,40 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 class WebAuthn_Provider extends Two_Factor_Provider {
 	public const AUTHENTICATION_CONTEXT_USER_META = Constants::AUTHENTICATION_CONTEXT_USER_META_KEY;
 
-	/** @var static|null */
-	protected static $instance = null;
+	/** @var array<string,static> */
+	protected static array $instances = [];
 
 	/**
 	 * @return static
 	 */
 	public static function get_instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new static();
+		$class = static::class;
+
+		if ( ! isset( self::$instances[ $class ] ) ) {
+			self::$instances[ $class ] = new static();
 		}
 
-		return self::$instance;
+		return self::$instances[ $class ];
 	}
 
 	final protected function __construct() {
-		add_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'user_options' ] );
+		if ( false === has_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'user_options' ] ) ) {
+			add_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'user_options' ] );
+		}
+
 		parent::__construct();
 
-		add_filter( 'load_script_translation_file', [ $this, 'load_script_translation_file' ], 10, 3 );
-		add_filter( 'two_factor_enabled_providers_for_user', [ $this, 'two_factor_enabled_providers_for_user' ] );
-		add_filter( 'two_factor_primary_provider_for_user', [ $this, 'two_factor_primary_provider_for_user' ] );
+		if ( false === has_filter( 'load_script_translation_file', [ $this, 'load_script_translation_file' ] ) ) {
+			add_filter( 'load_script_translation_file', [ $this, 'load_script_translation_file' ], 10, 3 );
+		}
+
+		if ( false === has_filter( 'two_factor_enabled_providers_for_user', [ $this, 'two_factor_enabled_providers_for_user' ] ) ) {
+			add_filter( 'two_factor_enabled_providers_for_user', [ $this, 'two_factor_enabled_providers_for_user' ] );
+		}
+
+		if ( false === has_filter( 'two_factor_primary_provider_for_user', [ $this, 'two_factor_primary_provider_for_user' ] ) ) {
+			add_filter( 'two_factor_primary_provider_for_user', [ $this, 'two_factor_primary_provider_for_user' ] );
+		}
 	}
 
 	/**

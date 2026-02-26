@@ -20,6 +20,11 @@ function showError( error: string ): void {
 }
 
 async function startAuthentication(): Promise<void> {
+	if ( ! ( 'credentials' in navigator ) ) {
+		showError( L_WEBAUTHN_NOT_SUPPORTED );
+		return;
+	}
+
 	const loginForm = document.getElementById( 'loginform' ) as HTMLFormElement | null;
 	const publicKey = preparePublicKeyCredentialRequestOptions( tfa_webauthn.options );
 	try {
@@ -31,7 +36,9 @@ async function startAuthentication(): Promise<void> {
 				loginForm.submit();
 			} else {
 				// Must not happen
-				self.location.reload();
+				// eslint-disable-next-line no-console
+				console.error( 'WebAuthn authentication failed: missing #loginform or #webauthn_response element.' );
+				throw new Error( L_UNABLE_TO_GET_PK_CREDENTIAL );
 			}
 		} else {
 			throw new Error( L_UNABLE_TO_GET_PK_CREDENTIAL );
@@ -54,12 +61,8 @@ const callback = (): void => {
 	const retryButton = document.querySelector( '#webauthn-retry .button' );
 	retryButton?.addEventListener( 'click', () => void startAuthentication() );
 
-	if ( 'credentials' in navigator ) {
-		if ( ! navigator.webdriver ) {
-			void startAuthentication();
-		}
-	} else {
-		showError( L_WEBAUTHN_NOT_SUPPORTED );
+	if ( ! navigator.webdriver ) {
+		void startAuthentication();
 	}
 };
 

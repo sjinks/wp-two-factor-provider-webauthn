@@ -53,15 +53,15 @@ final class AdminSettings {
 			[
 				'label_for' => 'authenticator_attachment',
 				'options'   => [
-					''                                => _x( 'None', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
+					''                                => _x( 'No preference', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
 					AuthenticatorAttachment::CROSS_PLATFORM => _x( 'Cross-platform', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
 					AuthenticatorAttachment::PLATFORM => _x( 'Platform', 'Authenticator attachment modality', 'two-factor-provider-webauthn' ),
 				],
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
-					'<em>Platform attachment</em> is for authenticators physically bound to a client device (like a fingerprint scanner on a smartphone).<br/>'
-					. '<em>Cross-platform attachment</em> is for removable authenticators which can "roam" between client devices (like a security key).<br/>'
-					. 'Consider using <em>None</em> if you do not need to restrict your users to the specific class of authenticators.<br/>'
+					"<em>Platform (built-in authenticator)</em>: Use the device's built-in authenticators, such as Touch ID, Face ID, Windows Hello, or the phone’s fingerprint sensor. These are usually the easiest and most convenient option.<br/>"
+					. '<em>Cross-platform (security keys)</em>: Use removable security keys, such as YubiKey or similar USB/NFC keys. These can be used on multiple devices.<br/>'
+					. '<em>No preference (recommended)</em>: Allow both built-in authenticators and security keys. This gives users the most flexibility and is recommended in most cases.<br/>'
 					. '<a href="https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality">Details</a>',
 					'two-factor-provider-webauthn'
 				),
@@ -83,9 +83,9 @@ final class AdminSettings {
 				],
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
-					'<em>Discouraged</em>: user verification is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/>'
-					. '<em>Preferred</em>: user verification (like entering a PIN code) is preferred but not required for successful authentication.<br/>'
-					. '<em>Required</em>: user verification is required for successful authentication. Please note that not all browsers support this setting.<br/>',
+					'<em>Discouraged</em>: User verification is not required. Users may be able to authenticate without biometrics or a PIN. This is the least strict option.<br/>'
+					. '<em>Preferred</em>: User verification, such as biometrics (fingerprint, Face ID) or a device PIN, is preferred when available, but not strictly required. This provides good security while maintaining compatibility.<br/>'
+					. '<em>Required</em>: User verification is always required. Users must confirm their identity using biometrics or a PIN. Some older devices or security keys may not support this.<br/>',
 					'two-factor-provider-webauthn'
 				),
 			]
@@ -118,7 +118,7 @@ final class AdminSettings {
 				'help'      => __(
 					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 					'Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>'
-					. 'When enabled, this hack enables the check whether the security key used was registered with U2F and if so, forces the use of the AppID extension.',
+					. 'When enabled, this hack checks whether the security key used was registered with U2F and, if so, forces the use of the AppID extension.',
 					'two-factor-provider-webauthn'
 				),
 			]

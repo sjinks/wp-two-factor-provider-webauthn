@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor 2.5.6\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-provider-webauthn\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-provider-webauthn\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-26T14:31:41+00:00\n"
+"POT-Creation-Date: 2026-02-28T23:40:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: two-factor-provider-webauthn\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: inc/class-adminsettings.php:56
 msgctxt "Authenticator attachment modality"
-msgid "None"
+msgid "No preference"
 msgstr ""
 
 #: inc/class-adminsettings.php:57
@@ -57,7 +57,7 @@ msgid "Platform"
 msgstr ""
 
 #: inc/class-adminsettings.php:60
-msgid "<em>Platform attachment</em> is for authenticators physically bound to a client device (like a fingerprint scanner on a smartphone).<br/><em>Cross-platform attachment</em> is for removable authenticators which can \"roam\" between client devices (like a security key).<br/>Consider using <em>None</em> if you do not need to restrict your users to the specific class of authenticators.<br/><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality\">Details</a>"
+msgid "<em>Platform (built-in authenticator)</em>: Use the device's built-in authenticators, such as Touch ID, Face ID, Windows Hello, or the phone’s fingerprint sensor. These are usually the easiest and most convenient option.<br/><em>Cross-platform (security keys)</em>: Use removable security keys, such as YubiKey or similar USB/NFC keys. These can be used on multiple devices.<br/><em>No preference (recommended)</em>: Allow both built-in authenticators and security keys. This gives users the most flexibility and is recommended in most cases.<br/><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality\">Details</a>"
 msgstr ""
 
 #: inc/class-adminsettings.php:73
@@ -80,7 +80,7 @@ msgid "Required"
 msgstr ""
 
 #: inc/class-adminsettings.php:84
-msgid "<em>Discouraged</em>: user verification is not required (e.g., in the interest of minimizing disruption to the user interaction flow).<br/><em>Preferred</em>: user verification (like entering a PIN code) is preferred but not required for successful authentication.<br/><em>Required</em>: user verification is required for successful authentication. Please note that not all browsers support this setting.<br/>"
+msgid "<em>Discouraged</em>: User verification is not required. Users may be able to authenticate without biometrics or a PIN. This is the least strict option.<br/><em>Preferred</em>: User verification, such as biometrics (fingerprint, Face ID) or a device PIN, is preferred when available, but not strictly required. This provides good security while maintaining compatibility.<br/><em>Required</em>: User verification is always required. Users must confirm their identity using biometrics or a PIN. Some older devices or security keys may not support this.<br/>"
 msgstr ""
 
 #: inc/class-adminsettings.php:96
@@ -96,7 +96,7 @@ msgid "U2F compatibility hack"
 msgstr ""
 
 #: inc/class-adminsettings.php:118
-msgid "Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>When enabled, this hack enables the check whether the security key used was registered with U2F and if so, forces the use of the AppID extension."
+msgid "Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>When enabled, this hack checks whether the security key used was registered with U2F and, if so, forces the use of the AppID extension."
 msgstr ""
 
 #: inc/class-adminsettings.php:129
@@ -113,34 +113,34 @@ msgstr ""
 
 #: inc/class-ajax.php:45
 #: inc/class-ajax.php:58
-#: inc/class-ajax.php:116
-#: inc/class-ajax.php:134
-#: inc/class-ajax.php:167
-#: inc/class-ajax.php:197
-#: inc/class-ajax.php:219
+#: inc/class-ajax.php:120
+#: inc/class-ajax.php:138
+#: inc/class-ajax.php:171
+#: inc/class-ajax.php:201
+#: inc/class-ajax.php:223
 #: inc/class-webauthn-provider.php:139
 #: inc/class-webauthn-provider.php:163
 msgid "Bad request."
 msgstr ""
 
-#: inc/class-ajax.php:97
-#: inc/class-ajax.php:182
+#: inc/class-ajax.php:101
+#: inc/class-ajax.php:186
 msgid "An unexpected error occurred. Please try again later."
 msgstr ""
 
-#: inc/class-ajax.php:124
+#: inc/class-ajax.php:128
 msgid "Unable to retrieve the registration context."
 msgstr ""
 
-#: inc/class-ajax.php:149
+#: inc/class-ajax.php:153
 msgid "Unable to save the key to the database."
 msgstr ""
 
-#: inc/class-ajax.php:214
+#: inc/class-ajax.php:218
 msgid "Key name cannot be empty."
 msgstr ""
 
-#: inc/class-ajax.php:228
+#: inc/class-ajax.php:232
 msgid "Failed to rename the key."
 msgstr ""
 

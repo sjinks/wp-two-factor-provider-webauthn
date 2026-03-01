@@ -1,4 +1,4 @@
-# wp-two-factor-provider-webauthn
+# WebAuthn Provider for Two Factor Plugin
 
 [![Build and Test](https://github.com/sjinks/wp-two-factor-provider-webauthn/actions/workflows/ci.yml/badge.svg)](https://github.com/sjinks/wp-two-factor-provider-webauthn/actions/workflows/ci.yml)
 [![Code Standards Compliance Checks](https://github.com/sjinks/wp-two-factor-provider-webauthn/actions/workflows/lint.yml/badge.svg)](https://github.com/sjinks/wp-two-factor-provider-webauthn/actions/workflows/lint.yml)
@@ -7,9 +7,19 @@
 [![CodeQL Analysis](https://github.com/sjinks/wp-two-factor-provider-webauthn/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/sjinks/wp-two-factor-provider-webauthn/actions/workflows/codeql-analysis.yml)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU)
 
-WebAuthn Provider for [Two Factor](https://github.com/WordPress/two-factor) plugin
+This plugin adds WebAuthn and passkey support to the [Two Factor](https://wordpress.org/plugins/two-factor/) plugin, providing a modern, secure authentication method.
 
-Google Chrome is going to [deprecate the U2F API](https://groups.google.com/a/chromium.org/g/blink-dev/c/xHC3AtU_65A/m/yg20tsVFBAAJ). As a consequence, the U2F provider of the Two Factor plugin will no longer work. This plugin uses the WebAuthn Authentication API compatible with U2F and provides a replacement for the U2F provider.
+**Features:**
+
+* Support for WebAuthn and passkeys (Windows Hello, Touch ID, YubiKeys, etc.)
+* Backward compatibility with previously registered U2F security keys
+* User-friendly settings and seamless authentication experience
+* Customizable error logging and behavior via action hooks
+* Works with the Two Factor plugin for flexible 2FA authentication
+
+The plugin enables users to register and use hardware security keys and platform authenticators for stronger protection against password-based attacks and phishing.
+
+Google Chrome [deprecated the U2F API](https://groups.google.com/a/chromium.org/g/blink-dev/c/xHC3AtU_65A/m/yg20tsVFBAAJ). As a consequence, the U2F provider of the Two Factor plugin no longer works. This plugin uses the WebAuthn Authentication API compatible with U2F and provides a replacement for the U2F provider.
 
 The integration is seamless: if the user has U2F credentials registered, the plugin will import them. If the user has the U2F provider enabled, the plugin will automatically enable the WebAuthn provider as well. If the U2F provider is set as the primary authentication method, it will be replaced with WebAuthn, keeping U2F as a backup method.
 

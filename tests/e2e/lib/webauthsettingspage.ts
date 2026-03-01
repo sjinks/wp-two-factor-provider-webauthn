@@ -3,6 +3,7 @@ import type { Locator, Page } from '@playwright/test';
 const selectors = {
 	authenticatorAttachment: '#authenticator_attachment',
 	uvRequirement: '#user_verification_requirement',
+	rkRequirement: '#resident_key_requirement',
 	timeout: '#timeout',
 	u2fHack: '#u2f_hack',
 	submitButton: '#submit',
@@ -12,6 +13,7 @@ const selectors = {
 export interface Settings {
 	authenticatorAttachment: string;
 	uvRequirement: string;
+	rkRequirement: string;
 	timeout: number;
 	u2fHack: boolean;
 }
@@ -21,6 +23,7 @@ export class WebAuthnSettingsPage {
 
 	private authenticatorAttachmentLocator: Locator;
 	private uvRequirementLocator: Locator;
+	private rkRequirementLocator: Locator;
 	private timeoutLocator: Locator;
 	private u2fHackLocator: Locator;
 	private submitButtonLocator: Locator;
@@ -31,6 +34,7 @@ export class WebAuthnSettingsPage {
 
 		this.authenticatorAttachmentLocator = this.page.locator( selectors.authenticatorAttachment );
 		this.uvRequirementLocator = this.page.locator( selectors.uvRequirement );
+		this.rkRequirementLocator = this.page.locator( selectors.rkRequirement );
 		this.timeoutLocator = this.page.locator( selectors.timeout );
 		this.u2fHackLocator = this.page.locator( selectors.u2fHack );
 		this.submitButtonLocator = this.page.locator( selectors.submitButton );
@@ -48,14 +52,15 @@ export class WebAuthnSettingsPage {
 
 	public async getSettings(): Promise<Settings> {
 		const waitTimeout = 1000;
-		const [ authenticatorAttachment, uvRequirement, timeout, u2fHack ] = await Promise.all( [
+		const [ authenticatorAttachment, uvRequirement, rkRequirement, timeout, u2fHack ] = await Promise.all( [
 			this.authenticatorAttachmentLocator.inputValue( { timeout: waitTimeout } ),
 			this.uvRequirementLocator.inputValue( { timeout: waitTimeout } ),
+			this.rkRequirementLocator.inputValue( { timeout: waitTimeout } ),
 			this.timeoutLocator.inputValue( { timeout: waitTimeout } ),
 			this.u2fHackLocator.isChecked( { timeout: waitTimeout } ),
 		] );
 
-		return { authenticatorAttachment, uvRequirement, timeout: Number( timeout ), u2fHack };
+		return { authenticatorAttachment, uvRequirement, rkRequirement, timeout: Number( timeout ), u2fHack };
 	}
 
 	public setSettings( settings: Partial<Settings> ): Promise<unknown> {
@@ -66,6 +71,10 @@ export class WebAuthnSettingsPage {
 
 		if ( settings.uvRequirement !== undefined ) {
 			promises.push( this.uvRequirementLocator.selectOption( settings.uvRequirement ) );
+		}
+
+		if ( settings.rkRequirement !== undefined ) {
+			promises.push( this.rkRequirementLocator.selectOption( settings.rkRequirement ) );
 		}
 
 		if ( settings.timeout !== undefined ) {

@@ -14,12 +14,14 @@ test( 'Modify Settings Workflow', async ( { page } ) => {
 	const defaultSettings: Settings = {
 		authenticatorAttachment: '',
 		uvRequirement: 'preferred',
+		rkRequirement: 'preferred',
 		timeout: 0,
 		u2fHack: true,
 	};
 
 	const newSettings: Partial<Settings> = {
 		uvRequirement: 'discouraged',
+		rkRequirement: 'discouraged',
 		timeout: 120000,
 		u2fHack: false,
 	};

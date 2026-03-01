@@ -82,6 +82,9 @@ final class AJAX {
 
 			$json = $options->getClientOptionsJson();
 
+			/** @psalm-var array{authenticatorSelection?: array{residentKey?: string, requireResidentKey?: bool}} $json */
+			$json['authenticatorSelection'] ??= [];
+
 			$resident_key_requirement = $settings->get_resident_key_requirement();
 			switch ( $resident_key_requirement ) {
 				case 'preferred':

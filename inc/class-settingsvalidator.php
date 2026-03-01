@@ -4,6 +4,7 @@ namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
 use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 	MadWizard\WebAuthn\Dom\AuthenticatorAttachment,
+	MadWizard\WebAuthn\Dom\ResidentKeyRequirement,
 	MadWizard\WebAuthn\Dom\UserVerificationRequirement,
 };
 
@@ -59,6 +60,10 @@ abstract class SettingsValidator {
 
 			if ( ! in_array( $settings['user_verification_requirement'], [ UserVerificationRequirement::PREFERRED, UserVerificationRequirement::DISCOURAGED, UserVerificationRequirement::REQUIRED ], true ) ) {
 				$settings['user_verification_requirement'] = UserVerificationRequirement::DEFAULT;
+			}
+
+			if ( ! in_array( $settings['resident_key_requirement'], [ 'preferred', ResidentKeyRequirement::DISCOURAGED, ResidentKeyRequirement::REQUIRED ], true ) ) {
+				$settings['resident_key_requirement'] = 'preferred';
 			}
 
 			return $settings;

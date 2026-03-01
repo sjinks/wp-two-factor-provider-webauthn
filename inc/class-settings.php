@@ -10,6 +10,7 @@ use WildWolf\Utils\Singleton;
  * @psalm-type SettingsArray = array{
  *  authenticator_attachment: string,
  *  user_verification_requirement: string,
+ *  resident_key_requirement: string,
  *  timeout: int,
  *  u2f_hack: bool,
  *  disable_u2f: bool,
@@ -30,6 +31,7 @@ final class Settings implements ArrayAccess {
 	private static array $defaults = [
 		'authenticator_attachment'      => '',
 		'user_verification_requirement' => 'preferred',
+		'resident_key_requirement'      => 'preferred',
 		'timeout'                       => 0,
 		'u2f_hack'                      => true,
 		'disable_u2f'                   => false,
@@ -109,6 +111,10 @@ final class Settings implements ArrayAccess {
 
 	public function get_user_verification_requirement(): string {
 		return $this->options['user_verification_requirement'];
+	}
+
+	public function get_resident_key_requirement(): string {
+		return $this->options['resident_key_requirement'];
 	}
 
 	public function get_timeout(): int {

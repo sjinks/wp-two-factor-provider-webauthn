@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2026-02-28T23:15:52+00:00\n"
+"POT-Creation-Date: 2026-03-01T00:21:07+00:00\n"
 "PO-Revision-Date: 2022-09-30 23:45-0700\n"
 "Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
 "Language-Team: Alex Lion <learnwithalex@gmail.com>\n"
@@ -78,10 +78,13 @@ msgid ""
 "is recommended in most cases.<br/><a href=\"https://www.w3.org/TR/webauthn-2/"
 "#authenticator-attachment-modality\">Details</a>"
 msgstr ""
-"<em>平台（內建驗證器）</em>：使用裝置內建的驗證方式，例如 Touch ID、Face ID、Windows Hello，或手機的指紋感測器。這通常是最簡單且最方便的選項。"
-"<br/><em>跨平台（安全金鑰）</em>：使用可移除的安全金鑰，例如 YubiKey 或類似的 USB/NFC 金鑰。這些金鑰可以在多個裝置上使用。"
-"<br/><em>無偏好（建議）</em>：同時允許使用內建驗證器與安全金鑰。這提供使用者最大的彈性，並建議在大多數情況下使用。"
-"<br/><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-modality\">詳細說明</a>"
+"<em>平台（內建驗證器）</em>：使用裝置內建的驗證方式，例如 Touch ID、Face ID、"
+"Windows Hello，或手機的指紋感測器。這通常是最簡單且最方便的選項。<br/><em>跨"
+"平台（安全金鑰）</em>：使用可移除的安全金鑰，例如 YubiKey 或類似的 USB/NFC 金"
+"鑰。這些金鑰可以在多個裝置上使用。<br/><em>無偏好（建議）</em>：同時允許使用"
+"內建驗證器與安全金鑰。這提供使用者最大的彈性，並建議在大多數情況下使用。<br/"
+"><a href=\"https://www.w3.org/TR/webauthn-2/#authenticator-attachment-"
+"modality\">詳細說明</a>"
 
 #: inc/class-adminsettings.php:73
 msgid "User Verification Requirement"
@@ -113,27 +116,63 @@ msgid ""
 "their identity using biometrics or a PIN. Some older devices or security "
 "keys may not support this.<br/>"
 msgstr ""
-"<em>不建議</em>：不需要使用者驗證。使用者可能可以在沒有生物辨識或 PIN 的情況下完成驗證。這是最寬鬆的選項。"
-"<br/><em>建議（推薦）</em>：若裝置支援，建議使用生物辨識（例如指紋、Face ID）或裝置 PIN 進行驗證，但不是強制要求。這在安全性與相容性之間提供良好的平衡。"
-"<br/><em>必須</em>：必須進行使用者驗證。使用者需要透過生物辨識或 PIN 確認身分。某些較舊的裝置或安全金鑰可能不支援此設定。"
+"<em>不建議</em>：不需要使用者驗證。使用者可能可以在沒有生物辨識或 PIN 的情況"
+"下完成驗證。這是最寬鬆的選項。<br/><em>建議（推薦）</em>：若裝置支援，建議使"
+"用生物辨識（例如指紋、Face ID）或裝置 PIN 進行驗證，但不是強制要求。這在安全"
+"性與相容性之間提供良好的平衡。<br/><em>必須</em>：必須進行使用者驗證。使用者"
+"需要透過生物辨識或 PIN 確認身分。某些較舊的裝置或安全金鑰可能不支援此設定。"
 "<br/>"
 
 #: inc/class-adminsettings.php:96
+msgid "Passkeys / Resident Key Requirement"
+msgstr "Passkeys／常駐金鑰需求"
+
+#: inc/class-adminsettings.php:103
+msgctxt "Resident Key Requirement"
+msgid "Discouraged"
+msgstr "不建議"
+
+#: inc/class-adminsettings.php:104
+msgctxt "Resident Key Requirement"
+msgid "Preferred"
+msgstr "建議（推薦）"
+
+#: inc/class-adminsettings.php:105
+msgctxt "Resident Key Requirement"
+msgid "Required"
+msgstr "必須"
+
+#: inc/class-adminsettings.php:107
+msgid ""
+"<em>Discouraged</em>: Passkeys are not specifically requested. "
+"Authentication will still work normally, but passkey features like automatic "
+"sign-in may be less likely to be available.<br/><em>Preferred</em>: Passkeys "
+"are used when supported by the device. This allows users to sign in more "
+"easily and enables modern passkey features.<br/><em>Required</em>: Only "
+"passkeys are allowed. Devices or security keys that do not support passkeys "
+"will not work.<br/>"
+msgstr ""
+"<em>不建議</em>：不會特別要求使用 Passkeys。驗證仍可正常運作，但自動登入等 Passkey 功能可能較不容易使用。"
+"<br/><em>建議（推薦）</em>：當裝置支援時會使用 Passkeys。這可讓使用者更輕鬆登入，並啟用現代 Passkey 功能。"
+"<br/><em>必須</em>：只允許使用 Passkeys。不支援 Passkeys 的裝置或安全金鑰將無法使用。"
+"<br/>"
+
+#: inc/class-adminsettings.php:119
 msgid "Timeout"
 msgstr "逾時時間"
 
-#: inc/class-adminsettings.php:103
+#: inc/class-adminsettings.php:126
 msgid ""
 "The default timeout for security key operations, in seconds. Set to 0 to use "
 "the browser default value."
 msgstr ""
 "安全金鑰作業的預設逾時設定，以秒為單位。設定為 0 代表使用瀏覽器預設值。"
 
-#: inc/class-adminsettings.php:112
+#: inc/class-adminsettings.php:135
 msgid "U2F compatibility hack"
 msgstr "U2F 相容性處理方式"
 
-#: inc/class-adminsettings.php:118
+#: inc/class-adminsettings.php:141
 msgid ""
 "Chrome for Android sometimes ignores the AppID extension required for "
 "interoperability between the old U2F and the modern WebAuthn protocol.<br/"
@@ -144,44 +183,44 @@ msgstr ""
 "的 AppID 擴充功能。<br/>啟用這項設定後，這項功能便會檢查使用的安全金鑰是否以 "
 "U2F 方式註冊；如果安全金鑰以 U2F 方式註冊，便會強制使用 AppID 擴充功能。"
 
-#: inc/class-adminsettings.php:129
+#: inc/class-adminsettings.php:152
 msgid "Disable old U2F provider"
 msgstr "停用舊式 U2F 提供者"
 
-#: inc/class-adminsettings.php:135
+#: inc/class-adminsettings.php:158
 msgid ""
 "This option allows you to turn off the old U2F provider in the Two Factor "
 "plugin."
 msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F 提供者。"
 
-#: inc/class-ajax.php:35
+#: inc/class-ajax.php:36
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
 
-#: inc/class-ajax.php:45 inc/class-ajax.php:58 inc/class-ajax.php:120
-#: inc/class-ajax.php:138 inc/class-ajax.php:171 inc/class-ajax.php:201
-#: inc/class-ajax.php:223 inc/class-webauthn-provider.php:139
+#: inc/class-ajax.php:46 inc/class-ajax.php:59 inc/class-ajax.php:139
+#: inc/class-ajax.php:157 inc/class-ajax.php:190 inc/class-ajax.php:220
+#: inc/class-ajax.php:242 inc/class-webauthn-provider.php:139
 #: inc/class-webauthn-provider.php:163
 msgid "Bad request."
 msgstr "錯誤的要求。"
 
-#: inc/class-ajax.php:101 inc/class-ajax.php:186
+#: inc/class-ajax.php:120 inc/class-ajax.php:205
 msgid "An unexpected error occurred. Please try again later."
 msgstr "發生了意外錯誤。請稍後再試一次。"
 
-#: inc/class-ajax.php:128
+#: inc/class-ajax.php:147
 msgid "Unable to retrieve the registration context."
 msgstr "無法擷取註冊內容。"
 
-#: inc/class-ajax.php:153
+#: inc/class-ajax.php:172
 msgid "Unable to save the key to the database."
 msgstr "無法將金鑰儲存至資料庫。"
 
-#: inc/class-ajax.php:218
+#: inc/class-ajax.php:237
 msgid "Key name cannot be empty."
 msgstr "金鑰名稱不能留空。"
 
-#: inc/class-ajax.php:232
+#: inc/class-ajax.php:251
 msgid "Failed to rename the key."
 msgstr "無法重新命名金鑰。"
 
@@ -219,7 +258,6 @@ msgid "WebAuthn"
 msgstr "WebAuthn"
 
 #: inc/class-webauthn-provider.php:69
-#, fuzzy
 msgctxt "Provider label"
 msgid "Use your security key"
 msgstr "請插入 (並輕觸) 安全金鑰。"

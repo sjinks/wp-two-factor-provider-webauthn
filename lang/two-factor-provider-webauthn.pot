@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-28T23:40:37+00:00\n"
+"POT-Creation-Date: 2026-03-01T00:32:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: two-factor-provider-webauthn\n"
@@ -84,63 +84,86 @@ msgid "<em>Discouraged</em>: User verification is not required. Users may be abl
 msgstr ""
 
 #: inc/class-adminsettings.php:96
-msgid "Timeout"
+msgid "Passkeys / Resident Key Requirement"
 msgstr ""
 
 #: inc/class-adminsettings.php:103
+msgctxt "Resident Key Requirement"
+msgid "Discouraged"
+msgstr ""
+
+#: inc/class-adminsettings.php:104
+msgctxt "Resident Key Requirement"
+msgid "Preferred"
+msgstr ""
+
+#: inc/class-adminsettings.php:105
+msgctxt "Resident Key Requirement"
+msgid "Required"
+msgstr ""
+
+#: inc/class-adminsettings.php:107
+msgid "<em>Discouraged</em>: Passkeys are not specifically requested. Authentication will still work normally, but passkey features like automatic sign-in may be less likely to be available.<br/><em>Preferred</em>: Passkeys are used when supported by the device. This allows users to sign in more easily and enables modern passkey features.<br/><em>Required</em>: Only passkeys are allowed. Devices or security keys that do not support passkeys will not work.<br/>"
+msgstr ""
+
+#: inc/class-adminsettings.php:119
+msgid "Timeout"
+msgstr ""
+
+#: inc/class-adminsettings.php:126
 msgid "The default timeout for security key operations, in seconds. Set to 0 to use the browser default value."
 msgstr ""
 
-#: inc/class-adminsettings.php:112
+#: inc/class-adminsettings.php:135
 msgid "U2F compatibility hack"
 msgstr ""
 
-#: inc/class-adminsettings.php:118
+#: inc/class-adminsettings.php:141
 msgid "Chrome for Android sometimes ignores the AppID extension required for interoperability between the old U2F and the modern WebAuthn protocol.<br/>When enabled, this hack checks whether the security key used was registered with U2F and, if so, forces the use of the AppID extension."
 msgstr ""
 
-#: inc/class-adminsettings.php:129
+#: inc/class-adminsettings.php:152
 msgid "Disable old U2F provider"
 msgstr ""
 
-#: inc/class-adminsettings.php:135
+#: inc/class-adminsettings.php:158
 msgid "This option allows you to turn off the old U2F provider in the Two Factor plugin."
 msgstr ""
 
-#: inc/class-ajax.php:35
+#: inc/class-ajax.php:36
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr ""
 
-#: inc/class-ajax.php:45
-#: inc/class-ajax.php:58
-#: inc/class-ajax.php:120
-#: inc/class-ajax.php:138
-#: inc/class-ajax.php:171
-#: inc/class-ajax.php:201
-#: inc/class-ajax.php:223
+#: inc/class-ajax.php:46
+#: inc/class-ajax.php:59
+#: inc/class-ajax.php:139
+#: inc/class-ajax.php:157
+#: inc/class-ajax.php:190
+#: inc/class-ajax.php:220
+#: inc/class-ajax.php:242
 #: inc/class-webauthn-provider.php:139
 #: inc/class-webauthn-provider.php:163
 msgid "Bad request."
 msgstr ""
 
-#: inc/class-ajax.php:101
-#: inc/class-ajax.php:186
+#: inc/class-ajax.php:120
+#: inc/class-ajax.php:205
 msgid "An unexpected error occurred. Please try again later."
 msgstr ""
 
-#: inc/class-ajax.php:128
+#: inc/class-ajax.php:147
 msgid "Unable to retrieve the registration context."
 msgstr ""
 
-#: inc/class-ajax.php:153
+#: inc/class-ajax.php:172
 msgid "Unable to save the key to the database."
 msgstr ""
 
-#: inc/class-ajax.php:218
+#: inc/class-ajax.php:237
 msgid "Key name cannot be empty."
 msgstr ""
 
-#: inc/class-ajax.php:232
+#: inc/class-ajax.php:251
 msgid "Failed to rename the key."
 msgstr ""
 

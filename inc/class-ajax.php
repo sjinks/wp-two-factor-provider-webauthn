@@ -114,7 +114,7 @@ final class AJAX {
 			 *
 			 * @param Throwable $e The exception that caused the failure.
 			 * @param int $user_id The ID of the user attempting to register a key.
-			 * @since 2.5.7
+			 * @since 2.6.0
 			 */
 			do_action( 'webauthn_preregistration_error', $e, $user_id );
 			wp_send_json_error( $e->getMessage(), 400 );
@@ -199,7 +199,7 @@ final class AJAX {
 			 * @param Throwable $e The exception that caused the failure.
 			 * @param int $user_id The ID of the user attempting to register a key.
 			 * @param RegistrationResultInterface|null $result The result of the registration attempt, if available. This may be null if the error occurred before the registration result could be obtained.
-			 * @since 2.5.7
+			 * @since 2.6.0
 			 */
 			do_action( 'webauthn_registration_error', $e, $user_id, $result );
 			wp_send_json_error( $e->getMessage(), 400 );

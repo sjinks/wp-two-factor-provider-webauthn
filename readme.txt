@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 6.0
 Tested up to: 6.9.1
-Stable tag: 2.5.6
+Stable tag: 2.6.0
 Requires PHP: 8.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -13,9 +13,17 @@ WebAuthn authentication provider for Two Factor plugin.
 
 == Description ==
 
-This plugin adds support for WebAuthn into the [Two Factor](https://wordpress.org/plugins/two-factor/) plugin.
+This plugin adds WebAuthn and passkey support to the [Two Factor](https://wordpress.org/plugins/two-factor/) plugin, providing a modern, secure authentication method.
 
-Because the U2F API [is deprecated and will be removed in February 2022](https://groups.google.com/a/chromium.org/g/blink-dev/c/xHC3AtU_65A/m/yg20tsVFBAAJ), the plugin enables [seamless support](https://user-images.githubusercontent.com/7810770/150708968-3c331612-54ad-4373-9d36-6ec064301755.mp4) for the previously registered U2F security keys so that the users don't have to re-register their keys and still be able to log in.
+**Features:**
+
+* Support for WebAuthn and passkeys (Windows Hello, Touch ID, YubiKeys, etc.)
+* Backward compatibility with previously registered U2F security keys
+* User-friendly settings and seamless authentication experience
+* Customizable error logging and behavior via action hooks
+* Works with the Two Factor plugin for flexible 2FA authentication
+
+The plugin enables users to register and use hardware security keys and platform authenticators for stronger protection against password-based attacks and phishing.
 
 Notes:
 
@@ -32,6 +40,13 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.6.0 =
+* Better support for passkeys
+* Add hooks for logging errors
+* Make plugin options more user-friendly
+* Always show Retry button
+* Update translations
 
 = 2.5.6 =
 * Fix authentication bypass with malformed request

@@ -171,7 +171,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			 *
 			 * @param WP_User $user The user attempting to authenticate.
 			 * @param Throwable $e The exception that caused the failure.
-			 * @since 2.5.7
+			 * @since 2.6.0
 			 */
 			do_action( 'two_factor_webauthn_authentication_failed', $user, $e );
 			return false;

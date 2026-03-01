@@ -92,6 +92,29 @@ final class AdminSettings {
 		);
 
 		add_settings_field(
+			'resident_key_requirement',
+			__( 'Passkeys / Resident Key Requirement', 'two-factor-provider-webauthn' ),
+			[ $this->input_factory, 'select' ],
+			Admin::OPTIONS_MENU_SLUG,
+			$settings_section,
+			[
+				'label_for' => 'resident_key_requirement',
+				'options'   => [
+					'discouraged' => _x( 'Discouraged', 'Resident Key Requirement', 'two-factor-provider-webauthn' ),
+					'preferred'   => _x( 'Preferred', 'Resident Key Requirement', 'two-factor-provider-webauthn' ),
+					'required'    => _x( 'Required', 'Resident Key Requirement', 'two-factor-provider-webauthn' ),
+				],
+				'help'      => __(
+					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+					'<em>Discouraged</em>: Passkeys are not specifically requested. Authentication will still work normally, but passkey features like automatic sign-in may be less likely to be available.<br/>'
+					. '<em>Preferred</em>: Passkeys are used when supported by the device. This allows users to sign in more easily and enables modern passkey features.<br/>'
+					. '<em>Required</em>: Only passkeys are allowed. Devices or security keys that do not support passkeys will not work.<br/>',
+					'two-factor-provider-webauthn'
+				),
+			],
+		);
+
+		add_settings_field(
 			'timeout',
 			__( 'Timeout', 'two-factor-provider-webauthn' ),
 			[ $this->input_factory, 'input' ],

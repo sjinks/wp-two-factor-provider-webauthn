@@ -7,12 +7,13 @@ use Throwable;
 use UnexpectedValueException;
 use WildWolf\Utils\Singleton;
 use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
+	MadWizard\WebAuthn\Dom\ResidentKeyRequirement,
 	MadWizard\WebAuthn\Exception\WebAuthnException,
 	MadWizard\WebAuthn\Json\JsonConverter,
 	MadWizard\WebAuthn\Server\Registration\RegistrationContext,
 	MadWizard\WebAuthn\Server\Registration\RegistrationOptions,
+	MadWizard\WebAuthn\Server\Registration\RegistrationResultInterface,
 };
-use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\MadWizard\WebAuthn\Server\Registration\RegistrationResultInterface;
 
 final class AJAX {
 	use Singleton;
@@ -78,8 +79,30 @@ final class AJAX {
 			$context = $options->getContext();
 			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 			update_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
+
+			$json = $options->getClientOptionsJson();
+
+			$resident_key_requirement = $settings->get_resident_key_requirement();
+			switch ( $resident_key_requirement ) {
+				case 'preferred':
+				default:
+					$json['authenticatorSelection']['residentKey']        = 'preferred';
+					$json['authenticatorSelection']['requireResidentKey'] = false;
+					break;
+
+				case ResidentKeyRequirement::DISCOURAGED:
+					$json['authenticatorSelection']['residentKey']        = 'discouraged';
+					$json['authenticatorSelection']['requireResidentKey'] = false;
+					break;
+
+				case ResidentKeyRequirement::REQUIRED:
+					$json['authenticatorSelection']['residentKey']        = 'required';
+					$json['authenticatorSelection']['requireResidentKey'] = true;
+					break;
+			}
+
 			wp_send_json_success( [
-				'options' => $options->getClientOptionsJson(),
+				'options' => $json,
 				'nonce'   => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
 			] );
 		} catch ( WebAuthnException | InvalidArgumentException $e ) {

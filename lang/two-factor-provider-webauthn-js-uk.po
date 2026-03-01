@@ -5,7 +5,7 @@ msgstr ""
 
 #: assets/lang.ts:10
 msgid "This key is already registered."
-msgstr "Цій ключ вже зареєстровано."
+msgstr "Цей ключ вже зареєстровано."
 
 #: assets/lang.ts:11
 msgid "Fetching registration information…"

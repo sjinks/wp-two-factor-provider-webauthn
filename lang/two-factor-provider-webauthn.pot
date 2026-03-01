@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-01T00:32:34+00:00\n"
+"POT-Creation-Date: 2026-03-01T07:52:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: two-factor-provider-webauthn\n"
@@ -136,34 +136,34 @@ msgstr ""
 
 #: inc/class-ajax.php:46
 #: inc/class-ajax.php:59
-#: inc/class-ajax.php:139
-#: inc/class-ajax.php:157
-#: inc/class-ajax.php:190
-#: inc/class-ajax.php:220
-#: inc/class-ajax.php:242
+#: inc/class-ajax.php:142
+#: inc/class-ajax.php:160
+#: inc/class-ajax.php:193
+#: inc/class-ajax.php:223
+#: inc/class-ajax.php:245
 #: inc/class-webauthn-provider.php:139
 #: inc/class-webauthn-provider.php:163
 msgid "Bad request."
 msgstr ""
 
-#: inc/class-ajax.php:120
-#: inc/class-ajax.php:205
+#: inc/class-ajax.php:123
+#: inc/class-ajax.php:208
 msgid "An unexpected error occurred. Please try again later."
 msgstr ""
 
-#: inc/class-ajax.php:147
+#: inc/class-ajax.php:150
 msgid "Unable to retrieve the registration context."
 msgstr ""
 
-#: inc/class-ajax.php:172
+#: inc/class-ajax.php:175
 msgid "Unable to save the key to the database."
 msgstr ""
 
-#: inc/class-ajax.php:237
+#: inc/class-ajax.php:240
 msgid "Key name cannot be empty."
 msgstr ""
 
-#: inc/class-ajax.php:251
+#: inc/class-ajax.php:254
 msgid "Failed to rename the key."
 msgstr ""
 

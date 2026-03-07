@@ -7,6 +7,17 @@
 			"inc/"
 		]
 	},
+	"repositories":[
+		{
+			"name": "wpackagist",
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [
+				"wpackagist-plugin/*",
+				"wpackagist-theme/*"
+			]
+		}
+	],
 	"require": {
 		"php": "^8.0.0",
 		"composer/installers": "^2.0",
@@ -23,7 +34,8 @@
 		"phpunit/php-code-coverage": "^9.2",
 		"wildwolf/wordpress-test-library-stubs": "^6.0",
 		"wp-cli/i18n-command": "^2.2",
-		"wp-phpunit/wp-phpunit": "^6.0"
+		"wp-phpunit/wp-phpunit": "^6.0",
+		"wpackagist-plugin/two-factor": "^0.15.0"
 	},
 	"config": {
 		"sort-packages": true,
@@ -47,6 +59,11 @@
 			"excludes": [
 				"cweagans/composer-patches",
 				"wildwolf/singleton-trait"
+			]
+		},
+		"installer-paths": {
+			"vendor/wordpress/{$name}/": [
+				"wpackagist-plugin/two-factor"
 			]
 		},
 		"patches": {

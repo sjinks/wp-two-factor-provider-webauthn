@@ -22,7 +22,7 @@
     "@babel/preset-env": "^7.29.0",
     "@myrotvorets/po2json": "^1.0.3",
     "@playwright/test": "^1.58.2",
-    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/jquery": "^4.0.0",
     "@types/jqueryui": "^1.12.24",

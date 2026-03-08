@@ -36,10 +36,6 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	}
 
 	final protected function __construct() {
-		if ( false === has_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'user_options' ] ) ) {
-			add_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'user_options' ] );
-		}
-
 		parent::__construct();
 
 		if ( false === has_filter( 'load_script_translation_file', [ $this, 'load_script_translation_file' ] ) ) {
@@ -186,10 +182,6 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	 */
 	public function is_available_for_user( $user ) {
 		return ! empty( WebAuthn_Credential_Store::get_user_keys( $user ) );
-	}
-
-	public function user_options(): void {
-		Utils::render( 'user-options' );
 	}
 
 	/**

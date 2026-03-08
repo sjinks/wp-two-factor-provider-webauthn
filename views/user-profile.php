@@ -7,9 +7,11 @@ defined( 'ABSPATH' ) || die();
 /** @psalm-var array{user: WP_User} $params */
 ?>
 
-<div id="webauthn-security-keys-section">
-	<h3><?php esc_html_e( 'Security Keys (WebAuthn)', 'two-factor-provider-webauthn' ); ?></h3>
+<p>
+	<?php esc_html_e( 'Requires an HTTPS connection. Please configure your security keys below.', 'two-factor-provider-webauthn' ); ?>
+</p>
 
+<div id="webauthn-security-keys-section">
 	<noscript>
 		<div class="notice inline notice-error">
 			<p><?php esc_html_e( 'You need to enable JavaScript to manage security keys.', 'two-factor-provider-webauthn' ); ?></p>
@@ -40,6 +42,10 @@ $table = new Key_Table( $params['user'] );
 $table->prepare_items();
 $table->display();
 ?>
+		<p class="description">
+			<?php esc_html_e( 'If the counter is always 0, that is often normal.', 'two-factor-provider-webauthn' ); ?><br/>
+			<?php esc_html_e( 'If it was non-zero before and then stopped increasing or went backward, that is more suspicious and points to authenticator malfunction or clone/race scenarios.', 'two-factor-provider-webauthn' ); ?>
+		</p>
 	</div>
 </div>
 <script type="text/x-template" id="webauthn-no-keys">

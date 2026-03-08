@@ -4,6 +4,7 @@ namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
 use InvalidArgumentException;
 use Throwable;
+use Two_Factor_Core;
 use UnexpectedValueException;
 use WildWolf\Utils\Singleton;
 use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
@@ -185,6 +186,7 @@ final class AJAX {
 					$row = '';
 				}
 
+				Two_Factor_Core::update_current_user_session( [ 'two-factor-login' => time() ] );
 				wp_send_json_success( [
 					'row'   => $row,
 					'nonce' => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
@@ -225,6 +227,7 @@ final class AJAX {
 
 		$store = new WebAuthn_Credential_Store();
 		$store->delete_user_key( $user, $handle );
+		Two_Factor_Core::update_current_user_session( [ 'two-factor-login' => time() ] );
 		wp_send_json_success();
 	}
 
@@ -248,6 +251,7 @@ final class AJAX {
 		$store   = new WebAuthn_Credential_Store();
 		$success = $store->rename_key( $user, $handle, $name );
 		if ( $success ) {
+			Two_Factor_Core::update_current_user_session( [ 'two-factor-login' => time() ] );
 			wp_send_json_success( [ 'name' => $name ] );
 		}
 

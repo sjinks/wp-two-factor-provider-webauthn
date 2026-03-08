@@ -1,0 +1,11 @@
+#webauthn-security-keys-section {
+    margin-top: 1em;
+}
+
+#webauthn-security-keys-section .widefat th, #webauthn-security-keys-section .widefat td {
+    padding: 8px 10px;
+}
+
+#webauthn-security-keys-section .add-webauthn-key {
+    margin-bottom: 1em;
+}

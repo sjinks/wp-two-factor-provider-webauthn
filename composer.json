@@ -7,7 +7,7 @@
 			"inc/"
 		]
 	},
-	"repositories":[
+	"repositories": [
 		{
 			"name": "wpackagist",
 			"type": "composer",
@@ -63,7 +63,7 @@
 		},
 		"installer-paths": {
 			"vendor/wordpress/{$name}/": [
-				"wpackagist-plugin/two-factor"
+				"type:wordpress-plugin"
 			]
 		},
 		"patches": {

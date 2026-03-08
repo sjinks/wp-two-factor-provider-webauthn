@@ -32,6 +32,7 @@ jobs:
             cdn.fwupd.org:443
             cdn.jsdelivr.net:443
             dl.cloudsmith.io:443
+            downloads.wordpress.org:443
             getcomposer.org:443
             github.com:443
             objects.githubusercontent.com:443

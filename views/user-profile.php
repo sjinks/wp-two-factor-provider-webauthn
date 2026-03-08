@@ -28,9 +28,9 @@ defined( 'ABSPATH' ) || die();
 
 	<div class="hide-if-no-js add-webauthn-key">
 		<p>
-			<label for="webauthn-key-name" style="vertical-align: middle"><strong><?php esc_html_e( 'Key name:', 'two-factor-provider-webauthn' ); ?></strong></label>
-			<input type="text" id="webauthn-key-name" value="" style="vertical-align: middle" maxlength="255" />
-			<button type="button" class="button button-secondary" style="vertical-align: middle"><?php echo esc_html( _x( 'Register New Key', 'security key', 'two-factor-provider-webauthn' ) ); ?></button>
+			<label for="webauthn-key-name"><strong><?php esc_html_e( 'Key name:', 'two-factor-provider-webauthn' ); ?></strong></label>
+			<input type="text" id="webauthn-key-name" value="" maxlength="255" />
+			<button type="button" class="button button-secondary"><?php echo esc_html( _x( 'Register New Key', 'security key', 'two-factor-provider-webauthn' ) ); ?></button>
 		</p>
 		<span class="security-key-status" aria-live="polite"></span>
 	</div>

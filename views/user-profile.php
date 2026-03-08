@@ -44,7 +44,7 @@ $table->display();
 ?>
 		<p class="description">
 			<?php esc_html_e( 'If the counter is always 0, that is often normal.', 'two-factor-provider-webauthn' ); ?><br/>
-			<?php esc_html_e( 'If it was non-zero before and then stopped increasing or went backward, that is more suspicious and points to authenticator malfunction or clone/race scenarios.', 'two-factor-provider-webauthn' ); ?>
+			<?php esc_html_e( 'If it was non-zero before and then stopped increasing or reversed, that is more suspicious and points to an authenticator malfunction or clone/race scenario.', 'two-factor-provider-webauthn' ); ?>
 		</p>
 	</div>
 </div>

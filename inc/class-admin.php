@@ -2,6 +2,7 @@
 
 namespace WildWolf\WordPress\TwoFactorWebAuthn;
 
+use Two_Factor_Provider;
 use TwoFactor_Provider_WebAuthn;
 use WildWolf\Utils\Singleton;
 use WP_User;
@@ -19,8 +20,9 @@ final class Admin {
 		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 		add_action( 'admin_init', [ AdminSettings::class, 'instance' ] );
 
-		if ( self::is_webauthn_enabled() ) {
-			add_action( 'show_user_security_settings', [ $this, 'show_user_security_settings' ] );
+		/** @psalm-suppress UndefinedMethod */
+		if ( class_exists( Two_Factor_Provider::class ) && TwoFactor_Provider_WebAuthn::is_supported_for_user( get_current_user_id() ) ) {
+			add_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'two_factor_user_options' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 
 			if ( defined( 'DOING_AJAX' ) && constant( 'DOING_AJAX' ) ) {
@@ -59,30 +61,19 @@ final class Admin {
 			] );
 
 			wp_set_script_translations( 'webauthn-register-key', 'two-factor-provider-webauthn', plugin_dir_path( dirname( __DIR__ ) . '/index.php' ) . 'lang' );
+
+			wp_enqueue_style(
+				'webauthn-register-key',
+				plugins_url( 'assets/profile.css', __DIR__ ),
+				[],
+				(string) filemtime( __DIR__ . '/../assets/profile.css' )
+			);
 		}
 	}
 
-	public function show_user_security_settings( WP_User $user ): void {
+	public function two_factor_user_options( WP_User $user ): void {
 		Utils::render( 'user-profile', [
 			'user' => $user,
 		] );
-	}
-
-	private static function is_webauthn_enabled(): bool {
-		if ( class_exists( \Two_Factor_Core::class ) ) {
-			$providers = \Two_Factor_Core::get_providers();
-			if ( ! isset( $providers[ TwoFactor_Provider_WebAuthn::class ] ) ) {
-				return false;
-			}
-
-			if ( method_exists( TwoFactor_Provider_WebAuthn::class, 'is_supported_for_user' ) ) {
-				/** @var bool */
-				return TwoFactor_Provider_WebAuthn::is_supported_for_user( get_current_user_id() );
-			}
-
-			return true;
-		}
-
-		return false;
 	}
 }

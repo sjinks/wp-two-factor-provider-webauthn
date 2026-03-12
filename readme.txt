@@ -3,8 +3,8 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 6.0
-Tested up to: 6.9.1
-Stable tag: 2.6.0
+Tested up to: 6.9.4
+Stable tag: 2.6.1
 Requires PHP: 8.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -40,6 +40,10 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.6.1 =
+* Compatibility with WordPress 6.9.4
+* Refactor key management user interface
 
 = 2.6.0 =
 * Better support for passkeys

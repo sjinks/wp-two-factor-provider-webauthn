@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "sh ./.github/hooks/scripts/block-minified-edits.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

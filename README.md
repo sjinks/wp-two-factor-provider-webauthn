@@ -26,3 +26,9 @@ The integration is seamless: if the user has U2F credentials registered, the plu
 https://user-images.githubusercontent.com/7810770/150708968-3c331612-54ad-4373-9d36-6ec064301755.mp4
 
 See [readme.txt](readme.txt) for the changelog.
+
+## Copilot Customizations
+
+This repository includes workspace Copilot customizations (instructions, prompts, agents, and hooks).
+
+See [CUSTOMIZATIONS.md](.github/CUSTOMIZATIONS.md) for usage and invocation examples.

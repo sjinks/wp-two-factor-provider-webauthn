@@ -12,7 +12,7 @@ w5='mcp_github_create_or_update'
 w6='mcp_github_push'
 write_intent_re="${w1}_${w2}|${w3}_${w4}|${w5}_${w4}|${w6}_${w4}|\"old_str\"|\"new_str\"|\"insert_text\"|\*\*\* (Add|Update|Delete) File:"
 
-sensitive_path_re='(^|/)(vendor/|patches/)'
+sensitive_path_re='(^|[^[:alnum:]_])(vendor/|patches/)'
 explicit_request_re='explicit(ly)? requested|requested by user|user requested|approved by user|as requested'
 
 if printf '%s' "$payload" | grep -Eiq "$sensitive_path_re" && printf '%s' "$payload" | grep -Eiq "$write_intent_re"; then

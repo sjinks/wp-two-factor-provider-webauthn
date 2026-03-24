@@ -5,7 +5,7 @@ applyTo: "assets/**/*.ts"
 ---
 # Assets TypeScript Guidelines
 
-- Treat files in `assets/*.ts` as the source of truth; never edit `assets/*.min.js` directly.
+- Treat files in `assets/**/*.ts` as the source of truth; never edit `assets/*.min.js` directly.
 - Keep browser-side WebAuthn request/response payload shapes unchanged unless server-side handling is updated in the same change.
 - Keep error handling user-safe: show clear user-facing messages and avoid leaking internal details in UI text.
 - Prefer existing helpers in `assets/common.ts` for WebAuthn option/credential preparation and DOMException decoding.

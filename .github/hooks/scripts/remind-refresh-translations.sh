@@ -16,7 +16,7 @@ write_intent_re="${w1}_${w2}|${w3}_${w4}|${w5}_${w4}|${w6}_${w4}|\"old_str\"|\"n
 string_source_re='(assets\/[^"[:space:]]+\.ts|inc\/[^"[:space:]]+\.php|views\/[^"[:space:]]+\.php|index\.php)'
 
 # Common i18n markers in PHP/TS payloads.
-i18n_marker_re='@wordpress\/i18n|\b__\(|\b_x\(|esc_html__\(|esc_attr__\('
+i18n_marker_re='@wordpress\/i18n|(^|[^[:alnum:]_])__\(|(^|[^[:alnum:]_])_x\(|esc_html__\(|esc_attr__\('
 
 if printf '%s' "$payload" | grep -Eiq "$write_intent_re" \
     && printf '%s' "$payload" | grep -Eiq "$string_source_re" \

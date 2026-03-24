@@ -13,7 +13,7 @@
 - This repository is a WordPress plugin that adds a WebAuthn provider for the Two Factor plugin.
 - `index.php` is the plugin entry point and bootstraps `Plugin::instance()`.
 - `inc/` contains core PHP classes (provider logic, schema, settings, ajax handlers, utility classes).
-- `assets/` contains TypeScript sources; built artifacts are committed as `assets/*.min.js`.
+- `assets/` contains TypeScript sources; built artifacts are committed as `assets/*.min.js` and `assets/*.map`.
 - `views/` contains PHP templates rendered by helper utilities.
 - `tests/e2e/` contains Playwright tests.
 

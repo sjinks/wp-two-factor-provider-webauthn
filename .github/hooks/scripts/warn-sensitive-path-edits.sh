@@ -12,7 +12,8 @@ w5='mcp_github_create_or_update'
 w6='mcp_github_push'
 write_intent_re="${w1}_${w2}|${w3}_${w4}|${w5}_${w4}|${w6}_${w4}|\"old_str\"|\"new_str\"|\"insert_text\"|\*\*\* (Add|Update|Delete) File:"
 
-sensitive_path_re='(^|[^[:alnum:]_])(vendor/|patches/)'
+# Match sensitive paths by modified file paths, not arbitrary content mentions.
+sensitive_path_re='(diff --git a/(vendor|patches)/[^[:space:]\\]+|(\+\+\+|---) [ab]/(vendor|patches)/[^[:space:]\\]+|\*\*\* (Add|Update|Delete) File: [^[:space:]\\]*/(vendor|patches)/[^[:space:]\\]+|"path"[[:space:]]*:[[:space:]]*"(vendor|patches)\\?/[^"[:space:]\\]+")'
 explicit_request_re='explicit(ly)? requested|requested by user|user requested|approved by user|as requested'
 
 if printf '%s' "$payload" | grep -Eiq "$sensitive_path_re" && printf '%s' "$payload" | grep -Eiq "$write_intent_re"; then

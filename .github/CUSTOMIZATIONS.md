@@ -71,7 +71,7 @@ Hooks run automatically when their event triggers. No manual invocation is requi
 
 Key effects in this repository:
 
-1. Direct edits to generated frontend artifacts are warned/discouraged.
+1. Direct edits to generated frontend artifacts are blocked.
 2. Sensitive-path edits (vendor/patches) generate warnings.
 3. State-changing PHP handler edits without obvious request guards generate warnings.
 4. Frontend source edits trigger build reminders.

@@ -18,11 +18,11 @@ write_intent_re="${w1}_${w2}|${w3}_${w4}|${w5}_${w4}|${w6}_${w4}|\"old_str\"|\"n
 if printf '%s' "$payload" | grep -Eiq "$generated_asset_re" && printf '%s' "$payload" | grep -Eiq "$write_intent_re"; then
     cat << 'JSON'
 {
-  "systemMessage": "Warning: direct edits to generated assets (assets/*.min.js, assets/*.min.css, assets/*.map) are discouraged. Prefer editing source files and running npm run build instead.",
+  "systemMessage": "Blocked: direct edits to generated assets (assets/*.min.js, assets/*.min.css, assets/*.map) are not allowed. Edit source files instead and run npm run build.",
   "hookSpecificOutput": {
     "hookEventName": "PreToolUse",
-    "permissionDecision": "allow",
-    "permissionDecisionReason": "Warning: direct edits to generated assets (assets/*.min.js, assets/*.min.css, assets/*.map) are discouraged. Prefer editing source files and running npm run build instead."
+    "permissionDecision": "deny",
+    "permissionDecisionReason": "Blocked: direct edits to generated assets (assets/*.min.js, assets/*.min.css, assets/*.map) are not allowed. Edit source files instead and run npm run build."
   }
 }
 JSON
@@ -34,7 +34,7 @@ cat << 'JSON'
   "hookSpecificOutput": {
     "hookEventName": "PreToolUse",
     "permissionDecision": "allow",
-    "permissionDecisionReason": "No blocked generated-asset edit detected."
+    "permissionDecisionReason": "No generated-asset edit detected."
   }
 }
 JSON

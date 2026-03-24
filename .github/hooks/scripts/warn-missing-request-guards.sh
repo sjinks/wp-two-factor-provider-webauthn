@@ -14,7 +14,7 @@ write_intent_re="${w1}_${w2}|${w3}_${w4}|${w5}_${w4}|${w6}_${w4}|\"old_str\"|\"n
 
 php_path_re='inc\/[^"[:space:]]+\.php'
 state_change_re='wp_ajax_|ajax_.*(register|delete|rename|update|create|save)|wp_send_json_success|update_user_meta|delete_user_meta|->(save|update|delete|rename)'
-guard_re='check_ajax_referer|current_user_can|verify_nonce|verify_capabilities'
+guard_re='check_ajax_referer|current_user_can|verify_nonce\b|verify_capabilities\b'
 
 if printf '%s' "$payload" | grep -Eiq "$php_path_re" \
     && printf '%s' "$payload" | grep -Eiq "$write_intent_re" \

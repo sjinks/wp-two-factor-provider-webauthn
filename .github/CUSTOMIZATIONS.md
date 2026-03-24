@@ -8,37 +8,37 @@ This document explains how to use the workspace customizations added in this rep
 
 These are loaded automatically (by file match and/or relevance) and guide normal coding behavior.
 
-- [assets-ts.instructions.md](.github/instructions/assets-ts.instructions.md)
-- [e2e-tests.instructions.md](.github/instructions/e2e-tests.instructions.md)
-- [php-backend.instructions.md](.github/instructions/php-backend.instructions.md)
-- [translations.instructions.md](.github/instructions/translations.instructions.md)
+- [assets-ts.instructions.md](./instructions/assets-ts.instructions.md)
+- [e2e-tests.instructions.md](./instructions/e2e-tests.instructions.md)
+- [php-backend.instructions.md](./instructions/php-backend.instructions.md)
+- [translations.instructions.md](./instructions/translations.instructions.md)
 
 ### Prompt Files
 
 These appear as reusable slash commands in chat.
 
-- [release-checklist.prompt.md](.github/prompts/release-checklist.prompt.md)
-- [security-regression-checklist.prompt.md](.github/prompts/security-regression-checklist.prompt.md)
-- [update-translations.prompt.md](.github/prompts/update-translations.prompt.md)
+- [release-checklist.prompt.md](./prompts/release-checklist.prompt.md)
+- [security-regression-checklist.prompt.md](./prompts/security-regression-checklist.prompt.md)
+- [update-translations.prompt.md](./prompts/update-translations.prompt.md)
 
 ### Custom Agents
 
 These appear in the Agent picker (and can be used as subagents when delegated).
 
-- [security-review.agent.md](.github/agents/security-review.agent.md)
-- [security-remediation.agent.md](.github/agents/security-remediation.agent.md)
+- [security-review.agent.md](./agents/security-review.agent.md)
+- [security-remediation.agent.md](./agents/security-remediation.agent.md)
 
 ### Hooks
 
 Hooks run automatically at lifecycle events (for example, PreToolUse/PostToolUse/SessionStart).
 
-- [block-minified-edits.json](.github/hooks/block-minified-edits.json)
-- [warn-sensitive-path-edits.json](.github/hooks/warn-sensitive-path-edits.json)
-- [warn-missing-request-guards.json](.github/hooks/warn-missing-request-guards.json)
-- [remind-build-after-assets-change.json](.github/hooks/remind-build-after-assets-change.json)
-- [remind-readme-after-version-change.json](.github/hooks/remind-readme-after-version-change.json)
-- [remind-refresh-translations.json](.github/hooks/remind-refresh-translations.json)
-- [sessionstart-repo-policy.json](.github/hooks/sessionstart-repo-policy.json)
+- [block-minified-edits.json](./hooks/block-minified-edits.json)
+- [warn-sensitive-path-edits.json](./hooks/warn-sensitive-path-edits.json)
+- [warn-missing-request-guards.json](./hooks/warn-missing-request-guards.json)
+- [remind-build-after-assets-change.json](./hooks/remind-build-after-assets-change.json)
+- [remind-readme-after-version-change.json](./hooks/remind-readme-after-version-change.json)
+- [remind-refresh-translations.json](./hooks/remind-refresh-translations.json)
+- [sessionstart-repo-policy.json](./hooks/sessionstart-repo-policy.json)
 
 ## How To Invoke Prompts
 
@@ -71,7 +71,7 @@ Hooks run automatically when their event triggers. No manual invocation is requi
 
 Key effects in this repository:
 
-1. Direct edits to generated frontend artifacts are blocked.
+1. Direct edits to generated frontend artifacts are warned/discouraged.
 2. Sensitive-path edits (vendor/patches) generate warnings.
 3. State-changing PHP handler edits without obvious request guards generate warnings.
 4. Frontend source edits trigger build reminders.

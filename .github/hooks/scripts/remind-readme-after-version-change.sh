@@ -3,9 +3,9 @@ set -eu
 
 payload="$(cat)"
 
-# Detect edits that touch index.php and include plugin version markers.
+# Detect edits that touch index.php and include version markers.
 index_path_re='index\.php'
-version_marker_re='Plugin Name:|Version:|TFA_WEBAUTHN_VERSION'
+version_marker_re='(^|\n)[+-].*(Version:|TFA_WEBAUTHN_VERSION)'
 
 # Write-like intent matcher.
 w1='apply'

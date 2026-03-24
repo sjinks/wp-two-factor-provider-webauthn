@@ -2,7 +2,6 @@
 description: "Use when preparing a release or release candidate and you need a consistent pre-release validation checklist and status report."
 name: "Release Checklist"
 argument-hint: "version/tag or release scope"
-agent: "agent"
 ---
 Prepare a release-readiness checklist for this repository and execute the checks where possible.
 

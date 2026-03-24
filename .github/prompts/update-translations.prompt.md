@@ -2,7 +2,6 @@
 description: "Use when strings changed and you need a consistent translation refresh pass (POT/PO/MO/JSON) with a concise status report."
 name: "Update Translations"
 argument-hint: "changed scope or locale focus"
-agent: "agent"
 ---
 Refresh and verify translations for this repository.
 

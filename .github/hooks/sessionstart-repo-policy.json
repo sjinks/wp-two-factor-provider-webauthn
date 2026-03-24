@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "sh ./.github/hooks/scripts/sessionstart-repo-policy.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

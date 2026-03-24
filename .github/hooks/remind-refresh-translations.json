@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "sh ./.github/hooks/scripts/remind-refresh-translations.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

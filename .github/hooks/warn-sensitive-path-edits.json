@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "sh ./.github/hooks/scripts/warn-sensitive-path-edits.sh",
+        "timeout": 10
+      }
+    ]
+  }
+}

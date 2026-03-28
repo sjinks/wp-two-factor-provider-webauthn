@@ -35,7 +35,7 @@
 		"wildwolf/wordpress-test-library-stubs": "^6.0",
 		"wp-cli/i18n-command": "^2.2",
 		"wp-phpunit/wp-phpunit": "^6.0",
-		"wpackagist-plugin/two-factor": "^0.15.0"
+		"wpackagist-plugin/two-factor": "^0.16.0"
 	},
 	"config": {
 		"sort-packages": true,

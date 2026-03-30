@@ -20,7 +20,6 @@ final class Admin {
 		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 		add_action( 'admin_init', [ AdminSettings::class, 'instance' ] );
 
-		/** @psalm-suppress UndefinedMethod */
 		if ( class_exists( Two_Factor_Provider::class ) && TwoFactor_Provider_WebAuthn::is_supported_for_user( get_current_user_id() ) ) {
 			add_action( 'two_factor_user_options_TwoFactor_Provider_WebAuthn', [ $this, 'two_factor_user_options' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );

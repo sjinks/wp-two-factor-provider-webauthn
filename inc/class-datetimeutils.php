@@ -9,6 +9,9 @@ abstract class DateTimeUtils {
 		return date_i18n( $date_format . ' ' . $time_format, $dt, true );
 	}
 
+	/**
+	 * @psalm-taint-escape html
+	 */
 	public static function format_date_time_full( int $dt ): string {
 		return gmdate( 'Y-m-d H:i:s', $dt );
 	}

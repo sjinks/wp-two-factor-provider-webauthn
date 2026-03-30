@@ -23,8 +23,10 @@ abstract class Utils {
 	}
 
 	/**
+	 * @psalm-param literal-string $view
 	 * @psalm-param array<string,mixed> $params
 	 * @psalm-suppress PossiblyUnusedParam
+	 * @psalm-taint-sink include $view
 	 */
 	public static function render( string $view, array $params = [] ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		/** @psalm-suppress UnresolvableInclude */
@@ -35,8 +37,10 @@ abstract class Utils {
 		$builder = new ServerBuilder();
 		$party   = new RelyingParty( get_bloginfo( 'name' ), self::get_u2f_app_id() );
 
-		if ( (string) COOKIE_DOMAIN ) {
-			$id = ltrim( (string) COOKIE_DOMAIN, '.' );
+		/** @var mixed */
+		$cookie_domain = defined( 'COOKIE_DOMAIN' ) ? constant( 'COOKIE_DOMAIN' ) : null;
+		if ( is_string( $cookie_domain ) && '' !== $cookie_domain ) {
+			$id = ltrim( $cookie_domain, '.' );
 			$party->setId( $id );
 		}
 
@@ -49,6 +53,9 @@ abstract class Utils {
 		return $builder->build();
 	}
 
+	/**
+	 * @psalm-taint-escape html
+	 */
 	public static function get_post_field_as_string( string $field ): string {
 		// phpcs:disable WordPress.Security.NonceVerification.Missing
 		if ( isset( $_POST[ $field ] ) && is_scalar( $_POST[ $field ] ) ) {

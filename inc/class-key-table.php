@@ -11,6 +11,7 @@ use WP_User;
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class Key_Table extends WP_List_Table {
+	/** @psalm-readonly */
 	private WP_User $user;
 
 	public function __construct( WP_User $user ) {
@@ -70,6 +71,7 @@ final class Key_Table extends WP_List_Table {
 
 	/**
 	 * @psalm-param CredentialRow $item
+	 * @psalm-taint-escape html
 	 */
 	protected function column_counter( $item ): string {
 		return number_format_i18n( (int) $item->counter, 0 );
@@ -77,6 +79,7 @@ final class Key_Table extends WP_List_Table {
 
 	/**
 	 * @psalm-param CredentialRow $item
+	 * @psalm-taint-escape html
 	 */
 	protected function column_added( $item ): string {
 		return esc_html( DateTimeUtils::format_date_time( (int) $item->added ) );
@@ -84,6 +87,7 @@ final class Key_Table extends WP_List_Table {
 
 	/**
 	 * @psalm-param CredentialRow $item
+	 * @psalm-taint-escape html
 	 */
 	protected function column_last_used( $item ): string {
 		return esc_html( DateTimeUtils::format_date_time( (int) $item->last_used ) );

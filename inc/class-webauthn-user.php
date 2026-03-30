@@ -15,6 +15,7 @@ use wpdb;
 final class WebAuthn_User implements UserIdentityInterface {
 	public const CACHE_GROUP_NAME = '2fa-webauthn';
 
+	/** @psalm-readonly */
 	private WP_User $user;
 
 	public static function get_for( WP_User $user ): self {

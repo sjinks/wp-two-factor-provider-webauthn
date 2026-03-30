@@ -9,6 +9,9 @@ use WildWolf\WordPress\TwoFactorWebAuthn\Vendor\{
 	MadWizard\WebAuthn\Crypto\CoseKeyInterface,
 };
 
+/**
+ * @psalm-immutable
+ */
 final class WebAuthn_User_Credential implements UserCredentialInterface {
 	private CredentialId $credential_id;
 	private CoseKeyInterface $public_key;

@@ -101,6 +101,7 @@
 	"scripts": {
 		"phpcs": "phpcs",
 		"phpcs:fix": "phpcbf",
-		"psalm": "psalm --long-progress --no-cache"
+		"psalm": "psalm --long-progress --no-cache",
+		"psalm:taint": "psalm --taint-analysis --long-progress --no-cache"
 	}
 }

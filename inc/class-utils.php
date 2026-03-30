@@ -52,7 +52,7 @@ abstract class Utils {
 	public static function get_post_field_as_string( string $field ): string {
 		// phpcs:disable WordPress.Security.NonceVerification.Missing
 		if ( isset( $_POST[ $field ] ) && is_scalar( $_POST[ $field ] ) ) {
-			return wp_unslash( sanitize_text_field( (string) $_POST[ $field ] ) );
+			return sanitize_text_field( wp_unslash( (string) $_POST[ $field ] ) );
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 

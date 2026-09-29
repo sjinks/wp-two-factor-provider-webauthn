@@ -14,7 +14,7 @@ const tfoSelectors = {
 const waSelectors = {
 	keyNameInput: '#webauthn-key-name',
 	registerNewKeyButton: 'div.add-webauthn-key > p > button',
-	keyActions: ( credentialId: string ) => `table.webauthn-keys > tbody td.name:has(a[data-handle="${ credentialId }"])`,
+	keyActions: ( credentialId: string ) => `table.webauthn-keys > tbody :is(th, td).name:has(a[data-handle="${ credentialId }"])`,
 	noItemsRow: 'table.webauthn-keys > tbody > tr.no-items',
 	operationStatus: 'div.tfa-webauthn-alert',
 };

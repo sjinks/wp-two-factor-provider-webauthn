@@ -199,13 +199,14 @@ jQuery( ( $ ) => {
 		e.preventDefault();
 		const a = $( e.target );
 		const actions = a.closest( '.row-actions' );
+		const nameCell = a.closest( 'th.name, td.name' );
 		if ( actions.siblings( '.rename-key' ).length ) {
 			return;
 		}
 
 		const handle = a.data( 'handle' ) as string;
 		const nonce = a.data( 'nonce' ) as string;
-		const name = a.closest( 'td' ).find( 'span.key-name' ).text().trim();
+		const name = nameCell.find( 'span.key-name' ).text().trim();
 		const table = parent.find( '.registered-keys' );
 
 		const tpl = $( $( '#webauthn-rename-key' ).text() );
@@ -233,7 +234,7 @@ jQuery( ( $ ) => {
 								'</p></div>',
 						);
 
-						a.closest( 'td' ).find( 'span.key-name' ).text( r.data.name );
+						nameCell.find( 'span.key-name' ).text( r.data.name );
 					} )
 					.catch( errorHandler )
 					.finally( () => {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5027e958a68a4a6a2b7e3b5cc17ba657",
+    "content-hash": "86bdbfc1a0bfdeff861d9f42bd2462f2",
     "packages": [
         {
             "name": "composer/installers",
@@ -2535,24 +2535,24 @@
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.9.9",
+            "version": "7.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "f01fb55905df2f04983c0fcc8b845459da63f4d6"
+                "reference": "74f26ca0fc3fef436d29bdc50a4def940969fa85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/f01fb55905df2f04983c0fcc8b845459da63f4d6",
-                "reference": "f01fb55905df2f04983c0fcc8b845459da63f4d6",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/74f26ca0fc3fef436d29bdc50a4def940969fa85",
+                "reference": "74f26ca0fc3fef436d29bdc50a4def940969fa85",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.2.24"
+                "php": ">=7.4"
             },
             "provide": {
-                "wordpress/core-implementation": "6.9.9"
+                "wordpress/core-implementation": "7.1.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -2579,7 +2579,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2026-09-22T16:56:17+00:00"
+            "time": "2026-09-22T16:56:31+00:00"
         },
         {
             "name": "mck89/peast",

@@ -18,7 +18,7 @@ export class LoginPage {
 
 	private readonly tfaFormLocator: Locator;
 	private readonly providerInputLocator: Locator;
-	private readonly webAuttnRetryButtonLocator: Locator;
+	private readonly webAuthnRetryButtonLocator: Locator;
 
 	public constructor( page: Page ) {
 		this.page = page;
@@ -29,7 +29,7 @@ export class LoginPage {
 
 		this.tfaFormLocator = page.locator( selectors.tfaForm );
 		this.providerInputLocator = this.tfaFormLocator.locator( selectors.providerInput );
-		this.webAuttnRetryButtonLocator = this.tfaFormLocator.locator( selectors.webAuthnRetryButton );
+		this.webAuthnRetryButtonLocator = this.tfaFormLocator.locator( selectors.webAuthnRetryButton );
 	}
 
 	public visit(): Promise<unknown> {
@@ -58,7 +58,7 @@ export class LoginPage {
 	}
 
 	public async loginWithKey(): Promise<void> {
-		await this.webAuttnRetryButtonLocator.click();
+		await this.webAuthnRetryButtonLocator.click();
 		return this.page.waitForLoadState( 'domcontentloaded' );
 	}
 }

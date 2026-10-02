@@ -18,7 +18,7 @@
   "author": "Volodymyr Kolesnykov <volodymyr@wildwolf.name> (https://wildwolf.name/)",
   "license": "MIT",
   "devDependencies": {
-    "@automattic/eslint-plugin-wpvip": "^1.2.0",
+    "@automattic/eslint-plugin-wpvip": "^2.0.0",
     "@babel/preset-env": "^7.29.0",
     "@myrotvorets/po2json": "^1.0.3",
     "@playwright/test": "^1.58.2",

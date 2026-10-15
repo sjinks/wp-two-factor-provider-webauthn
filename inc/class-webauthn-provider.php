@@ -98,8 +98,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 		$context = $request->getContext();
 		$options = $request->getClientOptionsJson();
 
-		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize -- webauthn-server insists on serialize() :-(
-		update_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
+		Context_Store::save( $user->ID, $context );
 
 		wp_localize_script( 'webauthn-login', 'tfa_webauthn', [
 			'options' => $options,
@@ -116,13 +115,11 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 	 */
 	public function validate_authentication( $user ) {
 		try {
-			$server  = Utils::create_webauthn_server();
-			$context = (string) get_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META, true );
-			/** @var mixed */
-			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize -- the value was stored serialize()'d
+			$context = Context_Store::take( $user->ID, Context_Store::AUTHENTICATION );
 			if ( ! ( $context instanceof AuthenticationContext ) ) {
 				throw new UnexpectedValueException( __( 'Unable to retrieve the authentication context.', 'two-factor-provider-webauthn' ) );
 			}
+			$server = Utils::create_webauthn_server();
 
 			// We cannot use WordPress sanitization functions here: the response from webauthn must not be altered.
 			// We validate that `webauthn_response` is a string, valid JSON, and decodes to an object (associative array in terms of PHP).
@@ -162,7 +159,7 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			 * Fires if WebAuthn authentication fails.
 			 * If $e is an instance of WebAuthnException, its message is safe to display to the user.
 			 * For other exception types, the message may not be safe, and a generic error message should be shown instead.
-			 * When $e is an instance of UnexpectedValueException, it indicates an issue with the plugin's internal state (user meta contains an unexpected value).
+			 * When $e is an instance of UnexpectedValueException, the authentication context is missing, expired, or invalid.
 			 * When $e is an instance of InvalidArgumentException, it indicates a problem with the request (e.g. missing or malformed parameters).
 			 *
 			 * @param WP_User $user The user attempting to authenticate.
@@ -171,8 +168,6 @@ class WebAuthn_Provider extends Two_Factor_Provider {
 			 */
 			do_action( 'two_factor_webauthn_authentication_failed', $user, $e );
 			return false;
-		} finally {
-			delete_user_meta( $user->ID, self::AUTHENTICATION_CONTEXT_USER_META );
 		}
 	}
 

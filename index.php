@@ -2,7 +2,7 @@
 /*
  * Plugin Name: WebAuthn Provider for Two Factor
  * Description: WebAuthn Provider for Two Factor plugin.
- * Version: 2.6.1
+ * Version: 2.6.2
  * Author: Volodymyr Kolesnykov
  * License: MIT
  * Text Domain: two-factor-provider-webauthn
@@ -13,7 +13,7 @@
 use Composer\Autoload\ClassLoader;
 use WildWolf\WordPress\TwoFactorWebAuthn\Plugin;
 
-define( 'TFA_WEBAUTHN_VERSION', '2.6.1' );
+define( 'TFA_WEBAUTHN_VERSION', '2.6.2' );
 
 if ( defined( 'ABSPATH' ) ) {
 	/** @var mixed */

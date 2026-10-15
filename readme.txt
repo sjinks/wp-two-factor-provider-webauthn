@@ -3,9 +3,9 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 6.0
-Tested up to: 7.1.2
-Stable tag: 2.6.1
-Requires PHP: 8.1
+Tested up to: 7.1.3
+Stable tag: 2.6.2
+Requires PHP: 8.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -40,6 +40,12 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.6.2 =
+* Strengthen protection of security key and passkey registration and sign-in attempts
+* Expire pending registration and sign-in attempts after 10 minutes; restart the attempt if it expires
+* Display error messages safely as plain text
+* Fix renaming security keys on newer WordPress versions
 
 = 2.6.1 =
 * Compatibility with WordPress 6.9.4

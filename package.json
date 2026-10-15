@@ -20,7 +20,7 @@
   "devDependencies": {
     "@automattic/eslint-plugin-wpvip": "^2.0.0",
     "@myrotvorets/po2json": "^1.0.3",
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.64.1",
     "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/jquery": "^4.0.0",
@@ -31,7 +31,7 @@
     "@wwa/rollup-plugin-terser": "^1.1.2",
     "eslint-formatter-gha": "^2.0.1",
     "eslint-plugin-playwright": "^2.7.1",
-    "playwright-core": "^1.58.2",
+    "playwright-core": "^1.64.1",
     "rollup": "^4.59.0",
     "typescript": "^5.9.3"
   },

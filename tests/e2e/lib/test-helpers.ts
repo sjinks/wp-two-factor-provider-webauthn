@@ -1,8 +1,7 @@
-import { type Page, type CDPSession, expect } from '@playwright/test';
+import { type Page, type Credentials, expect } from '@playwright/test';
 
 import { LoginPage } from './loginpage';
 import { ProfilePage } from './profilepage';
-import { getCredentials } from './webauthn-helpers';
 
 export async function login( page: Page, username: string, password: string ): Promise<void> {
 	const loginPage = new LoginPage( page );
@@ -12,15 +11,15 @@ export async function login( page: Page, username: string, password: string ): P
 
 export async function registerKey(
 	page: Page,
-	client: CDPSession,
-	authenticatorId: string,
+	credentials: Credentials,
 	keyName: string,
-): Promise<Awaited<ReturnType<typeof getCredentials>>[ number ]> {
+): Promise<Awaited<ReturnType<Credentials[ 'get' ]>>[ number ]> {
 	const profilePage = new ProfilePage( page );
 	await profilePage.visit();
 	const locator = await profilePage.registerKey( keyName );
 	await expect( locator ).toContainText( 'The key has been registered' );
 
-	const credentials = await getCredentials( client, authenticatorId );
-	return credentials[ 0 ];
+	const registeredCredentials = await credentials.get();
+	expect( registeredCredentials ).toHaveLength( 1 );
+	return registeredCredentials[ 0 ];
 }

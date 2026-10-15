@@ -9,7 +9,7 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "bundler"
   },
   "include": ["assets/*.ts", "tests/e2e/*.ts", "tests/e2e/**/*.ts", "playwright.config.ts"],
   "compileOnSave": true

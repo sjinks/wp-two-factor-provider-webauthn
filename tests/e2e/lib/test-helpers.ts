@@ -4,8 +4,6 @@ import { LoginPage } from './loginpage';
 import { ProfilePage } from './profilepage';
 import { getCredentials } from './webauthn-helpers';
 
-import type { Protocol } from 'playwright-core/types/protocol';
-
 export async function login( page: Page, username: string, password: string ): Promise<void> {
 	const loginPage = new LoginPage( page );
 	await loginPage.visit();
@@ -17,7 +15,7 @@ export async function registerKey(
 	client: CDPSession,
 	authenticatorId: string,
 	keyName: string,
-): Promise<Protocol.WebAuthn.Credential> {
+): Promise<Awaited<ReturnType<typeof getCredentials>>[ number ]> {
 	const profilePage = new ProfilePage( page );
 	await profilePage.visit();
 	const locator = await profilePage.registerKey( keyName );

@@ -1,10 +1,9 @@
 import type { CDPSession } from '@playwright/test';
-import type { Protocol } from 'playwright-core/types/protocol';
 
 export async function addVirtualAuthenticator(
 	client: CDPSession,
-	protocol: Protocol.WebAuthn.AuthenticatorProtocol,
-	transport: Protocol.WebAuthn.AuthenticatorTransport,
+	protocol: NonNullable<Parameters<typeof client.send<'WebAuthn.addVirtualAuthenticator'>>[ 1 ]>[ 'options' ][ 'protocol' ],
+	transport: NonNullable<Parameters<typeof client.send<'WebAuthn.addVirtualAuthenticator'>>[ 1 ]>[ 'options' ][ 'transport' ],
 ): Promise<string> {
 	await client.send( 'WebAuthn.enable' );
 
@@ -25,8 +24,8 @@ export function removeVirtualAuthenticator( client: CDPSession, authenticatorId:
 export async function getCredentials(
 	client: CDPSession,
 	authenticatorId: string,
-): Promise<Protocol.WebAuthn.Credential[]> {
-	const response: Protocol.WebAuthn.getCredentialsReturnValue = await client.send( 'WebAuthn.getCredentials', {
+) {
+	const response = await client.send( 'WebAuthn.getCredentials', {
 		authenticatorId,
 	} );
 
@@ -37,8 +36,8 @@ export async function getCredential(
 	client: CDPSession,
 	authenticatorId: string,
 	credentialId: string,
-): Promise<Protocol.WebAuthn.Credential> {
-	const response: Protocol.WebAuthn.getCredentialReturnValue = await client.send( 'WebAuthn.getCredential', {
+) {
+	const response = await client.send( 'WebAuthn.getCredential', {
 		authenticatorId,
 		credentialId,
 	} );

@@ -82,8 +82,7 @@ final class AJAX {
 			$options = $server->startRegistration( $reg_options );
 
 			$context = $options->getContext();
-			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
-			update_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
+			Context_Store::save( $user_id, $context );
 
 			/** @psalm-var array{authenticatorSelection?: array{residentKey?: string, requireResidentKey?: bool}} $json */
 			$json = $options->getClientOptionsJson();
@@ -147,13 +146,11 @@ final class AJAX {
 				throw new InvalidArgumentException( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 			}
 
-			$server  = Utils::create_webauthn_server();
-			$context = (string) get_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META, true );
-			/** @var mixed */
-			$context = unserialize( base64_decode( $context ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+			$context = Context_Store::take( $user_id, Context_Store::REGISTRATION );
 			if ( ! ( $context instanceof RegistrationContext ) ) {
 				throw new UnexpectedValueException( __( 'Unable to retrieve the registration context.', 'two-factor-provider-webauthn' ) );
 			}
+			$server = Utils::create_webauthn_server();
 
 			// We cannot use WordPress sanitization functions here: the credential must not be altered.
 			// We validate that `credential` is a string, valid JSON, and decodes to an object (associative array in terms of PHP).
@@ -212,8 +209,6 @@ final class AJAX {
 		} catch ( Throwable $e ) {
 			do_action( 'webauthn_registration_error', $e, $user_id, $result );
 			$this->send_error( __( 'An unexpected error occurred. Please try again later.', 'two-factor-provider-webauthn' ) );
-		} finally {
-			delete_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META );
 		}
 	}
 

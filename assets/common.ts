@@ -8,7 +8,7 @@ import {
 } from './lang';
 
 type Convert<O extends object> = {
-	[K in keyof O]: O[K] extends BufferSource | null ? string : O[K] extends object ? Convert<O[K]> : O[K];
+	[K in keyof O]: O[ K ] extends BufferSource | null ? string : O[ K ] extends object ? Convert<O[ K ]> : O[ K ];
 };
 
 export interface PublicKeyCredentialCreationOptionsPlain {

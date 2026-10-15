@@ -1,33 +1,22 @@
-import { test, expect, type CDPSession } from '@playwright/test';
-
 import settings from '../e2e-settings';
 import { GenericAdminPage } from '../lib/genericadminpage';
 import { LoginPage } from '../lib/loginpage';
 import { ProfilePage } from '../lib/profilepage';
 import { login, registerKey } from '../lib/test-helpers';
-import { addVirtualAuthenticator, getCredential, removeVirtualAuthenticator } from '../lib/webauthn-helpers';
+import { test, expect } from '../lib/webauthn-helpers';
 
-let client: CDPSession;
-let authenticatorId: string;
-let credentialId: string;
-let signCount: number;
+test( 'Login Workflow', async ( { page, credentials } ) => {
+	let credentialId: string;
+	let signCount: number;
 
-test.beforeEach( async ( { context, page } ) => {
-	client = await context.newCDPSession( page );
-	authenticatorId = await addVirtualAuthenticator( client, 'ctap2', 'usb' );
-} );
-
-test.afterEach( () => removeVirtualAuthenticator( client, authenticatorId ) );
-
-test( 'Login Workflow', async ( { page } ) => {
 	await test.step( 'Log in', async () => {
 		await login( page, settings.user1Username, settings.user1Password );
 		return expect( page.url() ).toContain( '/wp-admin/' );
 	} );
 
 	await test.step( 'Register key', async () => {
-		const credential = await registerKey( page, client, authenticatorId, 'Test Key' );
-		credentialId = credential.credentialId;
+		const credential = await registerKey( page, credentials, 'Test Key' );
+		credentialId = credential.id;
 		signCount = credential.signCount;
 	} );
 
@@ -54,7 +43,7 @@ test( 'Login Workflow', async ( { page } ) => {
 		await expect( loginPage.getSecondFactorProvider() ).resolves.toBe( 'TwoFactor_Provider_WebAuthn' );
 		await loginPage.loginWithKey();
 
-		const credential = await getCredential( client, authenticatorId, credentialId );
+		const [ credential ] = await credentials.get( { id: credentialId } );
 		return expect( credential.signCount ).toBeGreaterThan( signCount );
 	} );
 

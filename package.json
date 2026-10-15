@@ -18,22 +18,22 @@
   "author": "Volodymyr Kolesnykov <volodymyr@wildwolf.name> (https://wildwolf.name/)",
   "license": "MIT",
   "devDependencies": {
-    "@automattic/eslint-plugin-wpvip": "^2.0.0",
+    "@automattic/eslint-plugin-wpvip": "^2.0.1",
     "@myrotvorets/po2json": "^1.0.3",
     "@playwright/test": "^1.64.1",
-    "@rollup/plugin-babel": "^7.0.0",
+    "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/jquery": "^4.0.0",
+    "@types/jquery": "^4.0.1",
     "@types/jqueryui": "^1.12.24",
-    "@types/node": "^26.0.0",
-    "@wordpress/babel-plugin-makepot": "^6.40.0",
-    "@wordpress/i18n": "^6.13.0",
+    "@types/node": "^26.6.5",
+    "@wordpress/babel-plugin-makepot": "^6.57.0",
+    "@wordpress/i18n": "^6.30.0",
     "@wwa/rollup-plugin-terser": "^1.1.2",
     "eslint-formatter-gha": "^2.0.1",
-    "eslint-plugin-playwright": "^2.7.1",
+    "eslint-plugin-playwright": "^2.12.1",
     "playwright-core": "^1.64.1",
-    "rollup": "^4.59.0",
-    "typescript": "^5.9.3"
+    "rollup": "^4.64.7",
+    "typescript": "^6.0.3"
   },
   "repository": {
     "type": "git",
@@ -45,5 +45,8 @@
   },
   "sponsor": {
     "url": "https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
   }
 }

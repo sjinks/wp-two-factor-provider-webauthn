@@ -75,13 +75,22 @@ function ajaxRequest<T>( data: string | JQuery.PlainObject ): Promise<T> {
 jQuery( ( $ ) => {
 	const parent = $( '#webauthn-security-keys-section' );
 
+	function notice( message: string, type: 'info' | 'success' | 'error' ): JQuery {
+		return $( '<div>' )
+			.addClass( `notice notice-${ type } inline` )
+			.append( $( '<p>' ).text( message ) );
+	}
+
+	function showNotice( message: string, type: 'success' | 'error' ): void {
+		parent.find( '.registered-keys' ).before(
+			notice( message, type ).addClass( 'tfa-webauthn-alert' ).attr( 'role', 'alert' ),
+		);
+	}
+
 	function updateStatus( status: string ): void {
-		if ( ! status ) {
-			parent.find( '.security-key-status' ).text( '' );
-		} else {
-			parent
-				.find( '.security-key-status' )
-				.html( '<div class="notice notice-info inline"><p>' + status + '</p></div>' );
+		const target = parent.find( '.security-key-status' ).empty();
+		if ( status ) {
+			target.append( notice( status, 'info' ) );
 		}
 	}
 
@@ -89,9 +98,7 @@ jQuery( ( $ ) => {
 		const message = e instanceof DOMException ? decodeDOMException( e, false ) : e.message;
 		const table = parent.find( '.registered-keys' );
 		table.siblings( '.notice' ).remove();
-		table.before(
-			'<div class="tfa-webauthn-alert notice notice-error inline" role="alert"><p>' + message + '</p></div>',
-		);
+		showNotice( message, 'error' );
 	}
 
 	function startRegistration() {
@@ -131,11 +138,7 @@ jQuery( ( $ ) => {
 				const table = parent.find( '.registered-keys' );
 				table.find( 'tbody > tr:last-child' ).after( response.data.row );
 				table.find( 'tbody > tr.no-items' ).remove();
-				table.before(
-					'<div class="tfa-webauthn-alert notice notice-success inline" role="alert"><p>' +
-						L_KEY_REGISTERED +
-						'</p></div>',
-				);
+				showNotice( L_KEY_REGISTERED, 'success' );
 			} )
 			.catch( errorHandler )
 			.finally( () => {
@@ -176,11 +179,7 @@ jQuery( ( $ ) => {
 					handle,
 				} )
 					.then( () => {
-						table.before(
-							'<div class="tfa-webauthn-alert notice notice-success inline" role="alert"><p>' +
-								L_KEY_REVOKED +
-								'</p></div>',
-						);
+						showNotice( L_KEY_REVOKED, 'success' );
 						a.closest( 'tr' ).remove();
 						if ( ! table.find( 'tbody > tr' ).length ) {
 							table.find( 'tbody' ).append( $( '#webauthn-no-keys' ).text() );
@@ -207,7 +206,6 @@ jQuery( ( $ ) => {
 		const handle = a.data( 'handle' ) as string;
 		const nonce = a.data( 'nonce' ) as string;
 		const name = nameCell.find( 'span.key-name' ).text().trim();
-		const table = parent.find( '.registered-keys' );
 
 		const tpl = $( $( '#webauthn-rename-key' ).text() );
 		actions.after( tpl );
@@ -228,11 +226,7 @@ jQuery( ( $ ) => {
 					name: keyname,
 				} )
 					.then( ( r ) => {
-						table.before(
-							'<div class="tfa-webauthn-alert notice notice-success inline" role="alert"><p>' +
-								L_KEY_RENAMED +
-								'</p></div>',
-						);
+						showNotice( L_KEY_RENAMED, 'success' );
 
 						nameCell.find( 'span.key-name' ).text( r.data.name );
 					} )

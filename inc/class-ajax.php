@@ -32,9 +32,13 @@ final class AJAX {
 		add_action( 'wp_ajax_webauthn_rename_key', [ $this, 'wp_ajax_webauthn_rename_key' ] );
 	}
 
+	private function send_error( string $message ): never {
+		wp_send_json_error( wp_strip_all_tags( $message ), 400 );
+	}
+
 	private function verify_nonce( string $nonce ): void {
 		if ( false === check_ajax_referer( $nonce, false, false ) ) {
-			wp_send_json_error( __( 'The nonce has expired. Please reload the page and try again.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'The nonce has expired. Please reload the page and try again.', 'two-factor-provider-webauthn' ) );
 		}
 	}
 
@@ -44,7 +48,7 @@ final class AJAX {
 
 	private function verify_capabilities( int $user_id ): void {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
-			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 		}
 	}
 
@@ -81,9 +85,9 @@ final class AJAX {
 			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 			update_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META, base64_encode( serialize( $context ) ) );
 
+			/** @psalm-var array{authenticatorSelection?: array{residentKey?: string, requireResidentKey?: bool}} $json */
 			$json = $options->getClientOptionsJson();
 
-			/** @psalm-var array{authenticatorSelection?: array{residentKey?: string, requireResidentKey?: bool}} $json */
 			$json['authenticatorSelection'] ??= [];
 
 			$resident_key_requirement = $settings->get_resident_key_requirement();
@@ -118,10 +122,10 @@ final class AJAX {
 			 * @since 2.6.0
 			 */
 			do_action( 'webauthn_preregistration_error', $e, $user_id );
-			wp_send_json_error( $e->getMessage(), 400 );
+			$this->send_error( $e->getMessage() );
 		} catch ( Throwable $e ) {
 			do_action( 'webauthn_preregistration_error', $e, $user_id );
-			wp_send_json_error( __( 'An unexpected error occurred. Please try again later.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'An unexpected error occurred. Please try again later.', 'two-factor-provider-webauthn' ) );
 		}
 	}
 
@@ -204,10 +208,10 @@ final class AJAX {
 			 * @since 2.6.0
 			 */
 			do_action( 'webauthn_registration_error', $e, $user_id, $result );
-			wp_send_json_error( $e->getMessage(), 400 );
+			$this->send_error( $e->getMessage() );
 		} catch ( Throwable $e ) {
 			do_action( 'webauthn_registration_error', $e, $user_id, $result );
-			wp_send_json_error( __( 'An unexpected error occurred. Please try again later.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'An unexpected error occurred. Please try again later.', 'two-factor-provider-webauthn' ) );
 		} finally {
 			delete_user_meta( $user_id, self::REGISTRATION_CONTEXT_USER_META );
 		}
@@ -222,7 +226,7 @@ final class AJAX {
 
 		$user = get_user_by( 'id', $user_id );
 		if ( false === $user ) {
-			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 		}
 
 		$store = new WebAuthn_Credential_Store();
@@ -240,12 +244,12 @@ final class AJAX {
 
 		$name = Utils::get_post_field_as_string( 'name' );
 		if ( empty( $name ) ) {
-			wp_send_json_error( __( 'Key name cannot be empty.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'Key name cannot be empty.', 'two-factor-provider-webauthn' ) );
 		}
 
 		$user = get_user_by( 'id', $user_id );
 		if ( false === $user ) {
-			wp_send_json_error( __( 'Bad request.', 'two-factor-provider-webauthn' ), 400 );
+			$this->send_error( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 		}
 
 		$store   = new WebAuthn_Credential_Store();
@@ -255,6 +259,6 @@ final class AJAX {
 			wp_send_json_success( [ 'name' => $name ] );
 		}
 
-		wp_send_json_error( __( 'Failed to rename the key.', 'two-factor-provider-webauthn' ), 400 );
+		$this->send_error( __( 'Failed to rename the key.', 'two-factor-provider-webauthn' ) );
 	}
 }

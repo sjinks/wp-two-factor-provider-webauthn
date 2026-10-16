@@ -27,9 +27,14 @@ for ( const [ name, message ] of [
 
 test( 'Render browser exception messages as text', async ( { page } ) => {
 	await page.addInitScript( () => {
-		navigator.credentials.create = () => Promise.reject(
-			new DOMException( '<img src=x onerror="document.body.dataset.webauthnXss=1">Browser error', 'UnknownError' ),
-		);
+		Object.defineProperty( navigator, 'credentials', {
+			configurable: true,
+			value: {
+				create: () => Promise.reject(
+					new DOMException( '<img src=x onerror="document.body.dataset.webauthnXss=1">Browser error', 'UnknownError' ),
+				),
+			},
+		} );
 	} );
 
 	await login( page, settings.adminUsername, settings.adminPassword );

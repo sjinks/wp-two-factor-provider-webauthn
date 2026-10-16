@@ -16,7 +16,9 @@ docker compose run --rm cli sh -c '\
         wp plugin install --activate --force two-factor; \
     fi && \
     wp plugin activate two-factor-provider-webauthn && \
-    wp user create user1 user1@example.com --user_pass=password && \
+    for browser in chromium firefox webkit; do \
+        wp user create "user1-$browser" "user1-$browser@example.com" --user_pass=password || exit 1; \
+    done && \
     wp user create user2 user2@example.com --user_pass=password && \
     wp user create user3 user3@example.com --user_pass=password \
 '

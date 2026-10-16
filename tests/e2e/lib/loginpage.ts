@@ -7,6 +7,7 @@ const selectors = {
 	tfaForm: 'form[name="validate_2fa_form"]',
 	providerInput: 'input#provider',
 	webAuthnRetryButton: '#webauthn-retry > button',
+	adminBar: '#wpadminbar',
 };
 
 export class LoginPage {
@@ -19,6 +20,7 @@ export class LoginPage {
 	private readonly tfaFormLocator: Locator;
 	private readonly providerInputLocator: Locator;
 	private readonly webAuthnRetryButtonLocator: Locator;
+	private readonly adminBarLocator: Locator;
 
 	public constructor( page: Page ) {
 		this.page = page;
@@ -30,6 +32,7 @@ export class LoginPage {
 		this.tfaFormLocator = page.locator( selectors.tfaForm );
 		this.providerInputLocator = this.tfaFormLocator.locator( selectors.providerInput );
 		this.webAuthnRetryButtonLocator = this.tfaFormLocator.locator( selectors.webAuthnRetryButton );
+		this.adminBarLocator = this.page.locator( selectors.adminBar );
 	}
 
 	public visit(): Promise<unknown> {
@@ -50,7 +53,7 @@ export class LoginPage {
 		// eslint-disable-next-line playwright/no-wait-for-timeout
 		await this.page.waitForTimeout( 60 );
 		await this.submitButtonLocator.click();
-		await this.page.waitForLoadState( 'domcontentloaded' );
+		await this.adminBarLocator.or( this.tfaFormLocator ).first().waitFor( { state: 'visible' } );
 	}
 
 	public getSecondFactorProvider(): Promise<string> {
@@ -59,6 +62,6 @@ export class LoginPage {
 
 	public async loginWithKey(): Promise<void> {
 		await this.webAuthnRetryButtonLocator.click();
-		return this.page.waitForLoadState( 'domcontentloaded' );
+		return this.adminBarLocator.waitFor( { state: 'visible' } );
 	}
 }

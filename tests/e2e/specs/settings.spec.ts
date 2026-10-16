@@ -31,11 +31,18 @@ test( 'Modify Settings Workflow', async ( { page } ) => {
 	await test.step( 'Check default settings', () =>
 		expect( settingsPage.getSettings() ).resolves.toEqual( defaultSettings ) );
 
-	await test.step( 'Apply new settings', async () => {
-		await settingsPage.setSettings( newSettings );
-		await settingsPage.saveSettings();
-	} );
+	try {
+		await test.step( 'Apply new settings', async () => {
+			await settingsPage.setSettings( newSettings );
+			await settingsPage.saveSettings();
+		} );
 
-	await test.step( 'Check new settings', () =>
-		expect( settingsPage.getSettings() ).resolves.toEqual( { ...defaultSettings, ...newSettings } ) );
+		await test.step( 'Check new settings', () =>
+			expect( settingsPage.getSettings() ).resolves.toEqual( { ...defaultSettings, ...newSettings } ) );
+	} finally {
+		await test.step( 'Restore default settings for the next browser', async () => {
+			await settingsPage.setSettings( defaultSettings );
+			await settingsPage.saveSettings();
+		} );
+	}
 } );

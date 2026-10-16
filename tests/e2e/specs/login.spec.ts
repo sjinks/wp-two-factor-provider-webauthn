@@ -5,12 +5,13 @@ import { ProfilePage } from '../lib/profilepage';
 import { login, registerKey } from '../lib/test-helpers';
 import { test, expect } from '../lib/webauthn-helpers';
 
-test( 'Login Workflow', async ( { page, credentials } ) => {
+test( 'Login Workflow', async ( { page, credentials, browserName } ) => {
+	const username = `${ settings.user1Username }-${ browserName }`;
 	let credentialId: string;
 	let signCount: number;
 
 	await test.step( 'Log in', async () => {
-		await login( page, settings.user1Username, settings.user1Password );
+		await login( page, username, settings.user1Password );
 		return expect( page.url() ).toContain( '/wp-admin/' );
 	} );
 
@@ -38,7 +39,7 @@ test( 'Login Workflow', async ( { page, credentials } ) => {
 	await test.step( 'Log in with key', async () => {
 		expect( page.url() ).toContain( '/wp-login.php' );
 		const loginPage = new LoginPage( page );
-		await loginPage.login( settings.user1Username, settings.user1Password );
+		await loginPage.login( username, settings.user1Password );
 
 		await expect( loginPage.getSecondFactorProvider() ).resolves.toBe( 'TwoFactor_Provider_WebAuthn' );
 		await loginPage.loginWithKey();
@@ -52,7 +53,7 @@ test( 'Login Workflow', async ( { page, credentials } ) => {
 		await adminPage.logOut();
 
 		const loginPage = new LoginPage( page );
-		await loginPage.login( settings.user1Username, settings.user1Password );
+		await loginPage.login( username, settings.user1Password );
 
 		await expect( loginPage.getSecondFactorProvider() ).resolves.toBe( 'TwoFactor_Provider_WebAuthn' );
 

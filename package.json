@@ -33,7 +33,7 @@
     "eslint-plugin-playwright": "^2.12.1",
     "playwright-core": "^1.64.1",
     "rollup": "^4.64.7",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.0"
   },
   "repository": {
     "type": "git",

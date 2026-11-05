@@ -12,7 +12,7 @@
     "vipdevenv:start": "./bin/run-vip-dev-env.sh",
     "test:e2e": "npm run devenv:start && playwright test",
     "test:e2e:vip": "npm run vipdevenv:start && ./bin/playwright-wpvip.sh",
-    "psalm:install": "wget https://github.com/vimeo/psalm/releases/latest/download/psalm.phar -O vendor/bin/psalm && chmod +x vendor/bin/psalm"
+    "psalm:install": "wget -q https://github.com/vimeo/psalm/releases/download/6.20.8/psalm.phar -O vendor/bin/psalm && chmod +x vendor/bin/psalm"
   },
   "keywords": [],
   "author": "Volodymyr Kolesnykov <volodymyr@wildwolf.name> (https://wildwolf.name/)",
@@ -33,6 +33,7 @@
     "eslint-plugin-playwright": "^2.12.1",
     "playwright-core": "^1.64.1",
     "rollup": "^4.64.7",
+    "tslib": "^2.9.1",
     "typescript": "^6.0.3"
   },
   "repository": {

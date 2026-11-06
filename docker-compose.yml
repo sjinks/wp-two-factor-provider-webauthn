@@ -29,7 +29,7 @@ services:
     networks:
       - tfpwa
   cli:
-    image: wordpress:cli-php8.3@sha256:b52ab78112e82bd9e37790d061b78b29964465f89deaf85f194f5ced9c5b5d7c
+    image: wordpress:cli-php8.3@sha256:a4fff017eb08c03187e90fe52d4bff8d3a4d4a5103de05829a6e747c4ca3056e
     volumes: *ref_0
     user: '33:33'
     environment:

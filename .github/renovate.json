@@ -5,14 +5,14 @@
   ],
   "packageRules": [
     {
-      "description": "Hold i18n-command 2.7.1+ until a compatible WP-CLI 2.13 is released",
+      "description": "Hold i18n-command updates until compatible stable WP-CLI releases exist",
       "matchManagers": [
         "composer"
       ],
       "matchPackageNames": [
         "wp-cli/i18n-command"
       ],
-      "allowedVersions": "<2.7.1 || >=3.0.0"
+      "allowedVersions": "<2.7.1"
     }
   ]
 }

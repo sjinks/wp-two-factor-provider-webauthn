@@ -14,7 +14,7 @@ use WP_User;
 use wpdb;
 
 // phpcs:disable WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase
-// phpcs:disable WordPress.DB.DirectDatabaseQuery -- we intentionally do not use cache; otherwise, with a shared memcached server + object cache credentails may leak.
+// phpcs:disable WordPress.DB.DirectDatabaseQuery -- we intentionally do not use cache; otherwise, with a shared memcached server + object cache credentials may leak.
 
 /**
  * @psalm-type CredentialRow = object{id: positive-int, user_handle: string, credential_id: string, public_key: string, counter: numeric-string, name: string, added: numeric-string, last_used: numeric-string, u2f: numeric-string}

@@ -16,7 +16,7 @@ final class Plugin {
 	}
 
 	public function set_up_hooks(): void {
-		$basename = plugin_basename( dirname( __DIR__ ) . '/plugin.php' );
+		$basename = plugin_basename( dirname( __DIR__ ) . '/index.php' );
 		add_action( 'activate_' . $basename, [ $this, 'maybe_update_schema' ] );
 		add_action( 'plugins_loaded', [ $this, 'maybe_update_schema' ] );
 		add_action( 'init', [ $this, 'init' ], 9 );

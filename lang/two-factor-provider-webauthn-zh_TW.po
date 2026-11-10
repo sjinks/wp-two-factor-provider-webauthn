@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2026-11-10T16:21:29+00:00\n"
+"POT-Creation-Date: 2026-11-10T18:40:53+00:00\n"
 "PO-Revision-Date: 2022-09-30 23:45-0700\n"
 "Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
 "Language-Team: Alex Lion <learnwithalex@gmail.com>\n"
@@ -197,34 +197,34 @@ msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F �
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
 
-#: inc/class-ajax.php:51 inc/class-ajax.php:64 inc/class-ajax.php:146
-#: inc/class-ajax.php:162 inc/class-ajax.php:196 inc/class-ajax.php:224
-#: inc/class-ajax.php:250 inc/class-webauthn-provider.php:132
+#: inc/class-ajax.php:51 inc/class-ajax.php:68 inc/class-ajax.php:150
+#: inc/class-ajax.php:166 inc/class-ajax.php:199 inc/class-ajax.php:227
+#: inc/class-ajax.php:252 inc/class-webauthn-provider.php:132
 #: inc/class-webauthn-provider.php:156
 msgid "Bad request."
 msgstr "錯誤的要求。"
 
-#: inc/class-ajax.php:127 inc/class-ajax.php:211
+#: inc/class-ajax.php:131 inc/class-ajax.php:214
 msgid "An unexpected error occurred. Please try again later."
 msgstr "發生了意外錯誤。請稍後再試一次。"
 
-#: inc/class-ajax.php:151
+#: inc/class-ajax.php:155
 msgid "Unable to retrieve the registration context."
 msgstr "無法擷取註冊內容。"
 
-#: inc/class-ajax.php:177
+#: inc/class-ajax.php:181
 msgid "Unable to save the key to the database."
 msgstr "無法將金鑰儲存至資料庫。"
 
-#: inc/class-ajax.php:229
+#: inc/class-ajax.php:232
 msgid "Failed to revoke the key. Please try again."
 msgstr "無法撤銷金鑰。請再試一次。"
 
-#: inc/class-ajax.php:245
+#: inc/class-ajax.php:247
 msgid "Key name cannot be empty."
 msgstr "金鑰名稱不能留空。"
 
-#: inc/class-ajax.php:260
+#: inc/class-ajax.php:261
 msgid "Failed to rename the key."
 msgstr "無法重新命名金鑰。"
 

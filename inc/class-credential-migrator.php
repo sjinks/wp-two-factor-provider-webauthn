@@ -45,9 +45,9 @@ abstract class Credential_Migrator {
 				];
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
-				$wpdb->insert( $wpdb->webauthn_credentials, $credential, [ '%s', '%s', '%s', '%d', '%s', '%d', '%d', '%d' ] );
-				if ( defined( 'WEBAUTHN_DELETE_U2F_KEYS_ON_MIGRATION' ) && constant( 'WEBAUTHN_DELETE_U2F_KEYS_ON_MIGRATION' ) ) {
-					delete_user_meta( $user->ID, WebAuthn_Credential_Store::REGISTERED_KEY_LEGACY_META, $data );
+				$inserted = $wpdb->insert( $wpdb->webauthn_credentials, $credential, [ '%s', '%s', '%s', '%d', '%s', '%d', '%d', '%d' ] );
+				if ( 1 === $inserted && defined( 'WEBAUTHN_DELETE_U2F_KEYS_ON_MIGRATION' ) && constant( 'WEBAUTHN_DELETE_U2F_KEYS_ON_MIGRATION' ) ) {
+					delete_user_meta( $user->ID, WebAuthn_Credential_Store::REGISTERED_KEY_LEGACY_META, wp_slash( $data ) );
 				}
 			}
 		}
@@ -62,7 +62,7 @@ abstract class Credential_Migrator {
 			&& ! empty( $item['keyHandle'] ) && is_string( $item['keyHandle'] )
 			&& ! empty( $item['publicKey'] ) && is_string( $item['publicKey'] )
 			&& ! empty( $item['certificate'] ) && is_string( $item['certificate'] )
-			&& ! empty( $item['counter'] ) && $item['counter'] >= -1
+			&& isset( $item['counter'] ) && $item['counter'] >= -1
 			&& ! empty( $item['name'] ) && is_string( $item['name'] )
 			&& ! empty( $item['added'] ) && is_int( $item['added'] )
 			&& ! empty( $item['last_used'] ) && is_int( $item['last_used'] );

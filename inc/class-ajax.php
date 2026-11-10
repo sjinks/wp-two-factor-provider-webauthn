@@ -228,7 +228,10 @@ final class AJAX {
 		}
 
 		$store = new WebAuthn_Credential_Store();
-		$store->delete_user_key( $user, $handle );
+		if ( ! $store->delete_user_key( $user, $handle ) ) {
+			$this->send_error( __( 'Failed to revoke the key. Please try again.', 'two-factor-provider-webauthn' ) );
+		}
+
 		wp_send_json_success();
 	}
 

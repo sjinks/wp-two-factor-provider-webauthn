@@ -3,8 +3,8 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 6.0
-Tested up to: 7.1.3
-Stable tag: 2.6.2
+Tested up to: 7.1.4
+Stable tag: 2.6.3
 Requires PHP: 8.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -40,6 +40,12 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.6.3 =
+* Require recent second-factor verification for security key changes
+* Prevent revoked U2F keys from being restored during migration
+* Preserve legacy keys when migration fails and support keys with zero signature counters
+* Update Russian, Ukrainian, and Traditional Chinese translations
 
 = 2.6.2 =
 * Strengthen protection of security key and passkey registration and sign-in attempts

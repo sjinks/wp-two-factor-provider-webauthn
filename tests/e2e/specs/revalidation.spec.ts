@@ -97,7 +97,7 @@ test( 'Key management requires recent second-factor proof', async ( { page, cred
 				expect( await sessionProof( userId ) ).toEqual( [ timestamp ] );
 				await profile.visit();
 				await expect( page.locator( '.key-name' ) ).toHaveText( 'Original key' );
-				await expect( page.locator( '#two-factor-options' ) ).toHaveAttribute( 'disabled', 'disabled' );
+				await expect( page.locator( '#two-factor-options' ) ).toHaveAttribute( 'disabled' );
 			} );
 		}
 

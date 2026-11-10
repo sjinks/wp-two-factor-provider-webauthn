@@ -10,6 +10,7 @@
 /tests/
 /docker-compose.yml
 /eslint.config.js
+/README.md
 /rollup.config.mjs
 /package-lock.json
 /package.json

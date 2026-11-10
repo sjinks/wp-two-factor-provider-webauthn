@@ -138,12 +138,28 @@ final class WebAuthn_Credential_Store implements CredentialStoreInterface {
 	/**
 	 * @global wpdb $wpdb
 	 */
-	public function delete_user_key( WP_User $user, string $credential_id ): void {
+	public function delete_user_key( WP_User $user, string $credential_id ): bool {
 		/** @var wpdb $wpdb */
 		global $wpdb;
 
 		$handle = WebAuthn_User::get_for( $user )->getUserHandle();
-		$wpdb->delete(
+		/** @var mixed[] $legacy */
+		$legacy  = get_user_meta( $user->ID, self::REGISTERED_KEY_LEGACY_META, false );
+		$removed = [];
+		/** @var mixed $data */
+		foreach ( $legacy as $data ) {
+			if ( is_array( $data ) && isset( $data['keyHandle'] ) && $credential_id === $data['keyHandle'] && ! in_array( $data, $removed, true ) ) {
+				// Remove the migration source first so a failed cleanup cannot resurrect a deleted key.
+				if ( ! delete_user_meta( $user->ID, self::REGISTERED_KEY_LEGACY_META, wp_slash( $data ) ) ) {
+					return false;
+				}
+
+				// delete_user_meta() removes all entries with the same value.
+				$removed[] = $data;
+			}
+		}
+
+		$deleted = $wpdb->delete(
 			$wpdb->webauthn_credentials,
 			[
 				'user_handle'   => $handle->toString(),
@@ -151,6 +167,8 @@ final class WebAuthn_Credential_Store implements CredentialStoreInterface {
 			],
 			[ '%s', '%s' ]
 		);
+
+		return false !== $deleted;
 	}
 
 	/**

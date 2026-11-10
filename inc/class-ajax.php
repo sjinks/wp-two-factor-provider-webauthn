@@ -50,6 +50,10 @@ final class AJAX {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			$this->send_error( __( 'Bad request.', 'two-factor-provider-webauthn' ) );
 		}
+
+		if ( ! Two_Factor_Core::current_user_can_update_two_factor_options( 'save' ) ) {
+			$this->send_error( __( 'Two Factor Revalidation required.', 'two-factor' ) );
+		}
 	}
 
 	public function wp_ajax_webauthn_preregister(): void {
@@ -187,7 +191,6 @@ final class AJAX {
 					$row = '';
 				}
 
-				Two_Factor_Core::update_current_user_session( [ 'two-factor-login' => time() ] );
 				wp_send_json_success( [
 					'row'   => $row,
 					'nonce' => wp_create_nonce( "webauthn-register_key_{$user_id}" ),
@@ -226,7 +229,6 @@ final class AJAX {
 
 		$store = new WebAuthn_Credential_Store();
 		$store->delete_user_key( $user, $handle );
-		Two_Factor_Core::update_current_user_session( [ 'two-factor-login' => time() ] );
 		wp_send_json_success();
 	}
 
@@ -250,7 +252,6 @@ final class AJAX {
 		$store   = new WebAuthn_Credential_Store();
 		$success = $store->rename_key( $user, $handle, $name );
 		if ( $success ) {
-			Two_Factor_Core::update_current_user_session( [ 'two-factor-login' => time() ] );
 			wp_send_json_success( [ 'name' => $name ] );
 		}
 

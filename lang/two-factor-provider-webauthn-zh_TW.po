@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2026-03-08T02:45:04+00:00\n"
+"POT-Creation-Date: 2026-11-10T16:21:29+00:00\n"
 "PO-Revision-Date: 2022-09-30 23:45-0700\n"
 "Last-Translator: Alex Lion <learnwithalex@gmail.com>\n"
 "Language-Team: Alex Lion <learnwithalex@gmail.com>\n"
@@ -25,25 +25,25 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
 #. Plugin Name of the plugin
-#: index.php
+#: index.php:3
 msgid "WebAuthn Provider for Two Factor"
 msgstr "WebAuthn Provider for Two Factor"
 
 #. Description of the plugin
-#: index.php
+#: index.php:4
 msgid "WebAuthn Provider for Two Factor plugin."
 msgstr "這是一款能為 Two Factor 擴充 WebAuthn 驗證提供者功能的外掛。"
 
 #. Author of the plugin
-#: index.php
+#: index.php:6
 msgid "Volodymyr Kolesnykov"
 msgstr "Volodymyr Kolesnykov"
 
-#: inc/class-admin.php:35
+#: inc/class-admin.php:34
 msgid "TwoFactor WebAuthn Settings"
 msgstr "TwoFactor WebAuthn 設定"
 
-#: inc/class-admin.php:35
+#: inc/class-admin.php:34
 msgid "TwoFactor WebAuthn"
 msgstr "TwoFactor WebAuthn"
 
@@ -193,18 +193,18 @@ msgid ""
 "plugin."
 msgstr "啟用這項設定後，便能在 Two Factor 外掛中停用舊式 U2F 提供者。"
 
-#: inc/class-ajax.php:37
+#: inc/class-ajax.php:41
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr "單次隨機碼已到期。請重新載入頁面並再試一次。"
 
-#: inc/class-ajax.php:47 inc/class-ajax.php:60 inc/class-ajax.php:143
-#: inc/class-ajax.php:161 inc/class-ajax.php:195 inc/class-ajax.php:225
-#: inc/class-ajax.php:248 inc/class-webauthn-provider.php:135
-#: inc/class-webauthn-provider.php:159
+#: inc/class-ajax.php:51 inc/class-ajax.php:64 inc/class-ajax.php:146
+#: inc/class-ajax.php:162 inc/class-ajax.php:196 inc/class-ajax.php:224
+#: inc/class-ajax.php:250 inc/class-webauthn-provider.php:132
+#: inc/class-webauthn-provider.php:156
 msgid "Bad request."
 msgstr "錯誤的要求。"
 
-#: inc/class-ajax.php:124 inc/class-ajax.php:210
+#: inc/class-ajax.php:127 inc/class-ajax.php:211
 msgid "An unexpected error occurred. Please try again later."
 msgstr "發生了意外錯誤。請稍後再試一次。"
 
@@ -212,39 +212,43 @@ msgstr "發生了意外錯誤。請稍後再試一次。"
 msgid "Unable to retrieve the registration context."
 msgstr "無法擷取註冊內容。"
 
-#: inc/class-ajax.php:176
+#: inc/class-ajax.php:177
 msgid "Unable to save the key to the database."
 msgstr "無法將金鑰儲存至資料庫。"
 
-#: inc/class-ajax.php:243
+#: inc/class-ajax.php:229
+msgid "Failed to revoke the key. Please try again."
+msgstr "無法撤銷金鑰。請再試一次。"
+
+#: inc/class-ajax.php:245
 msgid "Key name cannot be empty."
 msgstr "金鑰名稱不能留空。"
 
-#: inc/class-ajax.php:258
+#: inc/class-ajax.php:260
 msgid "Failed to rename the key."
 msgstr "無法重新命名金鑰。"
 
-#: inc/class-key-table.php:33
+#: inc/class-key-table.php:34
 msgid "Name"
 msgstr "名稱"
 
-#: inc/class-key-table.php:34
+#: inc/class-key-table.php:35
 msgid "Counter"
 msgstr "使用次數"
 
-#: inc/class-key-table.php:35
+#: inc/class-key-table.php:36
 msgid "Added"
 msgstr "新增時間"
 
-#: inc/class-key-table.php:36
+#: inc/class-key-table.php:37
 msgid "Last Used"
 msgstr "最後使用時間"
 
-#: inc/class-key-table.php:58
+#: inc/class-key-table.php:59
 msgid "Rename"
 msgstr "重新命名"
 
-#: inc/class-key-table.php:64
+#: inc/class-key-table.php:65
 msgid "Revoke"
 msgstr "撤銷"
 
@@ -260,7 +264,7 @@ msgstr "WebAuthn"
 #: inc/class-webauthn-provider.php:65
 msgctxt "Provider label"
 msgid "Use your security key"
-msgstr "請插入 (並輕觸) 安全金鑰。"
+msgstr "使用安全金鑰"
 
 #: inc/class-webauthn-provider.php:76
 msgid ""
@@ -268,11 +272,11 @@ msgid ""
 "factor method."
 msgstr "WebAuthn 需要這個網站具備 HTTPS 連線。請使用其他第二因素驗證方式。"
 
-#: inc/class-webauthn-provider.php:124
+#: inc/class-webauthn-provider.php:120
 msgid "Unable to retrieve the authentication context."
 msgstr "無法擷取驗證內容。"
 
-#: inc/class-webauthn-user.php:56
+#: inc/class-webauthn-user.php:57
 msgid "Unable to save the user handle to the database."
 msgstr "無法將使用者控制代碼儲存至資料庫。"
 
@@ -285,11 +289,9 @@ msgid "Retry"
 msgstr "重試"
 
 #: views/user-profile.php:11
-#, fuzzy
 msgid ""
 "Requires an HTTPS connection. Please configure your security keys below."
-msgstr ""
-"需要 HTTPS 連線。請在下方設定您的安全金鑰。"
+msgstr "需要 HTTPS 連線。請在下方設定您的安全金鑰。"
 
 #: views/user-profile.php:17
 msgid "You need to enable JavaScript to manage security keys."
@@ -321,7 +323,9 @@ msgid ""
 "If it was non-zero before and then stopped increasing or reversed, that is "
 "more suspicious and points to an authenticator malfunction or clone/race "
 "scenario."
-msgstr "如果之前的數值不是 0，但之後停止增加或出現倒退，這就比較可疑，可能表示驗證器發生故障，或出現克隆／競態（race）情況。"
+msgstr ""
+"如果之前的數值不是 0，但之後停止增加或出現倒退，這就比較可疑，可能表示驗證器"
+"發生故障，或出現克隆／競態（race）情況。"
 
 #: views/user-profile.php:60
 msgid "Are you sure to revoke this key?"

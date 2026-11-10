@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WebAuthn Provider for Two Factor 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/two-factor-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-two-factor-"
 "provider-webauthn\n"
-"POT-Creation-Date: 2026-03-08T02:45:04+00:00\n"
+"POT-Creation-Date: 2026-11-10T16:21:29+00:00\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,25 +13,25 @@ msgstr ""
 "X-Domain: two-factor-provider-webauthn\n"
 
 #. Plugin Name of the plugin
-#: index.php
+#: index.php:3
 msgid "WebAuthn Provider for Two Factor"
 msgstr "WebAuthn Provider for Two Factor"
 
 #. Description of the plugin
-#: index.php
+#: index.php:4
 msgid "WebAuthn Provider for Two Factor plugin."
 msgstr "WebAuthn Provider для плагіна Two Factor."
 
 #. Author of the plugin
-#: index.php
+#: index.php:6
 msgid "Volodymyr Kolesnykov"
 msgstr "Володимир Колесников"
 
-#: inc/class-admin.php:35
+#: inc/class-admin.php:34
 msgid "TwoFactor WebAuthn Settings"
 msgstr "Налаштування TwoFactor WebAuthn"
 
-#: inc/class-admin.php:35
+#: inc/class-admin.php:34
 msgid "TwoFactor WebAuthn"
 msgstr "TwoFactor WebAuthn"
 
@@ -190,20 +190,20 @@ msgid ""
 msgstr ""
 "Ця опція дозволяє вимкнути старий постачальник U2F в плагіні Two Factor."
 
-#: inc/class-ajax.php:37
+#: inc/class-ajax.php:41
 msgid "The nonce has expired. Please reload the page and try again."
 msgstr ""
 "Термін дії одноразового номера закінчився. Будь ласка, перезавантажте "
 "сторінку та спробуйте ще раз."
 
-#: inc/class-ajax.php:47 inc/class-ajax.php:60 inc/class-ajax.php:143
-#: inc/class-ajax.php:161 inc/class-ajax.php:195 inc/class-ajax.php:225
-#: inc/class-ajax.php:248 inc/class-webauthn-provider.php:135
-#: inc/class-webauthn-provider.php:159
+#: inc/class-ajax.php:51 inc/class-ajax.php:64 inc/class-ajax.php:146
+#: inc/class-ajax.php:162 inc/class-ajax.php:196 inc/class-ajax.php:224
+#: inc/class-ajax.php:250 inc/class-webauthn-provider.php:132
+#: inc/class-webauthn-provider.php:156
 msgid "Bad request."
 msgstr "Неправильний запит."
 
-#: inc/class-ajax.php:124 inc/class-ajax.php:210
+#: inc/class-ajax.php:127 inc/class-ajax.php:211
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Сталася непередбачена помилка. Будь ласка, спробуйте пізніше."
 
@@ -211,39 +211,43 @@ msgstr "Сталася непередбачена помилка. Будь ла�
 msgid "Unable to retrieve the registration context."
 msgstr "Не вдалося отримати контекст реєстрації."
 
-#: inc/class-ajax.php:176
+#: inc/class-ajax.php:177
 msgid "Unable to save the key to the database."
 msgstr "Не вдалося зберегти ключ в базі даних."
 
-#: inc/class-ajax.php:243
+#: inc/class-ajax.php:229
+msgid "Failed to revoke the key. Please try again."
+msgstr "Не вдалося відкликати ключ. Будь ласка, спробуйте ще раз."
+
+#: inc/class-ajax.php:245
 msgid "Key name cannot be empty."
 msgstr "Ім’я ключа не може бути порожнім."
 
-#: inc/class-ajax.php:258
+#: inc/class-ajax.php:260
 msgid "Failed to rename the key."
 msgstr "Не вдалося перейменувати ключ."
 
-#: inc/class-key-table.php:33
+#: inc/class-key-table.php:34
 msgid "Name"
 msgstr "Ім’я"
 
-#: inc/class-key-table.php:34
+#: inc/class-key-table.php:35
 msgid "Counter"
 msgstr "Лічильник"
 
-#: inc/class-key-table.php:35
+#: inc/class-key-table.php:36
 msgid "Added"
 msgstr "Додано"
 
-#: inc/class-key-table.php:36
+#: inc/class-key-table.php:37
 msgid "Last Used"
 msgstr "Останнє використання"
 
-#: inc/class-key-table.php:58
+#: inc/class-key-table.php:59
 msgid "Rename"
 msgstr "Перейменувати"
 
-#: inc/class-key-table.php:64
+#: inc/class-key-table.php:65
 msgid "Revoke"
 msgstr "Відкликати"
 
@@ -259,7 +263,7 @@ msgstr "WebAuthn"
 #: inc/class-webauthn-provider.php:65
 msgctxt "Provider label"
 msgid "Use your security key"
-msgstr "Будь ласка, вставте (і натисніть) свій ключ безпеки."
+msgstr "Використати ключ безпеки"
 
 #: inc/class-webauthn-provider.php:76
 msgid ""
@@ -269,11 +273,11 @@ msgstr ""
 "WebAuthn вимагає HTTPS-з’єднання. Будь ласка, використовуйте альтернативний "
 "метод другого фактора."
 
-#: inc/class-webauthn-provider.php:124
+#: inc/class-webauthn-provider.php:120
 msgid "Unable to retrieve the authentication context."
 msgstr "Не вдалося отримати контекст аутентифікації."
 
-#: inc/class-webauthn-user.php:56
+#: inc/class-webauthn-user.php:57
 msgid "Unable to save the user handle to the database."
 msgstr "Не вдалося зберегти ідентифікатор користувача в базі даних."
 
@@ -289,7 +293,8 @@ msgstr "Спробувати ще раз"
 msgid ""
 "Requires an HTTPS connection. Please configure your security keys below."
 msgstr ""
-"WebAuthn вимагає HTTPS-з’єднання. Будь ласка, налаштуйте свої ключі безпеки нижче."
+"WebAuthn вимагає HTTPS-з’єднання. Будь ласка, налаштуйте свої ключі безпеки "
+"нижче."
 
 #: views/user-profile.php:17
 msgid "You need to enable JavaScript to manage security keys."
@@ -321,7 +326,10 @@ msgid ""
 "If it was non-zero before and then stopped increasing or reversed, that is "
 "more suspicious and points to an authenticator malfunction or clone/race "
 "scenario."
-msgstr "Якщо раніше значення було ненульовим, а потім перестало зростати або зменшилося, це вже виглядає підозріло й може вказувати на збій автентифікатора або сценарій клонування/гонки."
+msgstr ""
+"Якщо раніше значення було ненульовим, а потім перестало зростати або "
+"зменшилося, це вже виглядає підозріло й може вказувати на збій "
+"автентифікатора або сценарій клонування/гонки."
 
 #: views/user-profile.php:60
 msgid "Are you sure to revoke this key?"

@@ -28,6 +28,7 @@ jobs:
           - php8.3
           - php8.4
           - php8.5
+          - php8.6
     steps:
       - name: Checkout source code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

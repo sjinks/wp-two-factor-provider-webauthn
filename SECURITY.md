@@ -6,9 +6,8 @@ We take security seriously. We appreciate your efforts to disclose your findings
 
 To report a security vulnerability, please email us at [volodymyr@wildwolf.name](mailto:volodymyr@wildwolf.name). Please do not create public GitHub issues for security vulnerabilities.
 
-We will acknowledge receipt of your vulnerability report within 24 hours and will strive to provide regular updates about our progress in addressing the vulnerability.
+Please include the following in your report.
 
-Please provide the following information when reporting a security vulnerability:
 - Description of the vulnerability
 - Steps to reproduce the vulnerability
 - Versions affected
@@ -26,7 +25,9 @@ We request that you only disclose the details of the vulnerability or related co
 
 ## Scope
 
-This security policy applies to vulnerabilities in this project. If you discover a vulnerability in a dependency, please report it directly to the maintainer of that project.
+Report vulnerabilities in this WordPress WebAuthn provider, including issues in how it configures, patches, bundles, or integrates dependencies. For a vulnerability confined to an upstream dependency, contact that dependency’s maintainer.
+
+A WebAuthn assertion must authenticate the intended WordPress account. Credential enrollment, renaming, and revocation must enforce permission to edit the target account and Two Factor’s revalidation policy for the acting user. See the [threat model](https://github.com/sjinks/wp-two-factor-provider-webauthn/blob/master/docs/threat-model.md) for trust boundaries and assumptions.
 
 ## Bug Bounty
 

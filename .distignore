@@ -11,6 +11,8 @@
 /docker-compose.yml
 /eslint.config.js
 /README.md
+/AGENTS.md
+/docs/
 /rollup.config.mjs
 /package-lock.json
 /package.json

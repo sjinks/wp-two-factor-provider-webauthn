@@ -1,6 +1,7 @@
 {
+  "version": 1,
   "hooks": {
-    "PostToolUse": [
+    "postToolUse": [
       {
         "type": "command",
         "command": "sh ./.github/hooks/scripts/remind-readme-after-version-change.sh",

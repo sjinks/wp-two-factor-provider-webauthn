@@ -3,8 +3,8 @@ Contributors: volodymyrkolesnykov
 Donate link: https://www.paypal.com/donate/?hosted_button_id=SAG6877JDJ3KU
 Tags: 2fa, webauthn, two factor, login, security, authentication
 Requires at least: 6.0
-Tested up to: 7.1.4
-Stable tag: 2.6.3
+Tested up to: 7.2
+Stable tag: 2.6.4
 Requires PHP: 8.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -40,6 +40,10 @@ Be the first to ask.
 2. Plugin settings page.
 
 == Changelog ==
+
+= 2.6.4 =
+* Update the declared WordPress compatibility to 7.2
+* Update bundled Guzzle and Symfony Cache dependencies
 
 = 2.6.3 =
 * Require recent second-factor verification for security key changes

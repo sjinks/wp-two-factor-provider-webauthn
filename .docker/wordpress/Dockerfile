@@ -8,11 +8,15 @@ RUN \
     /usr/local/bin/mkcert -cert-file /etc/ssl/certs/ssl-cert-snakeoil.pem -key-file /etc/ssl/private/ssl-cert-snakeoil.key localhost && \
     mkdir -p /var/www/mu-plugins
 
-RUN \
+# E2E tests do not require coverage; newer PHP images may omit PECL.
+RUN if command -v pecl > /dev/null 2>&1; then \
     curl -L https://phar.phpunit.de/phpcov.phar -o /usr/local/bin/phpcov && \
     chmod +x /usr/local/bin/phpcov && \
     pecl install pcov && \
     echo 'extension=pcov.so' > /usr/local/etc/php/conf.d/docker-php-ext-pcov.ini && \
-    echo 'pcov.enabled=1' >> /usr/local/etc/php/conf.d/docker-php-ext-pcov.ini
+    echo 'pcov.enabled=1' >> /usr/local/etc/php/conf.d/docker-php-ext-pcov.ini; \
+    else \
+        echo 'PECL not available; skipping optional PCOV coverage tooling.'; \
+    fi
 
 COPY e2e-helper.php e2e-coverage.php /var/www/mu-plugins/

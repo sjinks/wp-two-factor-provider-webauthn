@@ -20,7 +20,7 @@ if printf '%s' "$payload" | grep -Eiq "$generated_asset_re" && printf '%s' "$pay
 {
   "systemMessage": "Blocked: direct edits to generated assets (assets/*.min.js, assets/*.min.css, assets/*.map) are not allowed. Edit source files instead and run npm run build.",
   "hookSpecificOutput": {
-    "hookEventName": "PreToolUse",
+    "hookEventName": "preToolUse",
     "permissionDecision": "deny",
     "permissionDecisionReason": "Blocked: direct edits to generated assets (assets/*.min.js, assets/*.min.css, assets/*.map) are not allowed. Edit source files instead and run npm run build."
   }
@@ -32,7 +32,7 @@ fi
 cat << 'JSON'
 {
   "hookSpecificOutput": {
-    "hookEventName": "PreToolUse",
+    "hookEventName": "preToolUse",
     "permissionDecision": "allow",
     "permissionDecisionReason": "No generated-asset edit detected."
   }

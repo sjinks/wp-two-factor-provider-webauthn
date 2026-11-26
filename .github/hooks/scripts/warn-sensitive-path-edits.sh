@@ -21,7 +21,7 @@ if printf '%s' "$payload" | grep -Eiq "$sensitive_path_re" && printf '%s' "$payl
         cat << 'JSON'
 {
   "hookSpecificOutput": {
-    "hookEventName": "PreToolUse",
+    "hookEventName": "preToolUse",
     "permissionDecision": "allow",
     "permissionDecisionReason": "Sensitive path edit is explicitly requested."
   }
@@ -32,7 +32,7 @@ JSON
 {
   "systemMessage": "Warning: editing vendor/ or patches/ is high-risk. Proceed only when explicitly requested by the user.",
   "hookSpecificOutput": {
-    "hookEventName": "PreToolUse",
+    "hookEventName": "preToolUse",
     "permissionDecision": "allow",
     "permissionDecisionReason": "Sensitive path edit detected; warning emitted."
   }
@@ -45,7 +45,7 @@ fi
 cat << 'JSON'
 {
   "hookSpecificOutput": {
-    "hookEventName": "PreToolUse",
+    "hookEventName": "preToolUse",
     "permissionDecision": "allow",
     "permissionDecisionReason": "No sensitive path write detected."
   }
